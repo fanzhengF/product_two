@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='账号管理 > 修改密码';
+        </php>
+    <include file="Common:intoHead" />
+    <script type="text/javascript">
+        $(function (){
+            $(window).resize(function (){
+                var left = $('#Left').width();
+                var all = $(document).width()
+                all_height = $(document).height();
+                var right = all - (left + 18) ;
+                var height = all_height - 140;
+                $('iframe').width(''+ right +'px');
+                $('iframe').height(''+height+'px');
+            }).resize();
+        })
+    </script>
+</head>
+<body>
+    <div class="wrap"> <include file="Common:head" />
+        <div class="mainBody">
+            <include file="Common:left" />
+            <iframe src="/Admin/Index/show.html" name="right" scrolling="yes" style="border:none;float:right;" />
+        </div>
+    </div>
+    <div class="clear"></div>
+
+<include file="Common:foot" />
+
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="中国矿业大学" />
+    <meta name="description" content="中国矿业大学" />
+    <title>中国矿业大学研究院（北京）研究生院</title>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/mycommon.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/index.css">
+    <link rel="stylesheet" type="css" href="__PUBLIC__/Css/Home/common.css">   
+</head>
+<body>
+<div class="header">
+    <img src="__PUBLIC__/Images/Home/logo.png">
+    <ul class="cf">
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn">首页</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=1">研究生院简介</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=2">招生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=3">学籍管理</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=4">培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=5">专业学位培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=6">学位工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=7">国际交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=8">学术交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=9">学生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=10">办事指南（咨询中心）</a></li>
+    </ul>
+</div><!--header end-->
+<div class="bodys con_box">
+    <div class="sign_cons cf con_box">
+        <div class="come_back cf con_box"><span class="backs fl" onclick="history.back(-1);" style="cursor:pointer;">返回</span></div>
+        <p class="meet_bian">会议编号：{$MtAll['m_bianma']}</p>
+        <div class="meet_details">
+            <h1 class="cf">
+                <label class="fl biao_left">会议标题：</label>
+                <span class="fl">{$MtAll['m_name']}</span>
+            </h1>
+            <p class="cf marbot">
+                <label class="fl biao_left">会议类型：</label> 
+                <span class="fl">{$MtAll['m_type_name']}</span>
+            </p>
+            <p class="cf marbot">
+                <label class="fl biao_left">会议等级：</label> 
+                <span class="fl"> {$MtAll['m_grade_name']}</span>
+            </p>
+            <div class="jianjie cf">
+                <label class="fl biao_left">会议简介：</label> 
+                <span class="fl jian_de" style="word-break:break-all;word-wrap: break-word;">
+
+                    {$MtAll['m_content']}</span>
+            </div>
+            <div class="zhujiang cf">
+                <label class="fl biao_left">主讲专家：</label>
+                <ul class="cf fl">
+                    <li class="fl">
+                        <div class="posi_res">
+                            <if condition="strstr($MtAll['m_images'],'png') || strstr($MtAll['m_images'],'jpg') || strstr($MtAll['m_images'],'gif') ">
+                                <img src="__PUBLIC__/upfile/images/{$MtAll['m_images']}">
+                                <else />
+                                <img src="__PUBLIC__/Images/Home/bg.jpg">
+                            </if>
+                            <span class="zhu_detail">{$MtAll['m_zhujiang']}</span>
+                        </div>                       
+                        <p>{$MtAll['m_zhujiang']}</p>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="cf marbot">
+                <label class="fl biao_left">列席专家：</label> 
+                <div class="fl cf">
+                    <span class="fl colorblue">{$MtAll['m_zhuanjia']}</span>
+
+                </div>
+            </div>
+            <div class="cf marbot">
+               <label class="fl biao_left">会议时间：</label>
+               <span class="fl"> {$MtAll.m_time} {$MtAll.m_start}--{$MtAll.m_end}</span>
+            </div>
+            <div class="cf marbot">
+               <label class="fl biao_left">会议地点： </label>
+               <span class="fl">{$MtAll['m_address']}</span>
+            </div>
+            <div class="cf marbot">
+               <label class="fl biao_left">举办机构：</label>
+               <span class="fl">{$MtAll['m_jigou']}</span>
+            </div>
+            <!--
+            <div class="cf marbot">
+               <label class="fl biao_left">机构简介：</label>
+               <span class="fl jigou">举办机构简介举办机构简介举办机构简介举办机构简介举办机构简介</span>
+            </div> -->
+            <div class="cf marbot">
+               <p class="fl cf fees">
+                   <label class="fl biao_left">会议费用：</label>
+                   <span class="fl jigou col_red">
+                       <if condition="$MtAll.m_money eq 0.00 ">
+                            免费
+                        <else />
+                            {$MtAll['m_money']}/元
+                        </if>
+                   </span>
+               </p>
+               <p class="fl cf">
+                   <label class="fl biao_left">会议学分：</label>
+                   <span class="fl jigou col_red">{$MtAll['m_xuefen']}分</span>
+               </p>
+            </div>
+            <div class="cf marbot">
+               <label class="fl biao_left">会议备注：</label>
+               <span class="fl jigou" style="word-break:break-all;word-wrap: break-word;">{$MtAll['m_content']}</span>
+            </div>
+            <div class="cf marbot">
+               <label class="fl biao_left">会议资料：</label>
+                <if condition="strstr($MtAll['m_ziliao'],'doc')">
+                   <span class="fl jigou">{$MtAll['m_ziliao_name']}</span>
+                   <a href="__PUBLIC__/upfile/ziliao/{$MtAll['m_ziliao']}" class="fl downloads">下载</a>
+                    <else />
+                    没有资料
+                </if>
+            </div>
+            <div class="cf marbot"><a name="top"></a>
+               <label class="fl biao_left">会议海报：</label>
+               <span class="haibao cf">
+                    <span class="new_posia">{$MtAll.m_name}</span>
+                    <span class="new_posib">{$MtAll.m_zhujiang}</span>
+                   <img src="__PUBLIC__/Images/Home/{$fshow['f_show2']}" width="357" height="382" class="hai_pic">
+                   <a href="javascript:;" class="fl looks look_big"><img src="__PUBLIC__/Images/Home/chakan.png">查看大图</a>
+                   <a href="{:U('/Index/downImage',array('file'=>$fshow['f_show'],'num'=>9))}" class="fr looks"><img src="__PUBLIC__/Images/Home/down.png">下载海报</a>
+                    <if condition="$MtAll['m_status'] neq 2">
+                        <button class="join_now" type="submit">立即参会 （{$MtAll['m_baoming']}/{$MtAll['m_number']}）</button>
+                    </if>
+               </span>
+            </div>
+
+
+
+            <div style="margin-left:-4px;" class="ping_de cf">
+                <span class="fl ping_cur">会议评价（总5.0）</span><a name="bottom"></a>
+                <!--
+                <span class="fl">会议心得（{$MExperiencecount}篇）</span> -->
+            </div>
+            <div class="ping_details1 con_box">
+                <p class="ping_num">共有{$MEvaluatecount}人评价</p>
+                <ul class="ping_uls">
+
+                    <volist name="list" id="vo">
+                        <li class="cf">
+                      <span class="fl u_heads">
+                        <img src="__PUBLIC__/Images/Home/pics.png" class="usr_head">
+                        <span class="usr_name" title="{$vo.u_name}">
+                            {$vo.u_name|substr=0,9}
+                        </span>
+                      </span>
+                            <div class="cf fl stars">
+                                <div class="cf fl">
+                                    <if condition="$vo.e_fraction eq 1">
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars1.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars1.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars1.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars1.png"></span>
+                                            <i class="fl">1.0 分</i>
+                                        <elseif condition="$vo.e_fraction eq 2" />
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars1.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars1.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars1.png"></span>
+                                            <i class="fl">2.0 分</i>
+                                        <elseif condition="$vo.e_fraction eq 3" />
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars1.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars1.png"></span>
+                                            <i class="fl">3.0 分</i>
+                                        <elseif condition="$vo.e_fraction eq 4" />
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars1.png"></span>
+                                            <i class="fl">4.0 分</i>
+                                        <elseif condition="$vo.e_fraction eq 5" />
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <span class="fl"><img src="__PUBLIC__/Images/Home/stars2.png"></span>
+                                            <i class="fl">5.0 分</i>
+                                    </if>
+                                </div>
+                                <span class="fr">{$vo.e_time|date='Y-m-d H:i:s',###}</span>
+                                <p class="xinde" style="word-break:break-all;word-wrap: break-word;">{$vo.e_content}</p>
+                            </div>
+                        </li>
+                    </volist>
+                </ul>
+                <div class="pages cf fr">
+                    <ul class="new_pages cf">
+                     {$MEvaluatePage}
+                    </ul>
+
+                </div>
+                <div class="my_pingjia">
+                    <p class="my_ping">我的评价</p>
+                    <div class="my_details cf con_box">
+                  <span class="fl u_heads">
+                    <img src="__PUBLIC__/Images/Home/pics.png" class="usr_head usr_head1">
+                      <span class="usr_name" title="{$user}">{$user|substr=0,9}
+
+
+                      </span>
+
+
+                  </span>
+                        <div class="fl">
+                                <div class="cf my_stars">
+                                    <input name="send" id="pingjia" value="0" type="hidden">
+                                    <span class="fl"  title="1"></span>
+                                    <span class="fl"  title="2"></span>
+                                    <span class="fl"  title="3"></span>
+                                    <span class="fl"  title="4"></span>
+                                    <span class="fl"  title="5"></span>
+
+                                </div>
+                            <div>  <span style="color: red;">字数为255</span></div>
+                            <textarea maxlength="255" class="my_texts" style="resize: none;" id="my_texts"></textarea>
+                            <!-- <if condition="$oneSign neq '' "> <else />disabled </if> -->
+                                <br />
+                            <span class="error" style="color: #ff3030;font-weight: bold"></span>
+                                <button class="ping_add" id="ping_add" type="submit">提交</button>
+                        </div>
+                    </div>
+                </div><!--my_pingjia end-->
+            </div><!--ping_details1 end-->
+            <div class="ping_details1 con_box" style="display:none;">
+                <p class="ping_num">共有{$MExperiencecount}篇心得</p>
+                <ul class="ping_uls">
+                    <volist name="MElist" id="vo">
+                        <li class="cf">
+                      <span class="fl u_heads">
+                        <img src="__PUBLIC__/Images/Home/pics.png" class="usr_head">
+                        <span class="usr_name" title="{$vo.u_name}">{$vo.u_name|msubstr=0,9}</span>
+                      </span>
+                            <p class="oth_xinde fl">{$vo.e_content}</p>
+                            <p class="fr">{$vo.e_time|date='Y-m-d H:i:s',###}</p>
+                        </li>
+                    </volist>
+
+
+                </ul>
+                <div class="pages cf fr">
+                    <ul class="new_pages cf">
+                        {$MExperiencePage}
+                    </ul>
+
+                </div>
+                <div class="my_pingjia">
+                    <p class="my_ping">会议心得</p>
+                    <div class="my_details cf con_box">
+                  <span class="fl u_heads">
+                    <img src="__PUBLIC__/Images/Home/pics.png" class="usr_head usr_head2">
+                      <span class="usr_name" title="{$user}">{$user|msubstr=0,9}</span>
+
+                  </span>
+                        <div class="fl">
+                            <textarea size="10" class="my_texts" style="resize: none;" id="my_texts1"></textarea>
+                            <button class="ping_add" id="xinde_add" type="submit">提交</button>
+                        </div>
+                    </div>
+                </div><!--my_pingjia end-->
+            </div><!--ping_details1 end-->
+
+
+
+
+
+        </div>
+    </div><!--body_cons end-->
+</div><!--bodys end-->
+<div class="footers con_box cf">
+    <p class="fl">中国矿业大学研究院（北京）研究生院 版权所有 地址：北京市海淀区学院路丁11号  电话：010-62339826,62339255</p>
+    <p class="fr">网站建设专家<a href="javascript:;" class="taoruan">淘软科技</a>提供技术支持</p>
+</div>
+<div class="masks"></div>
+<div class="hai_big">
+ <img src="__PUBLIC__/Images/Home/{$fshow['f_show']}">   
+ <span class="will_posi1">{$MtAll.m_name}</span>
+ <span class="will_posi2" style="margin-left:100px;">{$MtAll.m_zhujiang}</span>
+ <span class="will_posi3">{$MtAll.m_address}</span>
+ <span class="will_posi4">{$MtAll.m_time} {$MtAll.m_start}-{$MtAll.m_end}</span>
+</div>
+<div class="not_login">
+    <p>您还未登录，请立即  <a href="{:U('Index/login')}" class="login_now">登录</a></p>
+</div>
+<div class="not_login2" style="height: 282px;">
+    <p>您还未登录，请立即  <a href="{:U('Index/login')}" class="login_now">登录</a></p>
+    <a href="{:U('/Index/xiaowai',array('id'=>$id))}" class="signin_now">不登录直接报名</a>
+</div>
+<div class="new_mess con_box" id="new_mess">
+    <p class="mess_info"></p>
+    <span class="mess_que">确定</span>
+</div>
+</body>
+<script type="text/javascript">
+
+    $(function(){
+        $('.ping_de span').click(function(){
+            $(this).addClass('ping_cur').siblings().removeClass('ping_cur');
+            var tis=$(this).index();
+            $('.ping_details1').eq(tis).show().siblings('.ping_details1').hide();
+        })
+        //评价
+        $(".my_stars span").mouseover(function(){
+            for(var i=0; i<$(this).attr("title"); i++){
+                $(this).parent().find("span").eq(i).attr("class"," fl stars_cur");
+            }
+        });
+        $(".my_stars span").mouseout(function(){
+            $(this).parent().find("span").attr("class","fl");
+            for(var i=0; i<$(this).parent().find("input").val(); i++){
+                $(this).parent().find("span").eq(i).attr("class"," fl stars_cur");
+            }
+        });
+        $(".my_stars span").click(function(){
+            $(this).parent().find("input").val($(this).attr("title"));
+        });
+        var auth = '{$auth}';
+        var id = '{$id}';
+        var baoming =  '{$MtAll["m_baoming"]}';
+        var number =  '{$MtAll["m_number"]}';
+        var mtype =  '{$MtAll["m_mtype"]}';
+
+        $('.look_big').click(function(){
+            $('.hai_big,.masks').show();
+            var hai_big=$('.hai_big').width();
+            $('.hai_big').css({ 'left':'50%','margin-left':-hai_big/2})
+        })
+        //未登录提示
+        $('.join_now').click(function(e){
+            e.preventDefault();
+            if (auth == '') {
+                $('.not_login2,.masks').show();
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Index/canjia",
+                data: {s_mid : id,baoming:baoming,number:number,m_mtype:mtype},
+                dataType: "",
+                success: function(data){
+                    if (data == '-1') {
+                        // alert('参加成功！');
+                        $('#new_mess,.masks').show();
+                        $('.mess_info').text('参加成功！');
+                        location.reload(true);
+                    }
+                    if (data == '-2') {
+                        // alert('参加成功，请勿重复提交！');
+                        $('#new_mess,.masks').show();
+                        $('.mess_info').text('参加成功，请勿重复提交！');
+                    }
+                    if (data == '-3') {
+                        $('#new_mess,.masks').show();
+                        $('.mess_info').text('报名人数已满，请勿提交！');
+                        // alert('');
+                    }
+
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert(XMLHttpRequest.status);
+                        alert(XMLHttpRequest.readyState);
+                        alert(textStatus);
+                    console.log(XMLHttpRequest.status);
+                }
+            })
+
+        })
+        $('.masks').click(function(){
+            $('.hai_big,.not_login,.masks,.not_login2').hide();
+        })
+
+        //评价提交
+        $('#ping_add').click(function(e){
+            $('#new_mess,.masks').show();
+            e.preventDefault();
+            if (auth == '') {
+                $('.not_login,.masks').show();
+                return false;
+            }
+            if ($('#pingjia').val() == 0) {
+                $('.mess_info').text('请选择评价分数！');
+                return false;
+            }
+
+            if ($('#my_texts').val() == '') {
+                $('#my_texts').val('');
+                $('#my_texts').focus();
+                $('.mess_info').text('请输入评价内容！');
+                return false;
+            }
+
+
+
+
+            $.ajax({
+                type: "POST",
+                url: "/Index/willsign",
+                data: {e_mid : id,e_fraction :$('#pingjia').val(),e_content:$('#my_texts').val()},
+                dataType: "",
+                success: function(data){
+                    $('#new_mess,.masks').show();
+                    if (data == '-1') {
+                        $('.mess_info').text('评论成功！');
+                        location.reload(true);
+                    }
+
+                    if (data == '-2') {
+                        $('.mess_info').text('提交失败！');
+                        return false;
+                    }
+
+                    if (data == '-4') {
+                        $('.mess_info').text('五分钟以后再来评论！');
+                        return false;
+                    }
+
+                    if (data == '-5') {
+                        $('.mess_info').text('会议开始后才能进行评价！');
+                        return false;
+                    }
+                }
+            })
+        })
+        //alert(auth);
+        //心得提交
+        $('#xinde_add').click(function(e){
+            e.preventDefault();
+            if (auth == '') {
+                $('.not_login,.masks').show();
+                return false;
+            }
+
+
+            if ($('#my_texts1').val() == '') {
+                $('#my_texts1').val('');
+                $('#my_texts1').focus();
+                alert('请输入心得内容！');
+                return false;
+            }
+
+
+            $.ajax({
+                type: "POST",
+                url: "/Index/xinde",
+                data: {e_mid : id,e_content:$('#my_texts1').val()},
+                dataType: "",
+                success: function(data){
+                    if (data == '-1') {
+                        alert('心得提交成功！');
+                        location.reload(true);
+                    }
+
+                    if (data == '-2') {
+                        alert('提交失败！');
+                        return false;
+                    }
+
+
+                    if (data == '-4') {
+                        alert('请五分钟以后再来评论！');
+                        return false;
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+                    console.log(XMLHttpRequest.status);
+                }
+            })
+        })
+
+
+        $('.masks').click(function(){
+            $('#new_mess,.not_login,.masks').hide();
+        })
+
+        $('.mess_que').click(function(){
+            $('#new_mess,.masks').hide();
+        })
+
+    })
+</script>
+</html>

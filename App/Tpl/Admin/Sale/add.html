@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>供应商优惠设置-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='账号管理 > 供应商优惠设置';
+        </php>
+    <include file="Common:intoHead" />
+</head>
+<body>
+    <div class="wrap"> <include file="Common:head" />
+        <div class="mainBody"> <include file="Common:left" />
+            <div id="Right">
+                <div class="contentArea">
+                    <div class="Item hr">
+                        <div class="current">供应商优惠设置</div>
+                    </div>
+                    <form action="" method="post">
+                        <table width="100%"  cellspacing="0" cellpadding="0" class="table1">
+                            <tr>
+                                <th width="120"><font color="red">* </font>供应商名称</th>
+                                <td>
+                                    <if condition="$supplier_list.is_disabled eq 0">
+                                        <select id="supplier_id" name="supplier_id" style="width: 270px;">
+                                        <option value="" >请选择</option>
+                                        <foreach name="supplier_list.list" item="vo">
+                                            <option value="{$key}">{$vo}</option>
+                                        </foreach>
+                                    <elseif condition="$supplier_list.is_disabled eq 1"/>
+                                        <select id="supplier_id" name="supplier_id" disabled style="width: 270px;">
+                                        <foreach name="supplier_list.list" item="vo">
+                                            <option value="{$key}">{$vo}</option>
+                                        </foreach>
+                                    </if>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th width="120"><font color="red">* </font>承诺优惠</th>
+                                <td>
+                                    <select id="sale_type" name="sale_type" style="width: 270px;">
+                                    <foreach name="sale_type" item="vo">
+                                        <option value="{$key}">{$vo}</option>
+                                    </foreach>
+                                </td>
+                            </tr>
+
+                            <tr class="everyfullcut" style="display:none;">
+                                <th width="120"><font color="red">* </font>承诺优惠细则</th>
+                                <td>
+                                    每满
+                                    <input  name="everyfull" type="text" class="input" size="11" value="" />
+                                    元
+                                    &nbsp;&nbsp;
+                                    减
+                                    <input  name="cut" type="text" class="input" size="11" value="" />
+                                    元
+                                </td>
+                            </tr>
+
+                            <tr class="discount" style="display:none;">
+                                <th width="120"><font color="red">* </font>承诺优惠细则</th>
+                                <td>
+                                    <input  name="discount" type="text" class="input" size="40" value="" />
+                                    折&nbsp;&nbsp;&nbsp;<font color="red">例：输入8.8,即八八折</font>
+                                </td>
+                            </tr>
+
+                            <tr>
+                               <th></th>
+                                <td><input type="submit" value="提交" name="submit" class="btn submit" /></td>
+                            </tr>
+
+                        </table>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+<include file="Common:foot" />
+<script type="text/javascript">
+    // 控制不同的角色显示不同的input
+    var map = {"1":"everyfullcut", "2":"discount"};
+    //刷新的时候正常显示
+    var onId = map[$("#sale_type").val()];
+    $("."+onId).show();
+
+
+    //选择承诺优惠的时候,切换显示
+    $("#sale_type").bind("change", function(){
+        var divId = map[this.value];
+        // $(map数组里,除了divId的).hide();
+        $.each(map,function(n,value){
+                if(value != divId){
+                    $("."+value).hide();
+                }
+            }
+        );
+        $("."+divId).show();
+    });
+
+    $(".submit").click(function(){
+        var type = map[$('#sale_type option:selected').val()];
+        if($('#supplier_id option:selected').val()==''){
+            popup.alert("请选择供应商");
+            return false;
+        }
+
+        switch(type){
+            case 'everyfullcut':
+                var everyfull = $("input[name='everyfull']").val();
+                var cut = $("input[name='cut']").val();
+                if(everyfull == ''){
+                    popup.alert("请输入每满的金额");
+                    return false;
+                }
+                if(cut == ''){
+                    popup.alert("请输入减少的金额");
+                    return false;
+                }
+                if(isNaN(everyfull)){
+                    popup.alert("每满的金额必须是数字");
+                    return false;
+                }
+                if(isNaN(cut)){
+                    popup.alert("减少的金额必须是数字");
+                    return false;
+                }
+                if(everyfull < 0){
+                    popup.alert("每满的金额必须大于0");
+                    return false;
+                }
+                if(cut < 0){
+                    popup.alert("减少的金额必须大于0");
+                    return false;
+                }
+                if(eval(cut) >= eval(everyfull)){
+                    popup.alert("减少的金额必须小于每满的金额");
+                    return false;
+                }
+                break;
+            case 'discount':
+                var discount = $("input[name='discount']").val();
+                if(discount == ''){
+                    popup.alert("请输入折扣");
+                    return false;
+                }
+                if(isNaN(discount)){
+                    popup.alert("折扣必须是数字");
+                    return false;
+                }else{
+                    if(discount > 10){
+                        popup.alert("折扣只能小于等于10");
+                        return false;
+                    }
+                    var discount_dot = discount.indexOf(".");
+                    if(discount_dot != -1){
+                        var dotCnt = discount.substring(discount_dot+1,discount.length);
+                        if(dotCnt.length > 1){
+                            popup.alert("折扣只能是一位小数");
+                            return false;
+                        }
+                    }
+                }
+                if(discount < 0){
+                    popup.alert("折扣必须大于0");
+                    return false;
+                }
+                break;
+            default:
+                popup.alert("请选择正确的承诺优惠");
+                return false;
+                break;
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/style.css">
+<link href="__PUBLIC__/Css/Home/mobile/mobiscroll_date.css" rel="stylesheet" />
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+<title>{$home_name}</title>
+</head>
+<body class="paddtop">
+	<div class="zxq_one">
+		<a href="javascript:history.back(-1)" class="a"><img src="__PUBLIC__/Images/Home/mobile/backs.png"></a>
+		<div>补登会议</div>
+	</div><!--zxq_one end-->
+	<form action="" method="post">
+		<input type="hidden" value="1" name="m_mtype" >
+		<input type="hidden" value="{$uid}" name="m_uid" >
+		<div class="lzy_big">
+			<div class="lzy_wrap">			
+				<div class="lzy_huiyi">
+					<div class="lzy_huiyi-li cf">
+						<label>会议名称:</label>
+						<div class="lzy_input"><input type="text" name="m_name" id="huis_name" /></div>
+					</div>
+					<div class="lzy_huiyi-li cf">
+						<label>会议类型:</label>
+						<div class="lzy_input">
+							<select id="lei_meets" name="m_type">
+								<volist name="mtAll" id="vo">
+									<option value="{$vo.mt_id}">{$vo.mt_name}</option>
+								</volist>
+							</select>
+						</div>
+					</div>
+					<div class="lzy_huiyi-li cf">
+						<label>会议地点:</label>
+						<div class="lzy_input"><input type="text" name="m_address" id="huis_didian" /></div>
+					</div>
+					<div class="lzy_huiyi-li cf">
+						<label>会议时间:</label>
+						<div class="lzy_input">
+							<input type="text" name="m_time" id="USER_AGE" readonly class="input fl lzy_input-riqi"/>
+						</div>
+					</div>
+					<div class="lzy_huiyi-li cf">
+						<label>会议内容:</label>
+						<div class="lzy_input lzy_input-none">
+							<textarea style="resize: none" name="m_content" id="weiboTextArea" class="box2 meets_texts" maxlength="300" placeholder="填写会议内容，建议不超过300字"></textarea>
+							 <p style="text-align:right;margin-right:0.4rem;line-height:5px;"><span class="red_star1"  id="sp"></span>/300</p>
+						</div>
+					</div>
+				</div>			
+				<p class="lzy_p">补登会议审核通过后，可以进入个人中心查看</p>
+				<div class="ti_mess"></div>
+			</div>		
+			<input type="submit" value="提交" class="lzy_btn" id="bu_sub">
+		</div>
+	</form>
+<!--时间日期插件-->
+<script src="__PUBLIC__/Js/Home/mobile/mobiscroll_date.js" charset="gb2312"></script> 
+<script src="__PUBLIC__/Js/Home/mobile/mobiscroll.js"></script> 
+<script type="text/javascript">
+	$(function () {
+		var currYear = (new Date()).getFullYear();	
+		var opt={};
+		opt.date = {preset : 'date'};
+		opt.datetime = {preset : 'datetime'};
+		opt.time = {preset : 'time'};
+		opt.default = {
+			theme: 'android-ics light', //皮肤样式
+			display: 'modal', //显示方式 
+			mode: 'scroller', //日期选择模式
+			dateFormat: 'yyyy-mm-dd',
+			lang: 'zh',
+			showNow: true,
+			nowText: "今天",
+			startYear: currYear - 50, //开始年份
+			endYear: currYear + 10 //结束年份
+		};
+		$("#USER_AGE").mobiscroll($.extend(opt['date'], opt['default']));
+		$("#USER_AGE1").mobiscroll($.extend(opt['date'], opt['default']));
+	});
+</script>
+<script type="text/javascript">
+	$(function(){
+		//限制字数
+		function show(){
+	         var tarea=document.getElementById("weiboTextArea");
+	         var maxlength=300;
+	         var length=tarea.value.length;
+	         var count=maxlength-length;
+
+	         var sp=document.getElementById("sp");
+	         sp.innerHTML=count;
+	         if(count<=25){
+		          sp.style.color="red";
+		      }else{
+		         sp.removeAttribute("style");
+		     }
+	 	}
+		$('#weiboTextArea').keyup(function(){
+			show();
+		})
+		//验证
+		$('#huis_name').blur(function(){
+				if ($('#huis_name').val()==''||$('#huis_name').val()==undefined) {
+					$('.ti_mess').text('会议名称不能为空哦~');
+					return false;
+				}else{
+					$('.ti_mess').text('');
+					return true;
+				}	
+			}).keyup(function(){
+				$(this).triggerHandler('blur');
+			})
+			//验证 会议类型
+			$('#lei_meets').click(function(){
+				if (!$('#lei_meets option:selected')) {
+					$('.ti_mess').text('不要忘记选择会议类型哦~');
+					return false;
+				}else{
+					$('.ti_mess').text('');
+					return true;
+				}
+			}).keyup(function(){
+				$(this).triggerHandler('blur');
+			})
+			//验证会议地点
+			$('#huis_didian').blur(function(){
+				if ($('#huis_didian').val()==''||$('#huis_didian').val()==undefined) {
+					$('.ti_mess').text('会议地点不能为空哦~');
+					return false;
+				}else{
+					$('.ti_mess').text('');
+					return true;
+				}	
+			}).keyup(function(){
+				$(this).triggerHandler('blur');
+			})
+			//验证会议时间
+			$('#USER_AGE').blur(function(){
+				if ($('#USER_AGE').val()==''||$('#USER_AGE').val()==undefined) {
+					$('.ti_mess').text('会议时间不能为空哦~');
+					return false;
+				}else{
+					$('.ti_mess').text('');
+					return true;
+				}	
+			}).keyup(function(){
+				$(this).triggerHandler('blur');
+			})
+			//验证会议内容
+			$('#weiboTextArea').blur(function(){
+				if ($('#weiboTextArea').val()==''||$('#weiboTextArea').val()==undefined) {
+					$('.ti_mess').text('会议内容不能为空哦~');
+					return false;
+				}else{
+					$('.ti_mess').text('');
+					return true;
+				}	
+			}).keyup(function(){
+				$(this).triggerHandler('blur');
+			})
+
+		$('form').submit(function (e) {
+			//e.preventDefault();
+			if ($('#huis_name').val()==''||$('#huis_name').val()==undefined) {
+				$('.ti_mess').text('会议名称不能为空哦~');
+				return false;
+			}
+			if (!$('#lei_meets option:selected')) {
+				$('.ti_mess').text('不要忘记选择会议类型哦~');
+				return false;
+			}
+			if ($('#huis_didian').val()==''||$('#huis_didian').val()==undefined) {
+				$('.ti_mess').text('会议地点不能为空哦~');
+				return false;
+			}
+			if ($('#USER_AGE').val()==''||$('#USER_AGE').val()==undefined) {
+				$('.ti_mess').text('会议时间不能为空哦~');
+				return false;
+			}
+			if ($('#weiboTextArea').val()==''||$('#weiboTextArea').val()==undefined) {
+				$('.ti_mess').text('会议内容不能为空哦~');
+				return false;
+			}
+
+			//else{
+			//	$('.ti_mess').text('');
+				return true;
+			//}
+		})		
+	})
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+.emails{width: 1200px;height: 546px;padding:0 13px 38px 27px;/*background: #fff;*/margin:0 auto;}
+.emails_bot{border-bottom: 1px dashed #D3D3D3;padding-bottom: 8px;height: 48px;line-height: 63px;margin: 0px 20px;}
+.emails_bot li{margin-right:32px;cursor: pointer;font-size: 16px;line-height: 53px;}
+.email_licur{color: #30A6EE;border-bottom: 2px solid #30A6EE;}
+.writes1{margin-right: 10px;}
+.write_li{}
+/*搜索邮件*/
+.email_search{width: 294px;height: 30px;line-height: 30px;border: 1px solid #E3E3E3;
+border-radius: 15px;font-size: 13px;color: #999;background: url(/Public/Images/Home/chakan.png) no-repeat 37px center;padding-left:70px;margin-top: 14px;}
+/*返回消息中心*/
+.oper_mess{margin:14px 0;}
+.back_mess{width: 90px;height: 30px;line-height: 30px;text-align: center;color: #fff;font-size: 13px;background: rgba(82,213,74,0.62);border-radius: 3px;}
+.chose_delete{background: #C8C8C8;border-radius: 3px;width: 90px;height: 30px;line-height: 30px;text-align: center;color: #fff;font-size: 13px;margin-left: 18px;}
+.send_mess{width: 90px;height: 30px;line-height: 30px;text-align: center;color: #fff;font-size: 13px;background: #30A6EE;border-radius: 3px;margin-left: 18px;}
+/*操作邮件*/
+.opre_email{/*width: 1060px;*/margin:0 auto;background: #F6F6F6;height: 38px;line-height: 38px;padding-left: 10px;font-size: 14px;color: #333;}
+.all_value{width: 14px;height: 14px;background: #D8D8D8;border-radius: 2px;margin-top: 12px;}
+.opre_email span,.email_uls span{text-align: center;font-size: 13px;}
+.bianhaos{width: 5%;margin-left: 3%;}
+.biaoti,.biaoti1{width: 24%;}
+.email_contents{width: 26%;}
+.shou_people{width: 10%;}
+.send_times{width: 20%;}
+.email_cao,.email_delete{width: 10%;}
+.email_delete img{margin-top: -3px;margin-right: 5px;}
+.email_shows{display: none;}
+.email_uls{font-size: 12px;padding-left: 10px;/*width: 1060px;*/margin:0 auto;height: 275px;}
+.email_uls li{height: 36px;line-height: 36px;}
+.new_values{margin-top: 12px;}
+.biaoti1 img{margin-right: 10px;}
+.email_uls .biaoti1{text-align: left;}
+.biaoti1 .fujian{margin-right: 19px;}
+.writes2{display: none;margin-right: 10px;}
+/*写信*/
+#write_letters{width: 632px;}
+.write_left input,.write_left textarea{}
+.send_peop,.zhuti{width: 450px;background: #F2F2F2;
+box-shadow: inset 1px 1px 3px 0 rgba(151,151,151,0.50);border:0;height: 32px;line-height: 32px;padding:0 14px;}
+.write_label{font-size: 16px;color: #666;margin-right: 20px;width: 50px;height: 32px;line-height: 32px;}
+.fu_add{font-size: 14px;color: #30A6EE;cursor: pointer;}
+.fu_add input{display: none;}
+.write_fu{margin-right: 14px;width: 14px;height:14px;}
+.only_yun{font-size: 10px;color: #3F3F3F;}
+.margintops{margin-top: 30px;margin-bottom: 20px;}
+.heights{height: 34px;line-height: 34px;}
+.write_textarea{width: 450px;height: 220px;background: #F2F2F2;
+box-shadow: inset 1px 1px 3px 0 rgba(151,151,151,0.50);border:0;padding:10px;}
+.zishu{text-align: right;margin-top: 8px;font-size: 14px;color: #CBCBCB;}
+
+
+.write_left{width:632px;background: #fff;height:457px;box-shadow: 4px 4px 4px 0 rgba(202,202,202,0.50);/*margin-top: 10px;*/}
+.emails_bot1{width: 632px;background: #fff;}
+/*教师信息和学生信息*/
+.write_right{background: #FFFFFF;box-shadow: 4px 4px 4px 0 rgba(203,203,203,0.50);height: 447px;margin-left: 25px;width: 228px;margin-top:20px;}
+.teacher_mess{width: 228px;height: 50px;line-height: 50px;text-align: center;font-size: 18px;color: #fff;background: #30A6EE;}
+.student_mess{width: 228px;height: 50px;line-height: 50px;text-align: center;font-size: 18px;color: #fff;background:#75DB6E;}
+.teacher_mess img,.student_mess img{margin-right: 30px;}
+.teac_sear{height: 38px;line-height: 38px;border-bottom: 1px dashed  #BABABA;padding-left:38px;}
+.teach_h4{width: 434px;height: 37px;line-height: 37px;margin:0 auto;background: #fff;font-size: 13px;margin-top: 20px;margin-bottom: 30px;border-top: 1px dashed #D3D3D3;font-size: 16px;color: #9A9EB6;}
+.teach_h4 .total_ji{font-size: 13px;color: #CDCDCD;margin-left: 18px;}
+.teach_all{margin-right: 18px;}
+.teach_all,.teach_check,.student_all,.student_check{margin-top: 13px;background: #D8D8D8;border-radius: 2px;border:0;}
+.teac_sear img{margin-right: 15px;}
+.teac_sear input{width: 150px;border:0;}
+.teach_name{width:16%;text-align: center;}
+.teach_num{width:25%;text-align: center;}
+.teach_sex{width: 8%;}
+.teach_bian{width: 24%}
+.teach_wei{width: 22%}
+.teach_uls,.student_uls{width:416px;margin:0 auto;font-size: 13px;/*height: 240px;*/}
+.teach_uls li,.student_uls li{height: 37px;line-height: 37px;cursor: pointer;font-size: 16px;}
+.teach_uls li:hover{color: #30A6EE;}
+/*页码*/
+.teach_pages{margin-right: 5px;}
+.teach_pages{margin-top: 11px;}
+.teach_pages span{border: 1px solid #E0E0E0;font-size: 13px;cursor: pointer;width: 24px;height: 24px;line-height: 24px;text-align: center;}
+.teach_pages .pages_cur{color: #28BADF;}
+/*5.18新增邮箱改版*/
+.write_new{width: 472px;height: 610px;background: #fff;padding:0 6px;box-shadow: 4px 4px 4px 0 rgba(202,202,202,0.50);}
+.jingque{height: 60px;line-height: 60px;padding-left: 40px;border-bottom: 1px dashed #D3D3D3;font-size: 16px;color: #666;margin-bottom: 28px;}
+.suo_bian{height: 30px;line-height: 30px;margin-bottom: 10px;font-size: 14px;}
+.suo_bian label{width: 100px;text-align: right;margin-right: 14px;}
+.suo_bian input{height: 30px;line-height: 30px;padding: 0 8px;width: 260px;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;border: 1px solid #D6D6D6;box-shadow: inset 1px 1px 3px 0 rgba(33,33,33,0.50);}
+.suo_bian select{height: 30px;line-height: 30px;padding: 0 8px;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;border: 1px solid #D6D6D6;
+box-shadow: 1px 2px 2px 0 rgba(147,147,147,0.50);}
+.new_search{display: block;border:0;background: 0;background: #848DF5 url(/Public/Images/Home/dogson.png) no-repeat 24% center;border-radius: 3px;width: 90px;height: 30px;line-height: 30px;color: #fff;font-size: 14px;padding-left: 30px;margin:40px auto 0;cursor: pointer;}
+.jingque1{height: 60px;line-height: 60px;padding-left: 40px;border-bottom: 1px dashed #D3D3D3;font-size: 16px;color: #666;margin-bottom: 28px;padding-top: 15px;}
+.jingque1 .back_to{width: 64px;height: 30px;line-height: 30px;text-align: center;background: #28BADF;
+border-radius: 5px;color: #fff;display: block;}
+.no_wrap{white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden;}
+.gunim{height: 380px;overflow: hidden;overflow-y:scroll; }
+.search_result{display: none;}
+.excel{width: 90px;height: 30px;line-height: 30px;text-align: center;color: #fff;font-size: 14px;margin-left: 100px;background: rgba(187,125,55,0.72);border-radius: 3px;}
+.excel_que{border: 0;background: 0;width: 90px;height: 30px;line-height: 30px;text-align: center;color: #fff;font-size: 14px;margin-left: 100px;background: rgba(47,62,238,0.59);border-radius: 3px;}
+.new_write1{background: url(/Public/Images/Home/write1.png) no-repeat;width: 20px;height: 17px;margin-right: 10px;background-size: 100%;display: inline-block;}
+.new_write2{background: url(/Public/Images/Home/xin1.png) no-repeat;width: 16px;height: 13px;margin-right: 10px;background-size: 100%;display: inline-block;}
+.new_write3{background: url(/Public/Images/Home/fasong1.png) no-repeat;width:25px;height: 13px;margin-right: 10px;background-size: 100%;display: inline-block;}
+.email_licur .new_write1{background: url(/Public/Images/Home/write2.png) no-repeat;width: 20px;height: 17px;margin-right: 10px;background-size: 100%;display: inline-block;}
+.email_licur .new_write2{background: url(/Public/Images/Home/xin2.png) no-repeat;width: 16px;height: 13px;margin-right: 10px;background-size: 100%;display: inline-block;}
+.email_licur .new_write3{background: url(/Public/Images/Home/fasong2.png) no-repeat;width: 25px;height: 13px;margin-right: 10px;background-size: 100%;display: inline-block;}
+.new_in{width: 90%;margin: 0 auto;display: none;}

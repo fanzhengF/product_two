@@ -1,0 +1,105 @@
+.bgCF7FBFF{background: #F7FBFF;}
+.hheader{width:100%; height: 1.07rem;}
+.jiantouyou{width:0.24rem; height:0.426rem;}
+.label .img{width:0.31rem;height: 0.29rem;}
+.hheader .hspan{font-size:0.32rem;width:33%;display: inline-block; }
+
+/**header css*/
+/*huiyibaoming*/
+.hform{background: #FFFFFF;
+box-shadow: 2px 3px 2px 0 rgba(217,217,217,0.50);
+border-radius: 5px;width: 9.6rem;margin:0 auto;margin-top:0.93rem; }
+.hformdiv{margin-top: 0.66rem;}
+.hformdiv input{border: none;border-bottom: 1px solid #ECECEC;width: 6.4rem;}
+.flabel{margin-top:2px;font-size:0.32rem;color: #333333;width: 1.81rem;display: inline-block;
+margin-left: 0.48rem;}
+.hinputB .button1,.hinputB .button2{width: 2.5rem;height: 0.75rem;
+border: 1px solid #28BADF;background-color: #ffffff;color: #28BADF;font-size:0.32rem; }
+.hinputB .button2{border-radius: 0 3px 3px 0 ;border-left:0;}
+.hinputB .button1{border-radius: 3px 0 0 3px;margin-left:0.65rem;}
+.hinputB .active{background: #28BADF;color: #ffffff;}
+.hinputB{padding-bottom:1rem }
+.htijiao{position: fixed;bottom:0; left:0;width: 100%;}
+.htijiao input{width:100%;height: 0.8rem;background: #28BADF;color: #ffffff;border:0;font-size: 0.37rem;}
+/** baoming succ***/
+.img100{width:1.33rem;height: 1.33rem;margin:0 auto;margin-top: 1.28rem;}
+.img{width:100%;}
+.hbsucc{width:100%;font-size: 0.426rem;
+color: #28BADF;f
+letter-spacing: 0; text-align: center;margin-top:0.96rem;}
+.hpcenter{width: 100%;text-align: center;font-size: 0.37rem;margin-top: 0.533rem;}
+.hpenter{width:100%;margin-top: 0.96rem; text-align: center; margin-bottom: 1.26rem;}
+.hpenter button{width:3.2rem;height: 0.8rem;background: #28BADF;
+border-radius: 5px;text-align: center;border-color:#28BADF;
+font-size: 0.32rem;
+color: #FFFFFF;}
+/**baoming person succ***/
+.hdepi{width:100%;text-align: center;margin-top:0.426rem;margin-bottom: 1.26rem;}
+.hlimg{width: 2.56rem;height: 2.56rem;margin:0 auto;display: inline-block;}
+.hsaomiao{margin-top:0.48rem;text-align: center; font-size: 0.266rem;
+color: #666666;}
+.hsaomiao p{line-height: 0.48rem;}
+/* my meeting*/
+.hrepair{padding-top:0.8rem;width:6.13rem; margin:0 auto;font-size:0.13rem;
+color: #666666; text-align: center;}
+.hrepair_img{width: 7.41rem;height: 5.28rem;margin:0 auto;margin-top:0.45rem;margin-bottom: 3rem;}
+/*****/
+.hinput_search{width:100%;height: 1.01rem;background: #F3F3F3;padding:0 0.4rem;}
+.sear_top input,.hinput_search input{width:9.17rem;height: 0.69rem;margin:0 auto; background: url(../../../Images/Home/mobile/search.png) no-repeat 10% center #fff;padding-left:1.81rem;border-radius: 5px;margin-top: 6px;background-size: 4%;border:0;box-shadow: 0 2px 2px 0 rgba(195,195,195,0.50);border-radius: 5px;}
+.hteacher_stu{height:1.06rem;width:100%;background-color: #ffffff; border-bottom: 1px solid #F1F1F1}
+.hteacher_stu li{width:4.9rem;text-align: center;}
+.hteacher_stu li a{display: inline-block; height:1rem; line-height: 1rem;border-bottom: 1px solid #FFFFFF;}
+
+.hteacher_stu .active a{border-bottom: 2px solid #28BADF;color:#28BADF;}
+.hteacher_stu .hshu{ font-size:0.43rem;color:#CDCDCD;opacity: 0.39;margin-top: 0.22rem;}
+.htab_ul li{width:100%;height:0.93rem;line-height: 0.93rem;border-bottom: 1px solid #F1F1F1;background-color: #ffffff;}
+.htab_ul label{width: 3.33rem;display: inline-block;text-align:center;padding-left:0.42rem;box-sizing:border-box;}
+.htab_ul .lab1{width: 25%;}
+.htab_ul .zhiye{width: 15%;}
+.htab_ul .lab2{width: 9%;}
+.htab_ul .lab3{width: 20%;}
+.htab_ul .banji{width: 30%;}
+.htab_ul li input{margin-top: 0.29rem;margin-right:0.4rem;}
+.htab_ul li span{}
+.right_home{margin-right: 0.587rem;font-size:0.267rem;color: #28BADF;}
+.right_home img{width: 0.293rem;height: 0.267rem;margin-top: -0.1rem;margin-right: 0.1rem;}
+.meet_que{width: 100%;height: 0.8rem;line-height: 0.8rem;background: #28BADF;color: #fff;text-align: center;display: block;}
+.htab_div{display: none;}
+.htab_div input[type="checkbox"],.check_alls input{appearance:none;-moz-appearance:none;-webkit-appearance:none;background: url(../../../Images/Home/mobile/weixuan.png);width: 0.373rem;height: 0.373rem;background-size: 100%;}
+.htab_div li .input_cur,.check_alls input.input_cur{background: url(../../../Images/Home/mobile/xuanzhong.png);width: 0.373rem;height: 0.373rem;background-size: 100%;}
+.check_alls{width: 100%;height: 1.33rem;line-height: 1.33rem;padding:0 0.533rem;position: fixed;bottom: -1px;left: 0%;background: rgba(255,255,255,0.80);border-top: 1px solid #ebebeb;}
+.bot_yes{width: 1.44rem!important;height: 0.693rem!important;line-height: 0.693rem!important;text-align: center!important;color: #fff!important;font-size: 0.32rem!important;background: #28BADF!important;border-radius: 3px!important;border:0!important;margin-top: 0.3rem!important;}
+.check_all{margin-top: 0.5rem;margin-right: 0.32rem;}
+.shen_hai{width: 5.12rem;height: 8.187rem;margin:0.48rem auto;}
+.shen_hai img{width: 5.12rem;height: 8.187rem;display: block;}
+/*校外人员报名*/
+.outbaos{width: 96%;margin:0.8rem auto 5rem;background: #FFFFFF;
+box-shadow: 2px 3px 2px 0 rgba(217,217,217,0.50);
+border-radius: 5px;padding:0.6rem 0.48rem;font-size: 0.32rem;}
+.outbaos label{width:2rem;height: 1.067rem;line-height: 1.067rem;}
+.outbaos input{height: 1.067rem;line-height: 1.067rem;width:5rem;border:0;border-bottom: 1px solid #ECECEC;}
+.outbaos .sexs{width: 2.507rem;height:0.747rem;line-height:0.747rem;border: 1px solid #28BADF;border-radius: 3px;color: #28BADF;text-align: center;margin-top: 0.2rem;}
+.female input,.male input{display: none;}
+.outbaos label.male_cur{background: #28BADF;color: #fff;border-radius: 3px ;}
+.out_sub{display: block;width: 100%;height: 0.8rem;line-height: 0.8rem;background: #28BADF;text-align: center;color: #fff;border:0;}
+.zxq_one .new_one{padding: 0 5%;}
+.gongji{color: #999;font-size: 0.267rem;margin-left: 0.2rem;}
+.sear_top input{width: 7rem;margin-top: 0px;height: 0.72rem;line-height:0.72rem;background-size: 6%;}
+.sear_quxiao{margin-left: 0.8rem;font-size: 0.32rem;color: #999;height:0.72rem;line-height:0.72rem;}
+.search_tana{top: 1.08rem!important;background: rgba(247,251,255,0.60);height: 100%;}
+.sear_topa{height: 1.1rem;line-height: 1.1rem;width: 87%;margin: 0 auto;box-shadow: none;}
+#search_results{font-size: 0.32rem;margin-top:0.8rem;width: 100%;}
+#search_results li{border-bottom: 1px solid #E6E6E6;height: 0.96rem;line-height: 0.96rem;width: 85%;margin: 0 auto;padding:0 2%;}
+.search_results li img{margin-top: 0.25rem;}
+.bianhao{border: 0;}
+.sear_lab{margin-left: 0.32rem;}
+.search_results input,.search_results select{padding-left: 0.8rem;box-sizing: border-box;
+    -moz-box-sizing: border-box;-webkit-box-sizing: border-box;color: #999;border:0;height: 0.9rem;line-height: 0.9rem;background: rgba(247,251,255,0.60);text-align: left;font-size: 0.267rem;}
+.sear_sou{width: 2.24rem;height: 0.72rem;line-height: 0.72rem;text-align: center;color: #fff;font-size: 0.32rem;border: 0;background: url(../../../Images/Home/mobile/newsou.png) no-repeat;background-size: 100%;display: block;margin:3.373rem auto 1rem; }
+#search_results .ti_mess {
+    color: #ff3030;
+    font-size: 0.32rem;
+    margin-top: 0.35rem;
+    text-align: center;
+    border: 0;
+}

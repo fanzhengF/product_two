@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>修改会议室-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='会议室管理 > 修改会议室';
+        </php>
+    <include file="Common:intoHead" />
+</head>
+<body>
+    <div class="wrap">
+        <div class="mainBody">
+            <div id="Right" style="width:100%;">
+                <div class="contentArea">
+                    <div class="Item hr" style="margin-bottom: 50px">
+                        <div class="current">修改会议室</div>
+                        <br />
+                        <a class="btn quickSubmit" href="__URL__/index">返回</a>
+
+                    </div>
+
+
+                    <form action="" method="post" enctype="multipart/form-data" >
+                        <table width="100%"  cellspacing="0" cellpadding="0" class="table1">
+                            <input type="hidden" name="room_id" value="{$data.room_id}">
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议室编号</th>
+                                <td><input  name="room_no" readonly type="text" class="input" size="40" value=" <if condition="$data.room_no eq '' "> <php> echo 'hy'. mt_rand(0,99999); </php> <else />{$data.room_no} </if>" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议室名称</th>
+                                <td><input  name="room_name" type="text" class="input" size="40" value="{$data.room_name}" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议室区域</th>
+                                <td><input  name="room_quyu" type="text" class="input" size="40" value="{$data.room_quyu}" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议室地点</th>
+                                <td><input  name="room_address" type="text" class="input" size="40" value="{$data.room_address}" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议室设施</th>
+                                <td>
+									{$sheshi}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>所属机构</th>
+                                <td>
+                                    <select name="room_yx" style="width: 280px;">
+                                        <volist name="MDaLL" id="vo">
+                                            <option value="{$vo.d_id}" <if condition="$data.room_yx eq $vo[d_id]">selected</if> >{$vo.d_name} </option>
+                                        </volist>
+                                    </select>
+                                </td>
+                            </tr>
+                            <!--
+                            <tr>
+                                <th width="120"><font color="red">* </font>举办机构</th>
+                                <td>
+                                    <select name="room_jigou" style="width: 280px;">
+                                        <volist name="MMall" id="vo">
+                                            <optgroup label="{$vo.m_name}"></optgroup>
+                                            <volist name="vo.m_sub" id="v">
+                                                <option value="{$v.m_id}" <if condition="$data.room_jigou eq $v[m_id]">selected</if>>{$v.m_name}</option>
+                                            </volist>
+                                        </volist>
+                                    </select>
+                                </td>
+                            </tr>
+                            -->
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议室人数</th>
+                                <td><input  name="room_number" type="text" class="input" size="40" value="{$data.room_number}" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议室形状</th>
+                                <td>
+                                    <select name="room_shape" style="width: 280px;">
+                                        <volist name="msh" id="vo">
+                                            <option value="{$vo['s_id']}" <if condition="$data.room_shape eq $vo['s_id']"> selected </if>>{$vo['s_name']}</option>
+                                        </volist>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议室服务</th>
+                                <td>
+                                    <select name="room_service" style="width: 280px;">
+                                        <option value="1" <if condition="$data.room_service eq 1"> selected </if>>不提供服务</option>
+                                        <option value="2" <if condition="$data.room_service eq 2"> selected </if>>提供服务</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <th></th>
+                                <td><input type="submit" value="提交" name="submit" class="btn submit" />
+                                    <a class="btn delete" link="{:U('Admin/Room/delete',array('id'=>$data['room_id']))}" href="javascript:void(0);" name="{$data.room_name}">删除</a>
+
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <script type="text/javascript">
+        $(".delete").click(function(){
+            var link=$(this).attr("link");
+            var name = $(this).attr("name").replace(/<[^>]+>/g,"");
+            popup.confirm('你真的打算删除【<b>'+name+'</b>】会议室吗?','温馨提示',function(action){
+                if(action == 'ok'){
+                    location.href=link;
+                }
+            });
+            return false;
+        });
+    </script>
+</body>
+</html>

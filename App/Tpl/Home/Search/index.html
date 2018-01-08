@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{$WebTitle}</title>
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=1080,user-scalable=no,target-densityDpi=device-dpi"/>
+	<link href="http://min.static.jiaju.com/static/site/asset/style/qgztouch/reset-min.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="http://static.jiaju.com/jiaju/com/m7gz/assets/css/sg-search.css">
+	<script src="http://min.static.jiaju.com/static/js/mobile/hotcss/hotcss.js"></script>
+	<script src="http://static.jiaju.com/jiaju/com/m7gz/assets/js/jquery-2.2.3.min.js"></script>	
+	<script type="text/javascript" src="http://static.jiaju.com/jiaju/com/m7gz/assets/js/shg/shg-common.min.js"></script>
+	<script type="text/javascript" src="http://static.jiaju.com/jiaju/com/m7gz/assets/js/shg/shg-search.min.js"></script>
+</head>
+<body>
+	<div class="pay-wrap">
+		<div class="pay-search-box">
+			<form action="/Search/search">
+				<a href="javascript:history.go(-1);" class="pay-go history-go"></a>
+				<a href="javascript:;" class="pay-search-btn" onclick="$('#search').click()"></a>
+				<a href="javascript:;" class="pay-remove-btn"></a>
+				<input type="text" name="shopName" value="" placeholder="输入商家名或品牌">
+				<input type="submit"  style="display:none" id="search"/>
+			</form>
+		</div>
+
+		<!-- 全部商家 -->
+		<div class="pay-all-merchant">
+			<h3>全部商家</h3>
+			<ul class="clearfix">
+			 <?php $index=0; ?>
+			 <foreach name="Chars" key="chkey" item="ch">
+			  <empty name="result[$ch]"> 
+    <else/>   
+        <li><a href="#{$ch}" <if condition="$index eq 0">class="active"</if>>{$ch}</a></li>
+     <?php $index++; ?>
+				</empty>
+    </foreach>
+			</ul>
+		</div>
+		
+		<foreach name="Chars" key="chkey" item="ch">
+		<notempty name="result[$ch]">
+		<div class="pay-all-list" id="{$ch}">
+			<h3>{$ch}</h3>
+			<ul class="clearfix">
+			   <foreach name="result[$ch]" item="shopRow">
+				    <li><a href="/Pay/?id={$shopRow.id}">{$shopRow.business_name}</a></li>
+				</foreach>
+			</ul>
+		</div>
+		</notempty>
+		
+		</foreach>
+		
+		
+	
+	</div>
+	<a id="goTop" href="javascript:;" style="display: none;"></a>
+	<include file="Common:statistics" />
+</body>
+</html>

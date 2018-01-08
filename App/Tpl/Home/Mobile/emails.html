@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/emails.css">
+<link href="__PUBLIC__/Css/Home/mobile/mobiscroll_date.css" rel="stylesheet" />
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+<title>{$home_name}</title>
+</head>
+<body class="paddtop paddbot">
+	<div class="zxq_one">
+		<a href="javascript:history.back(-1)" class="a"><img src="__PUBLIC__/Images/Home/mobile/backs.png"></a>
+		<div>消息中心</div>
+	</div><!--zxq_one end-->
+	<div class="hinput_search con_box">
+		<input type="text" placeholder="输入关键词搜索" class="con_box" id="email_search1">
+	</div>
+	<ul class="send_shou cf">
+		<li class="fl borright"><span class="send_curs con_box">收件箱<!--（122）--></span></li>
+		<li class="fl"><span class="con_box">发件箱<!--（12）--></span></li>
+	</ul>
+	<div class="email_show" style="display:block;">
+		<div class="shous con_box">
+			<ul class="shou_uls">
+
+
+				<volist name="listM_s" id="vo">
+					<li id="shou_lis0" class="con_box">
+						<a href="{:U('Mobile/messdetail/',array('id'=>$vo['e_id']))}" class="cf">
+							<img src="__PUBLIC__/Images/Home/mobile/bighead.png " class="fl shou_head">
+							<div class="fl time_name">
+								<div class="cf">
+									<div class="shou_names fl">
+										<span class="blue_circle"></span>{$vo.username}
+									</div>
+									<span class="shou_times fr">{$vo.e_time|date='Y-m-d H:i:s',###}</span>
+								</div>
+								<h1>{$vo.e_zhuti}<img src="__PUBLIC__/Images/Home/mobile/fujian.png" class="shou_fujian"></h1>
+								<p class="shou_cons no_wrap">{$vo.e_zhengwen|msubstr=0,10}</p>
+							</div>
+						</a>
+					</li>
+				</volist>
+
+
+
+
+
+
+
+
+
+			</ul>
+		</div>
+		<!--
+		<a href="javascript:;" class="email_mores">查看更多消息</a> -->
+	</div><!--email_show end-->
+	<div class="email_show">
+		<div class="shous con_box">
+			<ul class="fa_uls">
+
+
+
+
+				<volist name="listM" id="vo">
+					<li id="shou_lis0" class="con_box">
+						<a href="javascript:;" class="cf">
+							<img src="__PUBLIC__/Images/Home/mobile/bighead.png" class="fl shou_head">
+							<div class="fl time_name">
+								<div class="cf">
+									<div class="shou_names fl">
+										<span class="blue_circle"></span>{$vo.username}
+									</div>
+									<span class="shou_times fr">{$vo.e_time|date='Y-m-d H:i:s',###}</span>
+								</div>
+								<h1>{$vo.e_zhuti}<img src="__PUBLIC__/Images/Home/mobile/fujian.png" class="shou_fujian"></h1>
+								<p class="shou_cons no_wrap">{$vo.e_zhengwen|msubstr=0,10}</p>
+							</div>
+						</a>
+					</li>
+				</volist>
+
+
+
+
+
+
+
+			</ul>
+		</div>
+		<!--
+		<a href="javascript:;" class="email_mores">查看更多消息</a>-->
+	</div><!--email_show end-->
+	<include file="Common:footer" />
+	<!--footers end-->
+	<!--搜索弹窗-->
+	<div class="search_tan">
+		<div class="cf sear_top con_box">
+			<a href="javascript:;" class="fl tan_backs"></a>
+			<span class="fl sear_posi cf">
+				<form method="get" action="?" name="s_1">
+					<input type="text" value="{$Think.get.e_zhengwen}" name="e_zhengwen" class="index_search1 fl" id="email_search2" placeholder="输入关键字">
+					<input type="submit" value="" name="" onclick="$('form[name=s_1]').submit();" class="top_sear fl" id="top_sear2">
+				</form>
+			</span>
+		</div>
+		<ul id="search_results"></ul>
+	</div>
+</body>
+<script type="text/javascript">
+	//限制标题字数
+	$(function(){
+		//tab切换效果
+		$('.send_shou li').click(function(){
+			$(this).find('span').addClass('send_curs').parents('li').siblings('li').find('span').removeClass('send_curs');
+			var aa=$(this).index();
+			$('.email_show').eq(aa).show().siblings('.email_show').hide();
+		})
+		$('#email_search1').click(function(){
+			$('.search_tan').show();
+			$('.hinput_search').hide();
+		})
+		$('.tan_backs').click(function(){
+			$('.search_tan').hide();
+			$('.hinput_search').show();
+		})
+	})
+</script>
+</html>

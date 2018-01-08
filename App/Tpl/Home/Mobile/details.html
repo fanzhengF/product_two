@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/details.css">
+<link href="__PUBLIC__/Css/Home/mobile/mobiscroll_date.css" rel="stylesheet" />
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+<title>{$home_name}</title>
+</head>
+<body class="paddtop" style="background: #F7FBFF;padding-bottom: 0.96rem;">
+	<div class="zxq_one">
+		<a href="javascript:history.back(-1)" class="a"><img src="__PUBLIC__/Images/Home/mobile/backs.png"></a>
+		<div>会议详情</div>
+	</div><!--zxq_one end-->
+	<div class="detail_bans">
+		<img src="__PUBLIC__/Images/Home/{$fshow['f_show']}">
+		<span class="posi_tit">{$MtAll.m_name}</span>
+		<span class="posi_peop">{$MtAll.m_zhujiang}</span>
+		<span class="posi_time">{$MtAll.m_time} {$MtAll.m_start}-{$MtAll.m_end}</span>
+		<span class="posi_addr">{$MtAll.m_address}</span>
+	</div>
+	<div class="detail_tits con_box">
+		<h1>{$MtAll['m_name']}</h1>
+		<p>举办机构：{$MtAll['m_jigou']}</p>
+		<p>会议时间：{$MtAll.m_time}</p>
+		<p>会议地点：{$MtAll['m_address']}</p>
+	</div>
+	<div class="detail_maps">
+		<ul class="detail_uls cf">
+			<li class="fl detail_x"><span class="detail_cur">详情</span></li>
+			<li class="fl detail_x"><span>地图</span></li>
+			<li class="fl detail_p"><span>会议评价( {$MEvaluatecount} )</span></li>
+			<!--
+			<li class="fl detail_p"><span>会议心得( 23 )</span></li>  -->
+		</ul>
+	</div><!--detail_maps end-->
+	<div class="details_show" style="display:block;">
+		<div class="details_show1">
+			<div class="cf marrts">
+				<label class="fl">会议简介： </label>
+				<span class="fl demet_tits">{$MtAll['m_content']}</span>
+			</div>
+			<div class="cf marrts">
+				<label class="fl">列席专家：</label>
+				<span class="fl">{$MtAll['m_zhuanjia']}</span>
+			</div>
+			<div class="cf marrts">
+				<label class="fl">会议类型：</label>
+				<span class="fl">{$MtAll['m_type_name']}</span>
+			</div>
+			<div class="cf marrts">
+				<label class="fl">会议时间： </label>
+				<span class="fl">{$MtAll.m_time} {$MtAll.m_start}--{$MtAll.m_end}</span>
+			</div>
+			<div class="cf marrts">
+				<label class="fl">会议地点：</label>
+				<span class="fl">{$MtAll['m_address']}</span>
+			</div>
+			<div class="cf marrts">
+				<label class="fl">举办机构：</label>
+				<span class="fl">{$MtAll['m_jigou']}</span>
+			</div>
+			<!--
+			<div class="cf marrts">
+				<label class="fl">机构简介：</label>
+				<span class="fl">我啊哇哇我啊哇哇我啊哇哇我啊</span>
+			</div>
+			-->
+			<div class="cf marrts">
+				<label class="fl">会议费用：</label>
+				<span class="fl red_star"> 免费</span>
+			</div>
+			<div class="cf marrts">
+				<label class="fl">会议备注：</label>
+				<span class="fl">{$MtAll['m_content']}</span>
+			</div>
+			<div class="cf marrts">
+				<label class="fl">主讲专家：</label>
+			</div>
+			<div class="cf marrts">
+				<ul class="sm_uls">
+
+					<li class="cf">
+						<img src="__PUBLIC__/upfile/images/{$MtAll['m_images']}" class="fl smallimg">
+						<div class="fr small_ri">
+							<h2>{$MtAll['m_zhujiang']}</h2>
+							<!--
+							<p class="demet_tits"></p> -->
+						</div>
+					</li>
+
+				</ul>
+			</div>
+			<div class="cf">
+				<label class="fl de_lab">会议资料：</label>
+				<div class="fl wid78 con_box">
+					<div class="cf bor_bots">
+						<a href="javascript:;" class="fl font12">{$MtAll['m_ziliao']}<input type="hidden"></a>
+						<a href="__PUBLIC__/upfile/ziliao/{$MtAll['m_ziliao']}" class="fr"><img src="__PUBLIC__/Images/Home/mobile/downsmall.png" class="downsmall"></a>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</div><!--details_show end-->
+	<div class="details_show details_map">
+		<div id="allmap"></div>
+	</div><!--details_show end-->
+	<div class="details_show details_judge con_box">
+		<div class="total_judge">
+			<h1 class="cf">
+				<span class="fl">
+				会议评价<span class="red_star">（{$MEvaluatecount}）</span>
+				</span>
+
+				<span class="fl">
+				总评分 <span class="red_star">5</span>
+				</span>
+			</h1>
+			<div class="my_judge cf">
+				<span class="fl judge_head"><img src="__PUBLIC__/Images/Home/pics.png"></span>
+				<div class="fl">
+					<span class="my_name" title="{$user}">{$user|substr=0,9}<input type="hidden" value="" name=""></span>
+					<ul class="jsstar cf">
+					    <input name="send" value="0" type="hidden">
+					    <li title="1" class="fl"></li>
+					    <li title="2" class="fl"></li>
+					    <li title="3" class="fl"></li>
+					    <li title="4" class="fl"></li>
+					    <li title="5" class="fl"></li>
+					</ul>
+					<textarea class="my_text con_box" style="resize: none;" placeholder="我也说一句" id="my_text1"></textarea>
+					<input type="submit" value="发表评论" name="" id="ping_add" class="up_judge">
+				</div>
+			</div>
+			<div class="already_judge">
+				<ul class="judge_uls" id="judge_uls">
+					<volist name="list" id="vo">
+						<li class="con_box">
+							<div class="cf">
+								<span class="small_head fl">
+									<img src="__PUBLIC__/Images/Home/pics.png">
+								</span>
+								<span class="already_name" title="{$vo.u_name}">{$vo.u_name|msubstr=0,9}</span>
+								<span class="fr">{$vo.e_time|date='Y-m-d H:i:s',###}</span>
+							</div>
+							<div class="jsstar1 cf">
+								<if condition="$vo.e_fraction eq 1">
+										<span title="1" class="fl yi_curs"></span>
+										<span title="2" class="fl"></span>
+										<span title="3" class="fl"></span>
+										<span title="4" class="fl"></span>
+										<span title="5" class="fl"></span>
+									<elseif condition="$vo.e_fraction eq 2" />
+										<span title="1" class="fl yi_curs"></span>
+										<span title="2" class="fl yi_curs"></span>
+										<span title="3" class="fl"></span>
+										<span title="4" class="fl"></span>
+										<span title="5" class="fl"></span>
+									<elseif condition="$vo.e_fraction eq 3" />
+										<span title="1" class="fl yi_curs"></span>
+										<span title="2" class="fl yi_curs"></span>
+										<span title="3" class="fl yi_curs"></span>
+										<span title="4" class="fl"></span>
+										<span title="5" class="fl"></span>
+									<elseif condition="$vo.e_fraction eq 4" />
+										<span title="1" class="fl yi_curs"></span>
+										<span title="2" class="fl yi_curs"></span>
+										<span title="3" class="fl yi_curs"></span>
+										<span title="4" class="fl yi_curs"></span>
+										<span title="5" class="fl"></span>
+									<elseif condition="$vo.e_fraction eq 5" />
+										<span title="1" class="fl yi_curs"></span>
+										<span title="2" class="fl yi_curs"></span>
+										<span title="3" class="fl yi_curs"></span>
+										<span title="4" class="fl yi_curs"></span>
+										<span title="5" class="fl yi_curs"></span>
+								</if>
+
+							</div>
+							<p class="judge_cons">{$vo.e_content}</p>
+						</li>
+					</volist>
+				</ul>
+				<!--
+				<div class="load_more"><img src="__PUBLIC__/Images/Home/mobile/xia.png">加载更多</div>
+				-->
+			</div>
+		</div>
+	</div><!--details_show end-->
+	<div class="details_show details_judge con_box">
+		<div class="total_judge">
+			<h1 class="cf">
+				<span class="fl">
+				会议心得<span class="red_star">（123）</span>
+				</span>
+			</h1>
+			<div class="my_judge cf">
+				<span class="fl judge_head"><img src="__PUBLIC__/Images/Home/mobile/bighead.png"></span>
+				<div class="fl">
+					<span class="my_name">along<input type="hidden" value="" name=""></span>
+					<textarea class="my_text con_box" placeholder="我也说一句" id="my_text2"></textarea>
+					<input type="submit" value="发表心得" name="" class="up_judge">
+				</div>
+			</div>
+			<div class="already_judge">
+				<ul class="judge_uls" id="xin_uls">
+					<li class="con_box">
+						<div class="cf">
+							<span class="small_head fl">
+								<img src="__PUBLIC__/Images/Home/mobile/smallhead.png">
+							</span>
+							<span class="already_name">Aleax</span>
+							<span class="fr">2017年3月22日  21:44</span>
+						</div>
+						<p class="judge_cons">这个课程很不错呀 很爱听这个课程很不错呀 很爱听这个课程很不错呀 很爱听这个课程很不错呀 很爱听这个课程很不错呀 很爱听这个课程很不错呀 很爱听这个课程很不错呀 很爱听这个课程很不错呀 很爱听这个课程很不错呀 很爱听这个课程很不错呀 很爱听！</p>
+					</li>					
+				</ul>
+				<div class="load_more"><img src="__PUBLIC__/Images/Home/mobile/xia.png">加载更多</div>
+			</div>
+		</div>
+	</div><!--details_show end-->
+	<div class="de_shares cf">
+		<a href="javascript:;" class="fl shares">分享</a>
+		<a href="javascript:;" class="fr want_join join_now">我要报名（{$MtAll['m_baoming']}/{$MtAll['m_number']}）</a>
+	</div>
+	<!--
+	<div class="full_shares cf">
+		<a href="javascript:;" class="fl shares">分享</a>
+		<a href="javascript:;" class="fr want_join">已满员（30/30）</a>
+	</div>
+	<div class="end_shares cf">
+		<a href="javascript:;" class="fl shares">分享</a>
+		<a href="javascript:;" class="fr want_join">会议已结束</a>
+	</div>-->
+	<div class="masks1"><img src="__PUBLIC__/Images/Home/mobile/share.png" class="share_imgs"></div>
+	<div class="login_tan"></div><!--login_tan end-->
+	<div class="hui_tan con_box">
+		<div class="cf hui_marb">
+			您还未登录，请立即<a href="{:U('/Mobile/login')}" class="blue_word">登录</a>
+		</div>
+		<a href="{:U('/Mobile/outbao',array('id'=>$id))}" class="now_join">不登录直接报名</a>
+	</div><!--hui_tan end-->
+	<div class="hui_masks"></div>
+	<div class="infos_tan con_box">
+		<p class="ti_infos"></p>
+		<div class="ti_sure">确定</div>
+	</div>
+</body>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=oGMYEKntGEe6OF1637U3bkPySSVMjpfr"></script>
+<script type="text/javascript">
+	// 百度地图API功能	
+	map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point(116.355392,40.003747), 15);
+	setTimeout(function(){
+		map.setZoom(15);   
+	}, 2000);  //2秒后放大到14级
+	map.enableScrollWheelZoom(true);
+
+	//地图位置
+	var data_info = [
+					 [116.355392,40.003747,"中国矿业大学"]
+					];
+	var opts = {
+				width : 250,     // 信息窗口宽度
+				height: 80,     // 信息窗口高度
+				title : "地址信息" , // 信息窗口标题
+				enableMessage:true//设置允许信息窗发送短息
+			   };
+	for(var i=0;i<data_info.length;i++){
+		var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+		var content = data_info[i][2];
+		map.addOverlay(marker);               // 将标注添加到地图中
+		addClickHandler(content,marker);
+	}
+	function addClickHandler(content,marker){
+		marker.addEventListener("click",function(e){
+			openInfo(content,e)}
+		);
+	}
+	function openInfo(content,e){
+		var p = e.target;
+		var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+		var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+		map.openInfoWindow(infoWindow,point); //开启信息窗口
+	}	
+	var mySwiper = new Swiper('.swiper-container',{
+		pagination:'.swiper-pagination',
+		paginationClickable:true,
+		nextButton:'.swiper-button-next',
+		prevButton:'.swiper-button-prev',
+		loop:true,
+		autoplay:3000
+	});	
+	$('.details .btn .save').click(function(){
+   		if($(this).hasClass('bggrey')){
+   			$(this).removeClass('bggrey');		
+		}else{
+			$(this).addClass('bggrey');
+		}
+   	})	
+</script>
+<script type="text/javascript">
+
+	$(function (){
+		$('.hui_masks,.infos_tan').click(function(){
+			$('.hui_tan,.hui_masks').hide();
+		})
+		$('.ti_sure').click(function(){
+			$('.infos_tan,.hui_masks').hide();
+		})
+          var auth = '{$auth}';
+        var id = '{$id}';
+        var baoming =  '{$MtAll["m_baoming"]}';
+        var number =  '{$MtAll["m_number"]}';
+        //评价提交
+        $('#ping_add').click(function(e){
+            e.preventDefault();
+             if (auth == '') {
+               $('.hui_tan,.hui_masks').show();
+               return false;
+            }
+
+
+            if ($('input[name=send]').val() == 0) {
+            	$('.infos_tan,.hui_masks').show();
+            	$('.ti_infos').text('请选择评价分数！');
+                // alert('请选择分数！');
+                return false;
+            }
+
+            if ($('#my_text1').val() == '') {
+                $('#my_text1').val('');
+                $('#my_text1').focus();
+                $('.infos_tan,.hui_masks').show();
+            	$('.ti_infos').text('请输入评价内容！');
+                // alert('请输入评价内容！');
+                return false;
+            }
+
+
+
+
+            $.ajax({
+                type: "POST",
+                url: "/Index/willsign",
+                data: {e_mid : id,e_fraction :$('input[name=send]').val(),e_content:$('#my_text1').val()},
+                dataType: "",
+                success: function(data){
+                    if (data == '-1') {
+                    	$('.infos_tan,.hui_masks').show();
+            			$('.ti_infos').text('评论成功！');
+                        // alert('评论成功！');
+                        location.reload(true);
+                    }
+
+                    if (data == '-2') {
+                    	$('.infos_tan,.hui_masks').show();
+            			$('.ti_infos').text('提交失败！');
+                        // alert('提交失败！');
+                        return false;
+                    }
+
+                    if (data == '-4') {
+                    	$('.infos_tan,.hui_masks').show();
+            			$('.ti_infos').text('请五分钟以后再来评论！');
+                        // alert('请五分钟以后再来评论！');
+                        return false;
+                    }
+
+                    if (data == '-5') {
+                    	$('.infos_tan,.hui_masks').show();
+            			$('.ti_infos').text('会议开始后才能进行评价！');
+                        // alert('会议开始后才能进行评价！');
+                        return false;
+                    }
+                }
+            })
+        })
+
+        //未登录提示
+        $('.join_now').click(function(e){
+            e.preventDefault();
+             if (auth == '') {
+               $('.hui_tan,.hui_masks').show();
+               return false;
+             }
+            $.ajax({
+                type: "POST",
+                url: "/Mobile/canjia",
+                data: {s_mid : id,baoming:baoming,number:number},
+                dataType: "",
+                success: function(data){
+                    var url = "{:U('/Mobile/baoming',array('flag'=>true))}";
+                    if (data == '-1') {
+                    	$('.infos_tan,.hui_masks').show();
+            			$('.ti_infos').text('参加成功！');
+                        // alert('参加成功！');
+                        location.href = url;
+                    }
+                    if (data == '-2') {
+                    	$('.infos_tan,.hui_masks').show();
+            			$('.ti_infos').text('参加成功，请勿重复提交！');
+                        // alert('参加成功，请勿重复提交！');
+                    }
+                    if (data == '-3') {
+                    	$('.infos_tan,.hui_masks').show();
+            			$('.ti_infos').text('报名人数已满，请勿提交！');
+                        // alert('报名人数已满，请勿提交！');
+                    }
+
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+                    console.log(XMLHttpRequest.status);
+                }
+            })
+
+        })
+	})
+
+
+
+
+	//限制标题字数
+	$(function(){
+		$(".detail_tits h1").each(function() {
+           var first =30;
+           if ($(this).text().length > first) {
+               $(this).text($(this).text().substring(0,first));
+               $(this).html($(this).html() + '...');
+           }
+       })
+		$(".demet_tits").each(function() {
+           var first =30;
+           if ($(this).text().length > first) {
+               $(this).text($(this).text().substring(0,first));
+               $(this).html($(this).html() + '...');
+           }
+       })
+		//点击分享
+		$('.shares').click(function(){
+			$('.masks1').toggle();
+			$(this).css({ 'color':'#fff'})
+		})
+		//tab切换效果
+		$('.detail_uls li').click(function(){
+			$(this).find('span').addClass('detail_cur').parents('li').siblings('li').find('span').removeClass('detail_cur');
+			var aa=$(this).index();
+			$('.details_show').eq(aa).show().siblings('.details_show').hide();
+		})
+		//星级评价
+		$(".jsstar li").mouseover(function(){
+	          for(var i=0; i<$(this).attr("title"); i++){
+	            $(this).parent().find("li").eq(i).attr("class"," fl yi_curs");
+	         }
+	      });
+	      $(".jsstar li").mouseout(function(){
+	          $(this).parent().find("li").attr("class","fl");
+	           for(var i=0; i<$(this).parent().find("input").val(); i++){
+	            $(this).parent().find("li").eq(i).attr("class"," fl yi_curs");
+	          }
+	      });
+	      $(".jsstar li").click(function(){
+	        $(this).parent().find("input").val($(this).attr("title"));
+	        $(this).parent().find("span").html($(this).attr("title")+"星");
+	      });
+	})
+</script>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{$CityName}{$WebTitle}</title>
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=1080,user-scalable=no,target-densityDpi=device-dpi"/>
+	<link href="http://min.static.jiaju.com/static/site/asset/style/qgztouch/reset-min.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="http://static.jiaju.com/jiaju/com/css/mobileZT/bjcss/swiper.min.css">
+	<link rel="stylesheet" href="http://static.jiaju.com/jiaju/com/m7gz/assets/css/sg-Index.css">
+	<script src="http://min.static.jiaju.com/static/js/mobile/hotcss/hotcss.js"></script>
+	<script src="http://static.jiaju.com/jiaju/com/m7gz/assets/js/jquery-2.2.3.min.js"></script>	
+	<script src="http://min.static.jiaju.com/static/site/asset/script/qgztouch/swiper-min.js"></script>
+	<script src="http://min.static.jiaju.com/static/site/asset/script/qgztouch/map-gd-min.js"></script>
+	<script type="text/javascript" src="http://static.jiaju.com/jiaju/com/m7gz/assets/js/shg/shg-common.min.js"></script>
+	<script type="text/javascript" src="http://static.jiaju.com/jiaju/com/m7gz/assets/js/shg/shg-index.min.js"></script>
+</head>
+<body>
+	<div class="sg-wrap" js-data="<?php echo htmlspecialchars($Param);?>" id="dataIndex">
+		<!-- 头部轮播图 -->
+		<div class="sg-header">
+			<div class="sg-top-location clearfix">
+				<a href="/ChangeCity/" class="top-location fl"><span class="js-current-city" id="js-current-city"><empty name="CityName">北京 <else />{$CityName}</empty></span><i></i></a><a href="/Search" class="sg-search fl"><i class="fl"></i><span class="fl">搜商家或品牌</span></a>
+			</div>
+			<div class="swiper-container">
+			  <div class="swiper-wrapper">
+			    
+			    <!--判断后台数据是否为空为空为默认-->
+			    <empty name="FocusMap">
+			    <div class="swiper-slide"><a href="http://m.7gz.com/"><img src="http://static.jiaju.com/jiaju/com/m7gz/assets/images/sg-order/sg_swiper.jpg" alt=""></a></div>
+			    <else /> 
+			     <div class="swiper-slide"><a href="http://m.7gz.com/"><img src="{$FocusMap.src}" alt=""></a></div>   
+			    </empty>
+			    
+			  		<!--以后可能有多个--> 
+			    <!-- <div class="swiper-slide"><img src="assets/images/sg-order/sg_swiper.jpg" alt=""></div>
+			    <div class="swiper-slide"><img src="assets/images/sg-order/sg_swiper.jpg" alt=""></div> -->
+			  </div>
+			</div>
+		</div>
+		<!-- 推荐商家 -->
+		<div class="sg-center-box">
+			<div class="sg-center-top"></div>
+			<ul class="sg-center-list">
+			    
+				<empty name="result">
+			  
+		   		<li class="sg-not">
+					<div></div>
+					<p>抱歉，暂无商家！</p>
+				</li>
+
+			 <else />
+			 <foreach name="result" item="row">   
+				<li>
+				 <!--点击跳转到支付页面-->
+					<a href="/Pay/?id={$row.id}">
+						<div class="sg-center-con clearfix">				
+							<div class="sg-center-con-l fl">
+								
+								<empty name="row.advertising_map">   
+								    <img shopId="{$row.id}" src="http://static.jiaju.com/jiaju/com/m7gz/assets/images/sg-order/sg_sj.jpg" alt="">
+								<else /> 
+    							  <img src="{$row.advertising_map}" alt="">    
+    					</empty>
+								
+							</div>
+							<div class="sg-center-con-r fl">
+								<h4>{$row.business_name}</h4>
+								<empty name="row.brandMap">
+								   <p class="sg-brand">主营品牌：暂无</p>	 
+								 <else />
+								    <p class="sg-brand">主营品牌：<?php $total=count($row['brandMap']); 
+								              foreach($row['brandMap'] as $rkey => $rest):
+								              echo $rest['brand_name'];
+								              if(($rkey+1)< $total) echo "，";
+								              endforeach;
+								        ?></p></empty> 						
+								<div class="clearfix sg-distance">
+								<empty name="row.supplierSale">
+								    <p class="fl">暂无优惠</p>
+								<else />
+								    <eq name="row.supplierSale.type" value="1"><p class="fl">满<?php foreach($row['supplierSale']['discount'] as $saleTotal => $salePrice): ?><?php echo $saleTotal; ?>减<?php echo $salePrice; ?><?php break; endforeach; ?></p> </eq>
+								    <eq name="row.supplierSale.type" value="2"> <p class="fl">全场{$row['supplierSale']['discount']*10}折</p> </eq>
+								</empty>
+									<span class="fr">{$row.distance}km</span>
+								</div>
+							</div>						
+						</div>
+					</a>
+					<div class="sg-location"><a lng="{$row.longitude}" lat="{$row.latitude}" href="{$row.mapurl}">{$row.office_address}</a></div>
+				</li>
+				 </foreach>
+				</empty> 
+				
+			</ul>
+		</div>
+	</div>
+<include file="Common:statistics" />
+</body>
+</html>
+

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="中国矿业大学" />
+    <meta name="description" content="中国矿业大学" />
+    <title>中国矿业大学研究院（北京）研究生院</title>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/mycommon.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/index.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/usercenter.css">
+    <style type="text/css">
+        .left_lis {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <img src="__PUBLIC__/Images/Home/logo.png">
+    <ul class="cf">
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn">首页</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=1">研究生院简介</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=2">招生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=3">学籍管理</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=4">培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=5">专业学位培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=6">学位工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=7">国际交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=8">学术交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=9">学生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=10">办事指南（咨询中心）</a></li>
+    </ul>
+</div><!--header end-->
+<div class="bodys con_box">
+    <div class="body_cons cf">
+        <div class="fl cons_left con_box">
+            <p class="xuefen" style="text-align: center"><!-- 当前学分：分 -->
+                <if condition="$auth">
+                    <if condition="$u_type_init eq 3">
+                        学分：
+                        <!--
+                   <switch name="xf">
+                       <case value="">0</case>
+                   </switch>
+                   -->
+                        <!--
+                        {$mcAll['c_number']}
+                        -->
+                        {$xf}
+                        分
+                    </if>
+                </if>
+                <input type="hidden" value=""></p>
+            <include file="Common:left" />
+
+        </div>
+        <div class="cons_right con_box fl" id="cons_right">
+            <div class="user_center">
+               <h1 class="con_box">我的中心</h1>
+               <form class="usr_form" action="" method="post">
+                   <input type="hidden" name="s_id" value="{$oneS['s_id']}" />
+
+                   <table class="usr_table">
+                       <tr>
+                           <td width="30%" class="mar_tab">
+                               <div class="cf">
+                                   <span class="fl">编号 </span>
+                                   <span class="fl grey_word">( Serial number )：</span>
+                               </div>
+                               <div class="dash_bor">{$oneS['s_no']}</div>
+                           </td>
+                           <td width="30%" class="mar_tab">
+                               <div class="cf">
+                                   <span class="fl">姓名</span>
+                                   <span class="fl grey_word">( Name )：</span>
+                               </div>
+                               <div class="dash_bor">{$oneS['s_name']}</div>
+                           </td>
+                           <td width="30%" class="mar_tab">
+                               <div class="cf">
+                                   <span class="fl">性别</span>
+                                   <span class="fl grey_word"> ( Gender )：</span>
+                               </div>
+                               <div class="dash_bor">{$oneS['s_sex']}</div>
+                           </td>                           
+                       </tr>
+                       <tr>
+                           <td class="mar_tab">
+                               <div class="cf">
+                                   <span class="fl">领域 </span>
+                                   <span class="fl grey_word">( Professional )：</span>
+                               </div>
+                               <div class="dash_bor">{$oneS['s_domain']}</div>
+                           </td>
+                           <td class="mar_tab">
+                               <div class="cf">
+                                   <span class="fl">院系 </span>
+                                   <span class="fl grey_word">( Departments )：</span>
+                               </div>
+                               <div class="dash_bor">{$oneS['s_department']}</div>
+                           </td>
+                           <td class="mar_tab">
+                               <div class="cf">
+                                   <span class="fl">年级 </span>
+                                   <span class="fl grey_word">( Grade )：</span>
+                               </div>
+                               <div class="dash_bor">{$oneS['s_grade']}</div>
+                           </td>                          
+                       </tr>
+                       <tr>
+                           <td class="mar_tab">
+                               <div class="cf">
+                                   <span class="fl">手机号</span>
+                                   <span class="fl grey_word"> ( Phone number )：</span>
+                               </div>
+                               <div class="input_fath">
+                                   <input type="tel" value="{$oneS['s_phone']}" name="s_phone" class="can_input">
+                               </div>
+                           </td>
+                            <td class="mar_tab">
+                               <div class="cf">
+                                   <span class="fl">微信号</span>
+                                   <span class="fl grey_word"> ( WeChat id )：</span>
+                               </div>
+                               <div class="input_fath">
+                                   <input type="text" value="{$oneS['s_weixin']}" name="s_weixin" class="can_input">
+                               </div>
+                           </td>
+                       </tr>
+                   </table>
+                   <div class="xiugai">
+                       <input type="submit" value="修改" name="" class="xiu_input">
+                   </div>
+               </form>
+           </div><!--user_center-->
+        </div><!--cons_right end-->
+    </div><!--body_cons end-->
+</div><!--bodys end-->
+<div class="masks"></div>
+<div class="new_mess con_box" id="new_mess">
+    <p class="mess_info"></p>
+    <!-- <span class="mess_que">确定</span> -->
+</div>
+<div class="footers con_box cf">
+    <p class="fl">中国矿业大学研究院（北京）研究生院 版权所有 地址：北京市海淀区学院路丁11号  电话：010-62339826,62339255</p>
+    <p class="fr">网站建设专家<a href="javascript:;" class="taoruan">淘软科技</a>提供技术支持</p>
+</div>
+<script type="text/javascript">
+    $(function(){
+        //$('#cons_right').load('/Index/right');
+        $('.left_lis:last').css({ 'border-bottom':'0px'});
+        //获取左侧导航高度
+        var body_cons=$('.body_cons').height();//alert(cons_right);
+        $('.cons_left').css({ 'height':body_cons});
+
+      $('form').submit(function (e) {
+        // e.preventDefault();
+        if (true) {
+          $('#new_mess,.masks').show();
+          $('.mess_info').text('修改成功！');
+        }
+      })
+      $('.mess_que').click(function(){
+
+      })
+      $('.masks').click(function(){
+          $('.masks,#new_mess').hide();
+      })
+    })
+</script>
+</body>
+</html>

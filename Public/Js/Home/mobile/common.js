@@ -1,0 +1,39 @@
+    $(function(){
+        //顶部搜索框弹出
+        $('#index_search').click(function(){
+            $('.search_tan').show();
+        })
+        $('.tan_backs').click(function(){
+            $(this).parents('.search_tan').css({ 'display':'none'});
+        })
+        //会议状态选择
+        $('.meets_chose').click(function(){
+            var isi = $(this).index();
+            $(this).addClass('back_none').siblings('span').removeClass('back_none');
+            $('.can_resets').eq(isi).show().siblings('.can_resets').hide();
+            $('.masks').show();         
+        })
+        $('.meets_chu').click(function(){
+            $(this).addClass('back_none').siblings('span').removeClass('back_none');
+            $('.can_resets').show();
+            $('.masks').show();         
+        })
+        //点击选择当前状态
+        $('.label_chose').click(function(){
+            $(this).addClass('resets1_cur').siblings('.label_chose').removeClass('resets1_cur');
+        })
+        //点击重置
+        $('.chongzhi').click(function(){
+            $(this).parent('div').siblings('.resets1').find('.resets1_cur').removeClass('resets1_cur');
+        })
+        //点击确定
+        $('.btn_yes').click(function(){
+            var i = $(this).index();
+            $(this).parents('.can_resets').hide();
+            $('.meets_chose').removeClass('back_none')
+            $('.masks').hide();
+        })
+        $('.masks').click(function(){
+            $('.can_resets,.masks').hide();
+        })
+    })

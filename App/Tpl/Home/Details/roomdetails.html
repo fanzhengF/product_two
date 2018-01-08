@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="中国矿业大学" />
+    <meta name="description" content="中国矿业大学" />
+    <title>中国矿业大学研究院（北京）研究生院</title>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/Home/mycommon.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/roomdetails.css">
+    <style type="text/css">
+        .left_lis {
+            text-align: center;
+        }
+    </style>
+   
+</head>
+<body>
+<div class="header">
+    <img src="__PUBLIC__/Images/Home/logo.png">
+    <ul class="cf">
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn">首页</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=1">研究生院简介</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=2">招生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=3">学籍管理</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=4">培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=5">专业学位培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=6">学位工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=7">国际交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=8">学术交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=9">学生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=10">办事指南（咨询中心）</a></li>
+    </ul>
+</div><!--header end-->
+<div class="bodys con_box">
+    <div class="body_cons cf">
+        <div class="fl cons_left con_box">
+            <p class="xuefen" style="text-align: center">
+                <if condition="$auth">
+                    <if condition="$u_type_init eq 3">
+                        学分：
+                        <!--
+                     <switch name="xf">
+                         <case value="">0</case>
+                     </switch>
+                     -->
+                        <!--
+                        {$mcAll['c_number']}
+                        -->
+                        {$xf}
+                        分
+                    </if>
+                </if>
+                <input type="hidden" value=""></p>
+            <include file="Common:left" />
+        </div>
+        <div class="cons_right con_box fl" id="cons_right">
+            <ul class="steps cf con_box">
+                <li class="cf step_cur fl">
+
+                    <span class="step fl">1</span>
+                    <span>第一步：选择会议室</span>
+                </li>
+
+                <li class="cf  fl">
+                    <span class="step fl">2</span>
+                    <span>第二步：填写会议资料</span>
+                </li>
+            </ul><!--steps end-->
+            <div class="map_address cf">
+                <div class="fl map_left">
+                    <p title="{$list['m_address']}">会议地址：{$list['room_address']|msubstr=0,8}</p>
+                    <p>会议编号：{$list['room_no']}</p>
+                    <p>学校区域：{$list['room_quyu']}</p>
+                    <!--
+                    <p>所属机构：{$list['room_jigou']}</p>
+                    -->
+                    <p>室内形状：{$list['room_shape']}</p>
+                    <p>容纳人数：{$list['room_number']}人</p>
+                    <p>室内设施：{$list['room_facilities']}</p>
+                    <p>提供服务：
+                        <switch name="list['room_service']">
+                            <case value="1">不提供服务</case>
+                            <case value="2">提供服务</case>
+                        </switch>
+
+                    </p>
+                    <div class="cf">
+                        <label class="fl">已有会议：</label>
+                        <ul class="fl cf meet_zhuang">
+                            <volist name="list['meeting']" id="vo">
+                                <li class="fl">
+                                    <div class="hui_name">{$vo['m_name']}</div>
+                                    <div class="hui_time">{$vo['m_time']}</div>
+                                    <div class="hui_time">{$vo['m_start']}-{$vo['m_end']}</div>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                    <div class="cf" style="margin: 0 0 10px 0">
+                        <label class="fl">会议日期：<input class="input" style="width: 100px;" name="date" readonly="readonly"  size="40" value="{$date}" type="text"></label>
+                        <label class="fl">
+                        	<p class="fl">&nbsp;时间：</p>
+							 <div class="tabletime fl">
+								<table class="fl">
+								    <tr><td><input size="16" name="m_start" type="text" value="" readonly class="form_datetime input"></td></tr>
+								</table>
+							 </div> 
+                            <!--<input size="16" name="m_start" type="text" value="" readonly class="form_datetime input">-->
+                            <p class="fl">-</p>
+                             <div class="tabletime fl">	
+								<table class="fl">
+								    <tr><td><input size="16" name="m_end" type="text" value="" readonly class="form_datetime input"></td></tr>
+								</table>
+							 </div> 
+                            
+                          <!--  <input size="16" name="m_end" type="text" value="" readonly class="form_datetime input">-->
+
+                        </label>
+                    </div>
+
+                </div>
+                <div class="daohang fr cf">
+                    <label class="fl">导航：</label>
+                    <div id="allmap" class="fl"></div>
+                </div>
+                <div class="que_room">
+                    <button class="room_tijiao" onclick="confirm2();">确认会议室</button>
+                    <p>会议室选择20分钟后，若未提交会议申请，会议室状态将被设为闲置</p>
+                    <p>选择时间的时候不要覆盖当前以后会议的时间</p>
+                </div>              
+            </div><!--map_address end-->
+        </div><!--cons_right end-->
+    </div><!--body_cons end-->
+</div><!--bodys end-->
+<div class="footers con_box cf">
+    <p class="fl">中国矿业大学研究院（北京）研究生院 版权所有 地址：北京市海淀区学院路丁11号  电话：010-62339826,62339255</p>
+    <p class="fr">网站建设专家<a href="javascript:;" class="taoruan">淘软科技</a>提供技术支持</p>
+</div>
+<!--百度地图API-->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=oGMYEKntGEe6OF1637U3bkPySSVMjpfr"></script>
+
+<script type="text/javascript">
+    $(function (){
+        $('input[name=m_start]').change(function (){
+            console.dir($(this).val());
+        });
+    })
+    // 百度地图API功能    
+    map = new BMap.Map("allmap");
+    map.centerAndZoom(new BMap.Point(116.355392,40.003747), 17);
+    setTimeout(function(){
+        map.setZoom(15);   
+    }, 2000);  //2秒后放大到14级
+    map.enableScrollWheelZoom(true);
+
+    //地图位置
+    var data_info = [
+                     [116.355392,40.003747,"地址：北京市海淀区学院路丁11号"]
+                    ];
+    var opts = {
+                width : 250,     // 信息窗口宽度
+                height: 80,     // 信息窗口高度
+                title : "地址信息" , // 信息窗口标题
+                enableMessage:true//设置允许信息窗发送短息
+               };
+    for(var i=0;i<data_info.length;i++){
+        var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+        var content = data_info[i][2];
+        map.addOverlay(marker);               // 将标注添加到地图中
+        addClickHandler(content,marker);
+    }
+    function addClickHandler(content,marker){
+        marker.addEventListener("click",function(e){
+            openInfo(content,e)}
+        );
+    }
+    function openInfo(content,e){
+        var p = e.target;
+        var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+        var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+    }   
+    var mySwiper = new Swiper('.swiper-container',{
+        pagination:'.swiper-pagination',
+        paginationClickable:true,
+        nextButton:'.swiper-button-next',
+        prevButton:'.swiper-button-prev',
+        loop:true,
+        autoplay:3000
+    }); 
+    $('.details .btn .save').click(function(){
+        if($(this).hasClass('bggrey')){
+            $(this).removeClass('bggrey');      
+        }else{
+            $(this).addClass('bggrey');
+        }
+    })  
+</script>
+<script type="text/javascript">
+    //确认会议
+    function confirm2(){
+        var room_id = "{$list['room_id']}";
+        var time = '{$list["time"]}';
+        var m_start = $('input[name=m_start]').val();
+        var m_end = $('input[name=m_end]').val();
+        var date_1 = "{$date}";
+        if (m_start == '' || m_end == '') {
+            alert('请填写时间！');
+            return false;
+        }
+        $.post('/Index/confirm',{date2:date_1,room_id:room_id,m_start:m_start,m_end:m_end,time:time},function (data) {
+            if (data == '-1'){
+                alert('确认会议室成功,下一步填写！');
+                location.href="/Index/zichou1/type/bz/m_end/"+m_end+"/m_start/"+m_start+"/date/"+ date_1 +"/id/"+room_id+".html";
+            }
+            if (data == '-2'){
+                alert('请选择正确的时间,已有会议存在！');
+                return false;
+            }
+        });
+    }
+
+
+    //验证
+    function yans(){
+        $('#usr_name').blur(function(){
+            if ($('#usr_name').val()==''||$('#u_name').val()==undefined) {
+                $('.erro_mes').text('会议室名称一定要填写哦~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+        //验证会议室地点
+        $('#meet_add').blur(function(){
+            if ($('#meet_add').val()==''||$('#meet_add').val()==undefined) {
+                $('.erro_mes').text('会议室地点一定要填写哦~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+        //验证会议室人数
+        $('#meet_person').blur(function(){
+            if ($('#meet_person').val()==''||$('#meet_person').val()==undefined) {
+                $('.erro_mes').text('会议室人数一定要填写哦~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+        //验证会议室形状
+        $('#meet_shape').blur(function(){
+            if ($('#meet_shape option:selected').val()==''||$('#meet_shape option:selected').val()==undefined) {
+                $('.erro_mes').text('不要忘了选择会议室形状~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+    }
+    $(function(){
+        //验证会议室
+        yans();
+        $('.sure_meet').click(function(){
+            yans();
+        })
+    })
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('.left_lis:last').css({ 'border-bottom':'0px'});
+        //获取左侧导航高度
+        var body_cons=$('.body_cons').height();//alert(cons_right);
+        $('.cons_left').css({ 'height':body_cons});
+    })
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/jquery-ui.css" />
+<script type="text/javascript" src="__PUBLIC__/Js/Home/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-ui.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-ui-slide.min.js"></script>
+<!--<script type="text/javascript" src="__PUBLIC__/Js/jquery-ui-timepicker-addon.js"></script>-->
+<script type="text/javascript">
+    $(function (){
+
+
+        $('input[name=m_start]').timepicker({
+            hourGrid: 4,
+            minuteGrid: 10
+        });
+
+        $('input[name=m_end]').timepicker({
+            hourGrid: 4,
+            minuteGrid: 10
+        });
+    })
+</script>
+
+ <!--选择时间弹框的样式-->
+  <link rel="stylesheet" href="__PUBLIC__/Css/Home/time.css" />
+  <!--<script type="text/javascript" src="__PUBLIC__/Js/Home/Home/timePlugin.js" ></script>-->
+  <script src="http://static.blog.csdn.net/scripts/jquery.js"></script>
+  <script type="text/javascript">
+  	;(function($){
+     
+    var $timePanel = null
+        ,$hour = null
+        ,$minute = null
+        ,currentTarget = null
+        ,date = new Date();
+     
+    // 默认设置
+    var defOptions = {
+        // 偏移量
+        offsetX:0
+        ,offsetY:22
+        // 格式化输出
+        ,format:'hh:mm'
+        ,hourName:'时'
+        ,minuteName:'分'
+        // 样式
+        ,css:{'cursor':'pointer'}
+        // 点确定触发的事件
+        ,onOK:function(val,target){
+            target.val(val);
+        }
+    }
+     
+         
+     $.fn.timepick = function(options,param){
+         options = options || {};
+         return this.each(function(){
+            var state = $.data(this, 'timepick');
+            // 如果已经存在,只设置options
+            if (state){
+                $.extend(state.options, options);
+            } else { // 如果不存在根据当前dom节点绑定timepick参数
+                state = $.data(this, 'timepick', {
+                    options: $.extend({}, defOptions, options)
+                });
+                 
+                init(this);
+            }
+            // 设置当前dom样式
+            $(this).css(state.options.css);
+         })
+     }
+      
+     // 初始化
+     function init(target){
+        initPanel(target);
+        initEvent(target);
+     }
+      
+     // 初始化事件
+     function initEvent(target){
+        $(target).click(function(event){
+             currentTarget = target;
+             loadValue(target);
+            showTimePanel(target);
+        });
+     }
+      
+     // 创建面板
+     function initPanel(target){
+         if(!$timePanel){
+             // 创建一个一行三列的表格
+             var $table = createTable(target);
+              
+             $timePanel = createPanel($table);
+              
+             createSelect($timePanel);
+              
+             $('body').append($timePanel);
+         }
+     }
+      
+     function createTable(target){
+         // 创建表格
+        var $table = $('<table style="font-size:12px;border-collapse: collapse;"></table>');
+        var $tr = $('<tr>');
+        var timepick = $.data(target).timepick;
+        var options = timepick.options;
+         
+        $tr.append(createHourTD())
+            .append($('<td>'+options.hourName+'</td>'))
+            .append(createMinuteTD())
+            .append($('<td>'+options.minuteName+'</td>'))
+            .append(createOkTD());
+             
+        $table.append($tr);
+         
+        return $table;
+     }
+      
+     function createPanel($table){
+         var $panel =  $('<div class="timepick"></div>').css({
+            display:"none"
+            ,position:"absolute"
+            ,'background-color':'#fff'
+            ,border:'1px solid #ccc'
+        });
+              
+         $panel.append($table);
+          
+         return $panel;
+     }
+      
+     function createSelect($timePanel){
+         var $selects = $timePanel.find('select');
+          
+         $hour = $selects.eq(0);
+         $minute = $selects.eq(1);
+     }
+      
+     function createHourTD(){
+         return createTimeTD(24);
+     }
+      
+     function createMinuteTD(){
+         return createTimeTD(60);
+     }
+      
+     function createOkTD(){
+         var $td = $('<td>').css({'padding':'0px 5px 0px 5px'});
+         var $a = $('<a href="javascript:void(0)">确定</a>');
+          
+         $a.css({
+             color: '#329ECC'
+             ,'text-decoration': 'none'
+         });
+          
+         $a.click(function(){
+             okHandler();
+         });
+          
+         $td.append($a);
+          
+         return $td;   
+     }
+      
+     // 显示面板
+     function showTimePanel(target){
+         var targetOffset = $(target).offset();
+         var timepick = $.data(target).timepick;
+          
+        $timePanel.offset({top: (targetOffset.top + timepick.options.offsetY)
+            , left: (targetOffset.left + timepick.options.offsetX)});
+         
+         $timePanel.show();
+     }
+      
+     // 关闭面板
+     function hideTimePanel(){
+          $timePanel.offset({top: 0, left: 0 });
+          $timePanel.hide();
+     }
+      
+    /**
+     * 格式化日期<br>
+     * 使用方法:
+     * <code>
+     * var dateStr = format(new Date(),'yyyy-MM-dd hh:mm:ss.S');
+     * </code>
+     * 
+     * @param dateInstance Date实例
+     * @param 格式化字符串,如"yyyy-MM-dd","yyyy-MM-dd hh:mm:ss.S"
+     * 
+     * @return 返回格式化后的字符串
+     */
+    function format(dateInstance,pattern) {
+        var o = {   
+            "M+" : dateInstance.getMonth()+1,                 //月份    
+            "d+" : dateInstance.getDate(),                    //日    
+            "h+" : dateInstance.getHours(),                   //小时    
+            "m+" : dateInstance.getMinutes(),                 //分    
+            "s+" : dateInstance.getSeconds(),                 //秒    
+            "q+" : Math.floor((dateInstance.getMonth()+3)/3), //季度    
+            "S"  : dateInstance.getMilliseconds()             //毫秒    
+        };   
+        if(/(y+)/.test(pattern)) {
+            pattern = pattern.replace(RegExp.$1, (dateInstance.getFullYear()+"").substring(4 - RegExp.$1.length));   
+        }
+             
+        for(var k in o) {
+            if(new RegExp("("+ k +")").test(pattern)) {
+                pattern = pattern.replace(RegExp.$1, (RegExp.$1.length == 1) 
+                    ? (o[k]) 
+                    : (("00"+ o[k]).substring((""+ o[k]).length))); 
+            }
+        }
+             
+        return pattern; 
+    }
+      
+     // 确定事件句柄
+     function okHandler(){
+         // 获取<select>标签,第一个是小时,第二个分
+         var currentTimepick = $.data(currentTarget).timepick;
+          
+         var hourVal = $hour.val();
+         var minuteVal = $minute.val();
+          
+         bindValue(currentTarget,hourVal,minuteVal);
+          
+         var onOK = currentTimepick.options.onOK;
+          
+         if($.isFunction(onOK)){
+             // 格式化输出
+             var val = formatValue(currentTimepick.options.format,hourVal,minuteVal);
+             onOK(val,$(currentTarget));
+         }
+          
+         hideTimePanel();
+     }
+      
+     function formatValue(formatStr,hourVal,minuteVal){
+         // 借用Date对象赋值,进行后续的格式化
+         date.setHours(hourVal); // 时
+         date.setMinutes (minuteVal); // 分
+          
+         return format(date,formatStr);
+     }
+      
+     function bindValue(target,hour,minute){
+         target.hourVal = hour;
+         target.minuteVal = minute;
+     }
+      
+     function loadValue(target){
+         var hourVal = target.hourVal || '00';
+         var minuteVal = target.minuteVal || '00';
+          
+         $hour.val(hourVal);
+         $minute.val(minuteVal);
+     }
+      
+     function createTimeTD(maxTime){
+         var $td = $('<td>');
+          
+         var selectHtml = ['<select>'];
+          
+         for(var i=0,len=maxTime; i<len; i++) {
+             var time = formatNum(i);
+             selectHtml.push('<option value="'+time+'">'+time+'</option>');
+         }
+         selectHtml.push('</select>');
+          
+         $td.html(selectHtml.join(''));
+          
+         return $td;
+     }
+      
+     function formatNum(num){
+         return num < 10 ? "0" + num : num;
+     }
+      
+     // 点击空白地方隐藏面板
+     $(document).click(function(e){
+         if($timePanel){
+             var obj = e.target;
+              
+            var isOutSide = $(obj).parents('.timepick').length == 0;
+            var notCurrentTarget = (obj != currentTarget);
+            // 鼠标点空白地方并且没有点在输入框上
+            if(isOutSide && notCurrentTarget){
+                hideTimePanel();
+            }
+         }
+    });
+      
+      
+})(jQuery);
+ //////////////插件-结束//////////////
+  
+$(function(){
+    $('table input').timepick();   
+    $('#t').timepick({format : 'hh时mm分'});
+    $('#a').timepick({onOK:function(val,$target){
+      $('input[name=m_end]').val(val);
+       // alert(val)
+    }});
+    
+    //alert($('table input').val())
+})
+  </script>
+</body>
+</html>

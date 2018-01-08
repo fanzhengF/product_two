@@ -1,0 +1,59 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/details.css">
+<div class="footers con_box">
+    <ul class="foot_uls cf">
+        <li class="foot_lis fl">
+            <a href="{:U('Mobile/index/')}">
+                <img src="__PUBLIC__/Images/Home/mobile/home1.png" class="foot_imgs" width="17" height="16">
+                <span>首页</span>
+            </a>
+        </li>
+        <li class="foot_lis fl">
+            <a href="javascript:void(0);" onclick="login('/Mobile/chosemeet.html')">
+                <img src="__PUBLIC__/Images/Home/mobile/jilu1.png" class="foot_imgs" width="14" height="16">
+                <span>会议申请</span>
+            </a>
+        </li>
+        <li class="foot_lis fl">
+            <a href="javascript:void(0);" onclick="login('/Mobile/emails.html')">
+                <img src="__PUBLIC__/Images/Home/mobile/mess1.png" class="foot_imgs" width="16" height="16">
+                <span>消息中心</span>
+            </a>
+        </li>
+        <li class="foot_lis fl">
+            <a href="javascript:void(0);" onclick="login('/Mobile/mymeet.html')">
+                <img src="__PUBLIC__/Images/Home/mobile/usr1.png" class="foot_imgs" width="15" height="16">
+                <span>我的会议</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="hui_tan con_box" style="display: none">
+    <div class="cf hui_marb">
+        您还未登录，请立即<a href="{:U('/Mobile/login')}" class="blue_word">登录</a>
+    </div>
+</div>
+<div class="hui_masks" style="display: none"></div>
+
+
+<script type="text/javascript">
+    $('.hui_masks').click(function(){
+        $('.hui_tan,.hui_masks').hide();
+    })
+    function login (url){
+        var url = url;
+        $.ajax({
+            url :url,
+            type: 'post',
+            success : function (status) {
+                if (status == 1) {
+                    $('.hui_tan,.hui_masks').show();
+                }else {
+                    location.href = url;
+                }
+            }
+        });
+    }
+</script>

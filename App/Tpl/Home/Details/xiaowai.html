@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="中国矿业大学" />
+    <meta name="description" content="中国矿业大学" />
+    <title>中国矿业大学研究院（北京）研究生院</title>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-base.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-all.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/Home/mycommon.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/index.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/datetimepicker.css">
+</head>
+<body>
+<div class="header">
+    <img src="__PUBLIC__/Images/Home/logo.png">
+    <ul class="cf">
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn">首页</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=1">研究生院简介</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=2">招生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=3">学籍管理</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=4">培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=5">专业学位培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=6">学位工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=7">国际交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=8">学术交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=9">学生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=10">办事指南（咨询中心）</a></li>
+    </ul>
+</div><!--header end-->
+<div class="bodys con_box">
+    <div class="body_cons cf">
+        <div class="fl cons_left con_box">
+            <p class="xuefen"><!--当前学分：1.25分-->
+                <if condition="$auth">
+                    <if condition="$u_type_init eq 3">
+                        学分：
+                        <!--
+                       <switch name="xf">
+                           <case value="">0</case>
+                       </switch>
+                       -->
+                        <!--
+                        {$mcAll['c_number']}
+                        -->
+                        {$xf}
+                        分
+                    </if>
+                </if>
+                <input type="hidden" value=""></p>
+            <include file="Common:left" />
+        </div>
+        <div class="cons_right con_box fl" id="cons_right">
+            <input type="hidden" name="m_id" value="{$id}" />
+            <input type="hidden" name="u_type" value="1" />
+            <if condition="$auth eq '' ">
+                <p class="not_yetlogin">系统检测到您还<a href="{:U('Index/login')}">未登录</a>，  请登录后再报名。若您为非校内人员，请填写以下资料进行报名</p>
+            </if>
+            <div class="cf add_now">
+                <label class="fl">
+                    <span class="red_star">*</span>姓名：
+                </label>
+                <input type="text" value="" name="u_name" id="fe_name" placeholder="用户名" class="fl add_input">
+            </div>
+            <!--
+            <div class="cf add_now">
+                <label class="fl">职业：</label>
+                <input type="text" value="" name="u_zhiye" id="fei_zhi" placeholder="请输入您的职业" class="fl add_input">
+            </div>
+            -->
+            <div class="cf add_now">
+                <label class="fl"><span class="red_star">*</span>联系方式：</label>
+                <input type="text" value="" name="u_phone" id="fei_tels" placeholder="请填写联系方式" class="fl add_input">
+            </div>
+            <div class="cf add_now">
+                <label class="fl"><span class="red_star">*</span>性别：</label>
+                <label class="fl zhan_cur minge" for="maile"><input type="radio" name="u_sex" value="1" id="maile">男</label>
+                <label class="fl minge" for="femaile"><input type="radio" name="u_sex" value="2" id="femaile">女</label>
+            </div>
+            <p class="erro_mes1">(*校外人员登录用户名密码均为手机号)</p>
+            <button class="join_in" id="join_in" type="submit">立即参会</button>
+        </div><!--cons_right end-->
+    </div><!--body_cons end-->
+</div><!--bodys end-->
+<div class="footers con_box cf">
+    <p class="fl">中国矿业大学研究院（北京）研究生院 版权所有 地址：北京市海淀区学院路丁11号  电话：010-62339826,62339255</p>
+    <p class="fr">网站建设专家<a href="javascript:;" class="taoruan">淘软科技</a>提供技术支持</p>
+</div>
+<script type="text/javascript">
+    $(function(){
+        yans2();
+        $('.add_now .minge').click(function(){
+            $(this).addClass('zhan_cur').siblings('.minge').removeClass('zhan_cur');
+        })
+        $('.left_lis:last').css({ 'border-bottom':'0px'});
+        //获取左侧导航高度
+        var body_cons=$('.body_cons').height();//alert(cons_right);
+        $('.cons_left').css({ 'height':body_cons});
+        //验证
+        function yans2(){
+            $('#fe_name').blur(function(){
+                if ($('#fe_name').val()==''||$('#fe_name').val()==undefined) {
+                    $('.erro_mes1').text('您的姓名一定要填写哦~');
+                    return false;
+                }else{
+                    $('.erro_mes1').text('');
+                    return true;
+                }
+            }).keyup(function(){
+                $(this).triggerHandler('blur');
+            })
+            $('#fei_tels').blur(function(){
+                if ($('#fei_tels').val()==''||$('#fei_tels').val()==undefined) {
+                    $('.erro_mes1').text('请输入您的手机号码~');
+                    return false;
+                }else if(!$("#fei_tels").val().match(/^(((13[0-9]{1})|(15[0-9]{1})|(14[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/)){
+                    $('.erro_mes1').text('手机号码格式错啦~');
+                    return false;
+                }else{
+                    $('.erro_mes1').text('');
+                    return true;
+                }
+            }).keyup(function(){
+                $(this).triggerHandler('blur');
+            })
+        }
+        $('#join_in').click(function(){
+            yans2();
+            $.ajax({
+                 type: "POST",
+                 url: "/Index/xiaowai",
+                 data: {u_type: $('input[name=u_type]').val(),m_id : $('input[name=m_id]').val(),u_name:$('#fe_name').val(),u_zhiye:$('#fei_zhi').val(),u_phone:$('#fei_tels').val(),u_sex:$('input[name=u_sex]').val()},
+                 dataType: "",
+                 success: function(data){
+                     if (data == '-1') {
+                         alert('参加成功！');
+                         location.href='/Index/shensucc.html';
+                     }
+
+                     if (data == '-3') {
+                         alert('用户名不能为空！');
+                     }
+/*
+                     if (data == '-4') {
+                         alert('职业不能为空！');
+                     }
+*/
+                     if (data == '-5') {
+                         alert('联系方式不能为空！');
+                     }
+                     if (data == '-6') {
+                         alert('手机号重复！');
+                     }
+
+                  },
+                  error: function(XMLHttpRequest, textStatus, errorThrown) {
+                   alert(XMLHttpRequest.status);
+                   alert(XMLHttpRequest.readyState);
+                   alert(textStatus);
+                   console.log(XMLHttpRequest.status);
+                  }
+            })
+        })
+    })
+</script>
+</body>
+</html>

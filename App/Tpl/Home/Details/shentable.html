@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="中国矿业大学" />
+    <meta name="description" content="中国矿业大学" />
+    <title>中国矿业大学研究院（北京）研究生院</title>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-base.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-all.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/mycommon.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/index.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/datetimepicker.css">
+</head>
+<body>
+<div class="header">
+    <img src="__PUBLIC__/Images/Home/logo.png">
+    <ul class="cf">
+		<li class="fl"><a href="http://yjs.cumtb.edu.cn">首页</a></li>
+		<li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=1">研究生院简介</a></li>
+		<li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=2">招生工作</a></li>
+		<li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=3">学籍管理</a></li>
+		<li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=4">培养工作</a></li>
+		<li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=5">专业学位培养工作</a></li>
+		<li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=6">学位工作</a></li>
+		<li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=7">国际交流</a></li>
+		<li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=8">学术交流</a></li>
+		<li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=9">学生工作</a></li>
+		<li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=10">办事指南（咨询中心）</a></li>
+    </ul>
+</div><!--header end-->
+
+<div class="bodys con_box">
+    <div class="body_cons cf">
+        <div class="chose_meet con_box">
+            <ul class="steps1 cf con_box">
+                <li class="cf step_cur fl">
+                    <span class="step fl">1</span>
+                    <span>第一步： 选择会议室</span>
+                </li>
+
+                <li class="cf  fl">
+                    <span class="step fl">2</span>
+                    <span>第二步：填写会议资料</span>
+                </li>
+				<li>
+					<span class="backs fl" onclick="history.back(-1);" style="cursor:pointer;margin-left: 320px">返回</span>
+				</li>
+            </ul><!--steps end-->
+
+            <table border="0" cellpadding="0" cellspacing="0" class="hfontS12">
+            	<tr>
+            		<td>
+
+            			<table border="0" cellpadding="0" cellspacing="0" height="70">
+							<form method="get" action="?" name="">
+            				<tr class="tc">
+            					<td width="105" >
+            						<label class="hcheck">筛选：</label>
+            					</td>
+            					<td width="115">
+            						<!-- <input type="text" class=""> -->
+                                    <input type="text" value="{$Think.get.start_date}" name="start_date" onClick="eye.datePicker.show(this);" id="chose_time1" readonly placeholder="开始日" class="htime con_box" />
+
+								</td>
+								<td width="200">
+									<input type="text" value="{$Think.get.end_date}" name="end_date" onClick="eye.datePicker.show(this);" id="chose_time2" readonly placeholder="结束日" class="htime con_box" />
+
+								</td>
+            					<td width="150">
+            						<select name="room_number" id="" class="hselect">
+            							<option value="0">容纳人数</option>
+            							<option value="1" <if condition="$Think.get.room_number eq 1 ">selected</if>>1-5</option>
+            							<option value="2" <if condition="$Think.get.room_number eq 2 ">selected</if>>5-10</option>
+            							<option value="3" <if condition="$Think.get.room_number eq 3 ">selected</if>>10-20</option>
+            							<option value="4" <if condition="$Think.get.room_number eq 4 ">selected</if>>20-50</option>
+            							<option value="5" <if condition="$Think.get.room_number eq 5 ">selected</if>>50以上</option>
+            						</select>
+            					</td>
+
+            					<td>
+									<input type="submit" name="search" style="cursor: pointer" class="hselect" value="搜索" />
+            					</td>
+            				</tr>
+							</form>
+            			</table>
+            		</td>
+            	</tr>
+            	<tr>
+            		<td>
+            			<table border="0" cellpadding="0" cellspacing="0" class="tc">
+            				<tr height="70" class=" hborder1">
+            					<td width="135" class="hborder1_td" style="border-left:1px solid #979797;">
+            						<div >会议室名称</div>
+            					</td>
+            					<td width="88" class="hborder1_td">
+            						<div>会议室编号</div>
+            					</td>
+            					<td width="88"class="hborder1_td">
+            						<div>举办机构</div>
+            					</td>
+            					<td width="88" class="hborder1_td">
+            						<div>容纳人数</div>
+            					</td>
+            					<td colspan="7" class="hborder1_td" style="border-right:0">
+            						<table border="0" cellpadding="0" cellspacing="0" class="tc borderB" >
+            							<tr height="35">
+            								<td colspan="7" class="htable_td">
+
+												<div class="fl htable_td_divF">
+
+            										<a href="javascript:;" class="last_week" id="last-week">
+														<!--
+                                                        <img src="__PUBLIC__/Images/Home/arrow_left.png" width="16" height="16" />
+                										<label>上一周</label> -->
+                                                    </a>
+            									</div>
+            									<!-- <div>
+            										<label>{$mon|date='m月d日',###}</label>-
+            										<label>{$sun|date='m月d日',###}</label>
+            									</div> -->
+                                                <table id="monitor" class="fl htable_td_divS">
+                                                    <tr>
+                                                        <td class="tds"></td>
+                                                        <td style="display:none;" class="tds"></td>
+                                                        <td style="display:none;" class="tds"></td>
+                                                        <td style="display:none;" class="tds"></td>
+                                                        <td style="display:none;" class="tds"></td>
+                                                        <td style="display:none;" class="tds"></td>
+                                                        <td>--</td>
+                                                        <td class="tds"></td>
+                                                    </tr>
+                                                </table>
+            									<div class="fl htable_td_div htable_td_divL">
+
+                                                    <a href="javascript:;" class="next_week" id="next-week">
+																<!--<label>下一周</label>
+														<img src="__PUBLIC__/Images/Home/arrow_right.png" width="16" height="16" />     -->
+													</a>
+
+            									</div>
+            								</td>
+            							</tr>
+            							<tr height="35" class="htable_td1">
+
+												<volist name="dateAll" key="ll" id="vo">
+												<td width="88" style="<if condition='$key+1 eq 1'>border-left:0; <elseif condition='$key+1 eq 7'/> border-right:1px solid #979797; </if>"    >
+													<div class="width92">
+														<switch name="key+1">
+															<case value="1">周一</case>
+															<case value="2">周二</case>
+															<case value="3">周三</case>
+															<case value="4">周四</case>
+															<case value="5">周五</case>
+															<case value="6">周六</case>
+															<case value="7">周日</case>
+														</switch>
+													</div>
+												</td>
+												</volist>
+            							</tr>
+            						</table>
+            					</td>
+            				</tr>
+
+							<volist name="MrAll" id="voo">
+								<tr class=" hborder2_td">
+									<td class="hborder2_tdF meet_posi">
+										<div class="cur_por">{$voo['room_name']}</div>
+										<div class="hclass_mousever con_box hclass_mos">
+											<p><label >会议室编号：</label><span>{$voo['room_no']}</span></p>
+											<p><label >位置：</label><span>{$voo['room_address']}</span></p>
+											<p><label >区域：</label><span>{$voo['room_quyu']}</span></p>
+											<p><label >举办机构：</label><span>{$voo['room_jigou']}</span></p>
+											<p><label >容纳人数：</label><span>{$voo['room_number']}</span></p>
+											<p><label >室内设施：</label><span>{$voo['room_facilities']}</span></p>
+											<p><label >提供服务：</label><span>
+												 <switch name="voo.room_service">
+													<case value="1">不提供服务</case>
+													<case value="2">提供服务</case>
+													<default />无
+												</switch>
+
+											</span></p>
+										</div>
+									</td>
+									<td>
+										<div>{$voo['room_no']}</div>
+									</td>
+									<td>
+										<div>{$voo['room_jigou']}</div>
+									</td>
+									<td>
+										<div>{$voo['room_number']}</div>
+									</td>
+									<volist name="voo['meeting_jinxing2']" key="h" id="vo">
+
+										<if condition="!empty($vo)">
+												<td class="c27D68D mou_hovers">
+													<div class="width92">{$vo['m_rname']}</div>
+
+													<volist name="vo" key="l" id="v">
+														<div class="width92"><a href="{:U('Index/roomdetails/',array('id'=>$voo['room_id'],'date'=>$v['m_time']))}">{$v['m_name']}</a></div>
+														<p><label>{$v['m_start']}-{$v['m_end']}</label></p>
+													</volist>
+
+												</td>
+											<else />
+												<td class="td_borderBR">
+													<a href="{:U('Index/roomdetails/',array('id'=>$voo['room_id'],'date'=>$key))}"><div class="width92" style="height:50px;text-indent: -99999px">选择</div></a>
+												</td>
+										</if>
+
+									</volist>
+								</tr>
+							</volist>
+
+
+
+
+
+            			</table>
+            		</td>
+            	</tr>
+            </table><!--hfontS12 end-->
+            <div class="tab_bots cf">
+                <a href="{:U('Index/zichou/')}" class="fl no_meetroom">
+                    <img src="__PUBLIC__//Images/Home/adds.png" width="14" height="14">没有空闲会议室？自筹会议室
+                </a>
+                <div class="pages cf fr">
+
+                </div>
+            </div><!--tab_bots end-->
+            
+        </div> 
+    </div><!--body_cons end-->
+</div><!--bodys end-->
+<div class="footers con_box cf">
+    <p class="fl">中国矿业大学研究院（北京）研究生院 版权所有 地址：北京市海淀区学院路丁11号  电话：010-62339826,62339255</p>
+    <p class="fr">网站建设专家<a href="javascript:;" class="taoruan">淘软科技</a>提供技术支持</p>
+</div>
+<script>
+        window.onload = function(){         
+            var cells = document.getElementById('monitor').getElementsByClassName('tds');
+            var clen = cells.length;
+            var currentFirstDate;
+            var formatDate = function(date){             
+                var year = date.getFullYear()+'年';
+                var month = (date.getMonth()+1)+'月';
+                var day = date.getDate()+'日';
+                var week = '('+['星期天','星期一','星期二','星期三','星期四','星期五','星期六'][date.getDay()]+')';  
+
+                return year+month+day+' '+week;
+            };
+            var addDate= function(date,n){       
+                date.setDate(date.getDate()+n);        
+                return date;
+            };
+            var setDate = function(date){             
+                var week = date.getDay()-1;
+                date = addDate(date,week*-1);
+                currentFirstDate = new Date(date);
+
+                for(var i = 0;i<clen;i++){                 
+                    cells[i].innerHTML = formatDate(i==0 ? date : addDate(date,1));
+                }                
+            };             
+            document.getElementById('last-week').onclick = function(){
+                setDate(addDate(currentFirstDate,-7));         
+            };             
+            document.getElementById('next-week').onclick = function(){                 
+                setDate(addDate(currentFirstDate,7));
+            };     
+            setDate(new Date());
+        }
+    </script>
+<script type="text/javascript">
+//鼠标经过出现蓝色背景块
+$(function(){
+    $('.meet_posi').mouseover(function(){
+        $(this).find('.hclass_mos').show();
+    })
+    $('.meet_posi').mouseout(function(){
+        $(this).find('.hclass_mos').hide();
+    })
+
+    $('.mou_hovers').mouseover(function(){
+        $(this).find('.meets_names').show();
+    })
+    $('.mou_hovers').mouseout(function(){
+        $(this).find('.meets_names').hide();
+    })
+})
+
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('.left_lis:last').css({ 'border-bottom':'0px'});
+        //获取左侧导航高度
+        var body_cons=$('.body_cons').height();//alert(cons_right);
+        $('.cons_left').css({ 'height':body_cons});
+    })
+</script>
+</body>
+</html>
+
+

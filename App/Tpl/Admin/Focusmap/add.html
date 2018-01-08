@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>新增焦点图-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='焦点图管理 > 新增焦点图';
+        </php>
+    <include file="Common:intoHead" />
+</head>
+<body>
+    <div class="wrap"> <include file="Common:head" />
+        <div class="mainBody"> <include file="Common:left" />
+            <div id="Right">
+                <div class="contentArea">
+                    <div class="Item hr">
+                        <div class="current">新增焦点图</div>
+                    </div>
+                    <form action="" method="post" enctype="multipart/form-data" >
+                        <table width="100%"  cellspacing="0" cellpadding="0" class="table1">
+                            <tr>
+                                <th width="120"><font color="red">* </font>标题</th>
+                                <td><input  name="title" type="text" class="input" size="40" value="" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>链接地址</th>
+                                <td><input  name="url" type="text" class="input" size="40" value="" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>图片</th>
+                                <td><input type="file" name="src" class="file" size="40" value="" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>描述</th>
+                                <td><textarea name="description"  cols="37" rows="5"></textarea></td>
+
+                            </tr>
+                            <tr>
+                               <th></th>
+                                <td><input type="submit" value="提交" name="submit" class="btn submit" /></td>
+                            </tr>
+
+                        </table>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+<include file="Common:foot" />
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="中国矿业大学" />
+    <meta name="description" content="中国矿业大学" />
+    <title>中国矿业大学研究院（北京）研究生院</title>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/mycommon.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/index.css">
+</head>
+<body>
+<div class="header">
+    <img src="__PUBLIC__/Images/Home/logo.png">
+    <ul class="cf">
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn">首页</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=1">研究生院简介</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=2">招生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=3">学籍管理</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=4">培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=5">专业学位培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=6">学位工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=7">国际交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=8">学术交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=9">学生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=10">办事指南（咨询中心）</a></li>
+    </ul>
+</div><!--header end-->
+<div class="bodys con_box">
+    <div class="body_cons cf">
+        <div class="fl cons_left con_box">
+            <p class="xuefen"><!--当前学分：分-->
+                <if condition="$auth">
+                    <if condition="$u_type_init eq 3">
+                        学分：
+                        <!--
+                  <switch name="xf">
+                      <case value="">0</case>
+                  </switch>
+                  -->
+                        <!--
+                        {$mcAll['c_number']}
+                        -->
+                        {$xf}
+                        分
+                    </if>
+                </if>
+                <input type="hidden" value=""></p>
+            <include file="Common:left" />
+        </div>
+        <div class="cons_right con_box fl" id="cons_right">
+            <ul class="steps cf con_box">
+                <li class="cf step_cur fl">
+                    <span class="step fl">1</span>
+                    <span>第一步：选择会议室</span>
+                </li>
+                <li class="cf  fl">
+                    <span class="step fl">2</span>
+                    <span>第二步：填写会议资料</span>
+                </li>
+            </ul><!--steps end-->
+            <div class="meet_address con_box">
+                <form method="post" action="" name="form1">
+                    <input type="hidden" name="room_type" value="2">
+                <div class="cf">
+                    <label class="fl">
+                        <span class="red_star">*</span>会议室名称：
+                    </label>
+                    <input type="text" value="" name="room_name" id="usr_name" placeholder="会议室名称" class="fl meet_input">
+                </div>
+                <div class="cf">
+                    <label class="fl">
+                        <span class="red_star">*</span>会议室地点：
+                    </label>
+                    <input type="text" value="" name="room_address" id="meet_add" placeholder="请输入会议室地点" class="fl meet_input">
+                </div>
+                    <!--
+                <div class="cf">
+                    <label class="fl">会议室设施：</label>
+                    <input type="text" value="" name="room_facilities" id="meet_shebei" placeholder="请输入会议室内设备" class="fl meet_input">
+                </div>
+                -->
+                <div class="cf">
+                    <label class="fl">
+                        <span class="red_star">*</span>会议室人数：
+                    </label>
+                    <input type="text" value="" name="room_number" id="meet_person" placeholder="请输入会议室是容纳人数" class="fl meet_input">
+                </div>
+                <div class="cf">
+                    <label class="fl">
+                        <span class="red_star">*</span>会议室形状：
+                    </label>
+                    <select class="fl meet_input" name="room_shape" id="meet_shape">
+                       <volist name="msh" id="vo">
+                            <option value="{$vo['s_id']}">{$vo['s_name']}</option>
+                       </volist>
+                    </select>
+                </div>
+                <div class="cf">
+                    <label class="fl">会议室服务：</label>
+                    <select class="fl meet_input" name="room_service" id="meet_service">
+                        <option value="1">不提供服务</option>
+                        <option value="2">提供服务</option>
+                    </select>
+                </div>
+                <div style="width:83%" class="btn_fa">
+                    <p class="erro_mes red_star"></p>
+                    <if condition="$auth eq '' ">
+                        <p class="not_yetlogin" style="border-bottom: dotted;">系统检测到您还<a href="/Index/login">未登录</a>，  请登录后再报名。若您为非校内人员，请填写以下资料进行报名</p>
+                        <else />
+                        <button class="sure_meet" type="submit">确认会议室</button>
+                    </if>
+                </div>
+                </form>
+            </div>
+        </div><!--cons_right end-->
+    </div><!--body_cons end-->
+</div><!--bodys end-->
+<div class="footers con_box cf">
+    <p class="fl">中国矿业大学研究院（北京）研究生院 版权所有 地址：北京市海淀区学院路丁11号  电话：010-62339826,62339255</p>
+    <p class="fr">网站建设专家<a href="javascript:;" class="taoruan">淘软科技</a>提供技术支持</p>
+</div>
+<script type="text/javascript">
+    //验证
+    function yans(){
+        $('#usr_name').blur(function(){
+            if ($('#usr_name').val()==''||$('#usr_name').val()==undefined) {
+                $('.erro_mes').text('会议室名称一定要填写哦~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+        //验证会议室地点
+        $('#meet_add').blur(function(){
+            if ($('#meet_add').val()==''||$('#meet_add').val()==undefined) {
+                $('.erro_mes').text('会议室地点一定要填写哦~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+        //验证会议室人数
+        $('#meet_person').blur(function(){
+            if ($('#meet_person').val()==''||$('#meet_person').val()==undefined) {
+                $('.erro_mes').text('会议室人数一定要填写哦~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+        //验证会议室形状
+        $('#meet_shape').blur(function(){
+            if ($('#meet_shape option:selected').val()==''||$('#meet_shape option:selected').val()==undefined) {
+                $('.erro_mes').text('不要忘了选择会议室形状~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+    }
+    
+    $('form').submit(function (e) {
+        if ($('#usr_name').val()==''||$('#usr_name').val()==undefined) {
+            $('.erro_mes').text('会议室名称一定要填写哦~');
+            return false;
+        }
+        if ($('#meet_add').val()==''||$('#meet_add').val()==undefined) {
+            $('.erro_mes').text('会议室地点一定要填写哦~');
+            return false;
+        }
+        if ($('#meet_person').val()==''||$('#meet_person').val()==undefined) {
+            $('.erro_mes').text('会议室人数一定要填写哦~');
+            return false;
+        }
+        if ($('#meet_shape option:selected').val()==''||$('#meet_shape option:selected').val()==undefined) {
+            $('.erro_mes').text('不要忘了选择会议室形状~');
+            return false;
+        }
+    })
+
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('.left_lis:last').css({ 'border-bottom':'0px'});
+        //获取左侧导航高度
+        var body_cons=$('.body_cons').height();//alert(cons_right);
+        $('.cons_left').css({ 'height':body_cons});
+    })
+</script>
+</body>
+</html>
+

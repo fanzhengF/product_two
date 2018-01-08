@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>登录-{$site.SITE_INFO.name}</title>
+        <base href="{$site.WEB_ROOT}"/>
+        <include file="Common:intoHead" />
+</head>
+
+<body class="loginWeb" style="overflow: hidden;">
+<div class="bg" style="position: relative">
+    <img src="/Public/Images/Admin/Oval.png" style="position: absolute;z-index:-99999;" class="left">
+    <div class="loginBox">
+        <div class="innerBox">
+            <img src="/Public/Images/Admin/logo.png" style="width:86px;height:82px;margin:10px 0 0 160px;" alt="" >
+            <form id="form1" action="" method="post" style="margin-top:30px;">
+                <div class="loginInfo">
+                    <ul>
+                        <li class="row2" style="position: relative;"><img src="/Public/Images/Admin/yonghu.png" style="position:absolute;top:15px;left:6px;width:18px;height:18px;" alt="" /><input class="input" style="background:none;text-indent:30px;width:335px;border:none;border-bottom:2px solid #B4C3E3;border-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;border-radius:0px; " placeholder="用户名" name="tel" id="tel" maxlength="11" size="30" type="text" /></li>
+                    </ul>
+                    <ul>
+                        <li class="row2" style="position: relative;"><img src="/Public/Images/Admin/mima.png" style="position:absolute;top:15px;left:6px;width:18px;height:18px;" alt="" /><input class="input" style="background:none;text-indent:30px;width:335px;border:none;border-bottom:2px solid #B4C3E3;border-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;border-radius:0px; " placeholder="密码" name="pwd" id="pwd" size="30" type="password" /></li>
+                    </ul>
+                    <ul>
+                        <li class="row2" style="position: relative;"><img src="/Public/Images/Admin/yz.png" style="position:absolute;top:15px;left:6px;width:18px;height:18px;" alt="" /><input class="input" style="background:none;text-indent:30px;width:335px;border:none;border-bottom:2px solid #B4C3E3;border-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;border-radius:0px; " id="verify_code" placeholder="验证码" name="verify_code" onclick="change(this)" type="text" style="width:150px;" />
+                            <img class="code" src="{:U('Admin/Public/verify_code')}" style="display: none;" title="看不清？单击此处刷新" onclick="this.src+='?rand='+Math.random();"  style="width:70px;cursor: pointer; vertical-align: middle;"/>
+                        </li>
+                    </ul>
+                </div>
+                <input type="hidden" name="op_type" id="op_type" value="1"/>
+            </form>
+            <div class="clear"></div>
+            <div class="operation"><button style="outline:0;background:url(/Public/Images/Admin/dl.png);width:200px;height:76px;border:none;cursor:pointer;text-indent: -9999px;" class="submit">登录</button>   </div>
+        </div>
+    </div>
+
+</div>
+    <script type="text/javascript">
+        function change(t) {
+            $(t).siblings('img').css('display','block');
+        }
+        $(function(){
+            $(document).keydown(function (e){
+                var e = e|| window.event;
+                if (e.keyCode == 13){
+                    $('.submit').click().click();
+                }
+                if (e.keyCode ==9) {
+                    $('.code').css('display','block');
+                }
+            });
+
+
+
+            $(window).resize(function (){
+                var docu = $(document).height();
+                var docuW = $(document).width();
+                var docu_w =  (docuW / 2);
+                $('.left').height(''+docu+'px');
+                $('.left').width(''+docu_w+'px');
+            }).resize();
+
+
+            var src = $('.code').attr('src');
+            $(".submit").click(function(){
+                $("#op_type").val("1");
+                if($("#tel").val()==''||$("#pwd").val()==''||$("#verify_code").val()==''){
+                    $('.code').attr('src',src+'?rand='+Math.random());
+                    popup.alert("填写完整方可登陆");
+                    return false;
+                }
+                if (commonAjaxSubmit() == false) {
+                    $('.code').attr('src',src+'?rand='+Math.random());
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/style.css">
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+	<title>{$home_name}</title>
+
+</head>
+<body class="paddtop">
+	<div class="zxq_one">
+		<a href="javascript:history.back(-1);" class="a"><img src="__PUBLIC__/Images/Home/mobile/backs.png"></a>
+		<div>自筹会议室</div>
+	</div>
+	<form action="" name="form1" method="post" class="form1" id="form1">
+		<input type="hidden" name="room_type" value="2">
+		<ul class="sgp_twom ">
+		<li>
+			<span >会议室名称:</span>
+			<input type="text" name="room_name"  placeholder="会议室名称" value="" id="room_name" />
+		</li>
+		<li>
+			<span >会议室地点:</span>
+			<input type="text" name="room_address"  placeholder="请输入会议室地点" value="" id="room_address" />
+		</li>
+		<li>
+			<span >会议室人数:</span>
+			<input type="text" name="room_number"  placeholder="请输入会议室是容纳人数" value="" id="room_number" />
+		</li>
+		<li>
+			<span >会议室形状:</span>
+			<select name="room_shape" id="room_shape" class="sgpnan">
+				<volist name="msh" id="vo">
+					<option value="{$vo['s_id']}">{$vo['s_name']}</option>
+				</volist>
+			</select>
+			<img src="__PUBLIC__/Images/Home/mobile/righters.png" alt="" / class="sgp_spn">
+		</li>
+		<li>
+			<span >会议室服务:</span>
+			<select name="room_service" id="sgpnana" class="">
+				<option value="1">不提供服务</option>
+				<option value="2">提供服务</option>
+			</select>
+			<img src="__PUBLIC__/Images/Home/mobile/righters.png" alt="" / class="sgp_spn">
+		</li>
+		<li class="ti_mess"></li>
+	</ul>
+	<input type="submit" value="确认会议室" id="choses" class="sgp_xuanze">
+	</form>
+<script type="text/javascript">
+	$(function(){
+		//验证
+		$('#room_name').blur(function(){
+			if ($('#room_name').val()==''||$('#room_name').val()==undefined) {
+				$('.ti_mess').text('会议名称不能为空哦~');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}	
+		}).keyup(function(){
+			$(this).triggerHandler('blur');
+		})
+		//验证会议室地点
+		$('#room_address').blur(function(){
+			if ($('#room_address').val()==''||$('#room_address').val()==undefined) {
+				$('.ti_mess').text('会议室地点不能为空哦~');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}	
+		}).keyup(function(){
+			$(this).triggerHandler('blur');
+		})
+		//验证会议室人数
+		$('#room_number').blur(function(){
+			if ($('#room_number').val()==''||$('#room_number').val()==undefined) {
+				$('.ti_mess').text('会议室人数不能为空哦~');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}	
+		}).keyup(function(){
+			$(this).triggerHandler('blur');
+		})
+		//验证会议室形状
+		$('#room_number').click(function(){
+			if (!$('#room_number option:selected')) {
+				$('.ti_mess').text('不要忘记选择会议形状哦~');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}	
+		}).keyup(function(){
+			$(this).triggerHandler('click');
+		})
+		//验证会议室f服务
+		$('#sgpnana').click(function(){
+			if (!$('#sgpnana option:selected')) {
+				$('.ti_mess').text('不要忘记选择会议服务哦~');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}	
+		}).keyup(function(){
+			$(this).triggerHandler('click');
+		})	
+		$('form').submit(function (e) {
+            if ($('#room_name').val()==''||$('#room_name').val()==undefined) {
+				$('.ti_mess').text('会议名称不能为空哦~');
+				return false;
+			}
+			if ($('#room_address').val()==''||$('#room_address').val()==undefined) {
+				$('.ti_mess').text('会议室地点不能为空哦~');
+				return false;
+			}
+			if ($('#room_number').val()==''||$('#room_number').val()==undefined) {
+				$('.ti_mess').text('会议室人数不能为空哦~');
+				return false;
+			}
+			if (!$('#room_number option:selected')) {
+				$('.ti_mess').text('不要忘记选择会议形状哦~');
+				return false;
+			}
+			if (!$('#sgpnana option:selected')) {
+				$('.ti_mess').text('不要忘记选择会议服务哦~');
+				return false;
+			}
+			return true;
+        })
+	})
+</script>
+</body>
+</html>

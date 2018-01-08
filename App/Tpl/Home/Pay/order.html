@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{$result['business_name']}{$WebTitle}</title>
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=1080,user-scalable=no,target-densityDpi=device-dpi"/>
+	<link href="http://min.static.jiaju.com/static/site/asset/style/qgztouch/reset-min.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="http://static.jiaju.com/jiaju/com/m7gz/assets/css/sg-order.css">
+	<script src="http://min.static.jiaju.com/static/js/mobile/hotcss/hotcss.js"></script>
+	<script src="http://static.jiaju.com/jiaju/com/m7gz/assets/js/jquery-2.2.3.min.js"></script>	
+	<script type="text/javascript" src="http://static.jiaju.com/jiaju/com/m7gz/assets/js/shg/shg-common.min.js"></script>
+	<script type="text/javascript" src="http://static.jiaju.com/jiaju/com/m7gz/assets/js/shg/shg-order.min.js"></script>
+</head>
+<body>
+	<div class="order-wrap">
+		<div class="order-tit">
+			<a href="javascript:history.go(-1)" class="history-go"></a>
+			{$result['business_name']}
+		</div>
+		<!-- 表单 -->
+		<div class="order-form">
+			<form action="/Pay/payment?entId={$result['id']}" method="post" class="" id="sg-form">
+				<div class="order-name">
+					<label>客户姓名</label>
+					<input type="hidden" name="id" value="{$result['id']}"/>
+					<input type="text" name="user_name" placeholder="请输入姓名">
+				</div>
+				<div class="order-tel">
+					<label>手机号&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					<input type="tel" name="user_tel" placeholder="请填写手机号" class="">
+				</div>	
+				<div class="order-address">
+					<label>客户住址</label>
+					<input type="text" name="user_address" placeholder="请输入客户住址">
+				</div>	
+				<div class="order-total">
+					<label>消费总额</label>
+					<input type="number" name="total_price" placeholder="询问商家后输入">
+				</div>
+				<?php
+				
+        if($result['supplierSale'])
+				    {
+				        $supplierSaleString=json_encode($result['supplierSale']);
+				        $showTrue=true; 
+				    }
+				    else 
+				    {
+				        $showTrue=false;
+				        $supplierSaleString='{"type":"2","discount":1}';   
+        }
+				    $supplierSaleString=htmlspecialchars($supplierSaleString);  
+				 ?>
+				<div js-data="<?php echo  $supplierSaleString; ?>" class="order-privilege clearfix">
+				 
+			    <?php if($result['supplierSale']): ?>
+				     <!--折扣类型-->
+				    <?php if($result['supplierSale']['type']==2): ?>
+				    <label class="fl"><i class="order-hui">惠</i>全场<?php echo $result['supplierSale']['discount']*10; ?>折</label>
+				    <?php endif; ?>
+				    
+				    <!--满减类型第一个-->
+				    <?php if($result['supplierSale']['type']==1):
+				            foreach($result['supplierSale']['discount'] as $total =>$price):
+				     ?>
+				    <label class="fl"><i class="order-hui">惠</i>每满<?php echo $total; ?>减<?php echo $price; ?></label>
+				    <?php   break;
+				            endforeach;
+				    endif; ?>
+					<?php endif; ?>
+					<?php if($showTrue): ?>
+					
+     
+					<span class="checkbox_item fr on">
+				            <i class="checkbox_icon "></i>
+					</span>					
+					<span class="privilege-txt fr active"></span>
+					<?php else: ?>
+					<label class="fl">暂无优惠</label>
+					<?php endif; ?>
+					
+				</div>	
+				
+				<div class="order-final">
+					<label>实付金额</label>
+					<span class="final-txt">&yen;0</span>
+					<input type="hidden" name="really_price" value="0" id="final"/><!--实付金额-->
+				</div>	
+				<input type="submit" class="order-btn" value="确认买单"> 		
+			</form>
+		</div>	
+	</div>
+	<include file="Common:statistics" />
+</body>
+</html>

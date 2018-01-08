@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{$home_name}</title>
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=1080,user-scalable=no,target-densityDpi=device-dpi"/>
+	<link href="http://min.static.jiaju.com/static/site/asset/style/qgztouch/reset-min.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="http://static.jiaju.com/jiaju/com/m7gz/assets/css/sg-search.css">
+	<script src="http://min.static.jiaju.com/static/js/mobile/hotcss/hotcss.js"></script>
+	<style>
+	    .search404-txt{margin-top:2.77778rem;}
+	    .err-txt{font-size: 0.82963rem;}
+	    .jump{margin-top:1.40741rem}
+	    a{color:#999;}
+	 </style>
+</head>
+<body>
+
+	<div style="width:100%;" class="pay-wrap">
+		<present name="message">
+		    <div class="search404-txt"><?php echo($message); ?></div>
+		<else/>
+		        <div class="search404-txt">
+
+		           <p class="err-txt"> <?php echo($error); ?></p>
+		            <p class="jump">页面自动 <a id="href" href="<?php echo($jumpUrl); ?>">跳转</a> 等待时间： <b id="wait"><?php echo($waitSecond); ?></b>    </p>
+		        </div>
+    </present>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript">
+(function(){
+var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+var interval = setInterval(function(){
+    var time = --wait.innerHTML;
+    if(time <= 0) {
+        <?php if(!empty($jumpUrl)): ?>
+        location.href = href;
+        <?php else: ?>
+           window.history.back()
+         <?php endif; ?>
+        clearInterval(interval);
+    };
+}, 1000);
+})();
+</script>
+</body>
+</html>

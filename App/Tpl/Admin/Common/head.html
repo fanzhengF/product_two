@@ -1,0 +1,86 @@
+<style>
+    #Tags .navArea .userInfo {
+        z-index: 6;
+    }
+
+    #city-block {
+        position: relative;
+        display: inline;
+    }
+
+    #city-show {
+        background: #D4D4D4;
+        padding: 0 5px;
+    }
+
+    #city-data {
+        width: 500px;
+        background: #fff;
+        padding: 10px;
+        position: absolute;
+        left: 0;
+        top: 15px;
+        display: block;
+        display: none;
+    }
+
+
+</style>
+<div id="Top">
+    <div class="logo" style="width:100%;margin:0 auto;font-size:16px !important;color:#00008b;font-weight:bold;">
+       中国矿业大学（北京）研究生院-会议信息系统
+    </div>
+
+    <div class="menu">
+        <!-- <ul class="clearfix"> {$menu}</ul> -->
+    </div>
+</div>
+<div id="Tags">
+    <div class="userPhoto">
+    <img src="__PUBLIC__/Images/Admin/logo.png"/> 
+    </div>
+    <div class="navArea">
+        <div class="userInfo">
+            <div>
+                <a href="{:U('Public/loginOut')}" class="loginOut"><span>&nbsp;</span>退出系统</a>
+            </div>
+            欢迎您，{$my_info.name}
+        </div>
+
+        <div class="nav"><font id="today">
+            <php>echo date("Y-m-d H:i:s");</php>
+        </font><!--您的位置：{$currentNav}-->
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<script>
+    $(document).ready(function () {
+        $('#city-show').mouseenter(function () {
+            $('#city-data').show();
+        })
+        $('#city-data').mouseleave(function () {
+            $('#city-data').hide();
+        })
+
+
+    })
+</script>
+<script type="text/javascript">
+    $(window).resize(autoSize);
+    $(function(){
+        autoSize();
+        $(".loginOut").click(function(){
+            var url=$(this).attr("href");
+            popup.confirm('你确定要退出吗？','你确定要退出吗',function(action){
+                if(action == 'ok'){ window.location=url; }
+            });
+            return false;
+        });
+
+        var time=self.setInterval(function(){$("#today").html(date("Y-m-d H:i:s"));},1000);
+
+
+    });
+
+</script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="中国矿业大学" />
+    <meta name="description" content="中国矿业大学" />
+    <title>中国矿业大学研究院（北京）研究生院</title>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-base.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-all.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/Home/mycommon.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/datetimepicker.css">
+</head>
+<body>
+<div class="header">
+    <img src="__PUBLIC__/Images/Home/logo.png">
+    <ul class="cf">
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn">首页</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=1">研究生院简介</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=2">招生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=3">学籍管理</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=4">培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=5">专业学位培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=6">学位工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=7">国际交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=8">学术交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=9">学生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=10">办事指南（咨询中心）</a></li>
+    </ul>
+</div><!--header end-->
+<div class="bodys con_box">
+    <div class="body_cons cf">
+        <div class="fl cons_left con_box">
+            <p class="xuefen"><!--当前学分：1.25分-->
+                <if condition="$auth">
+                    <if condition="$u_type_init eq 3">
+                        学分：
+                        <!--
+                        <switch name="xf">
+                            <case value="">0</case>
+                        </switch>
+                        -->
+                        <!--
+                        {$mcAll['c_number']}
+                        -->
+                        {$xf}
+                        分
+                    </if>
+                </if>
+                <input type="hidden" value=""></p>
+            <include file="Common:left" />
+        </div>
+        <div class="cons_right con_box fl" id="cons_right">
+            <h1 class="gongxi"><img src="__PUBLIC__/Images/Home/sucs.png">恭喜您，参会申请成功</h1>
+            <p class="guan">扫码关注下方二维码，关注更多会议信息</p>
+            <div class="saoer">
+                <img src="__PUBLIC__/Images/Home/erweima.png">
+                <p>中国矿业大学(北京)研究生院</p>
+            </div>
+        </div><!--cons_right end-->
+    </div><!--body_cons end-->
+</div><!--bodys end-->
+<div class="footers con_box cf">
+    <p class="fl">中国矿业大学研究院（北京）研究生院 版权所有 地址：北京市海淀区学院路丁11号  电话：010-62339826,62339255</p>
+    <p class="fr">网站建设专家<a href="javascript:;" class="taoruan">淘软科技</a>提供技术支持</p>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('.add_now .minge').click(function(){
+            $(this).addClass('zhan_cur').siblings('.minge').removeClass('zhan_cur');
+        })
+        $('.left_lis:last').css({ 'border-bottom':'0px'});
+        //获取左侧导航高度
+        var body_cons=$('.body_cons').height();//alert(cons_right);
+        $('.cons_left').css({ 'height':body_cons});
+    })
+</script>
+</body>
+</html>
+

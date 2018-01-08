@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/style.css">
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Js/Home/mobile/eye-base.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Js/Home/mobile/eye-all.js"></script>
+<title>{$home_name}</title>
+</head>
+<body class="paddtop">
+	<div class="zxq_one">
+		<a a href="javascript:history.back(-1)" class="a"><img src="__PUBLIC__/Images/Home/mobile/backs.png"></a>
+		<div>回复信息</div>
+	</div><!--zxq_one end-->
+	<form id="myForm" action="" method="post">
+		<div class="lzy_shoujian">收件人：
+			<span class="word_blue">老高</span>
+			<input  type="text" id="textName"  value="  " class="lzy_fujian" readonly>
+			<input  name="report" class="lzy_file-prew lzy_oo" type="file" onchange="document.getElementById('textName').value=this.value">
+			<a href="###" class="lzy_lan lzy_lan-sm"  class="report-file">
+				<span>上传附件</span> 
+				<img src="__PUBLIC__/Images/Home/mobile/fujian.png">
+			</a>
+		</div>
+		<div class="lzy_bod"></div>
+		<div class="lzy_content">
+			<input type="text" placeholder="阿龙，你好！"  >
+			<textarea class="formtips" value="" id="formtips">
+			</textarea>
+		</div>
+		
+		<div class="lzy_bod"></div>
+		<div class="lzy_two">
+			<input type="reset" class="lzy_no" value="重置" onclick="formReset()">
+			<input type="submit" class="lzy_yes" value="发送">
+		</div>
+	</form>
+	<script type="text/javascript">
+			$(".lzy_oo").change(function(){
+				$("#textName").addClass("lzy_focus")
+			})
+			function formReset(){
+			  	document.getElementById("myForm").reset()
+			}
+	</script>
+</body>
+</html>

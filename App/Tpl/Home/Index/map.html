@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, minimal-ui">
+<meta content="telephone=no" name="format-detection" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title><?php echo $data['business_name'];?>{$WebTitle}</title>
+<link href="http://min.static.jiaju.com/static/site/asset/style/qgztouch/reset-min.css" type="text/css" rel="stylesheet" />
+<style>
+html,body{height:100%;margin: 0;}
+#container {width:100%;  position: absolute;top: 0;bottom: 0;} 
+.info-title{text-align: center;font-size: 18px;}	
+</style>
+</head>
+<body>
+<div id="container" class="amap-container"></div> 
+<script src="http://webapi.amap.com/maps?v=1.3&amp;key=25bcdbe62ba5ed83e8764940017728a1"></script>	
+<script>
+(function (){
+	/*获取经纬度*/
+	function GetQueryString(name)
+	{
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  decodeURI(r[2]); return null;
+	}
+	var lng = "<?php echo $data['longitude'];?>";//经度
+	var lat = "<?php echo $data['latitude'];?>";//纬度	
+	var shopName ="<?php echo $data['business_name'];?>";
+	var shopAddress="<?php echo $data['office_address']; ?>";
+	/*地图上标记*/
+	var map = new AMap.Map('container',{
+	        resizeEnable: true,
+	        zoom: 18,
+	        center: [lng, lat]
+	});
+	var marker = new AMap.Marker({
+	        position: [lng, lat]
+	});
+	marker.setMap(map);
+	marker.on('click',function(e){
+	  infowindow.open(map,e.target.getPosition());
+	})
+	AMap.plugin('AMap.AdvancedInfoWindow',function(){
+	   infowindow = new AMap.AdvancedInfoWindow({
+	    content: '<div class="info-title">'+shopName+'</div><div style="text-align:center;" class="info-content">'+shopAddress+'</div>',
+	    offset: new AMap.Pixel(0, -30)
+	  });
+	  infowindow.open(map,[lng, lat]);
+	})	
+})();
+</script>
+<include file="Common:statistics" />
+</body>
+</html>

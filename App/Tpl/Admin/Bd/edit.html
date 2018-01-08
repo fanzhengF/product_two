@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>修改补登会议-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='会议室管理 > 修改补登会议';
+        </php>
+    <include file="Common:intoHead" />
+        <script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+
+    </head>
+<body>
+    <div class="wrap">
+        <div class="mainBody">
+            <div id="Right" style="width:100%;">
+                <div class="contentArea">
+                    <div class="Item hr" style="margin-bottom: 50px">
+                        <div class="current">补登会议审批</div>
+                        <br />
+                        <a class="btn quickSubmit" href="javascript:history.back(-1);">返回</a>
+
+                    </div>
+
+
+
+
+
+
+                    <form action="" method="post" enctype="multipart/form-data" >
+                        <table width="100%"  cellspacing="0" cellpadding="0" class="table1">
+                            <input type="hidden" name="m_id" value="{$data.m_id}">
+
+                            <tr>
+                                <th width="120"><font color="red"></font>会议编号</th>
+                                <td><input  name="m_bianma" type="text" readonly class="input" size="40" value=" <if condition="$data.m_bianma eq '' "> <php> echo 'bd'. mt_rand(0,99999); </php> <else /> {$data.m_bianma} </if>" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red"></font>会议名称</th>
+                                <td><input  name="m_name" type="text" disabled class="input" size="40" value="{$data.m_name}" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red"></font>会议类型</th>
+                                <td>
+                                    <select name="m_type" disabled style="width: 280px;">
+                                        <volist name="mtAll" id="vo">
+                                            <option value="{$vo.mt_id}" <if condition="$data.m_type eq $vo[mt_id]"> selected </if>>{$vo.mt_name}</option>
+                                        </volist>
+                                    </select>
+                                </td>
+                            </tr>
+                            <!--
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议等级</th>
+                                <td>
+                                    <select name="m_grade" disabled style="width: 280px;">
+                                        <volist name="gradeAll" id="vo">
+                                            <option value="{$vo.g_id}" <if condition="$data.m_type eq $vo[g_id]"> selected </if>>{$vo.g_name}</option>
+                                        </volist>
+                                    </select>
+                                </td>
+                            </tr>  -->
+                            <tr>
+                                <th width="120"><font color="red"></font>会议时间</th>
+                                <td><input  name="m_time" type="text" disabled readonly="readonly" onclick="new Calendar().show(this);" class="input" size="40" value="{$data.m_time}" /></td>
+                            </tr>
+
+                            <tr>
+                                <th width="120"><font color="red"></font>会议内容</th>
+                                <td><textarea name="m_content"  cols="37" disabled rows="5" style="resize:none;">{$data.m_content}</textarea></td>
+                            </tr>
+
+
+                            <tr>
+                                <th width="120"><font color="red"> </font>主讲专家</th>
+                                <td><input  name="m_zhujiang" placeholder="" type="text" class="input" size="40" value="{$data.m_zhujiang}" /></td>
+                            </tr>
+
+
+                            <tr>
+                                <th width="120"><font color="red"> </font>姓名</th>
+                                <td><input  name="m_xingming" disabled type="text" class="input" size="40" value="{$data.m_xingming}" /></td>
+                            </tr>
+
+                            <tr>
+                                <th width="120"><font color="red"> </font>学号</th>
+                                <td><input  name="m_no"  disabled type="text" class="input" size="40" value="{$data.m_no}" /></td>
+                            </tr>
+
+
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议学分</th>
+                                <td><input  name="m_hyxf" type="text" class="input" size="40" value="{$data.m_hyxf}" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>审核状态</th>
+                                <td>
+                                    <select name="m_a_status" style="width: 280px;">
+                                        <option value="1" <if condition="$data.m_a_status eq 1"> selected </if>>通过</option>
+                                        <option value="0" <if condition="$data.m_a_status eq 0"> selected </if>>未通过</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <th></th>
+                                <td><input type="submit" value="提交" name="submit" class="btn submit" />
+                                    <a class="btn delete" link="{:U('Admin/Budeng/delete',array('id'=>$data['m_id']))}" href="javascript:void(0);" name="{$data.m_name}">删除</a>
+
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <script type="text/javascript">
+        $(".delete").click(function(){
+            var link=$(this).attr("link");
+            var name = $(this).attr("name").replace(/<[^>]+>/g,"");
+            popup.confirm('你真的打算删除【<b>'+name+'</b>】会议吗?','温馨提示',function(action){
+                if(action == 'ok'){
+                    location.href=link;
+                }
+            });
+            return false;
+        });
+    </script>
+</body>
+</html>

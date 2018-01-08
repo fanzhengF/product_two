@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/style.css">
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+<title>{$home_name}</title>
+</head>
+<body class="paddtop paddbot">
+	<div class="zxq_one">
+		<a href="javascript:history.back(-1)" class="a"><img src="__PUBLIC__/Images/Home/mobile/backs.png"></a>
+		<div>主讲人</div>
+	</div><!--zxq_one end-->
+	<!--head end-->
+	<form action="" method="post">
+		<div class="lcq_big">
+		<div class="lcq_wrap">
+			<div class="lcq_huiyi">
+				<div class="lcq_huiyi-li cf">
+					<label>列席专家:</label>
+					<div class="lcq_input">
+						<input type="text" value="" name="" class="liexia">
+					</div>
+				</div>
+				<div class="lcq_huiyi-li cf">
+					<label>主讲人:</label>
+					<div class="lcq_input">
+						<input type="text" value="" name="" class="zhujianga">
+					</div>
+				</div>
+				<div class="lcq_huiyi-li cf">
+					<label>职称:</label>
+					<div class="lcq_input">
+						<input type="text" value="" name="" class="zhichena">
+					</div>
+				</div>
+				<div class="lcq_huiyi-li cf">
+					<label>头像:</label>
+					<div class="lcq_input lcq_input1 cf">
+						<input  type="text" id="textNames2" readonly class="fl" value="" name="">
+						<label class="fr tou1" for="tou1"><input type="file" class="lcq_input-riqi-1" id="tou1"></label>
+					</div>
+				</div>
+				<div class="lcq_huiyi-li cf">
+					<label>主讲简介:</label>
+					<div class="lcq_input lcq_input-none">
+						<textarea placeholder="" id="zhu_jian1"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--content 1 end-->
+	<div class="lcq_big">
+		<div class="lcq_wrap">
+			<div class="lcq_huiyi">
+				<div class="lcq_huiyi-li cf">
+					<label>列席专家:</label>
+					<div class="lcq_input">
+						<input type="text" value="" name="" class="liexib">
+					</div>
+				</div>
+				<div class="lcq_huiyi-li cf">
+					<label>主讲人:</label>
+					<div class="lcq_input">
+						<input type="text" value="" name="" class="zhujiangb">
+					</div>
+				</div>
+				<div class="lcq_huiyi-li cf">
+					<label>职称:</label>
+					<div class="lcq_input">
+						<input type="text" value="" name="" class="zhichenb"></input>
+					</div>
+				</div>
+				<div class="lcq_huiyi-li cf">
+					<label>头像:</label>
+					<div class="lcq_input lcq_input1">
+						<input  type="text" id="textNames3" readonly class="fl" value="" name="">
+						<label class="fr tou2" for="tou3"><input type="file" class="lcq_input-riqi-1" id="tou3"></label>
+					</div>
+				</div>
+				<div class="lcq_huiyi-li cf">
+					<label>主讲简介:</label>
+					<div class="lcq_input lcq_input-none">
+						<textarea placeholder="" id="zhu_jian2"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--content-2 end-->
+	<div class="ti_mess"></div>
+	<input type="submit" class="btn_3 sure con_box" value="确定" id="btn_3">
+</form>
+<script type="text/javascript">
+	$(function(){
+		$('.tou1 input').change(function(){
+			document.getElementById('textNames2').value=this.value;
+		})	
+		$('.tou2 input').change(function(){
+			document.getElementById('textNames3').value=this.value;
+		})	
+		//验证不能为空
+		$('.liexia').blur(function(){
+			if ($('.liexia').val()==''||$('.liexia').val()==undefined) {
+				$('.ti_mess').text('列席专家不能为空');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}
+		})
+		$('.zhujianga').blur(function(){
+			if ($('.zhujianga').val()==''||$('.zhujianga').val()==undefined) {
+				$('.ti_mess').text('主讲人不能为空');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}
+		})
+		$('.zhichena').blur(function(){
+			if ($('.zhichena').val()==''||$('.zhichena').val()==undefined) {
+				$('.ti_mess').text('职称不能为空');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}
+		})
+		$('#textNames2').blur(function(){
+			if ($('#textNames2').val()==''||$('#textNames2').val()==undefined) {
+				$('.ti_mess').text('请上传头像');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}
+		})
+		$('#zhu_jian1').blur(function(){
+			if ($('#zhu_jian1').val()==''||$('#zhu_jian1').val()==undefined) {
+				$('.ti_mess').text('请输入主讲简介');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}
+		})
+		$('.liexib').blur(function(){
+			if ($('.liexib').val()==''||$('.liexib').val()==undefined) {
+				$('.ti_mess').text('列席专家不能为空');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}
+		})
+		$('.zhujiangb').blur(function(){
+			if ($('.zhujiangb').val()==''||$('.zhujiangb').val()==undefined) {
+				$('.ti_mess').text('主讲人不能为空');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}
+		})
+		$('.zhichenb').blur(function(){
+			if ($('.zhichenb').val()==''||$('.zhichenb').val()==undefined) {
+				$('.ti_mess').text('职称不能为空');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}
+		})
+		$('#textNames3').blur(function(){
+			if ($('#textNames3').val()==''||$('#textNames3').val()==undefined) {
+				$('.ti_mess').text('请上传头像');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}
+		})
+		$('#zhu_jian2').blur(function(){
+			if ($('#zhu_jian2').val()==''||$('#zhu_jian2').val()==undefined) {
+				$('.ti_mess').text('请输入主讲简介');
+				return false;
+			}else{
+				$('.ti_mess').text('');
+				return true;
+			}
+		})	
+
+		$('form').submit(function (e) {
+			e.preventDefault();
+			var data = {
+                'liexia' : $('.liexia').val(),
+                'zhujianga' : $('.zhujianga').val(),
+                'zhichena' : $('.zhichena').val(),
+                'textNames2' : $('#textNames2').val(),
+                'zhu_jian1' : $('#zhu_jian1').val(),
+                'liexib' : $('.liexib').val(),
+                'zhujiangb' : $('.zhujiangb').val(),
+                'zhichenb' : $('.zhichenb').val(),
+                'textNames3' : $('#textNames3').val(),
+                'zhu_jian2' : $('#zhu_jian2').val(),
+            };
+            var url = "{:U('/Mobile/index')}";
+            $.post('', data, function (data) {
+                if ($('.liexia').val()==''||$('.liexia').val()==undefined) {
+					$('.ti_mess').text('列席专家不能为空');
+					return false;
+				}
+				if ($('.zhujianga').val()==''||$('.zhujianga').val()==undefined) {
+					$('.ti_mess').text('主讲人不能为空');
+					return false;
+				}
+				if ($('.zhichena').val()==''||$('.zhichena').val()==undefined) {
+					$('.ti_mess').text('职称不能为空');
+					return false;
+				}
+				if ($('#textNames2').val()==''||$('#textNames2').val()==undefined) {
+					$('.ti_mess').text('请上传头像');
+					return false;
+				}
+				if ($('#zhu_jian1').val()==''||$('#zhu_jian1').val()==undefined) {
+					$('.ti_mess').text('请输入主讲简介');
+					return false;
+				}
+				if ($('.liexib').val()==''||$('.liexib').val()==undefined) {
+					$('.ti_mess').text('列席专家不能为空');
+					return false;
+				}
+				if ($('.zhujiangb').val()==''||$('.zhujiangb').val()==undefined) {
+					$('.ti_mess').text('主讲人不能为空');
+					return false;
+				}
+				if ($('.zhichenb').val()==''||$('.zhichenb').val()==undefined) {
+					$('.ti_mess').text('职称不能为空');
+					return false;
+				}
+				if ($('#textNames3').val()==''||$('#textNames3').val()==undefined) {
+					$('.ti_mess').text('请上传头像');
+					return false;
+				}
+				if ($('#zhu_jian2').val()==''||$('#zhu_jian2').val()==undefined) {
+					$('.ti_mess').text('请输入主讲简介');
+					return false;
+				}else{
+					$('.ti_mess').text('');
+					return true;
+				}
+
+
+            });
+		})
+
+	})
+</script>
+</body>
+</html>

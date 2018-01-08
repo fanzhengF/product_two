@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会议报名列表-{$site.SITE_INFO.name}</title>
+<php> $addCss=""; $addJs=""; $currentNav ='会议室管理 > 会议报名列表'; </php>
+<include file="Common:intoHead" />
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+
+
+        <div class="mainBody" style="overflow:hidden">
+
+            <div id="Right" style="width:100%;">
+
+                <div class="Item hr">
+                    <div class="current">会议报名列表</div>
+                </div>
+
+                <form action="" method="get" style="margin-left:20px;" id="search">
+                    <div>
+                        <b>会议名称&nbsp;</b>    <!--
+                        <select name="s_mid">
+
+                            <volist name="meetAll" id="vo">
+                                <option value="{$vo.m_id}" <if condition="$Think.get.s_mid eq $vo['m_id'] ">selected</if> >{$vo.m_name}</option>
+                            </volist>
+
+                        </select>  -->
+                        <input style="width: 80px" class="input" type="text" name="s_meet_name" value="{$Think.get.s_meet_name}" />
+
+                        <b>用户&nbsp;</b>
+                        <input style="width: 80px" class="input" type="text" name="u_name" value="{$Think.get.u_name}" />
+
+                        <b>报名开始时间&nbsp;</b>
+                        <input placeholder="提交开始时间" id="start_time" class="input" type="text" name="start_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.start_time}">
+
+                        <b>报名结束时间&nbsp;</b>
+                        <input placeholder="提交结束时间" id="end_time" class="input" type="text" name="end_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.end_time}">
+
+                        <input type="submit" id="check_btn" value="搜索" class="btn quickSubmit">
+                    </div>
+                </form>
+                <!--
+                <form action="" method="get" id="search">
+                    <div>
+                        <a class="btn quickSubmit" href="__URL__/add">添加会议内容</a>
+                    </div>
+                </form>  -->
+                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                    class="tab">
+                    <thead>
+                        <tr>
+
+                            <td>编号</td>
+                            <td>会议名称</td>
+                            <td>用户</td>
+                            <td>提交时间</td>
+                            <td>联系方式</td>
+                            <td>参加者类型</td>
+                            <td>操作</td>
+                        </tr>
+
+                    </thead>
+                    <volist name="list" id="vo">
+                    <tr align="center" id="">
+                        <td>{$key+1}</td>
+                        <td>{$vo.m_name}</td>
+                        <td>{$vo.u_name}</td>
+                        <td>{$vo.s_time|date='Y-m-d H:i:s',###}</td>
+                        <td>{$vo.u_phone}</td>
+                        <td>
+                            <switch name="vo.u_type">
+                                <case value="1">校外</case>
+                                <case value="2">教师</case>
+                                <case value="3">学生</case>
+                                <default />无
+                            </switch>
+                        </td>
+                        <td>
+                            <a class="delete" link="{:U('Admin/Signup/delete',array('id'=>$vo['s_id']))}" href="javascript:void(0);" name="{$vo.m_name}">删除</a>
+                        </td>
+
+                    </tr>
+                    </volist>
+
+                    <tr>
+                        <td class="fy" colspan="10">
+                            <ul>{$page}</ul>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <script type="text/javascript">
+        $(".delete").click(function(){
+            var link=$(this).attr("link");
+            var name = $(this).attr("name").replace(/<[^>]+>/g,"");
+            popup.confirm('你真的打算删除用户【<b>'+name+'</b>】报名吗?','温馨提示',function(action){
+                if(action == 'ok'){
+                   location.href=link;
+                }
+            });
+            return false;
+        });
+    </script>
+</body>
+</html>

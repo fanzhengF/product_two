@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/style.css">
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Js/Home/mobile/js.js"></script>
+<title>{$home_name}</title>
+</head>
+<body style="background:#F7FBFF;" class="paddtop">
+	<div class="zxq_one">
+		<a href="javascript:history.back(-1)" class="a"><img src="__PUBLIC__/Images/Home/mobile/backs.png"></a>
+		<div class="add_div">我的会议
+			<if condition="!$flag">
+				<a href="{:U('/Mobile/budeng')}" class="fr tianjia">
+					<img src="__PUBLIC__/Images/Home/mobile/jiajia.png" width="14" height="14">
+				</a>
+			</if>
+		</div>
+	</div><!--zxq_one end-->
+	<div class="zxq_two con_box">
+		<div class="fl  zxq_click llv" >
+			<p>报名的会议</p>
+			<span></span>
+		</div>
+		<if condition="!$flag">
+			<div class="fr llv" >
+				<p>补登会议</p>
+				<span></span>
+			</div>
+		</if>
+		<div class="center llv" >
+			<p>我发起的会议</p>
+			<span></span>
+		</div>
+	</div>
+	<div id="tab" class="bb">
+		<div class="meet_joins">
+			<ul class="zxq_cont" id="join_ul1">
+				<volist name="MtAll" id="vo">
+					<li id="join1_li0">
+						<div class="clearfix">
+							<!--
+							<span class="fl">
+								<a href="#">报名中</a>
+								<span>|&nbsp;&nbsp;已报名<a href="#">95人</a></span>
+							</span>
+							-->
+							<span class="fl zxq_pa">{$vo.m_type}</span>
+						</div>
+						<p>中国矿业大学（北京）学生处</p>
+						<h1><a href="/Mobile/details/id/{$vo.m_id}">{$vo.m_name}</a></h1>
+						<div class="clearfix">
+							<span class="fl">{$vo.m_time}  {$vo.m_start}-{$vo.m_end}</span>
+							<span class="fr zxq_shi">{$vo.m_address|msubstr=0,5}</span>
+						</div>
+						<!--
+						<a href="#" class="zxq_qd"><img src="__PUBLIC__/Images/Home/mobile/yiqiandao.png"></a> -->
+					</li>
+				</volist>
+			</ul>
+			<!--
+			<div class="load_more"><img src="__PUBLIC__/Images/Home/mobile/xia.png">加载更多</div>
+			-->
+		</div>
+		<if condition="!$flag">
+			<div class="meet_joins">
+				<ul class="zxq_join" id="join_ul2">
+					<volist name="list" id="vo">
+						<li id="join2_li0">
+							<h1>{$vo.m_name}</h1>
+							<p>会议时间：{$vo.m_time}</p>
+							<p>会议地点：{$vo.m_address}</p>
+							<p class="zxq_btn1 del{$vo['m_id']}"><a onclick="remove({$vo['m_id']})" href="javascript:void(0);"><img src="__PUBLIC__/Images/Home/mobile/delete2.png">删除</a></p>
+						</li>
+					</volist>
+				</ul>
+				<!--
+				<div class="load_more"><img src="__PUBLIC__/Images/Home/mobile/xia.png">加载更多</div>  -->
+			</div>
+		</if>
+
+		<div class="meet_joins">
+			<ul class="zxq_cont" id="join_ul3">
+				<volist name="MtAll2" id="vo">
+					<li id="join3_li0">
+						<p>中国矿业大学（北京）学生处</p>
+						<h1>{$vo.m_name}</h1>
+						<div class="clearfix">
+							<span class="fl">{$vo.m_time}  {$vo.m_start}-{$vo.m_end}</span>
+							<span class="fr zxq_shi">{$vo.m_address}</span>
+						</div>
+						<a href="#" class="zxq_qd"><img src="__PUBLIC__/Images/Home/mobile/weitong.png"></a>
+					</li>
+				</volist>
+			</ul>
+			<!--
+		<div class="load_more"><img src="__PUBLIC__/Images/Home/mobile/xia.png">加载更多</div>  -->
+		</div>
+	</div>
+	<include file="Common:footer" />
+	<!--footers end-->
+<script type="text/javascript">
+
+    function remove (id){
+        $.ajax({
+            url : "{:U('Mobile/budengdel')}",
+            type : 'get',
+            data : {id:id},
+            success : function (status){
+				if (status == 1) {
+                    $('.del' + id).parents('li').remove();
+                }
+            }
+        });
+    };
+</script>
+</body>
+</html>

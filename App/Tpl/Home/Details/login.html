@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="中国矿业大学" />
+    <meta name="description" content="中国矿业大学" />
+    <title>中国矿业大学研究院（北京）研究生院</title>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/mycommon.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/index.css">
+
+</head>
+<body>
+<div class="header">
+    <img src="__PUBLIC__/Images/Home/logo.png">
+    <ul class="cf">
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn">首页</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=1">研究生院简介</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=2">招生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=3">学籍管理</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=4">培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=5">专业学位培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=6">学位工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=7">国际交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=8">学术交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=9">学生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=10">办事指南（咨询中心）</a></li>
+    </ul>
+</div><!--header end-->
+<div class="bodys con_box">
+    <div class="logins con_box" style="position: relative;">
+        <h1 class="fl">
+            <span class="fl litt_lines"></span>
+            <span class="fl">账号登录</span>
+            <span class="fl litt_lines"></span>
+        </h1>
+        <form action="" id="form1" method="post">
+            <div class="login_divs">
+                <label class="fl">用户名：</label>
+                <input type="text" value="" name="u_name" id="u_name" class="fl login_name inputs" placeholder="用户名">
+            </div>
+            <div class="login_divs">
+                <label class="fl">身  份：</label>
+                <select name="u_type" class="fl login_name inputs">
+                    <option value="3">学生</option>
+                    <option value="2">教师</option>
+                    <option value="1">校外</option>
+                </select>
+            </div>           
+            <div class="login_divs">
+                <label class="fl">密  码：</label>
+                <input type="password" value="" name="u_pwd" id="u_pwd" class=" login_pass inputs" placeholder="密码">
+            </div>
+            <div class="cf login_divs">
+                <label class="fl">验证码：</label>
+                <input type="text" value="" name="verify_code" class="fl yanzheng" id="yanzheng">
+                <img src="{:U('/Admin/Public/verify_code')}"  title="看不清？单击此处刷新" onclick="this.src+='?rand='+Math.random();"  style="margin-left:26px;width:70px;cursor: pointer; vertical-align: middle;height:40px;" class="code fl" />
+            </div>
+            <input type="hidden" name="op_type" id="op_type" value="1"/>
+            <button type="submit" class="can_login">登录</button>
+        </form>
+        <div class="fanhui" style="position: absolute;top:276px;left:100px;color:red;">校外人员用户名密码都是手机号</div>
+        <div class="fanhui" style="position: absolute;top:310px;"><a href="{:U('/Index/index')}" style="color: #28badf;">< 返回首页</a></div>
+        <div class="fanhui" style="position: absolute;top:310px;left:290px;"><a target="_blank" href="{:U('/Admin/Public/index')}" style="color: #28badf;"> 登录后台 > </a></div>
+
+    </div>
+</div><!--bodys end-->
+<div class="footers con_box cf">
+    <p class="fl">中国矿业大学研究院（北京）研究生院 版权所有 地址：北京市海淀区学院路丁11号  电话：010-62339826,62339255</p>
+    <p class="fr">网站建设专家<a href="javascript:;" class="taoruan">淘软科技</a>提供技术支持</p>
+</div>
+</body>
+<script type="text/javascript">
+    $(function(){
+        $('form').submit(function (e) {
+            e.preventDefault();
+            $("#op_type").val("1");
+            var src = $('.code').attr('src');
+            if($("#u_name").val()==''||$("#u_pwd").val()==''||$("#verify_code").val()==''){
+                $('.code').attr('src',src+'?rand='+Math.random());
+                alert("填写完整方可登录！");
+                return false;
+            }
+            var data = {
+                'u_name' : $('#u_name').val(),
+                'u_pwd' : $('#u_pwd').val(),
+                'yanzheng' :$('#yanzheng').val(),
+                'u_type' : $('select[name=u_type]').val()
+            };
+            var url = "{:U('/Index/index')}";
+            $.post('/Index/login', data, function (data) {
+                if (data == '-1') {
+                    //alert('登录成功！');
+                    location.href = url;
+                    return false;
+                }
+                if (data == '-2') {
+                    $('.code').attr('src',src+'?rand='+Math.random());
+                    alert("用户名或密码错误！");
+                    return false;
+                }
+                if (data == '-3') {
+                    $('#yanzheng').val('');
+                    $('#yanzheng').focus();
+                    $('.code').attr('src',src+'?rand='+Math.random());
+                    alert("验证码错误啦！");
+                    return false;
+                }
+
+
+            });
+
+        });
+
+
+    });
+</script>
+</html>
+

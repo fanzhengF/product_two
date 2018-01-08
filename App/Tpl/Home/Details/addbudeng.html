@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="中国矿业大学" />
+    <meta name="description" content="中国矿业大学" />
+    <title>中国矿业大学研究院（北京）研究生院</title>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-base.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-all.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/mycommon.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/addbudeng.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/datetimepicker.css">
+</head>
+<body>
+<div class="header">
+    <img src="__PUBLIC__/Images/Home/logo.png">
+    <ul class="cf">
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn">首页</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=1">研究生院简介</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=2">招生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=3">学籍管理</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=4">培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=5">专业学位培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=6">学位工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=7">国际交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=8">学术交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=9">学生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=10">办事指南（咨询中心）</a></li>
+    </ul>
+</div><!--header end-->
+<div class="bodys con_box">
+    <div class="body_cons cf">
+        <div class="fl cons_left con_box">
+            <p class="xuefen">
+                <if condition="$auth">
+                    <if condition="$u_type_init eq 3">
+                        学分：
+                        <!--
+                   <switch name="xf">
+                       <case value="">0</case>
+                   </switch>
+                   -->
+                        <!--
+                        {$mcAll['c_number']}
+                        -->
+                        {$xf}
+                        分
+                    </if>
+                </if>
+                <input type="hidden" value=""></p>
+            <include file="Common:left" />
+        </div>
+        <div class="cons_right con_box fl" id="cons_right">
+           <div class="come_back cf con_box"><a href="javascript:;" class="backs fl">返回</a></div>
+            <form method="post" action="" name="form">
+                <input type="hidden" value="1" name="m_mtype" >
+                <input type="hidden" value="{$uid}" name="m_uid" >
+                <input type="hidden" value="{$uname}" name="m_u_name" >
+            <div class="cf add_now martops">
+                <label class="fl">
+                    <span class="red_star">*</span>会议名称：
+                </label>
+                <input type="text" value="" name="m_name" id="huis_name" class="fl budeng_input">
+            </div>
+            <div class="cf">
+                <div class="cf add_now fl">
+                    <label class="fl"><span class="red_star">*</span>会议类型：</label>
+                    <select id="lei_meets" name="m_type" class="fl lei_meets">
+                        <volist name="mtAll" id="vo">
+                            <option value="{$vo.mt_id}">{$vo.mt_name}</option>
+                        </volist>                    </select>
+                </div>
+                <div class="cf add_now fl">
+                    <label class="fl add_label"><span class="red_star">*</span>会议时间：</label>
+                    <input type="text" name="m_time" onClick="eye.datePicker.show(this);" id="start_time1" readonly placeholder="开始日" class="fl lei_meets" />
+                </div>
+            </div>
+            <div class="cf add_now">
+                <label class="fl">
+                    <span class="red_star">*</span>会议地点：
+                </label>
+                <input type="text" value="" name="m_address" id="huis_didian" class="fl budeng_input">
+            </div>
+            <div class="cf add_now">
+                <label class="fl"><span class="red_star">*</span>会议内容：</label>
+                <textarea class="meet_text1 fl con_box marbots"  name="m_content" id="hui_texts"></textarea>
+            </div>
+            <p class="erro_mes1"></p>
+            <button class="join_ti" id="join_ti" type="submit">提交</button>
+            </form>
+        </div><!--cons_right end-->
+    </div><!--body_cons end-->
+</div><!--bodys end-->
+<div class="footers con_box cf">
+    <p class="fl">中国矿业大学研究院（北京）研究生院 版权所有 地址：北京市海淀区学院路丁11号  电话：010-62339826,62339255</p>
+    <p class="fr">网站建设专家<a href="javascript:;" class="taoruan">淘软科技</a>提供技术支持</p>
+</div>
+<script type="text/javascript">
+    $(function(){
+        yans2();
+        $('.add_now .minge').click(function(){
+            $(this).addClass('zhan_cur').siblings('.minge').removeClass('zhan_cur');
+        })
+        $('.left_lis:last').css({ 'border-bottom':'0px'});
+        //获取左侧导航高度
+        var body_cons=$('.body_cons').height();//alert(cons_right);
+        $('.cons_left').css({ 'height':body_cons});
+        //验证
+        function yans2(){
+            $('#huis_name').blur(function(){
+                if ($('#huis_name').val()==''||$('#huis_name').val()==undefined) {
+                    $('.erro_mes1').text('会议名称一定要填写哦~');
+                    return false;
+                }else{
+                    $('.erro_mes1').text('');
+                    return true;
+                }
+            }).keyup(function(){
+                $(this).triggerHandler('blur');
+            })
+
+            $('#lei_meets').blur(function(){
+                if ($('#lei_meets option:selected').val()==''||$('#lei_meets option:selected').val()==undefined) {
+                    $('.erro_mes1').text('不要忘了选择会议类型~');
+                    return false;
+                }else{
+                    $('.erro_mes1').text('');
+                    return true;
+                }
+            }).keyup(function(){
+                $(this).triggerHandler('blur');
+            })
+
+            $('#start_time1').blur(function(){
+                if ($('#start_time1').val()==''||$('#start_time1').val()==undefined) {
+                    $('.erro_mes1').text('不要忘了选择会议时间~');
+                    return false;
+                }else{
+                    $('.erro_mes1').text('');
+                    return true;
+                }
+            }).keyup(function(){
+                $(this).triggerHandler('blur');
+            })
+
+            $('#huis_didian').blur(function(){
+                if ($('#huis_didian').val()==''||$('#huis_didian').val()==undefined) {
+                    $('.erro_mes1').text('会议名称一定要填写哦~');
+                    return false;
+                }else{
+                    $('.erro_mes1').text('');
+                    return true;
+                }
+            }).keyup(function(){
+                $(this).triggerHandler('blur');
+            })
+
+        }
+
+        $('form').submit(function (e) {
+            if ($('#huis_name').val()==''||$('#huis_name').val()==undefined) {
+                $('.erro_mes1').text('会议名称一定要填写哦~');
+                return false;
+            }
+            if ($('#lei_meets option:selected').val()==''||$('#lei_meets option:selected').val()==undefined) {
+                $('.erro_mes1').text('不要忘了选择会议类型~');
+                return false;
+            }
+            if ($('#start_time1').val()==''||$('#start_time1').val()==undefined) {
+                $('.erro_mes1').text('不要忘了选择会议时间~');
+                return false;
+            }
+            if ($('#huis_didian').val()==''||$('#huis_didian').val()==undefined) {
+                $('.erro_mes1').text('会议名称一定要填写哦~');
+                return false;
+            }
+        })
+    })
+</script>
+</body>
+</html>

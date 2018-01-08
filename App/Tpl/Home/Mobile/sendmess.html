@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/style.css">
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+ <script type="text/javascript" language="javascript" src="__PUBLIC__/Js/Home/mobile/eye-base.js"></script>
+    <script type="text/javascript" language="javascript" src="__PUBLIC__/Js/Home/mobile/eye-all.js"></script>
+<title>{$home_name}</title>
+</head>
+<body class="lzy_bg paddtop">
+	<div class="zxq_one">
+		<a href="javascript:history.back(-1)" class="a"><img src="__PUBLIC__/Images/Home/mobile/backs.png"></a>
+		<div>发送信息</div>
+	</div><!--zxq_one end-->
+	<form id="myForm" method="post" name="send" action="{:U('Mobile/sendmess/')}" enctype="multipart/form-data">
+		<div class="lzy_wrap">		
+			<div class="lzy_huiyi-lis cf">
+				<label>收件人:</label>
+				<div class="lzy_input">
+					<div class="fl send_deletes">
+						<input  type="text" id="textName" value="{$e_sid}" name="e_sid" class="lzy_fujian" style="width:1000%;overflow:hidden;">
+					</div>
+					<input type="submit" value="清空" class="qingkong fl">
+					<input type="hidden" value="{$userid}" name="e_uid">
+					<a href="{:U('Mobile/tAstudent')}" class="lzy_lan report-file" id="add_cons">添加联系人
+						<img src="__PUBLIC__/Images/Home/mobile/addsmall.png">
+					</a>
+				</div>
+			</div>
+			<div class="lzy_huiyi-lis cf">
+				<label>主    题:</label>
+				<div class="lzy_input">
+					<input  type="text" name="e_zhuti" id="textNames1"  class="lzy_fujian">
+				</div>
+			</div>
+			<div class="lzy_huiyi-lis cf">
+				<div class="lzy_input" style="margin-left:16%;border-bottom: 1px dashed #ececec;">
+					<input  type="text" name="" id="textNames"  class="lzy_fujian" readonly>
+					<input class="lzy_file-prew lzy_tt" type="file" name="e_fujian" onchange="document.getElementById('textNames').value=this.value">
+					<a href="###" class="lzy_lan report-file">
+						<span>上传附件</span> 
+						<img src="__PUBLIC__/Images/Home/mobile/fujian.png">
+					</a>
+				</div>
+			</div>
+			<div class="lzy_huiyi-lis cf">
+				<label>内    容:</label>
+				<div class="lzy_input lzy_input-none">
+					<textarea name="e_zhengwen" placeholder="写点什么..." id="e_zhengwen"></textarea>
+				</div>
+			</div>
+		</div>		
+		<div class="lzy_bod"></div>
+		<div class="lzy_two">
+			<input type="reset" class="lzy_no" value="重置" onclick="formReset()">
+			<input type="submit" class="lzy_yes" value="发送">
+		</div>
+	</form>
+
+	<include file="Common:footer" />
+	<div class="masks"></div>
+	<div class="infos_tan con_box">
+		<p class="ti_infos"></p>
+		<div class="ti_sure">确定</div>
+	</div>
+<script type="text/javascript">
+	$(function(){
+		if ($("#textName").val()=='') {
+			$('.qingkong').val('');
+		}else{
+			$('.qingkong').val('清空');
+		}
+		$('.qingkong').click(function(e){
+			e.preventDefault();
+			$('#textName').val('');
+			$('.qingkong').val('');
+		})
+		$(".lzy_oo").change(function(){
+			$("#textName").addClass("lzy_focus")
+		})
+		$(".lzy_tt").click(function(){
+			$("#textNames").addClass("lzy_focus")
+		})
+		function formReset(){
+	  		document.getElementById("myForm").reset()
+	  	}
+	  	$('.ti_sure,.masks').click(function(){
+			$('.infos_tan,.masks').hide();
+		})
+
+		
+
+	//验证联系人
+	$('#textName').blur(function(){
+		if ($('#textName').val()==''||$('#textName').val()==undefined) {
+			$('.infos_tan,.masks').show();
+			$('.qingkong').val('');
+			$('.ti_infos').text('请输入收件人');
+			// alert('请输入收件人');
+			return false;
+		}else{
+			$('.qingkong').val('清空');
+			return true;
+		}
+	}).keyup(function(){
+		$(this).triggerHandler('blur');
+	})
+	$('#textNames1').blur(function(){
+		if ($('#textNames1').val()==''||$('#textNames1').val()==undefined) {
+			$('.infos_tan,.masks').show();
+			$('.ti_infos').text('主题不能为空');
+			// alert('请输入收件人');
+			return false;
+		}else{
+			return true;
+		}
+	})
+	$('#e_zhengwen').blur(function(){
+		if ($('#e_zhengwen').val()==''||$('#e_zhengwen').val()==undefined) {
+			$('.infos_tan,.masks').show();
+			$('.ti_infos').text('请输入内容');
+			// alert('请输入收件人');
+			return false;
+		}else{
+			return true;
+		}
+	})
+	$('.lzy_yes').click(function(){
+		if ($('#textName').val()==''||$('#textName').val()==undefined) {
+			$('.infos_tan,.masks').show();
+			$('.ti_infos').text('请输入收件人');
+			// alert('请输入收件人');
+			return false;
+		}if ($('#textNames1').val()==''||$('#textNames1').val()==undefined) {
+			$('.infos_tan,.masks').show();
+			$('.ti_infos').text('主题不能为空');
+			// alert('请输入收件人');
+			return false;
+		}if ($('#e_zhengwen').val()==''||$('#e_zhengwen').val()==undefined) {
+			$('.infos_tan,.masks').show();
+			$('.ti_infos').text('请输入内容');
+			// alert('请输入收件人');
+			return false;
+		}else{
+			$('.infos_tan,.masks').hide();
+			return true;
+		}
+	})
+
+
+})		
+</script>
+</body>
+</html>

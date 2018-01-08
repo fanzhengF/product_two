@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>学分列表-{$site.SITE_INFO.name}</title>
+<php> $addCss=""; $addJs=""; $currentNav ='学分管理 > 学分列表'; </php>
+<include file="Common:intoHead" />
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+
+
+        <div class="mainBody" style="overflow:hidden">
+
+            <div id="Right" style="width:100%;">
+
+                <div class="Item hr">
+                    <div class="current">学分列表</div>
+                </div>
+                <form action="" method="get" id="search">
+
+                    <div>
+                        &nbsp;
+                        <b>学号&nbsp;</b>
+                        <input style="width: 80px" class="input" type="text" name="s_no" value="{$Think.get.s_no}" />
+                        <b>姓名&nbsp;</b>
+                        <input style="width: 80px" class="input" type="text" name="s_name" value="{$Think.get.s_name}" />
+                        <b>是否补登&nbsp;</b>
+                        <select name="s_mtype">
+                            <option value="0" selected>-请选择-</option>
+                            <option value="1" <if condition="$Think.get.s_mtype eq 1 ">selected</if>>是</option>
+                            <option value="0">否</option>
+                        </select>
+                        <b>开始时间&nbsp;</b>
+                        <input placeholder="开始" id="start_time" class="input" type="text" name="start_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.start_time}">
+                        <b>结束时间&nbsp;</b>
+                        <input placeholder="结束" id="end_time" class="input" type="text" name="end_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.end_time}">
+
+                        <input type="submit" id="check_btn" value="搜索" class="btn quickSubmit">
+                    </div>
+                </form>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                    class="tab">
+                    <thead>
+                        <tr>
+
+                            <td>编号</td>
+                            <td>学号</td>
+                            <td>姓名</td>
+                            <td>专业</td>
+                            <td>院系</td>
+                            <td>会议编号</td>
+                            <td>会议名称</td>
+                            <td>会议学分</td>
+                            <td>是否补登</td>
+                        </tr>
+
+                    </thead>
+                    <volist name="list" id="vo">
+                    <tr align="center" id="">
+                        <td>{$key+1}</td>
+                        <td>{$vo.no}</td>
+                        <td>{$vo.s_name}</td>
+                        <td>{$vo.s_major}</td>
+                        <td>{$vo.s_department}</td>
+                        <td>{$vo.m_bianma}</td>
+                        <td>{$vo.s_meet_name}</td>
+                        <td>{$vo.m_hyxf}</td>
+                        <td>{$vo.m_mtype}</td>
+                        <!--
+                        <td>
+                            <a href="{:U('Admin/Xf/edit',array('id'=>$vo['m_id']))}" class="xq-edit">审批</a>
+                        </td> -->
+                    </tr>
+                    </volist>
+
+                    <tr>
+                        <td class="fy" colspan="11">
+                            <ul>{$page}</ul>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+</body>
+</html>

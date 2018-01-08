@@ -1,0 +1,60 @@
+.user_center{
+	width: 815px;
+	margin:0 auto;
+}
+.user_center h1{
+	font-size: 18px;
+	padding-bottom: 16px;
+	text-indent: 1em;
+	border-bottom: 1px solid #CFCFCF;
+}
+.grey_word{
+	color: #999;
+}
+.usr_form{
+	font-size: 14px;
+}
+.usr_table{
+	width: 90%;
+	margin-left: 10%;
+	
+}
+.mar_tab{
+	padding-top: 30px;
+}
+.dash_bor{
+	background: #fff;
+	border: 0px;
+	border-bottom: 1px dashed #CFCFCF;
+	padding-bottom: 6px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	margin-top: 20px;
+	color: #666;
+	width: 150px;
+}
+.input_fath{
+	margin-top: 20px;
+}
+.can_input{
+	width: 150px;
+	height: 24px;
+	line-height: 24px;
+	padding:0 3px;
+}
+.xiu_input{
+	border:0;
+	border: 1px solid #28BADF;
+	border-radius: 100px;
+	width: 108px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	display: block;
+	font-size: 16px;
+	color: #28BADF;
+	background: #fff;
+	margin:38px auto;
+}
+

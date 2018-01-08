@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>修改核定学分-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='管理 > 修改核定学分';
+        </php>
+    <include file="Common:intoHead" />
+</head>
+<body>
+    <div class="wrap">
+        <div class="mainBody">
+            <div id="Right" style="width:100%;">
+                <div class="contentArea">
+                    <div class="Item hr" style="margin-bottom: 50px">
+                        <div class="current">学生学分审批</div>
+                        <br />
+                        <a class="btn quickSubmit" href="javascript:history.back(-1);">返回</a>
+
+                    </div>
+
+
+
+
+
+
+                    <form action="" method="post" enctype="multipart/form-data" >
+                        <table width="100%"  cellspacing="0" cellpadding="0" class="table1">
+                            <input type="hidden" name="m_id" value="{$data.m_id}">
+
+
+                            <tr>
+                                <th width="120"><font color="red"></font>学号</th>
+                                <td>{$data.no}</td>
+                            </tr>
+
+                            <tr>
+                                <th width="120"><font color="red"></font>姓名</th>
+                                <td>{$data.s_name}</td>
+                            </tr>
+
+
+                            <tr>
+                                <th width="120"><font color="red"> </font>专业</th>
+                                <td>{$data.s_major}</td>
+                            </tr>
+
+
+                            <tr>
+                                <th width="120"><font color="red"></font>院系</th>
+                                <td>{$data.s_department}</td>
+                            </tr>
+
+
+                            <tr>
+                                <th width="120"><font color="red"></font>会议编号</th>
+                                <td>{$data.m_bianma}</td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red"></font>会议名称</th>
+                                <td>{$data.m_name}</td>
+                            </tr>
+
+                            <tr>
+                                <th width="120"><font color="red"></font>会议学分</th>
+                                <td>{$data.m_hyxf}</td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red"></font>会议内容</th>
+                                <td><textarea name="m_content" disabled cols="37" rows="5" style="resize:none;">{$data.m_content}</textarea></td>
+                            </tr>
+
+                            <tr>
+                                <th width="120"><font color="red"> </font>会议类型</th>
+                                <td>
+                                    <select disabled name="m_type" style="width: 280px;">
+                                        <volist name="mtAll" id="vo">
+                                            <option value="{$vo.mt_id}" <if condition="$data.m_type eq $vo[mt_id]"> selected </if>>{$vo.mt_name}</option>
+                                        </volist>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red"></font>会议等级</th>
+                                <td>
+                                    <select disabled name="m_grade" style="width: 280px;">
+                                        <volist name="gradeAll" id="vo">
+                                            <option value="{$vo.g_id}" <if condition="$data.m_type eq $vo[g_id]"> selected </if>>{$vo.g_name}</option>
+                                        </volist>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th width="120"><font color="red"> </font>会议时间</th>
+                                <td><input  name="m_time" type="text" disabled readonly="readonly" onclick="new Calendar().show(this);" class="input" size="40" value="{$data.m_time}" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red"> </font>开始时间--结束时间</th>
+                                <td>
+                                    <input size="16" name="m_start" disabled type="text" readonly class="form_datetime input" value="{$data.m_start}">
+                                    --
+                                    <input size="16" name="m_end" disabled type="text"  readonly class="form_datetime input" value="{$data.m_end}">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th width="120"><font color="red"></font>会议评价</th>
+                                <td>{$eCon}</td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>审核状态</th>
+                                <td>
+                                    <select name="m_xf_status" style="width: 280px;">
+                                        <option value="1" <if condition="$data.m_xf_status eq 1"> selected </if>>通过</option>
+                                        <option value="0" <if condition="$data.m_xf_status eq 0"> selected </if>>不通过</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th></th>
+                                <td><input type="submit" value="提交" name="submit" class="btn submit" />
+
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>学生列表-{$site.SITE_INFO.name}</title>
+<php> $addCss=""; $addJs=""; $currentNav ='学生管理 > 学生列表'; </php>
+<include file="Common:intoHead" />
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+
+        <div class="mainBody" style="overflow:hidden">
+
+
+                        <div id="Right" style="width:100%;">
+
+                            <div class="Item hr">
+                                <div class="current">校外人员列表</div>
+                            </div>
+
+
+                            <br />
+                            <form action="" method="get" id="search">
+                                <div>
+                                    &nbsp;
+
+                                    <b>姓名&nbsp;</b>
+                                    <input style="width: 80px" class="input" type="text" name="u_name" value="{$Think.get.u_name}" />
+                                    <b>联系方式&nbsp;</b>
+                                    <input style="width: 80px" class="input" type="text" name="u_phone" value="{$Think.get.u_phone}" />
+
+                                    <b>添加时间&nbsp;</b>
+                                    <input placeholder="开始" id="start_time" class="input" type="text" name="start_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.start_time}">
+
+                                    <b>添加时间&nbsp;</b>
+                                    <input placeholder="结束" id="end_time" class="input" type="text" name="end_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.end_time}">
+
+                                    <input type="submit" id="check_btn" value="搜索" class="btn quickSubmit">
+                                </div>
+                            </form>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                class="tab">
+                                <thead>
+                                    <tr>
+                                        <td>编号</td>
+                                        <td>姓名</td>
+                                        <td>性别</td>
+                                        <td>联系方式</td>
+                                        <td>时间</td>
+                                        <td>操作</td>
+                                    </tr>
+                                </thead>
+                                <volist name="list" id="vo">
+                                <tr align="center" id="">
+                                    <td>{$key+1}</td>
+                                    <td>{$vo.u_name}</td>
+                                    <td>
+                                        <switch name="vo.u_sex">
+                                            <case value="1">男</case>
+                                            <case value="2">女</case>
+                                        </switch>
+                                    </td>
+                                    <td>{$vo.u_phone}</td>
+                                    <td>{$vo.u_time|date='Y-m-d H:i:s',###}</td>
+                                    <td>
+                                        <a class="delete" link="{:U('Admin/Xiaowai/delete',array('id'=>$vo['u_id']))}" href="javascript:void(0);" name="{$vo.u_name}">删除</a>
+                                    </td>
+                                </tr>
+                                </volist>
+
+                                <tr>
+                                    <td class="fy" colspan="6">
+                                        <ul>{$page}</ul>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+
+                <script type="text/javascript">
+                    $(".delete").click(function(){
+                        var link=$(this).attr("link");
+                        var name = $(this).attr("name").replace(/<[^>]+>/g,"");
+                        popup.confirm('你真的打算删除【<b>'+name+'</b>】校外人员吗?','温馨提示',function(action){
+                            if(action == 'ok'){
+                                location.href=link;
+                            }
+                        });
+                        return false;
+                    });
+
+                </script>
+            </body>
+            </html>

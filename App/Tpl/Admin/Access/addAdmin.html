@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>新增用户-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='用户管理 > 新增用户';
+        </php>
+    <include file="Common:intoHead" />
+    <style type="text/css">
+        /*上传图片css*/
+        #js_imgBox{position: relative; height: 120px;}
+        #js_imgBox .js_img{position: relative; float: left; width: 100px; height: 100px; cursor: move; margin-right: 20px;}
+        #js_imgBox .js_img img{width: 100px; height: 100px;}
+        #js_imgBox .js_img a{position:absolute; right:-14px; top:-8px; font-size: 14px; color: #000;}
+
+        #js_imgBox_shop{position: relative; height: 120px;}
+        #js_imgBox_shop .js_img_shop{position: relative; float: left; width: 100px; height: 100px; cursor: move; margin-right: 20px;}
+        #js_imgBox_shop .js_img_shop img{width: 100px; height: 100px;}
+        #js_imgBox_shop .js_img_shop a{position:absolute; right:-14px; top:-8px; font-size: 14px; color: #000;}
+    </style>
+    <script type="text/javascript" src="/Public/Js/Admin/linkSelecter.js"></script>
+</head>
+<body>
+    <div class="wrap">
+
+        <div class="mainBody">
+            <div id="Right" style="width:100%;">
+                <div class="contentArea">
+                    <div class="Item hr">
+                        <div class="current">新增用户</div>
+                    </div>
+                    <form action="" method="post" id="js_access_add_form" enctype="multipart/form-data">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+                            <tr>
+                                <th><font color="red">* </font>用户角色</th>
+                                <td>
+                                    <select id="role_id" name="role_id" style="width: 270px;">
+                                    <option value="" >请选择</option>
+                                    <foreach name="info.roleOption" item="vo">
+                                        <option value="{$key}" <if condition="$Think.get.role_id eq $key"> selected ="selected" </if>>{$vo}</option>
+                                    </foreach>
+                                    </select>
+
+                                </td>
+                            </tr>
+
+                            <tr id="company_tag">
+                                <th><font color="red">* </font>状态</th>
+                                <td>
+                                    <select name="status" style="width: 270px;">
+                                        <option value="1" selected>启用</option>
+                                        <option value="2">禁用</option>
+                                    </select>
+                                    如果禁用了将无法登陆本系统</td>
+                            </tr>
+
+
+                            <tr class="supplier" style="display:none;">
+                                <th width="120"><font color="red">* </font>供应商名称</th>
+                                <td><input name="supplier_name" type="text" class="input" size="40" /></td>
+                            </tr>
+
+                            <!-- 所属供应商在下面js里控制 -->
+                            <!-- 所属分公司在下面js里控制 -->
+
+                            <tr  class="company" style="display:none;">
+                                <th width="120"><font color="red">* </font>分公司名称</th>
+                                <td><input name="company_name" type="text" class="input" size="40" /></td>
+                            </tr>
+
+                            <tr id="" class="shop" style="display:none;">
+                                <th width="120"><font color="red">* </font>实体店名称</th>
+                                <td><input name="shop_name" type="text" class="input" size="40" /></td>
+                            </tr>
+
+                            <tr class="supplier company shop" style="display:none;">
+                                <th width="120"><font color="red">* </font>所在城市</th>
+                                <td>
+                                    <select id="province_id" name="province_id" style="width: 130px;">
+                                    <option value="" >请选择</option>
+                                    <foreach name="info.province" item="vo">
+                                        <option value="{$vo.id}">{$vo.name}</option>
+                                    </foreach>
+                                    </select>
+
+                                    <select id="city_id" name="city_id" style="width: 130px;">
+                                    <option value="" >请选择</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr class="supplier" style="display:none;">
+                                <th width="120"><font color="red">* </font>所属地方站</th>
+                                <td>
+                                    <select id="local_station_id" name="local_station_id" style="width: 130px;">
+                                        <option value="" >请选择</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr class="supplier company shop" style="display:none;">
+                                <th width="120"><font color="red">* </font>办公地址</th>
+                                <td><input name="office_address" type="text" class="input" size="40" /></td>
+                            </tr>
+
+                            <tr class="shop" style="display:none;">
+                                <th width="120"><font color="red">* </font>经纬度</th>
+                                <td>
+                                    <input placeholder="116.446904,39.893018" name="longitude_latitude" type="text" class="input" size="40" />
+                                    &nbsp;&nbsp;
+                                    <a class="btn quickSubmit" href="http://lbs.amap.com/console/show/picker" target="_blank">获取工具</a>
+                                    </br>
+                                    填入格式:经度,纬度,如116.446904,39.893018
+                                </td>
+                            </tr>
+
+                            <tr class="js_selecter_start" style="height:0;"></tr>
+                            <tr class="shop" style="display:none;">
+                                <th width="100">添加经营项目</th>
+                                <td>
+                                    <input id="js_add_btn" class="btn" type="button" value="添加经营项目" />
+                                </td>
+                            </tr>
+
+                            <tr class="shop" style="display:none;">
+                                <th width="120"><font color="red">* </font>经营品牌</th>
+                                <td>
+                                    <span >
+                                    <volist name="info.brand_list" id="vo">
+                                        <label>
+                                        <input name="brand[]" type="checkbox" class="input brand" size="40" value="{$vo.id}"/>{$vo.name}&nbsp;&nbsp;
+                                        </label>
+                                        <if condition="(($key+1)%10 eq 0)"></br></if>
+                                    </volist>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr class="supplier company shop" style="display:none;">
+                                <th width="120">企业资质</th>
+                                <td>
+                                    <p id="J_upload_img">
+                                            <span style="border:1px solid #000; padding:2px;">添加图片</span>
+                                    </p>
+                                    <p id="js_numImg">
+                                        <em>0</em>张图片待上传！您已成功上传<em>0</em>张图片！
+                                    </p>
+                                    <div class="clearfix" id="js_imgBox" style="display:none;"></div>
+                                </td>
+                            </tr>
+
+                            <tr class="shop" style="display:none;">
+                                <th width="120"><font color="red">* </font>实体店宣传图</th>
+                                <td>
+                                    <p id="J_upload_img_shop">
+                                            <span style="border:1px solid #000; padding:2px;">添加图片</span>
+                                    </p>
+                                    <p id="js_numImg_shop">
+                                        <em>0</em>张图片待上传！您已成功上传<em>0</em>张图片！
+                                    </p>
+                                    <div class="clearfix" id="js_imgBox_shop" style="display:none;"></div>
+                                </td>
+                            </tr>
+                            <if condition="$is_shg_operator eq 1">
+                                <tr class="shop" style="display:none;">
+                                    <th width="120"><font color="red">* </font>实体店序号</th>
+                                    <td><input name="shop_sort" value="" type="text" class="input" size="40" /></td>
+                                </tr>
+                            </if>
+                            <tr class="supplier" style="display:none;">
+                                <th width="120"><font color="red">* </font>平台扣点</th>
+                                <td><input name="platform_rate" type="text" class="input" size="40" />%</td>
+                            </tr>
+
+
+                            <tr >
+                                <th width="120"><font color="red">* </font>姓名</th>
+                                <td><input name="name" type="text" class="input" maxlength="10" size="40" value="{$info.name}" />作为后台登录用户名</td>
+                            </tr>
+
+                            <tr >
+                                <th width="120"><font color="red">* </font>邮箱</th>
+                                <td><input name="email" type="text" class="input" maxlength="50" size="40" value="{$info.email}" /></td>
+                            </tr>
+
+                            <tr >
+                                <th width="120"><font color="red">* </font>手机号</th>
+                                <td>
+                                    <input name="tel" type="text" class="input" maxlength="11" size="40" value="{$info.email}" /></td>
+                            </tr>
+
+                            <tr >
+                                <th width="120"><font color="red">* </font>登录密码</th>
+                                <td><input name="pwd" type="text" class="input" maxlength="18" size="40" value="" />密码必须为6-18位英文或数字</td>
+                            </tr>
+
+                            <tr class="platform" style="display:none;">
+                                <th><font color="red">* </font>所属部门</th>
+                                <td>
+                                    <select name="department" style="width: 270px;">
+                                        <option value="1" selected>到家服务部</option>
+                                        <option value="2">产品部</option>
+                                        <option value="3">技术部</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="supplier" style="display:none;">
+                                <th width="120"><font color="red">* </font>银行帐号类型</th>
+                                <td>
+                                    <volist name="info.bank_type" id="vo">
+                                    <label>
+                                        <input class="info_type" type="radio" name="bank_type" <if condition="$key eq 1"> checked="checked"</if> value="{$key}" /> {$vo}
+                                    </label>
+                                    </volist>
+                                </td>
+                            </tr>
+                            <tr class="supplier" style="display:none;">
+                                <th width="120"><font color="red">* </font>开户行</th>
+                                <td><input name="bank_deposit" type="text" class="input" size="40" /></td>
+                            </tr>
+                            <tr class="supplier" style="display:none;">
+                                <th width="120"><font color="red">* </font>开户行省</th>
+                                <td><input name="bank_province" type="text" class="input" size="40" />省</td>
+                            </tr>
+                            <tr class="supplier" style="display:none;">
+                                <th width="120"><font color="red">* </font>开户行市</th>
+                                <td><input name="bank_city" type="text" class="input" size="40" />市</td>
+                            </tr>
+                            <tr class="supplier" style="display:none;">
+                                <th width="120"><font color="red">* </font>支行名称</th>
+                                <td><input name="bank_branch" type="text" class="input" size="40" /></td>
+                            </tr>
+                            <tr class="supplier" style="display:none;">
+                                <th width="120"><font color="red">* </font>银行账户名称</th>
+                                <td><input name="bank_name" type="text" class="input" size="40" /></td>
+                            </tr>
+                            <tr class="supplier" style="display:none;">
+                                <th width="120"><font color="red">* </font>账号</th>
+                                <td><input name="bank_num" type="text" class="input" size="40" /></td>
+                            </tr>
+
+                        </table>
+
+                    </form>
+                    <div class="commonBtnArea" style="width:95%;">
+                        <button class="btn submit">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+<js href="__PUBLIC__/Js/fileuploader.js"/>
+<script type="text/javascript">
+
+    // 控制不同的角色显示不同的input
+    //var map = {"2":"platform", "3":"supplier", "4":"company", "5":"shop","6" : "teacher"};
+    var map = {"2":"jigou", "3":"student", "4":"teacher", "5":"xiaowai","6" : "huiyishi","7":"huiyi","8":"qita"};
+
+    //刷新的时候正常显示
+    var onId = map[$("#role_id").val()];
+
+
+    if(onId == 'company' && $("#company").html() == null){
+        getOwnerSupplier($("#role_id").val());
+    }else if(onId == 'shop' && $("#company").html() == null){
+        getOwnerSupplier($("#role_id").val());
+        setTimeout("getOwnerCompany($('#role_id').val())", 200);
+        // getOwnerCompany($("#role_id").val());
+    }else if(onId == 'supplier'){
+        getLocalStation();
+    }
+
+    $("."+onId).show();
+
+    //选择用户角色的时候,切换显示
+    $("#role_id").bind("change", function(){
+        var divId = map[this.value];
+        // $(map数组里,除了divId的).hide();
+        $.each(map,function(n,value){
+                if(value != divId){
+                    $("."+value).hide();
+                }
+            }
+        );
+        $("."+divId).show();
+
+        if(divId == 'company' && $("#company").html() == null){
+            getOwnerSupplier(this.value);
+        }else if(divId == 'shop' && $("#company").html() == null){
+            getOwnerSupplier(this.value);
+            setTimeout("getOwnerCompany("+this.value+")", 200);
+            addLink();
+        }else if(divId == 'supplier'){
+            getLocalStation();
+        }
+
+    });
+
+    var province_id = $("#province_id").val();
+    if(province_id > 0){
+        getCitys(province_id);
+    }
+
+    //省份
+    $("#province_id").bind("change", function(){
+        getCitys(this.value);
+    });
+
+    //城市
+    $("#city_id").bind("change", function(){
+        if(this.value != ''){
+            //写入cookie以便刷新后自动选择
+            writeCookie("shg_access_city_id", this.value, 0.5, true);
+        }
+    });
+
+    function getLocalStation(){
+        $.get("/Admin/Access/getLocalStation",function(data){
+            if(data){
+                    $("#local_station_id").empty();
+                    tmpDom = '<option value="">请选择</option>';
+                        $.each(data,function(n,value){
+                                tmpDom += '<option value="'+n+'">'+value+'</option>';
+                            }
+                        );
+                    $("#local_station_id").append(tmpDom);
+            }else{
+
+            }
+
+        },"json");
+    }
+
+    function getCitys(n){
+        $.get("/Admin/Access/getCityByProvinceId?province_id="+n,function(data){
+            if(data.status){
+                    $("#city_id").empty();
+                    tmpDom = '<option value="">请选择</option>';
+                    //读cookie,有值则设为选中状态
+                    var city_id = readCookie("shg_access_city_id");
+                    if(data.data){
+                        $.each(data.data,function(n,value){
+                                if(city_id>0 && city_id == value.id){
+                                    tmpDom += '<option value="'+value.id+'" selected>'+value.name+'</option>';
+                                }else{
+                                    tmpDom += '<option value="'+value.id+'">'+value.name+'</option>';
+                                }
+                            }
+                        );
+                    }
+                    $("#city_id").append(tmpDom);
+            }else{
+
+            }
+
+        },"json");
+    }
+
+    function getCompany(n){
+        $.get("/Admin/Access/getOwnerCompany?role_id=3&supplier_id="+n,function(data){
+            if(data.status){
+                    $("#company_id").empty();
+                    tmpDom = '<option value="">请选择</option>';
+                    if(data.data.list){
+                        $.each(data.data.list,function(n,value){
+
+                            tmpDom += '<option value="'+value.id+'">'+value.business_name+'</option>';
+                            }
+                        );
+                    }
+                    $("#company_id").append(tmpDom);
+
+
+            }else{
+
+            }
+
+        },"json");
+    }
+
+    function getOwnerCompany(n){
+        $.get("/Admin/Access/getOwnerCompany?role_id="+n+"&supplier_id={$info.supplier_id}",function(data){
+            if(data.status){
+                //禁用的
+                if(data.data.is_disabled == 1){
+                    var tmpDom = $('<tr id="shop" class="shop"><th width="120"><font color="red">* </font>所属分公司</th><td><select  disabled name="company_id" id="company_id" style="width: 270px;"><option value="'+data.data.list.id+'">'+data.data.list.business_name+'</option></select></td></tr>');
+                    $("#company").after(tmpDom);
+                }else{
+
+                    var tempstr = '<tr id="shop" class="shop"><th width="120"><font color="red">* </font>所属分公司</th><td><select name="company_id" id="company_id" style="width: 270px;"><option value="">请选择</option>';
+                    $.each(data.data.list,function(n,value){
+                        tempstr += '<option value="'+value.id+'">'+value.business_name+'</option>';
+                        }
+                    );
+                    tempstr += '</select></td></tr>';
+                    var tmpDom = $(tempstr);
+                    $("#company").after(tmpDom);
+                }
+
+            }else{
+
+            }
+
+        },"json");
+    }
+
+    function getOwnerSupplier(n){
+        $.get("/Admin/Access/getOwnerSupplier?role_id="+n,function(data){
+            if(data.status){
+                //禁用的
+                if(data.data.is_disabled == 1){
+                    var tmpDom = $('<tr id="company"  class="company shop"><th width="120"><font color="red">* </font>所属供应商</th><td><select  disabled name="supplier_id" id="supplier_id" style="width: 270px;"><option value="'+data.data.list.id+'">'+data.data.list.business_name+'</option></select></td></tr>');
+                    $("#company_tag").after(tmpDom);
+                }else{
+
+                    var tempstr = '<tr id="company"  class="company shop"><th width="120"><font color="red">* </font>所属供应商</th><td><select name="supplier_id" id="supplier_id" style="width: 270px;" onchange="javascript:getCompany(this.value)"><option value="">请选择</option>';
+                    $.each(data.data.list,function(n,value){
+                        tempstr += '<option value="'+value.id+'">'+value.business_name+'</option>';
+                        }
+                    );
+                    tempstr += '</select></td></tr>';
+                    var tmpDom = $(tempstr);
+                    $("#company_tag").after(tmpDom);
+                }
+
+            }else{
+
+            }
+
+        },"json");
+    }
+
+    $(".submit").click(function(){
+        var type = map[$('#role_id option:selected').val()];
+
+        if($.trim($("input[name='name']").val())==''){
+            popup.alert("负责人姓名不能为空");
+            return false;
+        }
+        if(!isEmail($("input[name='email']").val())){
+            popup.alert("负责人邮箱错误");
+            return false;
+        }
+        if(!isTel($("input[name='tel']").val())){
+            popup.alert("手机号格式错误");
+            return false;
+        }
+        if($.trim($("input[name='pwd']").val())=='' || $.trim($("input[name='pwd']").val().length) <6 || $.trim($("input[name='pwd']").val().length) >18){
+            popup.alert("密码必须为6-18位英文或数字");
+            return false;
+        }
+        switch(type){
+            case 'jigou' :
+                break;
+            case 'student' :
+                break;
+            case 'teacher' :
+                break;
+            case 'xiaowai' :
+                break;
+            case 'huiyishi' :
+                break;
+            case 'huiyi' :
+                break;
+            case 'qita' :
+                break;
+            case 'platform':
+                break;
+            case 'supplier':
+                if($.trim($("input[name='supplier_name']").val())==''){
+                    popup.alert("供应商名称不能为空");
+                    return false;
+                }
+                if($('#city_id option:selected').val()==''){
+                    popup.alert("请选择所在城市");
+                    return false;
+                }
+                if($('#local_station_id option:selected').val()==''){
+                    popup.alert("请选择所属地方站");
+                    return false;
+                }
+                if($.trim($("input[name='office_address']").val())==''){
+                    popup.alert("办公地址不能为空");
+                    return false;
+                }
+                var platform_rate = $("input[name='platform_rate']").val();
+                if($.trim(platform_rate)==''){
+                    popup.alert("平台扣点不能为空");
+                    return false;
+                }
+                if(isNaN(platform_rate)){
+                    popup.alert("平台扣点必须是数字");
+                    return false;
+                }else{
+                    if(platform_rate <0){
+                        popup.alert("平台扣点必须大于0");
+                        return false;
+                    }
+                    var platform_rate_dot = platform_rate.indexOf(".");
+                    if(platform_rate_dot != -1){
+                        var dotCnt = platform_rate.substring(platform_rate_dot+1,platform_rate.length);
+                        if(dotCnt.length > 2){
+                            popup.alert("平台扣点只能是两位小数");
+                            return false;
+                        }
+                    }
+                }
+
+                if($.trim($("input[name='bank_deposit']").val())==''){
+                    popup.alert("开户行不能为空");
+                    return false;
+                }
+                if($.trim($("input[name='bank_province']").val())==''){
+                    popup.alert("开户行省不能为空");
+                    return false;
+                }
+                if($.trim($("input[name='bank_city']").val())==''){
+                    popup.alert("开户行市不能为空");
+                    return false;
+                }
+                if($.trim($("input[name='bank_branch']").val())==''){
+                    popup.alert("支行名称不能为空");
+                    return false;
+                }
+                if($.trim($("input[name='bank_name']").val())==''){
+                    popup.alert("银行账户名称不能为空");
+                    return false;
+                }
+                if($.trim($("input[name='bank_num']").val())==''){
+                    popup.alert("账号不能为空");
+                    return false;
+                }
+                break;
+            case 'company':
+                if($('#supplier_id option:selected').val()==''){
+                    popup.alert("请选择所属供应商");
+                    return false;
+                }
+                if($.trim($("input[name='company_name']").val())==''){
+                    popup.alert("分公司名称不能为空");
+                    return false;
+                }
+                if($('#city_id option:selected').val()==''){
+                    popup.alert("请选择所在城市");
+                    return false;
+                }
+                if($.trim($("input[name='office_address']").val())==''){
+                    popup.alert("办公地址不能为空");
+                    return false;
+                }
+                break;
+            case 'shop':
+                if($('#supplier_id option:selected').val()==''){
+                    popup.alert("请选择所属供应商");
+                    return false;
+                }
+                if($('#company_id option:selected').val()==''){
+                    popup.alert("请选择所属分公司");
+                    return false;
+                }
+                if($.trim($("input[name='shop_name']").val())==''){
+                    popup.alert("实体店名称不能为空");
+                    return false;
+                }
+                if($('#city_id option:selected').val()==''){
+                    popup.alert("请选择所在城市");
+                    return false;
+                }
+                if($.trim($("input[name='office_address']").val())==''){
+                    popup.alert("办公地址不能为空");
+                    return false;
+                }
+                if($.trim($("input[name='longitude_latitude']").val())==''){
+                    popup.alert("经纬度不能为空");
+                    return false;
+                }
+                var cate_object = $("input[name='cate[]']");
+                $.each(cate_object,function(n,value){
+                        if($(value).val() == ''){
+                            popup.alert("请选择经营类别");
+                        }
+                    }
+                );
+
+                if($("input[type='checkbox']:checked").length == 0){
+                    popup.alert("请至少选择一个经营品牌");
+                    return false;
+                }
+
+                if($.trim($("input[name='advertising_map']").val())==''){
+                    popup.alert("请上传实体店宣传图");
+                    return false;
+                }
+
+                var shop_sort = <?php echo $is_shg_operator;?>;
+                if(shop_sort == 1){
+                    if($.trim($("input[name='shop_sort']").val())==''){
+                        popup.alert("实体店序号不能为空");
+                        return false;
+                    }
+                    if($.trim($("input[name='shop_sort']").val()) <0){
+                        popup.alert("实体店序号必须大于0");
+                        return false;
+                    }
+                }
+
+                break;
+            default:
+                popup.alert("请选择正确的用户角色");
+                return false;
+        }
+
+        $("#supplier_id").removeAttr("disabled");
+        $("#company_id").removeAttr("disabled");
+        commonAjaxSubmit();
+    });
+
+
+/****************经营项目 start*********************/
+    var once_cate_del = false;
+    var ID_ACTION = "";
+
+    // 生成随机类名
+    var strRandom = "qwertyuioplkjhgfdsazxcvbnm";
+    function getRamdomStr(){
+        var str = "", len = strRandom.length,
+        index = Math.floor(len*Math.random());
+        str = strRandom.substring(index-1,index);
+        return str;
+    }
+    function generateClassName(){
+        var arr = [];
+        for(var i = 0; i< 12; i++){
+            arr.push(getRamdomStr());
+        }
+        return arr.join("");
+    }
+
+    //需要引入js文件
+    function addLink(default_settings){
+        // 没有默认数据页面
+        var className = generateClassName(), classNames = [];
+        // 生成类名组
+        for(var i = 1; i <= 2; i ++){
+            classNames.push(className+"_"+i);
+        }
+        // 生成name组
+        var cate_name = 'cate[]';
+        // 准备模板参数
+        var params = {
+            "cate_name" : cate_name,
+            "class1" : className+" "+classNames[0],
+            "class2" : className+" "+classNames[1],
+            "cate_del": once_cate_del ? '<a href="javascript:;" class="js_cate_del" style="margin-left:10px;">删除此类别及品牌</a>' : ""
+        };
+        var tmpDom = $('<tr class="js_select_cate shop"><th width="100"><strong class="utype utype1 utype2 utype3 utype4"><font color="red">* </font></strong>经营类别</th><td><select style="width: 130px;" name="" class="'+params.class1+'"><option value=""></option></select>&nbsp;&nbsp;<select style="width: 130px;" name="" class="'+params.class2+'"><option value=""></option></select><input type="hidden" value="" name="'+params.cate_name+'">'+params.cate_del+'</td></tr><tr style="height:0;"></tr>');
+        $(".js_selecter_start").before(tmpDom);
+
+        once_cate_del = true;
+        if(default_settings){
+            // 有默认数据页面
+            var config = {
+                "obj" : $('.'+className), // 联动共用的
+                "type" : 0,
+                "group" :[$('.'+classNames[0]),$('.'+classNames[1])],
+                "selected" : default_settings,
+            };
+
+            linkAreaOption.init(config);
+
+        }else{
+            // 没有默认数据页面
+            var config = {
+                "obj" : $('.'+className), // 联动共用的
+                "type" : 0,
+                "group" :[$('.'+classNames[0]),$('.'+classNames[1])],
+
+            };
+            linkAreaOption.init(config);
+
+        }
+
+    }
+
+    if(onId == 'shop'){
+        addLink();
+    }
+
+    $("#js_add_btn").click(function(){
+        addLink();
+    });
+    $("#js_access_add_form").on("click",".js_cate_del",function(){
+        if(window.confirm("确定要删除吗？")){
+            $(this).parents("tr").next().remove();
+            $(this).parents("tr").remove();
+        }
+    });
+
+/****************经营项目 end*********************/
+
+/****************图片上传 start*********************/
+var $img_num = $('#js_numImg em');
+var $img_box = $('#js_imgBox');
+var imgSrcCount = 0;//传给后台的参数后面计数器
+var uploader = new qq.FileUploaderBasic({
+    allowedExtensions: ['jpg','gif','jpeg','png'],
+    button: document.getElementById('J_upload_img'),
+    //multiple: false,
+    multiple: true,
+    //action: "{:U('Goods/doUpload')}",
+    action:     '/Admin/Access/doUpload',
+    inputName: 'Filedata',
+    forceMultipart: true, //用$_FILES
+    messages: {
+        typeError: '不允许上传的文件类型！',
+        sizeError: '文件大小不能超过4M！',
+        minSizeError: '文件大小不能小于0！',
+        emptyError: '请文件为空，请重新选择！',
+        noFilesError: '没有选择要上传的文件！',
+        onLeave: '正在上传文件，离开此页将取消上传！'
+    },
+    showMessage: function(message){
+        popup.error(message);
+
+    },
+    onSubmit: function(id, fileName){
+        $('#J_upload_img').find('span').text('正在上传ING');
+    },
+    onComplete: function(id, fileName, result){
+        $('#J_upload_img').find('span').text('上传照片');
+
+        if(result.status == '1'){
+            $($img_box).show();
+            data(result.data.info.src,result.data.info.src_all_small_path)
+
+        } else {
+            popup.error(result.data.msg);
+
+        }
+    }
+});
+
+function data(src,src_all_small_path){
+    var oDiv = $('<div class="js_img"><img><input type="hidden" name="filedata['+(++imgSrcCount)+']" value=""/><a href="javascript:;">X</a></div>');
+
+    $img_box.append(oDiv);
+    var num = $img_num.html();
+    $img_num.html(num-0+1);
+
+    var img = oDiv.find('img');
+    var close = oDiv.find('a');
+    var input = oDiv.find('input');
+    img.attr('src',src_all_small_path);
+
+
+    //清缓存
+    setTimeout(function (){
+        img.attr('src',src_all_small_path + '?x=1');
+    }, 300);
+
+    input.val(src);
+    close.click(function (){
+        $(this).parent().remove();
+        var num = $img_num.html();
+        $img_num.html(num-1);
+
+    });
+}
+
+/****************图片上传 end*********************/
+
+/****************实体店宣传图上传 start*********************/
+var $img_num_shop = $('#js_numImg_shop em');
+var $img_box_shop = $('#js_imgBox_shop');
+var uploader = new qq.FileUploaderBasic({
+    allowedExtensions: ['jpg','gif','jpeg','png'],
+    button: document.getElementById('J_upload_img_shop'),
+    //multiple: false,
+    multiple: true,
+    //action: "{:U('Goods/doUpload')}",
+    action:     '/Admin/Access/doUpload',
+    inputName: 'Filedata',
+    forceMultipart: true, //用$_FILES
+    messages: {
+        typeError: '不允许上传的文件类型！',
+        sizeError: '文件大小不能超过4M！',
+        minSizeError: '文件大小不能小于0！',
+        emptyError: '请文件为空，请重新选择！',
+        noFilesError: '没有选择要上传的文件！',
+        onLeave: '正在上传文件，离开此页将取消上传！'
+    },
+    showMessage: function(message){
+        popup.error(message);
+
+    },
+    onSubmit: function(id, fileName){
+        if($('.js_img_shop').html() != null){
+            alert('只能上传一张实体店宣传图');
+            return false;
+        }
+        $('#J_upload_img_shop').find('span').text('正在上传ING');
+    },
+    onComplete: function(id, fileName, result){
+        $('#J_upload_img_shop').find('span').text('上传照片');
+
+        if(result.status == '1'){
+            $($img_box_shop).show();
+            data_shop(result.data.info.src,result.data.info.src_all_small_path)
+
+        } else {
+            popup.error(result.data.msg);
+
+        }
+    }
+});
+
+function data_shop(src,src_all_small_path){
+    var oDiv = $('<div class="js_img_shop"><img><input type="hidden" name="advertising_map" value=""/><a href="javascript:;">X</a></div>');
+
+    $img_box_shop.append(oDiv);
+    var num = $img_num_shop.html();
+    $img_num_shop.html(num-0+1);
+
+    var img = oDiv.find('img');
+    var close = oDiv.find('a');
+    var input = oDiv.find('input');
+    img.attr('src',src_all_small_path);
+
+
+    //清缓存
+    setTimeout(function (){
+        img.attr('src',src_all_small_path + '?x=1');
+    }, 300);
+
+    input.val(src);
+    close.click(function (){
+        $(this).parent().remove();
+        var num = $img_num_shop.html();
+        $img_num_shop.html(num-1);
+
+    });
+}
+/****************实体店宣传图上传 end*********************/
+
+/****************cookie操作 start*********************/
+//保存cookie值
+function writeCookie(name, value, hours, escp) {
+    var expire = "";
+    if (hours != null) {
+        expire = new Date((new Date()).getTime() + hours * 3600000);
+        expire = "; expires=" + expire.toGMTString();
+    }
+    if (escp == "True") {
+        document.cookie = name + "=" + value + expire;
+    } else {
+        document.cookie = name + "=" + escape(value) + expire;
+    }
+}
+//获取cookie值
+function readCookie(name) {
+    var cookieValue = "";
+    var search = name + "=";
+    if (document.cookie.length > 0) {
+        offset = document.cookie.indexOf(search);
+        if (offset != -1) {
+            offset += search.length;
+            end = document.cookie.indexOf(";", offset);
+            if (end == -1) end = document.cookie.length;
+            cookieValue = unescape(document.cookie.substring(offset, end))
+        }
+    }
+
+
+    return cookieValue;
+}
+/****************cookie操作 end*********************/
+</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.tabletime{display:inline-block; margin-top: -3px;}
+.tabletime input{width: 125px;}
+.timepick{ width: 273px; padding:10px; font-family: "微软雅黑";border-radius: 6px;}
+.timepick select{ width: 50px; display: inline-block;margin: 0 5px;font-size: 14px;}
+.timepick td{font-size: 14px;font-family: "微软雅黑";}
+.timepick td a{ display: block;font-family: "微软雅黑"; width: 100px; height: 30px; line-height: 30px; text-align: center; font-size: 16px;border: 1px solid #28BADF; color: #fff;border-radius: 6px; margin-left: 5px;}
+left: 5px;}

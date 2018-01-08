@@ -1,0 +1,29 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<span>
+		<select name="cate_1" class="selecter selecter1">
+        </select>
+		<select name="cate_2" class="selecter selecter2">
+        </select>
+		<select name="cate_3" class="selecter selecter3">
+        </select>
+	</span>
+<script type="text/javascript" src="/Public/Js/201505/jquery-min.js"></script>
+<script type="text/javascript" src="/Public/Js/201505/linkSelecter.js"></script>
+<script type="text/javascript" >
+    var cate_1 = '<?php echo I('cate_1') ;?>';
+    var cate_2 = '<?php echo I('cate_2') ;?>';
+    var cate_3 = '<?php echo I('cate_3') ;?>';
+    if(cate_1=="请选择"){
+        cate_2 = '';
+        cate_3 = '';
+    }
+    var config = {
+        "obj" : $('.selecter'), // 联动共用的
+        "type" : 0,
+        "group" :[$('.selecter1'),$('.selecter2'),$('.selecter3')]
+    };
+    if(cate_1 && cate_2 && cate_3 ){
+        config.selected = [{'value':cate_1,'text':''},{'value':cate_2,'text':''},{'value':cate_3,'text':''}]
+    }
+    linkAreaOption.init(config);
+</script>

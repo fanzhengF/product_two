@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{$result['business_name']}{$WebTitle}</title>
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=1080,user-scalable=no,target-densityDpi=device-dpi"/>
+</head>
+<body onload="document.getElementById('shgpayform').submit();">
+		<form id="shgpayform" action="{$pay_url}" method="post">
+		    <foreach name="postData" key="keyname" item="keyval">
+		     <input type="hidden" name="{$keyname}" value="{$keyval}" />   
+		    </foreach>
+		</form>
+	</div>
+</body>
+</html>

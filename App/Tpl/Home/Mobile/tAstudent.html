@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/hstyle.css">
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+<title>{$home_name}</title>
+</head>
+<body class="bgCF7FBF paddtop" style="padding-bottom: 1.55rem;">
+	<div class="zxq_one">
+		<a href="javascript:history.back(-1)" class="a"><img src="__PUBLIC__/Images/Home/mobile/backs.png"></a>
+		<div class="new_one con_box">收件人选择<a href="javascript:;" class="fr"><img src="__PUBLIC__/Images/Home/mobile/write.png" width="16" height="16"></a></div>
+	</div><!--zxq_one end-->
+	<div class="hinput_search con_box">
+		<input type="text" placeholder="输入关键词搜索" class="con_box" id="email_search1">
+	</div>
+	<div class="htabhuan">
+		<form method="get" action="{:U('Mobile/sendmess')}">
+		<div style="display: block;" class="htab_div con_box">
+			<ul class="htab_ul">
+				<if condition="$listT">
+					<volist name="listT" id="vo">
+						<li class="cf">
+							<label class="fl lab1"><input type="checkbox" name="e_sid[]" value="{$vo['t_no']}" class="fl check_in1 check_in"/><span class="fl">{$vo['t_name']}</span></label>
+							<label class="fl zhiye">老师</label>
+							<label class="fl lab2">&nbsp;{$vo['t_sex']}</label>
+							<label class="fl lab3" title="{$vo['t_no']}">&nbsp;{$vo['t_no']|substr=0,10}</label>
+							<label class="fl banji no_wrap"></label>
+						</li>
+					</volist>
+				</if>
+
+
+				<if condition="$listS">
+					<volist name="listS" id="vo">
+						<li class="cf">
+							<label class="fl lab1"><input type="checkbox" name="e_sid[]" value="{$vo['s_no']}" class="fl check_in1 check_in"/><span class="fl">{$vo['s_name']}</span></label>
+							<label class="fl zhiye">学生</label>
+							<label class="fl lab2">&nbsp;{$vo['s_sex']}</label>
+							<label class="fl lab3" title="{$vo['s_no']}">&nbsp;{$vo['s_no']|substr=0,10}</label>
+							<label class="fl banji no_wrap"></label>
+						</li>
+					</volist>
+				</if>
+
+
+
+			</ul>
+			<div class="check_alls cf con_box">
+				<input type="checkbox" class="fl check_all1 check_all"/>
+				<span class="fl">全选<span class="gongji">共计：
+					<if condition="$pageT">
+						{$pageT}
+					</if>
+					  <if condition="$pageS">
+						{$pageS}
+					</if>
+				</span></span>
+				<input type="submit" value="确定" class="bot_yes fr" name="">
+			</div>
+		</div>
+		</form>
+	</div>
+	<!--搜索弹窗-->
+<form action="?" method="get" class="mess_form">
+	<div class="search_tan search_tana">
+		<div class="cf sear_top con_box sear_topa">
+			<input type="text" placeholder="输入关键词搜索" class="con_box email_search2 fl" id="email_search2" readonly>
+			<a href="javascript:;" class="fl sear_quxiao">取消</a>
+		</div>
+		<ul id="search_results" class="con_box search_results">
+			<li class="cf con_box">
+				<img src="__PUBLIC__/Images/Home/mobile/xiao1.png" width="14" height="13" class="fl">
+				<label class="fl sear_lab">编号：</label>
+				<input type="text" class="fl bianhao" placeholder="请输入编号" value="" name="bianma">
+			</li>
+			<li class="cf con_box">
+				<img src="__PUBLIC__/Images/Home/mobile/xiao2.png" width="15" height="12" class="fl">
+				<label class="fl sear_lab">姓名：</label>
+				<input type="text" class="fl xingming" placeholder="请输入姓名" value="" name="name">
+			</li>
+			<li class="cf con_box">
+				<img src="__PUBLIC__/Images/Home/mobile/xiao3.png" width="14" height="14" class="fl">
+				<label class="fl sear_lab">用户：</label>
+				<select name="user" class="fl yonghu">
+					<option value="2">教师</option>
+					<option value="3">学生</option>
+				</select>
+			</li>
+			<li class="cf con_box">
+				<img src="__PUBLIC__/Images/Home/mobile/xiao4.png" width="14" height="16" class="fl">
+				<label class="fl sear_lab">性别：</label>
+				<select name="sex" class="fl xingbie">
+					<option value="">全部</option>
+					<option value="男">男</option>
+					<option value="女">女</option>
+				</select>
+			</li>
+			<li class="cf con_box">
+				<img src="__PUBLIC__/Images/Home/mobile/xiao5.png" width="14" height="10" class="fl">
+				<label class="fl sear_lab">院系：</label>
+				<select class="fl yuanxi" name="department">
+					<option value="无">全部</option>
+					<volist name="MDaLL" id="vo">
+						<option value="{$vo.d_name}">{$vo.d_name}</option>
+					</volist>
+				</select>
+			</li>
+			<li class="cf con_box">
+				<img src="__PUBLIC__/Images/Home/mobile/xiao6.png" width="14" height="12" class="fl">
+				<label class="fl sear_lab">用户：</label>
+				<input type="text" class="fl weixin" placeholder="请输入微信号" value="" name="weixin">
+			</li>
+			<li class="ti_mess"></li>
+		</ul>
+		<input type="submit" value="搜索" class="sear_sou">
+	</div><!--search_tana-->
+</form>
+<script type=" text/javascript">
+	$(function(){
+		$('#email_search1').click(function(){
+			$('.search_tan').show();
+			$('.hinput_search,.htab_div').hide();
+		})
+		//点击取消
+		$('.sear_quxiao').click(function(){
+			$('.search_tan').hide();
+			$('.hinput_search,.htab_div').show();
+		})
+		//全选
+		$('.check_in').click(function(){
+			if ($(this).hasClass('input_cur')) {
+				$(this).prop('checked',false);
+				$(this).removeClass('input_cur');
+			}else{
+				$(this).prop('checked',true)
+				$(this).addClass('input_cur');
+			}
+		})
+	});
+	$(document).on('click','.check_all1',function(){
+		if ($(this).is(':checked')) {
+			$(this).addClass('input_cur');
+			$('.check_in1').each(function(){  
+                $(this).prop("checked",true); 
+                $(this).addClass('input_cur'); 
+            }) 
+		}else{
+			$(this).removeClass('input_cur');
+			$('.check_in1').each(function(){  
+                $(this).prop("checked",false); 
+                $(this).removeClass('input_cur'); 
+            }) 
+		}
+    })
+    $(document).on('click','.check_all2',function(){
+		if ($(this).is(':checked')) {
+			$(this).addClass('input_cur');
+			$('.check_in2').each(function(){  
+                $(this).prop("checked",true); 
+                $(this).addClass('input_cur'); 
+            }) 
+		}else{
+			$(this).removeClass('input_cur');
+			$('.check_in2').each(function(){  
+                $(this).prop("checked",false); 
+                $(this).removeClass('input_cur'); 
+            }) 
+		}
+    })
+</script>	
+</body>
+</html>

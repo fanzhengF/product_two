@@ -1,0 +1,34 @@
+.hinput_search{width:100%;height: 1.01rem;background: #F3F3F3;padding:0 0.4rem;}
+.hinput_search input{width:9.17rem;height: 0.69rem;margin:0 auto; background: url(/Public/Images/Home/mobile/search.png) no-repeat 1.06rem 0.1rem #FFFFFF;padding-left:1.81rem;border-radius: 5px;margin-top: 6px;background-size: 4%;border:0;}
+.send_shou{padding:0.267rem 0 0;font-size: 0.32rem;border-bottom: 1px solid #D8D8D8;}
+.shous{padding:0 0.427rem;height: 13rem;overflow-y:scroll;overflow: hidden;}
+.send_shou li{width:49.5%;text-align: center;}
+.send_shou li span{display: inline-block;padding-bottom: 0.267rem;}
+.borright{border-right: 1px solid rgba(205,205,205,0.39);}
+.send_shou .send_curs{border-bottom: 2px solid #28BADF;color: #28BADF;}
+.shou_uls li,.fa_uls li{padding:0.32rem 0 0;}
+.shou_head{width: 1.013rem;height: 1.013rem;border-radius: 50%;margin-right: 0.32rem;margin-top: 0.56rem;}
+.time_name{width: 7.813rem;border-bottom: 1px solid #E6E6E6;}
+.time_name h1{font-size: 0.267rem;margin: 0.16rem 0;}
+.shou_fujian{margin-left: 0.32rem;width: 0.267rem;height: 0.267rem;}
+.shou_names{font-size: 0.32rem;color: #333;}
+.blue_circle{width: 0.213rem;height: 0.213rem;border-radius: 50%;display: inline-block;margin-right: 0.2rem;background: #28BADF;}
+.shou_times{font-size: 0.267rem;color: #999;}
+.shou_cons{width: 100%;font-size: 0.267rem;color: #999;margin-bottom: 0.32rem;}
+.email_mores{display: block;font-size:0.32rem;color: #28BADF;margin:0.213rem 0;text-align: center;}
+.email_show{display: none;}
+/*消息中心详情页面*/
+.mess_tits{padding:0.48rem 0.64rem 0.213rem;font-size: 0.267rem;color: #999;border-bottom: 1px solid #EBEBEB;}
+.mess_tits h1{font-size: 0.373rem;color: #333;margin-bottom: 0.32rem;}
+.mess_receive{margin: 0.267rem 0;}
+.mess_cons{padding: 1.067rem;font-size: 0.267rem;color: #666;line-height: 1.6;}
+.mess_cons h2{font-size: 0.267rem;margin-bottom: 0.32rem;}
+.mess_fus{margin: 0.747rem 0 0.4rem;}
+.mess_fu{padding: 0 0.32rem;}
+.mess_fus h2{color: #666;border-bottom: 1px solid #EBEBEB;padding-bottom: 0.16rem;margin-bottom: 0.64rem;}
+.fujian_down{width: 2.987rem;height: 2.987rem;text-align: center;color: #333;font-size: 0.32rem;border: 1px solid #EBEBEB;margin-bottom: 0.32rem;}
+.fujian_down img{width: 1.067rem;height: 1.067rem;display: block;margin:0.453rem auto 0.213rem;}
+.fujian_down span{display: block;}
+.fu_name{color: #333;font-size: 0.32rem;padding:0 0.32rem;}
+.mess_da{font-size: 0.267rem;color: #999;}
+

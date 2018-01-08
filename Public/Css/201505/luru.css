@@ -1,0 +1,79 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2015-05-15 14:08:48
+ * @version $Id$
+ */
+.l-wrap{max-width: 1160px;}
+.l-wrap table{border-collapse: collapse;}
+.l-wrap input{border: 1px solid #cccccc;height: 30px;line-height: 30px;}
+.l-wrap{font-size: 14px;color:#333333;}
+.l-wrap .row{margin-bottom: 20px;}
+.l-wrap label{font-size: 16px;width: 140px;text-align: right;display: block;float: left;}
+.l-wrap label em{color: #f00;}
+.l-wrap select{font-size: 14px;}
+.l-wrap .l-color{display: block;padding-bottom:1px;float: left;}
+.l-wrap .l-color span{float:left;}
+.l-wrap .color { width:10px; height:10px; border:#000 solid 1px; display:inline-block;}
+.l-wrap input.add{width: 50px;color: white;font-size: 12px;letter-spacing: 1px;background: #3385ff;border-bottom: 1px solid #2d78f4;outline: medium;border: 0;}
+.l-wrap input.submit {width: 100px;height: 36px;color: white;font-size: 15px;letter-spacing: 1px;background: #3385ff;border-bottom: 1px solid #2d78f4;outline: medium;border: 0;margin-left: 140px;}
+.l-wrap .l-info-row{margin-bottom:10px;line-height: 32px;}
+.l-wrap .l-info-row .l-row-left{width: 140px;float: left;}
+.l-wrap .l-info-row .l-row-left em{color: #f00;}
+.l-wrap .l-info-row .l-row-right{float: left;}
+.l-pro-d{margin-left: 30px;}
+.table-ps{width: 700px;}
+.l-info-row .l-row-right table th, .l-info-row .l-row-right table td{border: 1px solid #999;text-align: center;}
+.l-info-row .l-row-right table td input{width: 50px;}
+/*产品管理*/
+.popLayer{position: absolute;left:0;top:0;z-index: 8;}
+.popLayer input{border: 1px solid #ccc;height: 24px;line-height: 24px;}
+.popLayer .popMain{width: 320px;padding: 20px 30px;position: relative;background-color: #fff;border: 1px solid #f1f1f1;}
+.popLayer a.close{position: absolute;right: 15px;top:15px;font-size: 16px;}
+.popMain p{text-align: center;line-height: 32px;color: #000;}
+.popMain p a.js_bind_search_btn{width: 40px;height: 26px;margin-left:10px;line-height: 26px;text-align: center;background-color: #999;color: #fff;display: inline-block;}
+.popMain p.title{font-size: 16px;}
+.popMain p.panel_btn{text-align: center;margin-top: 40px;}
+.popMain p.panel_btn a{width: 80px;height: 26px;line-height: 26px;text-align: center;background-color: #999;color: #fff;display: inline-block;}
+.popMain p .sh_n{margin-left: 50px;}
+.popMain p.tip{font-size: 12px;color: #999;}
+.js_bind_pop p{text-align: left;}
+.l-bind_data{margin:10px;}
+.l-bind_data span{margin-right:10px;}
+.l-bind_data span input{margin-right:3px;}
+/*商品详情页面*/
+h3.l-product_h3{font-size: 16px;}
+.l-product-p .l-product-l{float: left;margin: 10px;}
+.l-product-p .l-product-r{float: left;padding: 10px 0 10px 10px;}
+.l-product-p .l-product-r p{line-height: 32px;}
+.l-product-p .l-product-r p em.red_p{font-size: 16px;color: #f00;}
+.l-product-p .l-product-l img{border: 1px solid #999;}
+.l-product-p .l-product-l ul li{float: left;margin:10px 10px 0 0;}
+.l-table-info-pd{margin-bottom: 10px;}
+.l-table-info-pd th{background-color: #b1b1b1;text-align: left;}
+.l-table-info-pd table th, .l-table-info-pd table td{border: 1px solid #999;height: 24px;line-height: 24px;text-align: left;}
+.l-pd-content p{text-indent: 22px;margin-bottom: 10px;}
+/*商品库存平均成本*/
+table.spcb_pv{border-collapse: collapse;}
+table.spcb_pv td{line-height: 24px;text-align: center;border:  1px solid #999;border-collapse:collapse;}
+/*平台订单信*/
+.l-order-main{width: 1000px;}
+.l-order-title{margin-bottom: 10px;font-weight: bold;}
+.l-order-title .l-order-name{float: left;line-height: 26px;}
+.l-order-title .l-order-name em{color: #FF0000;margin-right: 10px;}
+.l-order-title .order-r{float: right;}
+.l-order-main .l-order-detail{margin-top: 20px;}
+.l-order-main .l-order-detail table th,.l-order-main .l-order-detail table td{border: 1px solid #999;height: 24px;line-height: 24px;text-align: center; }
+.l-order-main .l-order-detail table input{width: 40px;text-align: center;}
+.l-order-main .l-order-detail .l-order-total{text-align: right;margin-top: 10px;}
+.l-order-main .l-order-detail p.l-order-total{padding-right: 100px;}
+.l-total{text-align: right;margin-top: 20px;}
+.l-total p{font-size: 18px;margin-bottom: 10px;padding-right: 120px;}
+.l-total p span{color: #f00;}
+.bg_order_error{ color:red; font-size:11px;}
+/*副文本编辑器文字s*/
+.wordIndent p{text-indent:0;}
+.wordIndent{width:750px;}
+/*副文本编辑器文字e*/
+

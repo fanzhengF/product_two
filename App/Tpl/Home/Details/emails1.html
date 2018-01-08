@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="中国矿业大学" />
+    <meta name="description" content="中国矿业大学" />
+    <title>中国矿业大学研究院（北京）研究生院</title>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-base.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-all.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/mycommon.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/index.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/emails.css">
+    <script type="text/javascript">
+        $(function (){
+
+            //选中教师信息和学生信息
+            var f = false;
+            $('.teach_check').click(function(){
+                var t_ids = $(this).parents('li').attr('id');
+                var send_peop = $('#send_peop').val();
+                if (send_peop != '') {
+                    new_ids = send_peop + ',' + t_ids;
+                }else {
+                    new_ids = t_ids;
+                }
+                if(f = !f){
+                    $('#send_peop').val(new_ids);
+                    $.cookie('send_peop',new_ids,{"path":"/"});
+                }else{
+                    $('#send_peop').val(new_ids);
+                    $.cookie('send_peop',new_ids,{"path":"/"});
+                }
+                var patt1 = new RegExp("[,]?"+t_ids+"");
+                var result = patt1.test(send_peop);
+                if (result){
+                    var news = send_peop.replace(patt1, "");
+                    $('#send_peop').val(news);
+                    $.cookie('send_peop',news,{"path":"/"});
+                }
+
+
+            })
+
+
+            $('.student_check').click(function(){
+                var s_ids = $(this).parents('li').attr('id');
+                var send_peop = $('#send_peop').val();
+                if (send_peop != '') {
+                    new_ids = send_peop + ',' + s_ids;
+                }else {
+                    new_ids = s_ids;
+                }
+                if(f = !f){
+                    $('#send_peop').val(new_ids);
+                    $.cookie('send_peop',new_ids,{"path":"/"});
+                }else{
+                    $('#send_peop').val(new_ids);
+                    $.cookie('send_peop',new_ids,{"path":"/"});
+                }
+                var patt1 = new RegExp("[,]?"+s_ids+"");
+                var result = patt1.test(send_peop);
+                if (result){
+                    var news = send_peop.replace(patt1, "");
+                    $('#send_peop').val(news);
+                    $.cookie('send_peop',news,{"path":"/"});
+                }
+            })
+
+
+
+            var arr = [];
+            $('label.fl').click(function (){
+                for (var i =0;i<$('div.gunim ul.teach_uls li.cf').size();i++) {
+                    $('div.gunim ul.teach_uls li.cf input.teach_check').eq([i]).attr('checked',true);
+                    arr.push($('div.gunim ul.teach_uls li.cf').eq([i]).attr('id'));
+                }
+                $('input#send_peop').val(arr);
+            });
+            $('label.fl2').click(function (){
+                for (var i =0;i<$('div.gunim ul.teach_uls li.cf').size();i++) {
+                    $('div.gunim ul.teach_uls li.cf input.teach_check').eq([i]).attr('checked',false);
+                }
+                $.cookie('send_peop',null,{"path":'/'});
+                $.cookie('send_peop','',{"path":'/'});
+                location.reload(true);
+            });
+        })
+    </script>
+      <style type="text/css">
+    	.plus{
+    		    transform: rotate(45deg);
+			    -ms-transform: rotate(45deg);
+			    -moz-transform: rotate(45deg);
+			    -webkit-transform: rotate(45deg);
+			    -o-transform: rotate(45deg);
+    	}
+    	input.send_mess{border:none; cursor: pointer;}
+    	.email_uls li{position: relative;}
+    	.email_uls li a{display: block;}
+    	.email_delete{
+    		position: absolute;
+    		top: 0;
+    		right: 0;
+    		z-index: 9999;
+    	}
+    	.email_delete{cursor: pointer;}
+    	.email_uls{overflow-y: auto;}
+	
+    </style>
+</head>
+<body>
+<div class="header">
+    <img src="__PUBLIC__/Images/Home/logo.png">
+    <ul class="cf">
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn">首页</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=1">研究生院简介</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=2">招生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=3">学籍管理</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=4">培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=5">专业学位培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=6">学位工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=7">国际交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=8">学术交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=9">学生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=10">办事指南（咨询中心）</a></li>
+    </ul>
+</div><!--header end-->
+<div class="bodys con_box">
+    <div class="emails con_box" style="height:700px;">                       
+        <div class="email_shows cf" style="display: block;">
+            <!--
+            <form action="" method="post"> -->
+                <div class="write_new fl con_box" style="float: right">
+                    <div class="search_result" style="display:block;">
+                        <h1 class="jingque1 con_box">
+                            <a href="{:U('Index/emails')}" class="back_to">返回</a>
+                        </h1>
+                        <div class="search_gun">
+                            <div class="gunim">
+                                <ul class="teach_uls">
+                                    <if condition="$listT">
+                                        <volist name="listT" id="vo">
+                                            <li class="cf" id="{$vo.t_no}">
+                                                <input type="checkbox" class="fl teach_check">
+                                                    <span class="teach_name fl no_wrap" title="{$vo['t_name']}">&nbsp;{$vo['t_name']|substr=0,9}</span>
+                                                    <span class="teach_sex fl no_wrap" title="{$vo['t_sex']}">&nbsp;{$vo['t_sex']}</span>
+                                                    <span class="teach_bian fl no_wrap" title="{$vo['t_no']}">&nbsp;{$vo['t_no']|substr=0,6}</span>
+                                                    <span class="teach_num fl no_wrap" title="{$vo['t_department']}">&nbsp;{$vo['t_department']|substr=0,18}</span>
+                                                    <span class="teach_wei fl no_wrap" title="{$vo['t_phone']}">&nbsp;{$vo['t_phone']}</span>
+                                            </li>
+                                        </volist>
+                                    </if>
+                                    <if condition="$listS">
+                                        <volist name="listS" id="vo">
+                                            <li class="cf" id="{$vo.s_no}">
+                                                <input type="checkbox"  class="fl teach_check">
+                                                    <span class="teach_name fl no_wrap" title="{$vo['s_name']}">&nbsp;{$vo['s_name']|substr=0,9}</span>
+                                                    <span class="teach_sex fl no_wrap" title="{$vo['s_sex']}">&nbsp;{$vo['s_sex']}</span>
+                                                    <span class="teach_bian fl no_wrap" title="{$vo['s_no']}">&nbsp;{$vo['s_no']|substr=0,6}</span>
+                                                    <span class="teach_num fl no_wrap" title="{$vo['s_department']}">&nbsp;{$vo['s_department']|substr=0,18}</span>
+                                                    <span class="teach_wei fl no_wrap" title="{$vo['s_phone']}">&nbsp;{$vo['s_phone']}</span>
+                                            </li>
+                                        </volist>
+                                    </if>
+
+                                </ul>
+                            </div>
+                            <h4 class="cf teach_h4" style="position: relative">
+                                <!--
+                                <input type="checkbox" class="fl teach_all" id="teach_all">
+                                -->
+                                <label class="fl" for="teach_all" style="cursor: pointer;">全选</label>
+                                <label class="fl2" for="teach_all" style="cursor: pointer;">/全不选</label>
+                                <span class="fl total_ji" style="position: absolute;top:0px;">共计
+                                    <span class="can_ji">
+                                        <if condition="$pageT">
+                                            {$pageT}
+                                        </if>
+                                          <if condition="$pageS">
+                                            {$pageS}
+                                        </if>
+
+                                    </span>
+                                      &nbsp;&nbsp;
+                                </span>
+                            </h4>
+
+                            <div class="cf">
+                                <form method="get" action="">
+                                    <input type="hidden" name="bianma" value="{$Think.get.bianma}" />
+                                    <input type="hidden" name="name" value="{$Think.get.name}" />
+                                    <input type="hidden" name="user" value="{$Think.get.user}" />
+                                    <input type="hidden" name="sex" value="{$Think.get.sex}" />
+                                    <input type="hidden" name="department" value="{$Think.get.department}" />
+                                    <input type="hidden" name="major" value="{$Think.get.major}" />
+                                    <input type="hidden" name="grade" value="{$Think.get.grade}" />
+                                    <input type="hidden" name="zhicheng" value="{$Think.get.zhicheng}" />
+                                    <input type="hidden" name="phone" value="{$Think.get.phone}" />
+                                    <input type="hidden" name="weixin" value="{$Think.get.weixin}" />
+                                    <input type="submit" name="daochu" style="border:none;" value="生成Excel" class="fl excel">
+                                </form>
+                            </div>
+                        </div>
+                    </div><!--search_result end-->                       
+                </div><!--write_new end-->
+                <div class="write_left fr" style="float: left;height: 612px">
+                    <div class="cf emails_bot">
+                        <ul class="cf fl shou_fa">
+                            <li class="fl write_li email_licur">
+                            <span class="new_write1"></span>
+                            写信</li>
+                            <li class="fl shou_li">
+                            <span class="new_write2"></span>
+                            收件箱</li>
+                            <li class="fl fa_li">
+                            <span class="new_write3"></span>
+                            发件箱</li>
+                        </ul>
+                        <!--
+                        <input type="text" value="" name="" class="fr email_search con_box" id="email_search" placeholder="搜索邮件..."> -->
+                    </div><!--emails_bot end-->
+                    <div class="new_in" id="new_in1" style="display:block;">
+                        <form method="post" name="send" id="saveReportForm" onsubmit="return saveReport();" action="{:U('Index/sendEmail/')}" enctype="multipart/form-data">
+                            <div class="cf oper_mess">
+                                <a href="javascript:void(0);" onclick="delcookie()" class="fl back_mess">返回主页</a>
+                               <if condition="$auth eq '' ">
+                                   <p><a href="{:U('Index/login/')}" style="color:#30A6EE;line-height: 32px;font-weight: bold;margin:0 0 0 12px;">未登录</a></p>
+                                   <else />
+                                     <!--<a href="javascript:void(0);" class="fl send_mess" onclick="$('form[name=send]').submit();" >发送信息</a>-->
+                                   <input type="submit" class="fl send_mess" value="发送信息">
+                                   	
+                                   <span id="nu" class="fl send_mess" style="cursor: pointer;">清空收件人</span>
+                               </if>
+                            </div>
+                            <div class="cf margintops">
+                                <label class="fl write_label">收件人</label>
+                                <input type="text" value="" readonly name="e_sid" id="send_peop" class="fl send_peop con_box shou_two">
+                                <input type="hidden" value="{$userid}" name="e_uid">
+                            </div>
+                            <div class="cf">
+                                <label class="fl write_label" style="letter-spacing:4px;">主&nbsp;题</label>
+                                <div class="fl" style="width:450px;">
+                                    <input type="text" value="" name="e_zhuti" id="zhuti" class="z_i zhuti con_box">
+                                    <div class="heights">
+                                        <label for="fu_add3" class="fu_add"><img src="__PUBLIC__/Images/Home/fu.png" class="write_fu"><input type="file" value="" onchange="change(this);" name="e_fujian" id="fu_add3"><span>添加附件</span></label>
+                                        <span class="only_yun">(只允许上传文档和图片格式的附件*上传文件最大限制5M,只能上传一个文件）</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cf">
+                                <label class="fl write_label" style="letter-spacing:4px;">正   文</label>
+                                <div class="fl write_text">
+                                    <textarea id="write_textarea" style="resize: none;" name="e_zhengwen" class="sendtext write_textarea con_box" maxlength="500"></textarea>
+                                    <p class="zishu">(<span id="sp">0</span>/500)</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!--new_in end-->
+                    <div class="new_in" id="new_in2">
+                        <div class="cf oper_mess">
+                            <a href="{:U('Index/index/')}" class="fl back_mess">返回主页</a>
+                            <!--
+                            <a href="javascript:;" class="fl chose_delete">批量删除信息</a> -->
+                        </div> 
+                        <h2 class="cf opre_email con_box">
+
+                            <!--<input type="checkbox" value="" class="all_value fl"> -->
+                            <span class="fl bianhaos">编号</span>
+                            <span class="fl biaoti no_wrap">标题</span>
+                            <span class="fl email_contents">内容</span>
+                            <span class="fl shou_people">发件人</span>
+                            <span class="fl send_times">收件时间</span>
+                            <span class="fl email_cao">操作</span>
+                        </h2>
+                        <ul class="email_uls con_box">
+                            <volist name="listM_s" id="vo">
+                            <li>
+                                <a href="{:U('Index/messages/',array('id'=>$vo['e_id']))}" class="cf shoudel{$vo['e_id']}">
+                                    <!--
+                                    <input type="checkbox" value="" class="new_values fl"> -->
+                                    <span class="fl bianhaos">1</span>
+                                    <span class="fl biaoti1 no_wrap" title="{$vo.e_zhuti}"><img src="__PUBLIC__/Images/Home/<if condition='$vo.e_type eq 0'>weidu.png <else/>yidu.png </if>"><img src="__PUBLIC__/Images/Home/fu.png" class="fujian">{$vo.e_zhuti|msubstr=0,10}</span>
+                                    <span class="fl email_contents no_wrap" title="{$vo.e_zhengwen}">{$vo.e_zhengwen|msubstr=0,10}</span>
+                                    <span class="fl shou_people no_wrap">{$vo.username}</span>
+                                    <span class="fl send_times no_wrap" >{$vo.e_time|date='Y-m-d H:i:s',###}</span>
+                                <!--javascript:confirm('是否要删除？') ? remove({$vo['e_id']}) : false  ;-->
+                                </a>
+                                   <span class="fl email_delete" onclick="con({$vo['e_id']})"><img src="__PUBLIC__/Images/Home/shanchu1.png" width="11" height="12">删除</span>
+                            </li>
+                            </volist>
+                        </ul>
+                        <div class="pages cf fr">
+                            <ul class="new_pages cf">
+                                {$pageM_s}
+                            </ul>
+                        </div>
+                    </div><!--new_in-->
+                    <div class="new_in" id="new_in3">
+                        <div class="cf oper_mess">
+                            <a href="{:U('Index/index/')}" class="fl back_mess">返回主页</a>
+                            <!--
+                            <a href="javascript:;" class="fl chose_delete">批量删除信息</a> -->
+                        </div>
+                        <h2 class="cf opre_email con_box">
+                            <!--
+                            <input type="checkbox" value="" class="all_value fl"> -->
+                            <span class="fl bianhaos">编号</span>
+                            <span class="fl biaoti no_wrap">标题</span>
+                            <span class="fl email_contents">内容</span>
+                            <span class="fl shou_people">收件人</span>
+                            <span class="fl send_times">发件时间</span>
+                            <span class="fl email_cao">操作</span>
+                        </h2>
+                        <ul class="email_uls con_box">
+
+                        <volist name="listM" id="vo">
+                            <li>
+                                <a href="javascript:;" class="cf delesan{$vo['e_id']}">
+                                    <!--
+                                    <input type="checkbox" value="" class="new_values fl"> -->
+                                    <span class="fl bianhaos">{$key+1}</span>
+                                    <span class="fl biaoti1 no_wrap" title="{$vo.e_zhuti}"><img src="__PUBLIC__/Images/Home/<if condition='$vo.e_type eq 0'>weidu.png <else/>yidu.png </if>"><img src="__PUBLIC__/Images/Home/fu.png" class="fujian">{$vo.e_zhuti|msubstr=0,10}</span>
+                                    <span class="fl email_contents no_wrap" title="{$vo.e_zhengwen}">{$vo.e_zhengwen|msubstr=0,10}</span>
+                                    <span class="fl shou_people no_wrap">{$vo.username}</span>
+                                    <span class="fl send_times no_wrap">{$vo.e_time|date='Y-m-d H:i:s',###}</span>
+                                    <span class="fl email_delete" onclick="con({$vo['e_id']})"><img src="__PUBLIC__/Images/Home/shanchu1.png" width="11" height="12">删除</span>
+                                </a>
+                            </li>
+                        </volist>
+                        </ul>
+                        <div class="pages cf fr">
+                            <ul class="new_pages cf">
+                                {$pageM}
+                            </ul>
+                        </div>
+                    </div><!--new_in end-->
+                        <div class="write_right1 fl write_right" style="height: 600px;display:none;">
+                            <h3 class="teacher_mess"><img src="__PUBLIC__/Images/Home/teachers.png">教师信息</h3>
+                            <form method="get" action="?" name="t">
+                                <p class="teac_sear con_box">
+                                    <img src="__PUBLIC__/Images/Home/chakan.png" onclick="javascript:$('form[name=t]').submit();"><input type="text" name="t_name" value="{$Think.get.t_name}" placeholder="搜索指定教师..." id="teac_sear">
+                                </p>
+                            </form>
+                            <h4 class="cf teach_h4">
+                                <!--
+                                <input type="checkbox" class="fl teach_all"> -->
+                                <span class="teach_name fl">姓名</span>
+                                <span class="teach_sex fl">性别</span>
+                                <span class="teach_bian fl">编号</span>
+                            </h4>
+                            <ul class="teach_uls">
+                                <volist name="listT" id="vo">
+                                    <li class="cf" id="{$vo.t_no}">
+                                        <input type="checkbox" class="fl teach_check">
+                                        <span class="teach_name fl">{$vo.t_name}</span>
+                                        <span class="teach_sex fl">&nbsp;{$vo.t_sex}</span>
+                                        <span class="teach_bian fl">{$vo.t_no}</span>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <div class="teach_pages cf fr pages">
+                                <ul class="new_pages cf">
+                                    {$pageT}
+                                </ul>
+                            </div>
+                        </div><!--write_right end-->
+                        <div class="write_right2 fl write_right" style="height: 600px;display:none;">
+                            <h3 class="student_mess"><img src="__PUBLIC__/Images/Home/stduents.png">学生信息</h3>
+                            <form method="get" action="?" name="s">
+                                <p class="teac_sear con_box">
+                                    <img src="__PUBLIC__/Images/Home/chakan.png" onclick="javascript:$('form[name=s]').submit();"><input type="text" value="{$Think.get.s_name}" name="s_name" placeholder="搜索指定学生..." id="student_sear">
+                                </p>
+                            </form>
+                            <h4 class="cf teach_h4">
+                                <!--
+                                <input type="checkbox" class="fl student_all">  -->
+                                <span class="teach_name fl">姓名</span>
+                                <span class="teach_sex fl">性别</span>
+                                <span class="teach_bian fl">编号</span>
+                            </h4>
+                            <ul class="student_uls">
+                                <volist name="listS" id="vo">
+                                    <li class="cf" id="{$vo.s_no}">
+                                        <input type="checkbox" class="fl student_check">
+                                        <span class="teach_name fl">{$vo.s_name}</span>
+                                        <span class="teach_sex fl">&nbsp;{$vo.s_sex}</span>
+                                        <span class="teach_bian fl" title="{$vo.s_no}">{$vo.s_no|msubstr=0,5}</span>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <div class="teach_pages cf fr pages">
+                                <ul class="new_pages cf">
+                                    {$pageS}
+                                </ul>
+                            </div>
+                        </div><!--write_right2 end-->
+                    </div><!--new_in end-->                    
+                </div><!--write_left end-->
+        <!--
+            </form>      -->
+        </div><!--email_shows end-->
+    </div><!--emails end-->
+</div><!--bodys end-->
+<div class="footers con_box cf">
+    <p class="fl">中国矿业大学研究院（北京）研究生院 版权所有 地址：北京市海淀区学院路丁11号  电话：010-62339826,62339255</p>
+    <p class="fr">网站建设专家<a href="javascript:;" class="taoruan">淘软科技</a>提供技术支持</p>
+</div>
+<div class="masks"></div>
+<div class="not_login" style="display: none;">
+    <p>收件人不能为空哦！</p>
+    <img src="/Public/Images/Home/plus.png" class="plus">
+</div>
+
+<img src="__PUBLIC__/Images/Home/oeacn.png" class="hai_big">
+
+<script type="text/javascript">
+    function remove (id){
+        $.ajax({
+            url : "{:U('Index/remove')}",
+            type : 'post',
+            data : {id:id},
+            success : function (status){
+                //location.reload(true);
+               //收件箱删除
+			  $('.shoudel'+id).parents('li').remove();
+	          //发件箱删除
+	          $('.delesan'+id).parents('li').remove(); 
+                
+                
+            }
+        });
+    }
+    
+   //confirm点击确定   
+  function con(num){
+		//console.log(num)	
+		if(confirm('是否要删除？')){
+			remove(num);//删除	
+            return false;  
+		}else{
+           return false;
+		}	
+  };  
+    
+    
+    
+//5.18
+    //右侧点击收发写三个导航
+    $('.shou_fa li').click(function(){
+        var i = $(this).index();
+        $(this).addClass('email_licur').siblings('li').removeClass('email_licur');
+        $(this).find('span').addClass('new_writes').siblings('li').find('span').removeClass('new_writes');
+        $('.new_in').eq(i).show().siblings('.new_in').hide();
+    })
+   // window.onbeforeunload = onbeforeunload_handler;
+   function delcookie(){
+
+       $.cookie('send_peop',null,{"path":'/'});
+       $.cookie('send_peop','',{"path":'/'});
+
+       location.href="{:U('Index/index/')}";
+
+   }
+    function onbeforeunload_handler(){
+        $.cookie('send_peop',null,{"path":'/'});
+        $.cookie('send_peop','',{"path":'/'});
+        var warning="确认退出?";
+        return warning;
+    }
+
+    $(function (){
+        //把上次选择的人赋值给收件人
+        $('#send_peop').val($.cookie('send_peop'));
+        //清空收件人
+        $('span#nu').click(function (){
+            $.cookie('send_peop',null,{"path":'/'});
+            $.cookie('send_peop','',{"path":'/'});
+            location.reload(true);
+        });
+
+    })
+    //上传提示
+    function change(t) {
+        $(t).parents('label').next('span').text('上传成功！');
+    }
+    $(function(){
+        //限制邮件字数
+        function shows(){
+             var tarea=document.getElementById("write_textarea");
+             var maxlength=500;
+             var length=tarea.value.length;
+             var count=maxlength-length;
+
+             var sp=document.getElementById("sp");
+             sp.innerHTML=count;
+             if(count<=25){
+              sp.style.color="red";
+          }else{
+             sp.removeAttribute("style");
+         }
+     }
+     $('#write_textarea').keyup(function(){
+        shows();
+     })
+        $('.add_now .minge').click(function(){
+            $(this).addClass('zhan_cur').siblings('.minge').removeClass('zhan_cur');
+        })
+        $('.left_lis:last').css({ 'border-bottom':'0px'});
+        //获取左侧导航高度
+        var body_cons=$('.body_cons').height();//alert(cons_right);
+        $('.cons_left').css({ 'height':body_cons});  
+        
+        
+        //提交表单	
+		$('form[name=send]').submit(function () {
+			var shouv=$('.shou_two').val();
+			var zhuv=$('.z_i').val();
+			var zhengv=$('.sendtext').val();
+             //收件人
+		   	  if(shouv===''){
+		   	  	showmask();//显示弹框	
+     	   	  	return false;
+		   	  };
+
+		   	  //主题
+		   	  if(zhuv===''){
+		   	  	showmask();//显示弹框	
+		   	    $('.not_login p').html('主题不能为空哦！');
+ 		   	  	return false;
+		   	  };
+		   	  //正文
+			  if(zhengv===''){
+			  	showmask();//显示弹框	
+		   	  	$('.not_login p').html('正文不能为空哦！');
+		   	  	return false;
+		     };
+		     
+		     //三个都不为空，提交成功
+		     if(shouv!='' & zhuv!='' & zhengv!=''){
+		   	  	showmask();//显示弹框	
+		   	  	$('.not_login p').html('提交成功！');
+		   	  	 	
+		   	 };
+				return true;
+		});
+        //表单提交到Index/sendEmail/但不跳转页面
+		function saveReport(){ 
+			// jquery 表单提交 
+			$("#saveReportForm").ajaxSubmit(function(message) { 
+			    // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容 
+			}); 
+			return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转 
+		 }; 
+        //弹框
+	   function showmask(){
+	      $('.masks').css({'display':'block'});
+	      $('.not_login').css({'display':'block'});
+	   };
+    	 $('.masks,.plus').click(function(){
+            $('.not_login,.masks').hide();
+       });
+        
+    });
+</script>
+</body>
+</html>

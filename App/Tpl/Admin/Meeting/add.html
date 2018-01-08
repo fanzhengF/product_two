@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加会议内容-{$site.SITE_INFO.name}</title>
+    <php>
+        $addCss="";
+        $addJs="";
+        $currentNav ='会议室管理 > 添加会议内容';
+    </php>
+    <include file="Common:intoHead" />
+    <script type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/jquery-ui.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/jquery-ui.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/jquery-ui-slide.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/jquery-ui-timepicker-addon.js"></script>
+
+
+
+
+
+
+</head>
+<body>
+<div class="wrap">
+    <div class="mainBody">
+        <div id="Right" style="width:100%;">
+            <div class="contentArea">
+                <div class="Item hr">
+                    <div class="current">添加会议内容</div>
+                </div>
+                <form action="" method="post" enctype="multipart/form-data" >
+                    <table width="100%"  cellspacing="0" cellpadding="0" class="table1">
+                        <!--
+                        <tr>
+                            <th width="120"><font color="red">* </font>会议编码</th>
+                            <td><input  name="m_bianma" type="text" class="input" size="40" value="" /></td>
+                        </tr> -->
+                        <tr>
+                            <th width="120"><font color="red">* </font>会议名称</th>
+                            <td><input  name="m_name" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+
+                        <tr>
+                            <th width="120"><font color="red">* </font>会议室名称</th>
+                            <td>
+                                <select name="m_rname" style="width: 280px;">
+                                    <volist name="MrAll" id="vo">
+                                        <option value="{$vo.room_name}">{$vo.room_name}</option>
+                                    </volist>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th width="120"><font color="red">* </font>会议类型</th>
+                            <td>
+                                <select name="m_type" style="width: 280px;">
+                                    <volist name="mtAll" id="vo">
+                                        <option value="{$vo.mt_id}">{$vo.mt_name}</option>
+                                    </volist>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>会议等级</th>
+                            <td>
+                                <select name="m_grade" style="width: 280px;">
+                                    <volist name="gradeAll" id="vo">
+                                        <option value="{$vo.g_id}">{$vo.g_name}</option>
+                                    </volist>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>会议时间</th>
+                            <td><input  name="m_time" type="text" readonly="readonly" onclick="new Calendar().show(this);" class="input" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>开始时间--结束时间</th>
+                            <td>
+                                <input size="16" name="m_start" type="text" value="" readonly class="form_datetime input">
+                                --
+                                <input size="16" name="m_end" type="text" value="" readonly class="form_datetime input">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red"> </font>举办者</th>
+                            <td><input  name="m_user" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>会议金额</th>
+                            <td><input  name="m_money" type="text" class="input" size="40" value="" />/元</td>
+                        </tr>
+<!--
+                        <tr>
+                            <th width="120"><font color="red">* </font>会议地址</th>
+                            <td><input  name="m_address" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+                        -->
+                        <tr>
+                            <th width="120"><font color="red">* </font>会议内容</th>
+                            <td><textarea name="m_content"  cols="37" rows="5" style="resize:none;"></textarea></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red"> </font>举办机构</th>
+                            <td>
+                                <select name="m_jigou" style="width: 280px;">
+                                    <volist name="MMall" id="vo">
+                                        <optgroup label="{$vo.m_name}"></optgroup>
+                                        <volist name="vo.m_sub" id="v">
+                                            <option value="{$v.m_id}">{$v.m_name}</option>
+                                        </volist>
+                                    </volist>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>列席专家</th>
+                            <td><input  name="m_zhuanjia" placeholder="请以,隔开" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>主讲专家</th>
+                            <td><input  name="m_zhujiang" placeholder="" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red"></font>主讲专家图片</th>
+                            <td><input type="file" name="m_images" class="file" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red"> </font>会议资料</th>
+                            <td><input type="file" name="m_ziliao" class="file" size="40" value="" /><span style="color:red;">(*请上传doc文件)</span></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red"> *</font>会议人数</th>
+                            <td><input type="number" name="m_number" class="input" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>会议状态</th>
+                            <td>
+                                <select name="m_status" style="width: 280px;">
+                                    <option value="0" selected>未开始</option>
+                                    <option value="1">进行中</option>
+                                    <option value="2">已结束</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>审核状态</th>
+                            <td>
+                                <select name="m_a_status" style="width: 280px;">
+                                    <option value="1" selected>审核成功</option>
+                                    <option value="2">审核失败</option>
+                                </select>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th></th>
+                            <td><input type="submit" value="提交" name="submit" class="btn submit" /></td>
+                        </tr>
+
+                    </table>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<script type="text/javascript">
+    $(function (){
+        $('.form_datetime').timepicker({
+            hourGrid: 4,
+            minuteGrid: 10
+        });
+    })
+</script>
+
+</body>
+</html>

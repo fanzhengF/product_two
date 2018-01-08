@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/emails.css">
+<link href="__PUBLIC__/Css/Home/mobile/mobiscroll_date.css" rel="stylesheet" />
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+<title>{$home_name}</title>
+</head>
+<body class="paddtop paddbot">
+	<div class="zxq_one">
+		<a a href="javascript:history.back(-1)" class="a"><img src="__PUBLIC__/Images/Home/mobile/backs.png"></a>
+		<div>消息详情</div>
+	</div><!--zxq_one end-->
+	<div class="mess_tits con_box">
+		<h1>{$oneMe['e_zhuti']}</h1>
+		<div class="cf mess_send">
+			<span class="fl ">发件人：
+				<span class="word_blue">{$oneMe['e_uusername']}</span>
+			</span>
+			<a href="__PUBLIC__/upfile/fujian/{$oneMe['e_fujian']}" class="word_blue fr">附件
+				<img src="__PUBLIC__/Images/Home/mobile/fujian.png" class="shou_fujian">
+			</a>
+		</div>
+		<p class="mess_receive">收件人：<span class="word_blue">{$oneMe['e_susername']}</span></p>
+		<div class="mess_times">时   间：{$oneMe['e_time']|date='Y-m-d H:i:s',###}</div>
+	</div><!--mess_tits-->
+	<div class="mess_cons">
+		<h2>{$oneMe['e_zhuti']}</h2>
+		<p>{$oneMe['e_zhengwen']}</p>
+		<div class="mess_fus">
+			<!--
+			<h2>附件</h2>
+			<div class="cf mess_fu">
+				<a href="javascript:;" class="fujian_down fl">
+					<img src="__PUBLIC__/Images/Home/mobile/downbig.png">
+					<span class="fu_name no_wrap con_box">学术文件类别</span>
+					<span class="mess_da">120K</span>
+				</a>
+			</div>
+			-->
+		</div>
+	</div>
+	<include file="Common:footer" />
+	<!--footers end-->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

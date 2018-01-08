@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>支付成功{$WebTitle}</title>
+<meta content="telephone=no" name="format-detection" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="width=1080,user-scalable=no,target-densityDpi=device-dpi"/>
+<link href="http://min.static.jiaju.com/static/site/asset/style/qgztouch/reset-min.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="http://static.jiaju.com/jiaju/com/m7gz/assets/css/sg-pay-suc-fail.css">
+<script src="http://min.static.jiaju.com/static/js/mobile/hotcss/hotcss.js"></script>
+</head>
+<body>
+	<div class="pay-succ-wrap">
+		<div class="succ-tit">
+			<a href="/Pay?id={$entity_id}"></a>
+			支付订单
+		</div>
+		<div class="succ-center">
+			<img src="http://static.jiaju.com/jiaju/com/m7gz/assets/images/sg-order/sg_pay_succ.png"/>
+			<p>恭喜您，支付成功！</p>
+		</div>
+		<ul class="succ-bottom">
+			<li class="clearfix">
+				<span>支付金额</span>
+				<i>￥{$order_amount}</i>
+			</li>
+			<li class="clearfix">
+				<span>订单号</span>
+					<span>
+				<empty name="flashsale_sn">
+				    <noempty name="order_sn">{$order_sn}</noempty>
+				 <else />
+				{$flashsale_sn}
+				</empty>
+			</span>
+			</li>
+			<li class="clearfix">
+				<span>商家名称</span>
+				<span>{$business_name}</span>
+			</li>			
+		</ul>
+		<a href="/Pay?id={$entity_id}" class="pay-btn">继续购物</a>
+	</div>
+	<include file="Common:statistics" />	
+</body>
+</html>

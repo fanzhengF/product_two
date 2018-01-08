@@ -1,0 +1,15 @@
+.meet_tits{font-size: 13px;color: #28BADF;width: 814px;text-align: center;height:60px;line-height:60px;}
+.no_wrap{white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;padding:0 6px;}
+.met_name,.met_time,.met_addr{width: 20%;}
+.met_lei,.met_zhuang,.met_qian,.met_cao{width: 10%;}
+.my_meets{font-size: 13px;}
+.my_meets li{height: 68px;line-height: 68px;border-top: 1px dashed #979797;}
+a.met_cao{text-decoration: underline!important;color: #333;}
+/*会议管理补登会议页面*/
+.met_xue,.met_shen,.met_delete{width:10%;}
+a.met_xue,.met_delete{color: #ff3030;}
+
+/*我发起的会议页面*/
+.line_hei1{line-height:34px;}
+.met_zhuang1,.met_qian1,.line_hei1,.met_cao1{width:8%;}
+.met_name1,.met_addr1{width: 18%;}

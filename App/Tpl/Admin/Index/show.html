@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>系统信息-{$site.SITE_INFO.name}</title>
+<include file="Common:intoHead" />
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+        <div class="mainBody" style="overflow:hidden">
+            <div id="Right" style="width:100%;">
+                <div class="Item hr">
+                    <div class="current">欢迎登录中国矿业大学（北京）研究生院--后台管理系统 ！</div>
+                </div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+                    <tr><td colspan="2" style="text-align: left;font-weight: bold;">服务器信息</td></tr>
+                    <tr><td style="font-weight: bold;">服务器计算机名</td><td><php> echo gethostbyaddr(GetHostByName($_SERVER['SERVER_NAME'])); </php></td></tr>
+                    <tr><td>服务器Ip地址</td><td><php> echo GetHostByName($_SERVER['SERVER_NAME']);</php></td></tr>
+                    <tr><td>服务器域名</td><td><php>echo $_SERVER["HTTP_HOST"];</php></td></tr>
+                    <tr><td>服务器端口</td><td><php> echo $_SERVER['SERVER_PORT'];</php></td></tr>
+                    <tr><td>服务器版本</td><td><php>echo  PHP_VERSION;</php></td></tr>
+                    <tr><td>本文件所在文件夹</td><td><php> echo dirname(__FILE__); </php></td></tr>
+                    <tr><td>系统所在文件夹</td><td><php> echo $_SERVER['SystemRoot']; </php></td></tr>
+                    <tr><td>服务器的语言种类</td><td><php>echo $_SERVER['HTTP_ACCEPT_LANGUAGE']</php></td></tr>
+                    <tr><td>服务器当前时间</td><td><php> $time= date('Y-m-d H:i:s',time()); echo $time; </php></td></tr>
+                    <tr><td>浏览器信息</td><td><php>echo $_SERVER['HTTP_USER_AGENT'];</php></td></tr>
+                    <tr><td>当前系统用户名</td><td><php> echo $_SESSION['name']; </php></td></tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</body>
+</html>

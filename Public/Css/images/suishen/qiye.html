@@ -1,0 +1,518 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>企业账户</title>
+<link href="css/home1.css" type="text/css" rel="stylesheet"/>
+<link href="css/index.css" type="text/css" rel="stylesheet"/>
+<link href="css/qiye.css" type="text/css" rel="stylesheet"/>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/index.js" type="text/javascript"></script>
+
+
+<script>
+ $(function(){
+	 $(".daohang_all").hover(function(){
+		 	$(".classify").show();
+	 },function(){
+		 	$(".classify").hide();
+		 })
+      $(".pullDown").hover(function(){
+		 	$(".classify").show();
+	 },function(){
+		 	$(".classify").hide();
+		 })
+	 })
+</script>
+
+</head>
+
+<body>
+<!--头部-->
+<div class="head">
+	<div class="header">
+    	<ul class="header_le">
+        <a>
+        	<li class="head_le_img"></li>
+            <li class="chense">发布律师任务</li>
+        </a>
+        <li>坐等律师来服务</li>
+ <a   target="_blank" href="tencent://message/?uin=1113563877"><img class="head_qq" src="image/daohang/qq.png" /></a>
+        </ul>
+        <ul class="head_ri">
+        	<img src="image/daohang/iconfont-gouwuche2.png" style="margin-top:18px; float:left; margin-right:-15px;"/>
+        	<li>购物车(<span class="chense">0</span>)</li>
+            <li>登录</li>
+            <span class="head_ri_shu"></span>
+            <li>注册</li>
+            <span class="head_ri_shu"></span>
+            <li>我的订单</li>
+            <span class="head_ri_shu"></span>
+            <li>我是服务商</li>
+            <img src="image/daohang/iconfont-shouji-copy.png" style="margin-top:15px; float:left; margin-right:-15px;"/>
+            <li>手机版 ></li>
+        </ul>
+    </div>
+</div>
+<!--头部结束-->
+<!--导航-->
+<div style=" width:100%; height:120px; border-bottom:1px solid #999; box-sizing:border-box;">
+<div class="top">
+	<img class="lef" src="image/daohang/logo.png"/>
+    <img class="top_rigimg" src="image/daohang/biaoyu.png"/>
+    <div class="daohang">
+    	<div class="hov">
+    	<a class="daohang_all">服务分类</a>
+        <a id="suika">随身律卡</a>
+        <a>合同下载</a>
+        <a>自助服务</a>
+        <a id="suiwen">随时问律师</a>
+        
+        <a>企业账户</a>
+        <a>关于我们</a>
+        </div>
+        <img src="image/daohang/iconfont-dianhua.png" style="margin-top:10px;"/>
+        <!--分类全部的-->
+    <div class="classify2">
+    	<div class="suiwen">
+    		<p>免费咨询</p>
+        	<p>付费咨询</p>
+        	<p>5分钟法律诊所</p>
+    	</div>
+    	<div class="suika">
+    		<p>随身99元礼赞卡</p>
+        	<p>随身私人律师卡</p>
+        	<p>随律充值卡</p>
+    	</div>
+    </div>
+    <div class="classify">
+   
+       <div class="yNavIndex">
+			<div class="pullDown">
+				
+				<ul class="pullDownList">
+					<li>
+						<i class="listi1"></i>
+						<a href="" target="_blank">法律咨询</a>
+						
+						
+					</li>
+					<li>
+						<i class="listi2"></i>
+						<a href="" target="_blank">合同文书</a>
+						
+						<span></span>
+					</li>
+					<li>
+						<i class="listi3"></i>
+						<a href="" target="_blank">专项服务</a>
+						
+						<span></span>
+					</li>
+					<li>
+						<i class="listi4"></i>
+						<a href="" target="_blank">创业特供</a>
+						
+						<span></span>
+					</li>
+					
+				</ul>
+							<!-- 下拉详细列表具体分类 -->
+		 	<div class="yMenuListCon">
+				<div class="yMenuListConin">
+					<div class="yMenuLCinList">
+                    	<div class="rileft">
+						<p>个人咨询按时打发第三方阿斯顿发</p>
+                        </div>
+						<div class="riright">
+                        	<a id="orga">工作</a>
+                            <a>创业</a>
+                        </div>
+
+
+						<div class="rileft">
+						<p>个人咨询</p>
+                        </div>
+						<div class="riright">
+                        	<a id="orga">工作</a>
+                            <a>创业</a>
+                        </div>
+                      
+					</div>
+					
+					
+				</div>
+
+				
+					<div class="yMenuListConin">
+					<div class="yMenuLCinList">
+                    	<div class="rileft">
+						<p>合同文书</p>
+                        </div>
+						<div class="riright">
+                        	<a id="orga">工作</a>
+                            <a>创业</a>
+                        </div>
+                      
+					</div>
+					
+					
+				</div>
+                
+                
+                
+                	
+				<div class="yMenuListConin">
+					<div class="yMenuLCinList">
+                    	<div class="rileft">
+						<p>专项服务</p>
+                        </div>
+						<div class="riright">
+                        	<a id="orga">工作</a>
+                            <a>创业</a>
+                        </div>
+                      
+					</div>
+					
+					
+				</div>
+                
+                
+                
+				<div class="yMenuListConin">
+					<div class="yMenuLCinList">
+                    	<div class="rileft">
+						<p>创业特供</p>
+                        </div>
+						<div class="riright">
+                        	<a id="orga">工作</a>
+                            <a>创业</a>
+                        </div>
+                      
+					</div>
+					
+					
+				</div>
+				
+
+				
+
+				
+
+				
+
+				
+
+				
+
+				
+
+				
+
+</div>
+</div>
+</div>
+				
+</div>
+		
+
+
+
+</div>
+</div>
+</div>
+
+
+<!--导航结束-->
+
+<div class="free">
+	<div class="fmid">
+    	<p class="free_title"><a>首页</a>/<span>企业账户</span></p>
+        <div class="cp_tu">
+        	<img src="image/chanpin/wutu.png"/>
+        </div>
+        <div class="cp_jia">
+        	<p class="jia_tit">企业级账户</p>
+            <dl>
+            <div class="jiage">
+            	<dt>价格：</dt>
+                <dd id="cp_red">
+                
+                	<span class="sys_item_price">13600~20800元/年</span><span class="cp_price">（原价：<b class="sys_item_mktprice">22000</b>元）</span>
+                
+                
+                
+                </dd>
+            </div>
+                <dt>类型：</dt>
+                <dd>
+
+                   
+                <div class="sys_item_spec">
+		
+		<dl class="clearfix iteminfo_parameter sys_item_specpara" data-sid="1">
+			
+			
+				<ul class="sys_spec_text" id="lei">
+					<li  data-aid="3"><a href="javascript:;" title="A类">A类</a><i></i></li>
+				
+                
+                	<li data-aid="4"><a href="javascript:;" title="B类">B类</a><i></i></li>
+                
+                
+                    <li data-aid="5"><a href="javascript:;" title="C类">C类</a><i></i></li>
+                </ul>
+			
+		</dl>
+		</div>
+            </dd>
+                <dt>子账户：</dt>
+                <dd>
+                    <a href="javascript:;" class="cp_down">-</a>
+                    <input type="text" class="cp_num" value="1"/>
+                    <a href="javascript:;" class="cp_add">+</a>
+                </dd>
+            </dl>
+            <button class="shopping">加入购物车</button>
+            <button class="buy">立即购买</button>
+        </div>
+        
+        <div class="cp_xiang">
+        	<p class="xiang_tit">商品详情</p>
+            <table class="tab_bor" border="0" cellspacing="0" cellpadding="0">
+            	<tr height="58px">
+                	<th width="148px">主账户类别</th>
+                    <th width="188px">服务描述</th>
+                    <th width="148px">服务期限</th>
+                    <th width="202px">说明</th>
+                    <th width="148px">服务费用</th>
+                </tr>
+                <tr height="98px">
+                	<td id="tab_head">A类</td>
+                    <td>
+                    	<p>专属企业法律咨询</p>
+                        <p><span class="tab_red">+</span>合同拟审</p>
+                    </td>
+                    <td>一年</td>
+                    <td>企业法律咨询不限次数/合同审拟<span class="tab_red">15</span>份（5000字一份）</td>
+                    <td>
+                    	<p>17600元</p>
+                        <p>原价22000元</p>
+                        <span class="tab_red">已优惠4400元</span>
+                    </td>
+                </tr>
+                <tr height="98px">
+                	<td id="tab_head">B类</td>
+                    <td>
+                    	<p>专属企业法律咨询</p>
+                        <p><span class="tab_red">+</span>合同拟审</p>
+                        <p><span class="tab_red">++</span>企业微网站账户</p>
+                    </td>
+                    <td>一年</td>
+                    <td>企业法律咨询不限次数/合同审拟<span class="tab_red">10</span>份（5000字一份），企业营销微网站账户一个</td>
+                    <td>
+                    	<p>13600元</p>
+                        <p>原价17000元</p>
+                        <span class="tab_red">已优惠3400元</span>
+                    </td>
+                </tr>
+                <tr height="98px">
+                	<td id="tab_head">C类</td>
+                    <td>
+                    	<p>专属企业法律咨询</p>
+                        <p><span class="tab_red">+</span>合同拟审</p>
+                        <p><span class="tab_red">++</span>企业微网站账户</p>
+                    </td>
+                    <td>一年</td>
+                    <td>企业法律咨询不限次数/合同审拟<span class="tab_red">20</span>份（5000字一份），企业营销微网站账户五个</td>
+                    <td>
+                    	<p>28000元</p>
+                        <p>原价35000元</p>
+                        <span class="tab_red">已优惠3400元</span>
+                    </td>
+                </tr>
+                
+            </table>
+            
+            
+            <table class="tab_bor" border="0" cellspacing="0" cellpadding="0">
+            	<tr height="58px">
+                	<td id="tab_head" width="148px">使用情况建议</td>
+                    <td width="688px"><span class="tab_red">20</span>人以下公司选择</td>
+                </tr>
+                <tr height="58px">
+                	<td id="tab_head">增值服务</td>
+                    <td>随身主账户类企业，可尊享<span class="tab_red">BOSS级私人随身律卡经典卡</span>半年（价值6000元）。全站其他付费服务<span class="tab_red">8.5</span>折</td>
+                </tr>
+            </table>
+            
+             
+            <table class="tab_bor" border="0" cellspacing="0" cellpadding="0">
+            	<tr height="58px">
+                	<td width="148px"></td>
+                    <td id="tab_head" width="688px">子账户</td>
+                </tr>
+                <tr height="58px">
+                	<td id="tab_head" width="148px">开通行情</td>
+                    <td width="688px"><span class="tab_red">20</span>人以下公司选择</td>
+                </tr>
+                <tr height="124px">
+                	<td id="tab_head" width="148px">描述</td>
+                    <td>
+                    	<p>1.根据企业需求，针对不同核心部门及岗位部署不同专业领域法律顾问律师，提供该部门所需专项咨询、文书审核服务；</p>
+                        <p>2.子账户是在建立主账户基础上开通的专项服务，每增加一项子账户，增加合同审拟三份+一个企业营销网站账户。</p>
+                    </td>
+                </tr>
+                <tr height="58px">
+                	<td id="tab_head">资费</td>
+                    <td><span class="tab_red">2500元/部门/岗位/年</span></td>
+                </tr>
+            </table>
+            
+            
+            
+        </div>
+        <div class="right">
+        	<p class="xiang_tit">您已选择：</p>
+            <p class="cp_xiang_tit">企业级账户</p>
+            <dl>
+            <div class="jiage2">
+            	<dt>价格：</dt>
+                <dd id="jiage2_dd" class="sys_item_price">13600~20800元/年</dd>
+            </div>
+                <dt>类型：</dt>
+                <dd>A型</dd>
+                <dt>子账户：</dt>
+                <dd>1个 1年</dd>
+            </dl>
+            <button class="shopping">加入购物车</button>
+            <button class="buy">立即购买</button>
+        </div>
+		
+		
+		
+    </div>
+</div>
+
+
+
+<!--页尾-->
+<div class="foot" style="margin-top:20px;">
+	<div class="footer">
+    	<div class="foot_le">
+       	  <div class="sixth">
+            	<span>关于我们</span>
+                <span>加入随身</span>
+                <span>服务条款</span>
+                <span>联系我们</span>
+           </div>
+          <p>随身法务咨询有限公司  |  北京市朝阳门外大街乙12号昆泰国际大厦1009</p>
+          <p id="xiap">Copyright ? 2016 随身法务咨询有限公司 苏ICP备15024691号—1  Powered by 汉唐尺度</p>
+          <img src="image/dilogo/logo-03.png"/>
+      </div>
+      <div class="foot_mid">
+        	<img src="image/dilogo/322886575230116700.png"/>
+        <span class="mid_up">关注随身法务微信</span>
+        <span class="mid_down">法律风控，尽在掌握</span>
+        </div>
+        <div class="foot_ri">
+       	  <p class="one">服务支持</p>
+          <p class="two">010-57121323</p>
+          <p class="three">周一至周五9:00-21:00</p>
+          <button>售后服务/投诉处理</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
+<script>
+
+//价格json
+var sys_item={
+	
+	"sys_attrprice":{"3":{"price":"17600元/年","mktprice":"22000"},"4":{"price":"13600元/年","mktprice":"17000"},"5":{"price":"28000元/年","mktprice":"35000"}}};
+
+//商品规格选择
+$(function(){
+	$(".sys_item_spec .sys_item_specpara").each(function(){
+		var i=$(this);
+		var p=i.find("ul>li");
+		p.click(function(){
+			if(!!$(this).hasClass("selected")){
+				$(this).removeClass("selected");
+				i.removeAttr("data-attrval");
+			}else{
+				$(this).addClass("selected").siblings("li").removeClass("selected");
+				i.attr("data-attrval",$(this).attr("data-aid"))
+			}
+			getattrprice() //输出价格
+		})
+	})
+	
+	//获取对应属性的价格
+	function getattrprice(){
+		var defaultstats=true;
+		var _val='';
+		var _resp={
+			mktprice:".sys_item_mktprice",
+			price:".sys_item_price"
+		}  //输出对应的class
+		$(".sys_item_spec .sys_item_specpara").each(function(){
+			var i=$(this);
+			var v=i.attr("data-attrval");
+			if(!v){
+				defaultstats=false;
+			}else{
+				_val+=_val!=""?"_":"";
+				_val+=v;
+			}
+		})
+		if(!!defaultstats){
+			_mktprice=sys_item['sys_attrprice'][_val]['mktprice'];
+			_price=sys_item['sys_attrprice'][_val]['price'];
+		}else{
+			_mktprice=sys_item['mktprice'];
+			_price=sys_item['price'];
+		}
+		//输出价格
+		$(_resp.mktprice).text(_mktprice);  ///其中的math.round为截取小数点位数
+		$(_resp.price).text(_price);
+	}
+})
+
+
+
+
+
+$(function(){
+	
+
+	//-数量
+	$(".cp_add").on("click",function(){
+		var _this  = $(this);
+		var n = _this.prev('.cp_num').val();
+			_this.prev('.cp_num').val(n*1+1); 
+		
+	}) //+数量
+    $(".cp_down").on("click",function(){
+
+        var _this  = $(this);       
+        var n = _this.next('.cp_num').val();
+
+        if(n>1) {
+        _this.next('.cp_num').val(n*1-1);}
+    })
+
+})
+
+
+</script>

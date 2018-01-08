@@ -1,0 +1,186 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/style.css">
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/chosetime.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/Home/mobilebdMap.js"></script>
+<title>{$home_name}</title>
+<script type="text/javascript">  
+	$(function(){
+	    $('#t,#t1').timepick();   
+	    // $('#t').timepick({format : 'hh时mm分'});
+	    // $('#t1').timepick({format : 'hh时mm分'});
+	    $('#a').timepick({onOK:function(val,$target){
+	        alert(val);
+	    }});
+	})
+</script>
+</head>
+<body class="paddtop">
+	<div class="zxq_one">
+		<a a href="javascript:history.back(-1)" class="a"><img src="__PUBLIC__/Images/Home/mobile/backs.png"></a>
+		<div>报名成功</div>
+	</div><!--zxq_one end-->
+	<div class="sgp_main">
+		<!--
+		<h2 class="sgp_oneh2 no_wrap">会议标题会议标题会议标题会议标题会议标题会议</h2> -->
+		<ul class="sgp_ul">
+			<li>
+				<span>会议地址： </span>
+				<span>{$list['room_address']|msubstr=0,8}</span>
+			</li>
+			<li>
+				<span>会议编号 : </span>
+				<span>{$list['room_no']}</span>
+			</li>
+			<li>
+				<span>学校区域 : </span>
+				<span>{$list['room_quyu']}</span>
+			</li>
+			<li>
+				<span>室内形状 : </span>
+				<span>{$list['room_shape']}</span>
+			</li>
+			<li>
+				<span>容纳人数 : </span>
+				<span>{$list['room_number']}人</span>
+			</li>
+			<li>
+				<span>室内设施 : </span>
+				<span>{$list['room_facilities']}</span>
+			</li>
+			<li>
+				<span>提供服务 : </span>
+				<span>
+				  <switch name="list['room_service']">
+						<case value="1">不提供服务</case>
+						<case value="2">提供服务</case>
+					</switch>
+				</span>
+			</li>
+			<li>
+				<span>园内导航 : </span>
+			</li>
+		</ul>
+		<div id="allmap" class="sgp_titu"></div>
+		<div class="sgp_huiyi cf">
+			<div class="sgp_huiyi-a fl">
+				已有会议： 
+			</div>
+			<p class="sgp_huiyi-b fl">
+				<volist name="list['meeting']" id="vo">
+					<li class="fl">
+						<p>{$vo['m_start']}-{$vo['m_end']} {$vo['m_name']}</p>
+					</li>
+				</volist>
+
+			</div>
+		</div><!--sgp_huiyi end-->
+		<div class="sgp_huiyi cf">
+			<div class="sgp_huiyi-a fl">
+				会议日期：
+			</div>
+			<div class="sgp_huiyi-b fl">
+				<p>{$date}<input type="hidden"></p>
+			</div>
+		</div><!--sgp_huiyi end-->
+		<div class="sgp_huiyi cf" style="padding-bottom:0.6rem;margin-bottom: 0;">
+			<div class="sgp_huiyi-a fl">
+				会议时间：
+			</div>
+			<div class="sgp_huiyi-b fl">
+				<input id="t" type="text" value="" name="m_start" style="width:2rem;height:0.7rem;line-height:0.7rem;margin-right:0.32rem;border: 1px solid #65C3DB;text-align:center;" readonly>~<input id="t1" type="text" value="" name="m_end" style="width:2rem;height:0.7rem;line-height:0.7rem;margin-left:0.32rem;border: 1px solid #65C3DB;text-align:center;" readonly>
+			</div>
+		</div><!--sgp_huiyi end-->
+	</div>
+	<div class="sgp_tishi">
+		<span class="sgp_tishi-t">提示</span>
+		<span>会议室选择20分钟后，若未提交会议，会议室将设置为空闲</span>
+	</div>
+	<input type="submit" class="sgp_xuanze" onclick="confirm2();" value="确认会议室">
+</body>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=oGMYEKntGEe6OF1637U3bkPySSVMjpfr"></script>
+<script type="text/javascript">
+
+    //确认会议
+    function confirm2(){
+        var room_id = "{$list['room_id']}";
+        var time = '{$list["time"]}';
+        var m_start = $('input[name=m_start]').val();
+        var m_end = $('input[name=m_end]').val();
+        var date_1 = "{$date}";
+        if (m_start == '' || m_end == '') {
+            alert('请填写时间！');
+            return false;
+        }
+        $.post('/Index/confirm',{date2:date_1,room_id:room_id,m_start:m_start,m_end:m_end,time:time},function (data) {
+            if (data == '-1'){
+                alert('确认会议室成功,下一步填写！');
+                location.href="/Mobile/writemeet/type/bz/m_end/"+m_end+"/m_start/"+m_start+"/date/"+ date_1 +"/id/"+room_id+".html";
+            }
+            if (data == '-2'){
+                alert('请选择正确的时间,已有会议存在！');
+                return false;
+            }
+        });
+    }
+	// 百度地图API功能	
+	map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point(116.355392,40.003747), 15);
+	setTimeout(function(){
+		map.setZoom(15);   
+	}, 2000);  //2秒后放大到14级
+	map.enableScrollWheelZoom(true);
+
+	//地图位置
+	var data_info = [
+					 [116.355392,40.003747,"中国矿业大学"]
+					];
+	var opts = {
+				width : 250,     // 信息窗口宽度
+				height: 80,     // 信息窗口高度
+				title : "地址信息" , // 信息窗口标题
+				enableMessage:true//设置允许信息窗发送短息
+			   };
+	for(var i=0;i<data_info.length;i++){
+		var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+		var content = data_info[i][2];
+		map.addOverlay(marker);               // 将标注添加到地图中
+		addClickHandler(content,marker);
+	}
+	function addClickHandler(content,marker){
+		marker.addEventListener("click",function(e){
+			openInfo(content,e)}
+		);
+	}
+	function openInfo(content,e){
+		var p = e.target;
+		var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+		var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+		map.openInfoWindow(infoWindow,point); //开启信息窗口
+	}	
+	var mySwiper = new Swiper('.swiper-container',{
+		pagination:'.swiper-pagination',
+		paginationClickable:true,
+		nextButton:'.swiper-button-next',
+		prevButton:'.swiper-button-prev',
+		loop:true,
+		autoplay:3000
+	});	
+	$('.details .btn .save').click(function(){
+   		if($(this).hasClass('bggrey')){
+   			$(this).removeClass('bggrey');		
+		}else{
+			$(this).addClass('bggrey');
+		}
+   	})	
+</script>
+</body>
+</html>

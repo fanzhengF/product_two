@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>用户管理-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='用户管理 > 管理用户';
+        </php>
+        <include file="Common:intoHead" />
+    </head>
+    <body>
+        <div class="wrap">
+
+            <div class="mainBody">
+
+                <div id="Right" style="width:100%;">
+                    <div class="Item hr">
+                        <div class="current">用户列表</div>
+                    </div>
+
+                    <!-- 搜索 -->
+                    <!--
+                    <form action="__URL__/index" method="get" id="search">
+                        <div>
+                            <b>查找：&nbsp;</b>
+                            <notempty  name="order_by">
+                                <b>排序方式:</b>
+                                <select id="order_by" name="order_by">
+                                    <option value="" >请选择</option>
+                                    <foreach name="order_by" item="vo">
+                                        <option value="{$key}" <if condition="$Think.get.order_by eq $key"> selected ="selected" </if>>{$vo.name}</option>
+                                    </foreach>
+                                </select>
+                            </notempty >
+
+                            <notempty  name="roles">
+                                <b>角色:</b>
+                                <select id="role_id" name="role_id">
+                                    <option value="" >请选择</option>
+                                    <foreach name="roles" item="vo">
+                                        <option value="{$key}" <if condition="$Think.get.role_id eq $key"> selected ="selected" </if>>{$vo}</option>
+                                    </foreach>
+                                </select>
+                            </notempty >
+
+                            <b>状态:</b>
+                            <select id="status" name="status">
+                                <option value="" >请选择</option>
+                                <foreach name="statuses" item="vo">
+                                    <option value="{$key}" <if condition="$Think.get.status eq $key"> selected ="selected" </if>>{$vo}</option>
+                                </foreach>
+                            </select>
+
+                            <b>用户ID&nbsp;</b>
+                            <input placeholder="用户ID" id="id" class="input" type="text" name="id" value="{$Think.get.id}" /> &nbsp;
+                            <b id="business_title">名称</b>&nbsp;
+                            <input placeholder="名称" id="business_name" class="input" type="text" name="business_name" value="{$Think.get.business_name}" /> &nbsp;
+                            <b>负责人姓名&nbsp;</b>
+                            <input placeholder="负责人姓名" id="name" class="input" type="text" name="name" value="{$Think.get.name}" /> &nbsp;
+                            <b>负责人手机号&nbsp;</b>
+                            <input placeholder="负责人手机号" id="tel" class="input" type="text" name="tel" value="{$Think.get.tel}" /> &nbsp;
+                            <button style="margin-left:40px;" class="btn quickSubmit">搜索</button>
+                        </div>
+                    </form>
+                        -->
+                    <!-- 列表 -->
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+                        <thead>
+                            <tr>
+                                <td>用户ID</td>
+                                <td>角色</td>
+                                <!--
+                                <td id="business_td_title">名称</td>  -->
+                                <td>负责人姓名</td>
+
+                                <!--
+                                <td>负责人手机号</td>
+                                <if condition="$is_shg_operator eq 1">
+                                    <td>实体店序号</td>
+                                </if>
+                                <td>链接</td>
+                                <td>二维码</td>  -->
+                                <td>创建时间</td>
+                                <td width="150">操作</td>
+                            </tr>
+                        </thead>
+                        <volist name="list" id="vo">
+                            <tr align="center" aid="{$vo.id}">
+                                <td>{$vo.id}</td>
+                                <td>{$roles[$vo['role_id']]}</td>
+                                <!--
+                                <td>{$vo.business_name}</td>  -->
+                                <td>{$vo.name}</td>
+
+                                <!--
+                                  <td>{$vo.tel}</td>
+                                <if condition="$is_shg_operator eq 1">
+                                    <td>{$vo.shop_sort}</td>
+                                </if>
+                                <td>
+                                    <if condition="$vo.role_id eq 5">
+                                        http://{$Think.server.http_host}/Pay/?id={$vo.id}
+                                    </if>
+                                </td>
+                                <td>
+                                    <if condition="$vo.role_id eq 5">
+                                        <a href="__URL__/getQrcode?name={$vo.business_name}&url=http://{$Think.server.http_host}/Pay/?id={$vo.id}" target="_blank">点击查看二维码</a>
+                                    </if>
+                                </td> -->
+                                <td>{$vo.create_time|date='Y-m-d H:i:s',###}</td>
+                                <td>
+                                  <!--  <a href="__URL__/editAdmin?id={$vo.id}&role_id={$vo.role_id}">编辑</a>&nbsp; -->
+                                    <if condition="$vo.status eq 1">
+                                        <a class="forbidden" link="__URL__/changeStatus?id={$vo.id}&status=2" href="javascript:void(0);" name="{$vo.name}">禁用</a>&nbsp;
+                                    <else />
+                                        <a href="__URL__/changeStatus?id={$vo.id}&status=1">启用</a>&nbsp;
+                                    </if>
+                                    <if condition="$is_admin eq 1">
+                                        [<a class="del" link="__URL__/delAdmin?id={$vo.id}&role_id={$vo.role_id}" href="javascript:void(0);" name="{$vo.name}">删除</a>]&nbsp;
+                                    </if>
+                                </td>
+                            </tr>
+                        </volist>
+                        <!-- 分页 -->
+                        <tr >
+                            <if condition="$is_shg_operator eq 1">
+                                <td class="fy" colspan="10">
+                            <else/>
+                                <td class="fy" colspan="9">
+                            </if>
+                                <ul>{$page}</ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+
+        <script type="text/javascript">
+            // 控制不同的角色显示不同的input
+            var map = {"3":"供应商名称", "4":"分公司名称", "5":"实体店名称"};
+
+            //刷新的时候正常显示
+            if($("#role_id").val() !=''){
+                var onId = map[$("#role_id").val()];
+                $("#business_title").text(onId);
+                $("#business_td_title").text(onId);
+            }else{
+                $("#business_title").text('名称');
+            }
+
+
+            //选择用户角色的时候,切换显示
+            $("#role_id").bind("change", function(){
+                // alert(this.value);
+                if(this.value != ''){
+                    $("#business_title").text(map[this.value]);
+                }else{
+                    $("#business_title").text('名称');
+                }
+            });
+
+                $(".forbidden").click(function(){
+                    var link=$(this).attr("link");
+                    popup.confirm('你真的打算禁用【<b>'+$(this).attr("name")+'</b>】吗?</br><font color="red"><b>其下属用户也将被禁用!!!</b></font>','温馨提示',function(action){
+                        if(action == 'ok'){
+                            location.href=link;
+                        }
+                    });
+                    return false;
+                });
+
+                $(".del").click(function(){
+                    var link=$(this).attr("link");
+                    popup.confirm('你真的打算删除【<b>'+$(this).attr("name")+'</b>】吗?</br>【<b>其下属用户也将被删除!!!</b>】','温馨提示',function(action){
+                        if(action == 'ok'){
+                            location.href=link;
+                        }
+                    });
+                    return false;
+                });
+        </script>
+    </body>
+</html>

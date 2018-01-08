@@ -1,0 +1,49 @@
+/*首页   开始*/
+	/*搜索*/
+.head_sear{padding:0.32rem 0.48rem;position: fixed;top: 0%;left: 0%;background: #fff;width: 100%;}
+.index_search{border: 1px solid #BFBFBF;border-radius: 6px;width:7.866rem;height:0.8rem;line-height:0.8rem;font-size: 0.32rem;padding-left: 0.613rem;padding-right:1rem;background: url(/Public/Images/Home/mobile/search.png) no-repeat 95% center;background-size: 7%;}
+.cli_sear{font-size: 0.373rem;margin-left: 0.293rem;height:0.8rem;line-height:0.8rem;}
+.index_ban{margin-top:1.44rem;}
+.index_ban,.index_ban img{width: 100%;}
+	/*搜索弹窗开始*/
+.search_tan{width:100%;/*height: 1.066rem;line-height: 1.066rem;*/position: fixed;top: 0%;left: 0%;background: #fff;z-index: 222;display: none;}
+.sear_top{width: 100%;height: 1.067rem;line-height: 1.067rem;padding-top: 0.16rem;box-shadow: 0 2px 4px 0 rgba(211,211,211,0.50);}
+.tan_backs{margin-left: 0.373rem;width: 0.24rem;height: 0.426rem;background: url(/Public/Images/Home/mobile/backs.png) no-repeat;background-size: 100%;margin-top: 0.2rem;margin-right: 0.613rem;}
+.tan_backs img{width: 0.24rem;height: 0.426rem;}
+.sear_posi{position: relative;width:7.546rem;height:0.746rem;border: 1px solid #BFBFBF;border-radius: 6px;}
+.index_search1{width:6rem;height:0.65rem;margin: 0 0.32rem 0 0.426rem;border:0;background: transparent;}
+.top_sear{border:0;background: url(/Public/Images/Home/mobile/search.png) no-repeat;width: 0.55rem;height: 0.55rem;background-size: 100%;margin-top: 0.1rem;}
+.time_lei{font-size: 0.32rem;padding-left:0.2rem;margin-top: 0.346rem;padding-bottom: 0.106rem;}
+.time_lei span{width:2.346rem;height:0.746rem;line-height:0.746rem;border-radius: 4px;background:#F0F0F0 url(/Public/Images/Home/mobile/zhankai.png) no-repeat 95% center;margin-right: 0.533rem;background-size: 14%;padding-left: 0.3rem;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor: pointer;}
+.time_lei input{width:2.346rem;height:0.746rem;line-height:0.746rem;border-radius: 4px;background:#F0F0F0;border:0;text-align: center;}
+.time_lei .back_none{background: 0;border:1px solid #E3E3E3;border-bottom: 0;border-radius: 4px;text-align: center;padding: 0;}
+.can_resets{font-size: 0.32rem;display: none;}
+.can_resets input[type='radio']{display: none;}
+.can_resets label{margin-right: 0.853rem;margin-top: 0.426rem;padding-bottom: 2px;border-bottom: 2px solid transparent;}
+.resets1{padding: 0 1.173rem;width: 100%;margin-bottom: 0.533rem;}
+.can_resets .resets1_cur{border-bottom: 2px solid #28BADF;color: #28BADF;}
+.chongzhi{width: 49.9%;height: 0.96rem;line-height: 0.96rem;text-align: center;background: #fff;border: 1px solid #E3E3E3;font-size: 0.373rem;color: #999;border-right: 0;border-left: 0;}
+.btn_yes{width: 49.9%;height: 0.96rem;line-height: 0.96rem;text-align: center;background:  #28BADF;border: 1px solid  #28BADF;font-size: 0.373rem;color: #fff;border-right: 0;border-left: 0;}
+
+
+
+
+
+
+
+
+
+	/*报名会议列表开始*/
+.meet_joins{padding:0 0.186rem;overflow-y: scroll;height: 10.56rem;}
+.join_uls{margin-bottom: 0.426rem;/*height: 10.56rem;*/}
+.join_uls li{background: #fff;box-shadow: 2px -3px 2px 0 rgba(216,216,216,0.50);border-radius: 5px;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;padding:0.853rem 0.373rem 0.533rem;}
+.join_nember{font-size: 0.266rem;margin-bottom: 0.444rem;}
+.xue_meets img{width: 0.32rem;height: 0.213rem;margin-right: 0.16rem;}
+.meet_addrs{font-size: 0.266rem;color: #666;margin-bottom: 0.444rem;}
+.meet_tits{font-size: 0.373rem;color: #666;margin-bottom: 0.444rem;}
+.times_addrs{font-size: 0.266rem;color: #666;}
+	/*加载更多开始*/
+.load_more{width: 2rem;margin: 0 auto;cursor: pointer;font-size: 0.32rem;color: #666;margin-bottom: 0.293rem;}
+.load_more img{width: 0.3rem;height: 0.2rem;margin: 0.1rem;}
+
+

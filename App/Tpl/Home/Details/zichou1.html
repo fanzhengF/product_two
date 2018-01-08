@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="中国矿业大学" />
+    <meta name="description" content="中国矿业大学" />
+    <title>中国矿业大学研究院（北京）研究生院</title>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-base.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-all.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/Home/mycommon.js"></script>
+    <link rel="stylesheet" type="css" href="__PUBLIC__/Css/Home/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/index.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/datetimepicker.css">
+</head>
+<body>
+<div class="header">
+    <img src="__PUBLIC__/Images/Home/logo.png">
+    <ul class="cf">
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn">首页</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=1">研究生院简介</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=2">招生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=3">学籍管理</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=4">培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=5">专业学位培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=6">学位工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=7">国际交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=8">学术交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=9">学生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=10">办事指南（咨询中心）</a></li>
+    </ul>
+</div><!--header end-->
+<div class="bodys con_box">
+    <div class="body_cons cf">
+        <div class="fl cons_left con_box">
+            <p class="xuefen"><!--当前学分：1.25分-->
+                <if condition="$auth">
+                    <if condition="$u_type_init eq 3">
+                        学分：
+                        <switch name="xf">
+                            <case value="">0</case>
+                        </switch>
+                        <!--
+                        {$mcAll['c_number']}
+                        -->
+                        {$xf}
+                        分
+                    </if>
+                </if>
+                <input type="hidden" value=""></p>
+            <include file="Common:left" />
+        </div>
+        <div class="cons_right con_box fl" id="cons_right">
+            <form action="" method="post" id="zi_form" enctype="multipart/form-data">
+                <if condition="$type eq 'bz'">
+                    <input type="hidden" value="0" name="m_mtype" />
+                    <else />
+                <input type="hidden" value="2" name="m_mtype" />
+                </if>
+
+                <input type="hidden" value="{$uid}" name="m_uid" />
+                <input type="hidden" value="{$uname}" name="m_u_name" />
+                <input type="hidden" value="{$id}" name="id" />
+                <ul class="steps cf con_box">
+                    <li class="cf fl">
+                        <span class="step fl">1</span>
+                        <span>第一步：选择会议室</span>
+                    </li>
+                    <li class="cf fl step_cur">
+                        <span class="step fl">2</span>
+                        <span>第二步：填写会议资料</span>
+                    </li>
+                </ul><!--steps end-->
+                <div class="meet_address con_box">
+                    <div class="cf">
+                        <label class="fl">
+                            <span class="red_star">*</span>会议标题：
+                        </label>
+                        <input type="text" value="" name="m_name" id="meet_biao" class="fl meet_input1 new_inputs">
+                    </div>
+                    <div class="cf">
+                        <label class="fl">会议简介：</label>
+                        <textarea name="m_content" class="meet_text1 fl new_inputs" id="meet_jian"></textarea>
+                    </div>
+                    <div class="cf zhuan_appends">
+                        <div>
+                            <label class="fl">主讲专家：</label>
+                            <input type="text" value="" name="m_zhujiang" id="meet_zhuan1" class="fl meet_litput1 new_inputs" placeholder="姓名">
+                            <input type="text" value="" name="m_zhicheng" id="meet_zhuan2" class="fl meet_litput1 new_inputs" placeholder="职称">
+                            <label for="meet_zhuan3" class="fl meet_upload new_inputs"><img src="__PUBLIC__/Images/Home/upload.png"><span>上传主讲人图片</span><input onchange="change(this);" type="file" value=""  name="m_images" id="meet_zhuan3"></label>
+                            <p class="zhu_jian" style="border-bottom: none;">
+                                <input type="text" value="" name="m_jianjie" placeholder="主讲人简介" class="meet_input1 new_inputs jiang_input">
+                            </p>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="cli_append">
+                        <img src="__PUBLIC__/Images/Home/adds.png">添加主讲人
+                    </div>
+                    -->
+                    <div class="cf">
+                        <label class="fl">列席专家：</label>
+                        <input type="text" value="" name="m_zhuanjia" placeholder="请填写专家姓名，中间用“，”隔开" class="meet_input1 fl new_inputs" id="meet_lie">
+                    </div>
+                    <div class="cf">
+                        <label class="fl"><span class="red_star">*</span>会议日期：</label>
+                        <if condition="$type eq 'bz'">
+                            <input type="text" name="m_time"  id="start_time1" value="{$date}" readonly placeholder="时间" class="fl start_time1 new_inputs" />
+                            <input type="text" name="m_start" value="{$m_start}" readonly placeholder="开始时间" class="fl start_time1 new_inputs m_start form_datetime"/>
+                            <input type="text" name="m_end"  value="{$m_end}" readonly id="start_time2"  placeholder="结束时间" class="fl start_time1 new_inputs m_end form_datetime"/>
+                        <else />
+                            <input type="text" name="m_time" onClick="eye.datePicker.show(this);" id="start_time1" readonly placeholder="时间" class="fl start_time1 new_inputs" />
+                            <input type="text" name="m_start" placeholder="开始时间" class="fl start_time1 new_inputs form_datetime m_start" />
+                            <input type="text" name="m_end"  id="start_time2"  placeholder="结束时间" class="fl start_time1 new_inputs form_datetime m_end" />
+                        </if>
+
+                    </div>
+                    <div class="cf">
+                        <span class="cf fl">
+                            <label class="fl"><span class="red_star">*</span>人数：</label>
+                            <input type="number" value="" name="m_number" class="fl new_inputs meet_ren" id="meet_ren">
+                        </span>
+                        <!--
+                        <span class="cf fl">
+                            <label class="fl liuzuo"><span class="red_star">*</span>预留座位：</label>
+                            <input type="number" value="" name="m_ylnumber" class="fl new_inputs meet_ren" id="meet_zuo">
+                        </span>
+                        -->
+                    </div>
+                    <div class="cf">
+                        <span class="cf fl">
+                            <label class="fl"><span class="red_star">*</span>会议类型：</label>
+                             <select name="m_type" class="fl new_inputs meet_ren" id="meet_lei">
+                                    <volist name="mtAll" id="vo">
+                                        <option value="{$vo.mt_id}">{$vo.mt_name}</option>
+                                    </volist>
+                                </select>
+                        </span>
+                        <span class="cf fl">
+                            <label class="fl liuzuo"><span class="red_star">*</span>会议等级：</label>
+                              <select name="m_grade" class="fl new_inputs meet_ren" id="meet_leve">
+                                    <volist name="gradeAll" id="vo">
+                                        <option value="{$vo.g_id}">{$vo.g_name}</option>
+                                    </volist>
+                              </select>
+                        </span>
+                    </div>
+                    <!--
+                    <div class="cf minges">
+                        <label class="fl zhan_lab" style="width:154px;">发起者占有名额：</label>
+                        <label class="fl zhan_cur minge" for="faqi1"><input type="radio" name="m_occupy" value="1" id="faqi1">是</label>
+                        <label class="fl minge" for="faqi2"><input type="radio" name="m_occupy" value="2" id="faqi2">否</label>
+                    </div>
+
+                    -->
+                    <div class="cf">
+                        <label class="fl">会议范围：</label>
+                        <select name="m_range" class="fl new_inputs meet_ren" id="meet_fan">
+                            <option value="0">全部</option>
+                            <option value="1">校内</option>
+                            <option value="2">校外</option>
+                        </select>
+                    </div>
+                    <div class="cf">
+                        <label class="fl zhan_lab" style="width:154px;margin-right:0px;">收费金额（元）：</label>
+                        <input type="text" value="" name="m_money" placeholder="不填写则为免费" class="meet_dates fl new_inputs" id="meet_fee">
+                    </div>
+                    <div class="cf">
+                        <label class="fl" style="">会议室选择：</label>
+                        <span class="fl">
+                            <input type="text" value="{$oneMr.room_name}" name="m_rname" class="meet_dates fl new_inputs" id="meet_chose" readonly>
+                           <!-- <span class="fl deletes"><img src="__PUBLIC__/Images/Home/laji.png">删除</span>
+                            <span class="fl xiugai"><img src="__PUBLIC__/Images/Home/write.png">修改</span>-->
+                            <p class="tishis">提示：会议室选择20分钟后，若未提交会议申请，会议室状态将被设为闲置</p>
+                        </span>                   
+                    </div>
+                    <div class="cf borbot">
+                        <label class="fl up_zi" style="width:154px;margin-right:0px;">会议资料：</label>
+                        <label for="up_zi" class="fl meet_upload new_inputs"><img src="__PUBLIC__/Images/Home/upload.png"><span>请上传资料</span><input type="file" value="" name="m_ziliao" onchange="change(this)" id="up_zi"></label>
+
+                    </div>
+                    <div class="cf">
+                        <label class="fl">*联系方式：</label>
+                        <input type="text" class="fl lian_name new_inputs" id="lian_name" value="" name="m_user" placeholder="姓名">
+                        <input type="tel" class="fl lian_tel new_inputs" id="lian_tel" value="" name="m_phone" placeholder="电话">
+                    </div>
+                    <div class="cf">
+                        <label class="fl">举办机构：</label>
+                        <input type="text" class="fl lian_name new_inputs" id="lian_ming" value="" name="m_xiaowjigou" placeholder="名称">
+                        <input type="tel" class="fl lian_tel new_inputs" id="lian_jian" value="" name="m_xiaowjigouinfo" placeholder="简介">
+                    </div>
+                    <p class="erro_mes"></p>
+
+                        <button class="tijiao" id="tijiao" style="cursor: pointer" onclick="return confirm('你要提交吗?') ? true : false " type="submit">提交</button>
+
+                </div>
+            </form>
+        </div><!--cons_right end-->
+    </div><!--body_cons end-->
+</div><!--bodys end-->
+<div class="footers con_box cf">
+    <p class="fl">中国矿业大学研究院（北京）研究生院 版权所有 地址：北京市海淀区学院路丁11号  电话：010-62339826,62339255</p>
+    <p class="fr">网站建设专家<a href="javascript:;" class="taoruan">淘软科技</a>提供技术支持</p>
+</div>
+<script type="text/javascript">
+    //上传提示
+    function change(t) {
+       $(t).siblings('span').html('上传成功！');
+    }
+
+    //验证
+        $('#meet_biao').blur(function(){
+            if ($('#meet_biao').val()==''||$('#meet_biao').val()==undefined) {
+                $('.erro_mes').text('会议标题一定要填写哦~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+   // 验证会议日期
+        $('#start_time1').blur(function(){
+            if ($('#start_time1').val()==''||$('#start_time1').val()==undefined) {
+                $('.erro_mes').text('不要忘了选择会议日期~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+        $('.m_start').click(function(){
+            if ($('.m_start').val()==''||$('.m_start').val()==undefined) {
+                $('.erro_mes').text('会议间隔开始时间不能为空');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('click');
+        })
+        $('.m_end').click(function(){
+            if ($('.m_end').val()==''||$('.m_end').val()==undefined) {
+                $('.erro_mes').text('会议间隔结束时间不能为空');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('click');
+        })
+        //验证会议室人数
+        $('#meet_ren').blur(function(){
+            if ($('#meet_ren').val()==''||$('#meet_ren').val()==undefined) {
+                $('.erro_mes').text('会议室人数一定要填写哦~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+        
+        //验证会议类型
+        $('#meet_lei').blur(function(){
+            if ($('#meet_lei option:selected').val()==''||$('#meet_lei option:selected').val()==undefined) {
+                $('.erro_mes').text('不要忘了选择会议类型~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+        //验证会议等级
+        $('#meet_leve').blur(function(){
+            if ($('#meet_leve option:selected').val()==''||$('#meet_leve option:selected').val()==undefined) {
+                $('.erro_mes').text('不要忘了选择会议等级~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+        //验证联系方式  姓名和电话
+        $('#lian_name').blur(function(){
+            if ($('#lian_name').val()==''||$('#lian_name').val()==undefined) {
+                $('.erro_mes').text('请输入您的姓名~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+        $('#lian_tel').blur(function(){
+            if ($('#lian_tel').val()==''||$('#lian_tel').val()==undefined) {
+                $('.erro_mes').text('请输入您的手机号码~');
+                return false;
+            }else if(!$("#lian_tel").val().match(/^(((13[0-9]{1})|(15[0-9]{1})|(14[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/)){
+                $('.erro_mes').text('手机号码格式错啦~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+        //验证举办机构  名称和简介
+        $('#lian_ming').blur(function(){
+            if ($('#lian_ming').val()==''||$('#lian_ming').val()==undefined) {
+                $('.erro_mes').text('请输入举办名称~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+        $('#lian_jian').blur(function(){
+            if ($('#lian_jian').val()==''||$('#lian_jian').val()==undefined) {
+                $('.erro_mes').text('请输入举办简介~');
+                return false;
+            }else{
+                $('.erro_mes').text('');
+                return true;
+            }
+        }).keyup(function(){
+            $(this).triggerHandler('blur');
+        })
+
+    $('form').submit(function (e) {
+        if ($('#meet_biao').val()==''||$('#meet_biao').val()==undefined) {
+            $('.erro_mes').text('会议标题一定要填写哦~');
+            return false;
+        }
+        if ($('#start_time1').val()==''||$('#start_time1').val()==undefined) {
+            $('.erro_mes').text('不要忘了选择会议日期~');
+            return false;
+        }
+        if ($('.m_start').val()==''||$('.m_start').val()==undefined) {
+            $('.erro_mes').text('会议间隔开始时间不能为空');
+            return false;
+        }
+        if ($('.m_end').val()==''||$('.m_end').val()==undefined) {
+            $('.erro_mes').text('会议间隔结束时间不能为空');
+            return false;
+        }
+        if ($('#meet_ren').val()==''||$('#meet_ren').val()==undefined) {
+            $('.erro_mes').text('会议室人数一定要填写哦~');
+            return false;
+        }
+        if ($('#meet_lei option:selected').val()==''||$('#meet_lei option:selected').val()==undefined) {
+            $('.erro_mes').text('不要忘了选择会议类型~');
+            return false;
+        }
+        if ($('#meet_leve option:selected').val()==''||$('#meet_leve option:selected').val()==undefined) {
+            $('.erro_mes').text('不要忘了选择会议等级~');
+            return false;
+        }
+        if ($('#lian_name').val()==''||$('#lian_name').val()==undefined) {
+            $('.erro_mes').text('请输入您的姓名~');
+            return false;
+        }
+        if ($('#lian_tel').val()==''||$('#lian_tel').val()==undefined) {
+            $('.erro_mes').text('请输入您的手机号码~');
+            return false;
+        }
+        if ($('#lian_ming').val()==''||$('#lian_ming').val()==undefined) {
+            $('.erro_mes').text('请输入举办名称~');
+            return false;
+        }
+        if ($('#lian_jian').val()==''||$('#lian_jian').val()==undefined) {
+            $('.erro_mes').text('请输入举办简介~');
+            return false;
+        }
+    })
+</script>
+<script type="text/javascript">
+    $(function(){
+        //上传主讲人图片
+       //添加主讲人
+       $('.cli_append').click(function(){
+        $('.zhuan_appends').append('<div><label class="fl">主讲专家：</label><input type="text" value="" name="" id="meet_zhuan1" class="fl meet_litput1 new_inputs" placeholder="姓名"><input type="text" value="" name="" id="meet_zhuan2" class="fl meet_litput1 new_inputs" placeholder="职称"><label for="meet_zhuan3" class="fl meet_upload new_inputs"><img src="__PUBLIC__/Images/Home/upload.png"><span>上传主讲人图片</span><input type="file" value="" name="" id="meet_zhuan3"></label><p class="zhu_jian"><input type="text" value="" name="" placeholder="主讲人简介" class="meet_input1 new_inputs jiang_input"></p></div>')
+       })
+       //发起者占有名额
+        $('.minge').click(function(){
+            $(this).addClass('zhan_cur').siblings('.minge').removeClass('zhan_cur');
+        })
+        //删除会议室
+        $('.deletes').click(function(){
+            $(this).siblings('#meet_chose').val('');
+        })
+        $('.xiugai').click(function(){
+            $(this).siblings('#meet_chose').prop('disabled',false).css({ 'border-bottom':'1px solid #666'});
+        })
+    })
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('.left_lis:last').css({ 'border-bottom':'0px'});
+        //获取左侧导航高度
+        var body_cons=$('.body_cons').height();//alert(cons_right);
+        $('.cons_left').css({ 'height':body_cons});
+    })
+</script>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/jquery-ui.css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-ui.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-ui-slide.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript">
+    $(function (){
+
+        $('.form_datetime').timepicker({
+            hourGrid: 4,
+            minuteGrid: 10
+        });
+    })
+</script>
+</body>
+</html>
+
+

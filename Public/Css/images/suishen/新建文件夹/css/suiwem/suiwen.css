@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+.classify2{ position:absolute; width:1200px; top:178px;}
+
+.suiwem{ width:1200px; margin:0 auto; height:550px;}
+.mian{ float:left; height:400px; width:400px; margin-top:76px; }
+.mian a{ float:left; height:400px; width:400px;}
+.mian a:hover{ background-color:#ededed;}
+.mian img{ margin-top:65px;}
+.p24{ margin-top:30px; font-size:24px; color:#666;}
+.p16{ margin-top:20px; font-size:16px; color:#999;}

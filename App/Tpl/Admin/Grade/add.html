@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加会议等级-{$site.SITE_INFO.name}</title>
+    <php>
+        $addCss="";
+        $addJs="";
+        $currentNav ='会议室管理 > 添加会议学分';
+    </php>
+    <include file="Common:intoHead" />
+    <script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+    <div class="mainBody">
+        <div id="Right" style="width:100%;">
+            <div class="contentArea">
+                <div class="Item hr">
+                    <div class="current">添加会议学分</div>
+                </div>
+                <form action="" method="post" enctype="multipart/form-data" >
+                    <table width="100%"  cellspacing="0" cellpadding="0" class="table1">
+                        <tr>
+                            <th width="120"><font color="red">* </font>等级名称</th>
+                            <td><input  name="g_name" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+
+                        <tr>
+                            <th width="120"><font color="red">* </font>类型名称</th>
+                            <td>
+                                <select name="mt_id" style="width: 280px;">
+                                    <volist name="MtaLL" id="vo">
+                                        <option value="{$vo.mt_id}">{$vo.mt_name}</option>
+                                    </volist>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>学分</th>
+                            <td><input  name="g_xuefen" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+
+
+
+                        <tr>
+                            <th></th>
+                            <td><input type="submit" value="提交" name="submit" class="btn submit" /></td>
+                        </tr>
+
+                    </table>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+
+
+</body>
+</html>

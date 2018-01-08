@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>修改学生会议室-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='会议室管理 > 修改学生会议室';
+        </php>
+    <include file="Common:intoHead" />
+</head>
+<body>
+    <div class="wrap">
+        <div class="mainBody">
+            <div id="Right" style="width:100%;">
+                <div class="contentArea">
+                    <div class="Item hr">
+                        <div class="current">修改学生会议室</div>
+                    </div>
+
+
+
+
+
+
+                    <form action="" method="post" enctype="multipart/form-data" >
+                        <table width="100%"  cellspacing="0" cellpadding="0" class="table1">
+                            <input type="hidden" name="p_id" value="{$data.p_id}">
+
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议名称</th>
+                                <td>
+                                    <select name="p_mid" style="width: 280px;">
+                                        <volist name="meeting" id="vo">
+                                            <option value="{$vo.m_id}" <if condition="$data.p_mid eq $vo[m_id]">selected</if>>{$vo.m_name}</option>
+                                        </volist>
+                                    </select>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <th width="120"><font color="red">* </font>海报名称</th>
+                                <td><input  name="p_name" type="text" class="input" size="40" value="{$data.p_name}" /></td>
+                            </tr>
+
+                            <tr>
+                                <th width="120"><font color="red">* </font>海报照片</th>
+                                <td>
+                                    <input type="file" name="p_images" class="file" size="40" value="" />
+                                    <img src="__PUBLIC__/upfile/images/{$data.p_images}" alt="图片" />
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <th></th>
+                                <td><input type="submit" value="提交" name="submit" class="btn submit" /></td>
+                            </tr>
+
+                        </table>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<ul class="left_uls">
+    <li class="left_lis">
+        <if condition="$u_type_init neq 1">
+            <a href="javascript:;" class="cf">
+                <span class="fl mess1"></span>
+                <span class="fl li_cons">师生互动中心</span>
+                <span class="fl shou1"></span>
+            </a>
+        </if>
+        <ul class="child_uls">
+            <if condition="$u_type_init neq 1">
+                <li><a href="javascript:void(0);" onclick="login('/Index/emails.html');">写信息</a></li>
+                <li><a href="javascript:void(0);" onclick="login('/Index/emails_shou.html');">收信箱</a></li>
+                <li><a href="javascript:void(0);" onclick="login('/Index/emails_fa.html');">发信箱</a></li>
+            </if>
+        </ul>
+    </li>
+    <li class="left_lis cf">
+        <a href="javascript:;" class="cf">
+            <span class="fl home1"></span>
+            <span class="fl li_cons">学术会议查询</span>
+            <span class="fl shou1"></span>
+        </a>
+        <ul class="child_uls">
+            <li><a href="{:U('Index/index_all/')}">全部会议</a></li>
+            <li><a href="{:U('Index/index_jinqi')}">近期会议</a></li>
+            <!--
+            <li><a href="{:U('Index/index_jinxing')}">进行会议</a></li>
+            -->
+            <li><a href="{:U('Index/index_lishi')}">历史会议</a></li>
+            <li><a href="javascript:void(0);" onclick="login('/Index/baoming.html');">报名的会议</a></li>
+            <li><a href="javascript:void(0);" onclick="login('/Index/mymeet.html')">参加的会议</a></li>
+            <if condition="($u_type_init neq 1) AND ($u_type_init neq 2)">
+                <li><a href="javascript:void(0);" onclick="login('/Index/mefaqi.html')">发起的会议</a></li>
+                <li><a href="javascript:void(0);" onclick="login('/Index/budeng.html')">补登的会议</a></li>
+            </if>
+
+        </ul>
+    </li>
+
+
+    <li class="left_lis">
+        <if condition="$u_type_init neq 1">
+            <a href="javascript:;" class="cf">
+                <span class="fl duan1"></span>
+                <span class="fl li_cons">学术会议申请</span>
+                <span class="fl shou1"></span>
+            </a>
+        </if>
+        <ul class="child_uls">
+            <if condition="$u_type_init neq 1">
+                <li><a href="javascript:void(0);" onclick="login('/Index/shentable.html')">标准会议室</a></li>
+            </if>
+            <li><a href="javascript:void(0);" onclick="login('/Index/zichou_list.html')">自筹会议室</a></li>
+        </ul>
+    </li>
+
+
+
+    <li class="left_lis">
+        <if condition="$u_type_init neq 1">
+            <a href="javascript:;" class="cf">
+                <span class="fl bao1"></span>
+                <span class="fl li_cons">学术会议报名</span>
+                <span class="fl shou1"></span>
+            </a>
+        </if>
+        <ul class="child_uls">
+            <li><a href="{:U('Index/index_all/')}">我要查找</a></li>
+            <li><a href="{:U('Index/index_jinqi')}">我要报名</a></li>
+            <li><a href="{:U('Index/index_lishi')}">我要评论</a></li>
+        </ul>
+    </li>
+
+
+
+
+    <if condition="$auth">
+        <li class="left_lis">
+            <a href="javascript:;" class="cf">
+                <span class="fl usr1"></span>
+                <span class="fl li_cons">个人信息资料</span>
+                <span class="fl shou1"></span>
+            </a>
+            <ul class="child_uls">
+                <if condition="$u_type_init eq 3">
+                    <li><a href="{:U('Index/stusercenter/')}">我的中心</a></li>
+                </if>
+                <if condition="$u_type_init eq 2" >
+                    <li><a href="{:U('Index/usercenter/')}">我的中心</a></li>
+                </if>
+
+            </ul>
+        </li>
+    </if>
+
+    <if condition="$auth">
+        <li class="left_lis"><a href="{:U('Index/logout/')}" style="color:#28badf;">退出登录</a></li>
+        <else />
+        <li class="left_lis"><a href="{:U('Index/login/')}" style="color:#28badf;">用户登录</a></li>
+    </if>
+    <!--
+    <li class="left_lis"><a target="_blank" href="{:U('/Admin/Public/index')}" style="color: #28badf;"> 登录后台  </a></li>
+    -->
+
+
+</ul>
+
+<script type="text/javascript">
+    function login (url){
+        var url = url;
+        $.ajax({
+            url :url,
+            type: 'post',
+            success : function (status) {
+                if (status == 1) {
+                    $('.not_login,.masks').show();
+                }else {
+                    location.href = url;
+                }
+            }
+        });
+    }
+    $(function(){
+        $('.left_lis').click(function(){
+            if ($(this).hasClass('left_licurs')) {
+               $(this).removeClass('left_licurs'); 
+               $(this).find('.child_uls').hide();                
+           }else{               
+               $(this).addClass('left_licurs');
+               $(this).find('.child_uls').show();
+           }            
+            
+        }).click(function(){
+            if ($(this).siblings('.left_lis').find('.child_uls').show()) {
+               $(this).siblings('.left_lis').removeClass('left_licurs'); 
+               $(this).siblings('.left_lis').find('.child_uls').hide();               
+           }
+        })
+    })
+</script>

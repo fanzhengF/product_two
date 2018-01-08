@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<meta content="telephone=no" name="format-detection" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>{$WebTitle}</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="shortcut icon" sizes="16x16" href="http://static.jiaju.com/jiaju/com/images/qgztouch/gongzhnag_16.png">
+<link rel="shortcut icon" sizes="196x196" href="http://static.jiaju.com/jiaju/com/images/qgztouch/gongzhang_196.png">
+<link rel="apple-touch-icon-precomposed" href="http://static.jiaju.com/jiaju/com/images/qgztouch/gongzhnag_152.png">
+<link rel="stylesheet" type="text/css" href="http://min.static.jiaju.com/static/site/asset/style/qgztouch/reset-min.css"/>
+<meta name="apple-mobile-web-app-title" content="">
+<link href="http://min.static.jiaju.com/static/site/asset/style/qgztouch/m_default-min.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="http://min.static.jiaju.com/static/site/asset/style/qgztouch/common-min.css"/>
+<link rel="stylesheet" type="text/css" href="http://min.static.jiaju.com/static/site/asset/style/qgztouch/f_gongzhang-min.css"/>
+<script src="http://min.static.jiaju.com/static/site/asset/script/gzclub/zepto.min.js">
+</script>
+<script src="http://webapi.amap.com/maps?v=1.3&key=25bcdbe62ba5ed83e8764940017728a1"></script>
+
+</head>
+<body>
+<div class="mIndex" id="js-wrap">
+<!--公共头部开始-->
+	<header class="gz-common-header clearfix rlt">
+		<p class="gz-common-tit fl">
+			<span class="gz-common-name">切换城市</span>
+		</p>
+		<a href="/" class="gz-common-goback fl">
+			<em class="m_icon_oth m_common_rtr"></em>
+		</a>
+		<a id="js-gz-common-more" href="/" class="gz-common-more fl">
+			<em></em>
+		</a>
+	</header>
+	<!--公共头部结束-->
+</header>
+<!--公共头部结束-->
+<div class="current-p clearfix">
+	<div class="current-l fl">
+		    <p>当前位置：
+		    <empty name="cityRow">
+		        <a href="javascript:;" style="color:#f00" id="js-current-city">定位失败，请手动选择城市</a>
+		    <else />
+		        <a href="/ChangeCity/change/code/{$cityRow.id}.html" style="color:#f00" id="js-current-city">{$cityRow.name}</a>      
+		    </empty>
+		    </p>
+			</div>
+	<div class="fr m_change_city">
+		<a href="javascript:;"><em class="m_icon m_city_refresh"></em></a>
+	</div>
+</div>
+<div class="interval-line"></div>
+<notempty name="HotCity">
+<div class="hot-city">
+	<p>热门城市</p>
+	<ul class="clearfix">
+	 <foreach name="HotCity" item="row">
+		<li><a href="/ChangeCity/change/code/{$row.cityId}.html">{$row.cityName}</a></li>
+		</foreach>
+	</ul>
+</div>
+</notempty>
+<div class="interval-line" style="border-top:none"></div>
+<div class="all-city">
+	<p>全部城市</p>
+	<ul class="clearfix">
+    	<foreach name="result" key="char" item="row">
+    	<li><a href="#{$char}">{$char}</a></li>
+    	</foreach>
+	</ul>
+</div>	
+
+ <foreach name="result" key="cityCode" item="cityRow">
+	    <div class="a-city" id="{$cityCode}">
+		        <p>{$cityCode}</p>
+        		<ul class='clearfix'>
+        		        <foreach name="cityRow" item="cRow">
+        			            <li><a href="/ChangeCity/change/code/{$cRow['id']}.html">{$cRow['name']}</a></li>
+        			    </foreach>
+        			 																
+        			</ul>
+		    </div>
+  </foreach>
+		
+		
+</div>
+
+
+<!--工长选中数量开始-->
+		<a href="/Index/selectChief.html" id="js_slt_chief"  >
+			<span>0</span>
+		</a>
+<!--工长选中数量结束-->
+<script src="http://min.static.jiaju.com/static/site/asset/script/qgztouch/history_back-min.js">
+</script>
+<!--返回顶部开始-->
+<a id="gotop" href="javascript:;">
+</a>
+
+
+</body>
+<script src="http://min.static.jiaju.com/static/site/asset/script/qgztouch/map-gd-min.js"></script>
+<script src="http://min.static.jiaju.com/static/site/asset/script/qgztouch/m_default-min.js"></script>
+<include file="Common:statistics" />
+</html>

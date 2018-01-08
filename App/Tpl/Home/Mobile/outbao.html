@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/hstyle.css">
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+<title>{$home_name}</title>
+</head>
+<body class="paddtop" style="background: #F7FBFF;">
+	<div class="zxq_one con_box" style="padding-left: 1.5rem;">
+		<a href="javascript:history.back(-1)" class="a"><img src="__PUBLIC__/Images/Home/mobile/backs.png"></a>
+		<div class="cf">校外人员报名
+			<a href="{:U('/Mobile/index')}" class="fr right_home"><img src="__PUBLIC__/Images/Home/mobile/righthome.png">首页</a>
+		</div>
+	</div><!--zxq_one end-->
+	<form action="" method="post">
+		<input type="hidden" name="m_id" value="{$id}" />
+		<input type="hidden" name="u_type" value="1" />
+		<div class="outbaos con_box">
+			<div class="cf">
+				<label class="fl">姓名：</label>
+				<input type="text" value="" name="u_name" class="fl out_bots out_name">
+			</div>
+			<div class="cf">
+				<label class="fl">联系方式：</label>
+				<input type="tel" value="" name="u_phone" class="fl out_bots out_tel">
+			</div>
+			<div class="cf" style="margin-top: 0.2rem;">
+				<label class="fl">性别：</label>
+				<label class="fl male male_cur sexs" for="male"><input type="radio" id="male" value="1" name="u_sex">男</label>
+				<label class="fl female sexs" for="female"><input type="radio" id="female" value="2" name="u_sex">女</label>
+			</div>
+			<div class="ti_mess"></div>
+		</div>
+		<p class="erro_mes1" style="color:red;text-align: center;margin:0 0 10px 0;">(*校外人员登录用户名密码均为手机号)</p>
+		<input type="submit" value="立即参会" id="join_in" name="" class="out_sub">
+	</form>
+<script type="text/javascript">
+	$(function(){
+		$('.sexs').click(function(){
+			$(this).addClass('male_cur').siblings('.sexs').removeClass('male_cur');
+		})
+		// function yan(){
+			$('.out_name').blur(function(){
+				if ($('.out_name').val()==''||$('.out_name').val()==undefined) {
+					$('.ti_mess').text('姓名不能为空哦~');
+					return false;
+				}else{
+					$('.ti_mess').text('');
+					return true;
+				}	
+			}).keyup(function(){
+				$(this).triggerHandler('blur');
+			})
+			//联系方式
+			$('.out_tel').blur(function(){
+				if ($('.out_tel').val()==''||$('.out_tel').val()==undefined) {
+					$('.ti_mess').text('联系方式不能为空哦~');
+					return false;
+				}else if(!$(".out_tel").val().match(/^(((13[0-9]{1})|(15[0-9]{1})|(14[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/)){
+					$('.ti_mess').text('手机号码格式不对！');
+					return false;
+				}else{
+					$('.ti_mess').text('');
+					return true;
+				}	
+			}).keyup(function(){
+				$(this).triggerHandler('blur');
+			})
+		// }
+	})
+    $('#join_in').click(function(e){
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/Mobile/outbao",
+            data: {u_type: $('input[name=u_type]').val(),m_id : $('input[name=m_id]').val(),u_name:$('input[name=u_name]').val(),u_phone:$('input[name=u_phone]').val(),u_sex:$('input[name=u_sex]').val()},
+            dataType: "",
+            success: function(data){
+                if (data == '-1') {
+                    alert('参加成功！');
+                    location.href='/Mobile/huiyidetail.html';
+                }
+
+                if (data == '-3') {
+                    // alert('姓名不能为空！');
+                    $('.ti_mess').text('姓名不能为空哦~');
+                }
+				/*
+				 if (data == '-4') {
+				 alert('职业不能为空！');
+				 }
+				 */
+                if (data == '-5') {
+                    // alert(' ！');
+                    $('.ti_mess').text('联系方式不能为空哦~');
+                }
+                if (data == '-6') {
+                    // alert('手机号重复！');
+                    $('.ti_mess').text('手机号重复啦!');
+                }
+                if(!$(".out_tel").val().match(/^(((13[0-9]{1})|(15[0-9]{1})|(14[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/)){
+					$('.ti_mess').text('手机号码格式不对！');
+					return false;
+				}
+
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest.status);
+            }
+        })
+    })
+
+
+
+</script>
+</body>
+</html>

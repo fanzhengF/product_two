@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/index.css">
+<link href="__PUBLIC__/Css/Home/mobile/mobiscroll_date.css" rel="stylesheet" />
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/common.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+<title>{$home_name}</title>
+</head>
+<body class="paddbot">
+	<form class="index_form" action="" method="post">
+		<div class="head_sear cf con_box">
+			<input type="text" class="fl index_search con_box" placeholder="输入会议名称" id="index_search">
+			<a href="javascript:;" id="search" class="fl cli_sear">搜索</a>
+		</div><!--head_sear end-->
+		<div class="index_ban">
+			<img src="__PUBLIC__/Images/Home/mobile/indexban.png">
+		</div><!--index_ban end-->
+		<div class="meet_joins con_box">
+			<ul class="join_uls">
+			</ul>
+
+			 <div class="load_more"><img src="__PUBLIC__/Images/Home/mobile/xia.png">加载更多</div>
+		</div><!--meet_joins end-->
+		<include file="Common:footer" />
+		<!--footers end-->
+		<div class="search_tan">
+			<div class="cf sear_top con_box">
+				<a href="javascript:;" class="fl tan_backs"></a>
+				<span class="fl sear_posi cf">
+					<input type="text" value="" name="" class="index_search1 fl" id="index_search1" placeholder="输入会议室名称">
+					<input type="submit" value="" name="" class="top_sear fl" id="top_sear">
+				</span>
+			</div>
+			<div class="such_meets">
+				<div class="cf time_lei con_box">
+					<span class="fl meets_chu">会议类型</span>
+					<input type="text" name="USER_AGE" id="USER_AGE" readonly class="input fl" placeholder="开始时间" />
+					<input type="text" name="USER_AGE1" id="USER_AGE1" readonly class="input fl" placeholder="结束时间" style="margin-left: 0.5rem;" />
+					<input type="submit" value="确定" name="" class="fl" id="btn_yes3" style="width: 1rem;margin-left: 0.3rem;background: 0;">
+				</div>
+
+				<div class="can_resets">
+					<div class="cf resets1 con_box">
+						<label class="fl resets1_cur label_chose" for="leixing0">学术会议<input type="radio" value="" name="" id="leixing0" ></label>
+						<label class="fl label_chose" for="leixing1">教师会议<input type="radio" value="" name="" id="leixing1" ></label>
+					</div>
+					<div class="cf">
+						<input type="reset" value="重置" name="" class="fl chongzhi" id="chongzhi2">
+						<input type="submit" value="确定" name="" class="fr btn_yes" id="btn_yes2">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="masks"></div>
+	</form>
+
+
+<!--时间日期插件-->
+<script src="__PUBLIC__/Js/Home/mobile/mobiscroll_date.js" charset="gb2312"></script>
+<script src="__PUBLIC__/Js/Home/mobile/mobiscroll.js"></script>
+<script type="text/javascript">
+	$(function () {
+		var currYear = (new Date()).getFullYear();	
+		var opt={};
+		opt.date = {preset : 'date'};
+		opt.datetime = {preset : 'datetime'};
+		opt.time = {preset : 'time'};
+		opt.default = {
+			theme: 'android-ics light', //皮肤样式
+			display: 'modal', //显示方式 
+			mode: 'scroller', //日期选择模式
+			dateFormat: 'yyyy-mm-dd',
+			lang: 'zh',
+			showNow: true,
+			nowText: "今天",
+			startYear: currYear - 50, //开始年份
+			endYear: currYear + 10 //结束年份
+		};
+
+		$("#USER_AGE").mobiscroll($.extend(opt['date'], opt['default']));
+		$("#USER_AGE1").mobiscroll($.extend(opt['date'], opt['default']));
+
+	});
+</script>
+<script type="text/javascript">
+
+	$(function(){
+			//尾部导航添加当前效果
+		var arr = new Array();
+	        arr[0] = "__PUBLIC__/Images/Home/mobile/home1.png";
+	        arr[1] = "__PUBLIC__/Images/Home/mobile/jilu1.png";
+	        arr[2] = "__PUBLIC__/Images/Home/mobile/mess1.png";
+	        arr[3] = "__PUBLIC__/Images/Home/mobile/usr1.png";
+	    var arr1 = new Array();
+	        arr1[0] = "__PUBLIC__/Images/Home/mobile/home2.png";
+	        arr1[1] = "__PUBLIC__/Images/Home/mobile/jilu2.png";
+	        arr1[2] = "__PUBLIC__/Images/Home/mobile/mess2.png";
+	        arr1[3] = "__PUBLIC__/Images/Home/mobile/usr2.png";
+		$('.foot_lis').each(function(i){
+			$(this).click(function(){
+				$(this).find('span').addClass('foot_cur');			
+				var attrs=arr[i];
+	            var attrs1=arr1[i];
+	            if ($(this).find('.foot_imgs').attr('src')==attrs1) {
+	                $(this).find('.foot_imgs').attr('src',attrs);
+	                $(this).siblings('.foot_lis').find('.foot_imgs').attr('src',attrs1);
+	            }else if($(this).find('.foot_imgs').attr('src')==attrs){
+	                $(this).find('.foot_imgs').attr('src',attrs1);
+	            }
+			})
+		})
+	})
+</script>
+<script language="javascript">
+	$(function (){
+		//搜索会议
+		$('#search').click(function (e){
+			e.preventDefault();
+			alert('');
+		});
+
+
+
+	    //显示数据
+        $.ajax({
+            url : "{:U('Mobile/show/')}",
+            type : 'POST',
+            beforeSend : function (jqXHR, settings) {
+                $('div.load_more').html('<img src="__PUBLIC__/Images/Home/mobile/xia.png">正在加载');
+            },
+            success : function (response, status, xhr) {
+                var json = $.parseJSON(response);
+                var count = 0;
+                var html = '';
+                $.each(json, function (index, value) {
+                    count = value.count;
+                    html += '<li> <a href="javascript:;"> <div class="cf join_nember"> <span class="fl"> <a href="javascript:;" class="red_star1">报名中</a> <span>｜ 已报名<a href="javascript:;" class="red_star1"> '+value.m_baoming+' 人<input type="hidden" value="" name=""></a></span> </span> <span class="fr xue_meets"><img src="__PUBLIC__/Images/Home/mobile/xueshu.png">'+value.m_type_name+'</span> </div> <div class="meet_addrs no_wrap">中国矿业大学（北京）学生处<input type="hidden" value="" name=""></div> <h1 class="meet_tits no_wrap"><a href="/Mobile/details/id/'+value.m_id+'.html">'+value.m_name+'</a><input type="hidden" value="" name=""></h1> <div class="cf times_addrs"> <span class="meet_times fl">'+value.m_time+' '+value.m_start+'--'+value.m_end+'<input type="hidden" value="" name=""></span> <span class="meet_address fr">'+value.m_address+'<input type="hidden" value="" name=""></span> </div> </a> </li>';
+                });
+                $('ul.join_uls').append(html);
+                $('div.load_more').html('<img src="__PUBLIC__/Images/Home/mobile/xia.png">加载更多');
+                var page = 2;
+                if (page > count) {
+                    $('div.load_more').off('click');
+                    $('div.load_more').hide();
+                }
+                //加载更多
+                $('div.load_more').on('click', function () {
+                    //$('.comment_list').eq(index).find('.load_more').button('disable');
+                    $('div.load_more').html('');
+                    $.ajax({
+                        url : "{:U('Mobile/show/')}",
+                        type : 'POST',
+                        data : {
+                            page : page
+                        },
+                        beforeSend : function (jqXHR, settings) {
+                            $('div.load_more').html('<img src="__PUBLIC__/Images/Home/mobile/xia.png">正在加载');
+                        },
+                        success : function (response, status) {
+                            var json_comment_more = $.parseJSON(response);
+                            $.each(json_comment_more, function (index3, value) {
+                                $('ul.join_uls li').last().after('<li> <a href="javascript:;"> <div class="cf join_nember"> <span class="fl"> <a href="javascript:;" class="red_star1">报名中</a> <span>｜ 已报名<a href="javascript:;" class="red_star1"> '+value.m_baoming+' 人<input type="hidden" value="" name=""></a></span> </span> <span class="fr xue_meets"><img src="__PUBLIC__/Images/Home/mobile/xueshu.png">'+value.m_type_name+'</span> </div> <div class="meet_addrs no_wrap">中国矿业大学（北京）学生处<input type="hidden" value="" name=""></div> <h1 class="meet_tits no_wrap"><a href="/Mobile/details/id/'+value.m_id+'.html">'+value.m_name+'</a><input type="hidden" value="" name=""></h1> <div class="cf times_addrs"> <span class="meet_times fl">'+value.m_time+' '+value.m_start+'--'+value.m_end+'<input type="hidden" value="" name=""></span> <span class="meet_address fr">'+value.m_address+'<input type="hidden" value="" name=""></span> </div> </a> </li>');
+                            });
+                            //$('.comment_list').eq(index).find('.load_more').button('enable');
+                            $('div.load_more').html('');
+                            $('div.load_more').html('<img src="__PUBLIC__/Images/Home/mobile/xia.png">加载更多');
+                            page++;
+                            if (page > count) {
+                                $('div.load_more').off('click');
+                                $('div.load_more').hide();
+                            }
+                        }
+                    });
+                });
+
+            },
+        });
+
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="中国矿业大学" />
+    <meta name="description" content="中国矿业大学" />
+    <title>中国矿业大学研究院（北京）研究生院</title>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-base.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-all.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/mycommon.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mymeet.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/datetimepicker.css">
+</head>
+<body>
+<div class="header">
+    <img src="__PUBLIC__/Images/Home/logo.png">
+    <ul class="cf">
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn">首页</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=1">研究生院简介</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=2">招生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=3">学籍管理</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=4">培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=5">专业学位培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=6">学位工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=7">国际交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=8">学术交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=9">学生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=10">办事指南（咨询中心）</a></li>
+    </ul>
+</div><!--header end-->
+<div class="bodys con_box">
+    <div class="body_cons cf">
+        <div class="fl cons_left con_box">
+            <p class="xuefen"><!--当前学分：1.25分-->
+                <if condition="$auth">
+                    <if condition="$u_type_init eq 3">
+                        学分：
+                        <!--
+                     <switch name="xf">
+                         <case value="">0</case>
+                     </switch>
+                     -->
+                        <!--
+                        {$mcAll['c_number']}
+                        -->
+                        {$xf}
+                        分
+                    </if>
+                </if>
+                <input type="hidden" value=""></p>
+            <include file="Common:left" />
+        </div>
+
+
+
+
+
+        <div class="cons_right con_box fl" id="cons_right">
+            <h2 class="cf meet_tits">
+                <span class="fl met_name no_wrap">会议名称</span>
+                <span class="fl met_time no_wrap">会议时间</span>
+                <span class="fl met_addr no_wrap">会议地点</span>
+                <span class="fl met_lei no_wrap">会议类型</span>
+                <span class="fl met_zhuang no_wrap">审核状态</span>
+                <span class="fl met_zhuang no_wrap">操作</span>
+            </h2>
+            <ul class="my_meets">
+                <volist name="MtAll" id="vo">
+                    <li class="cf">
+                        <span class="fl met_name no_wrap">&nbsp;{$vo.m_name}</span>
+                        <span class="fl met_time no_wrap">&nbsp;{$vo.m_time}</span>
+                        <span class="fl met_addr no_wrap">&nbsp;{$vo.m_address}</span>
+                        <span class="fl met_lei no_wrap">&nbsp;{$vo.m_type}</span>
+                        <span class="fl met_zhuang no_wrap">&nbsp;
+                         <switch name="vo.m_a_status">
+                                <case value="1">审核成功</case>
+                                <case value="2">审核失败</case>
+                                <default />未审核
+                            </switch>
+                        </span>
+                         <a href="javascript:;" class="fl met_delete no_wrap">&nbsp;删除</a>
+                    </li>
+                </volist>
+            </ul>
+            <div class="tab_bots cf">
+                <a href="{:U('Index/zichou/')}" class="fl no_meetroom" style="background:#28badf;">
+                    <img src="__PUBLIC__/Images/Home/adds.png" width="14" height="14">添加自筹
+                </a>
+
+            </div><!--tab_bots end-->
+            <div class="pages cf fr">
+                <ul class="new_pages cf">
+                    {$page}
+                </ul>
+            </div>
+        </div><!--cons_right end-->
+    </div><!--body_cons end-->
+</div><!--bodys end-->
+<div class="footers con_box cf">
+    <p class="fl">中国矿业大学研究院（北京）研究生院 版权所有 地址：北京市海淀区学院路丁11号  电话：010-62339826,62339255</p>
+    <p class="fr">网站建设专家<a href="javascript:;" class="taoruan">淘软科技</a>提供技术支持</p>
+</div>
+<div class="masks"></div>
+<div class="not_login" style="display: none">
+    <p>您还未登录，请立即  <a href="{:U('Index/login')}" class="login_now">登录</a></p>
+</div>
+<img src="__PUBLIC__/Images/Home/oeacn.png" class="hai_big">
+<script type="text/javascript">
+    $(function(){
+    //点击查看大图
+       $('.look_big').click(function(){
+        $('.hai_big,.masks').show();
+        var hai_big=$('.hai_big').width();
+        $('.hai_big').css({ 'left':'50%','margin-left':-hai_big/2})
+       })
+       $('.masks').click(function(){
+        $('.hai_big,.masks').hide();
+       })
+    //删除会议名称信息
+        $('.met_delete').click(function(){
+            $(this).parents('li').remove();
+        })
+    })
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('.masks').click(function(){
+            $('.not_login,.masks').hide();
+        })
+        $('.add_now .minge').click(function(){
+            $(this).addClass('zhan_cur').siblings('.minge').removeClass('zhan_cur');
+        })
+        $('.left_lis:last').css({ 'border-bottom':'0px'});
+        //获取左侧导航高度
+        var body_cons=$('.body_cons').height();//alert(cons_right);
+        $('.cons_left').css({ 'height':body_cons});
+    })
+</script>
+</body>
+</html>

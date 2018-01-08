@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>教师添加-{$site.SITE_INFO.name}</title>
+<php> $addCss=""; $addJs=""; $currentNav ='教师管理 > 教师添加'; </php>
+<include file="Common:intoHead" />
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+        <div class="mainBody" style="overflow:hidden">
+
+            <div id="Right" style="width:100%;">
+
+                <div class="Item hr">
+                    <div class="current">添加教师</div>
+                </div>
+                <form action="" method="post" enctype="multipart/form-data" >
+                    <table width="100%"  cellspacing="0" cellpadding="0" class="table1">
+
+                        <tr>
+                            <th width="120"><font color="red">* </font>教师编号</th>
+                            <td><input  name="t_no" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>教师姓名</th>
+                            <td><input  name="t_name" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>院系名称</th>
+                            <td>
+                                <select name="t_department" style="width: 280px;">
+                                <volist name="MDaLL" id="vo">
+                                    <option value="{$vo.d_name}">{$vo.d_name}</option>
+                                </volist>
+                            </select>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>性别</th>
+                            <td>
+                                <label style="cursor: pointer;"><input name="t_sex" type="radio" class="input" size="40" value="男" />&nbsp;&nbsp;男</label>
+                                &nbsp;&nbsp;&nbsp;
+                                <label style="cursor: pointer;"><input  name="t_sex" type="radio" class="input" size="40" value="女" />&nbsp;女</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>出生日期</th>
+                            <td><input  name="t_birth" type="text" readonly="readonly" onclick="new Calendar().show(this);" class="input" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>职称</th>
+                            <td><input  name="t_title" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>职务</th>
+                            <td><input  name="t_post" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red"> </font>email</th>
+                            <td><input  name="t_email" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+
+
+                        <tr>
+                            <th width="120"><font color="red"> </font>登录名</th>
+                            <td><input  name="t_admin" readonly type="text" class="input" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>登录密码</th>
+                            <td><input  name="t_pass" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th width="120"><font color="red">* </font>微信号</th>
+                            <td><input  name="t_weixin" type="text" class="input" size="40" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td><input type="submit" value="提交" name="submit" class="btn submit" /></td>
+                        </tr>
+
+                    </table>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <script type="text/javascript">
+        $(function (){
+            $('input[name=t_no]').keydown(function (){
+                $('input[name=t_admin]').val($(this).val());
+            });
+
+        })
+    </script>
+</body>
+</html>

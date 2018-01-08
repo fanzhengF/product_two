@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>自筹会议室列表-{$site.SITE_INFO.name}</title>
+<php> $addCss=""; $addJs=""; $currentNav ='会议室管理 > 自筹会议室列表'; </php>
+<include file="Common:intoHead" />
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+
+
+        <div class="mainBody" style="overflow:hidden">
+
+            <div id="Right" style="width:100%;">
+
+                <div class="Item hr">
+                    <div class="current">自筹会议室列表</div>
+                </div>
+<!--
+                <form  method="post" action="" enctype="multipart/form-data">
+                    &nbsp;&nbsp;<b>导入学生Excel信息(<span style="color:red;">xls格式</span>)：</b><input  type="file" name="file_stu" />&nbsp;<input type="submit"  value="导入" class="btn quickSubmit" />
+                    &nbsp;&nbsp;<b>导入学生Excel密码(<span style="color:red;">xls格式</span>)：</b><input  type="file" name="file_stu_info" />&nbsp;<input type="submit"  value="导入" class="btn quickSubmit" />
+                </form>
+
+                <br />
+                <form action="" method="get" id="search">
+                    <div>
+
+                        &nbsp;
+                        <b>学号&nbsp;</b>
+                        <input style="width: 80px" class="input" type="text" name="s_no" value="{$Think.get.s_no}" />
+
+                        <b>身份证号&nbsp;</b>
+                        <input style="width: 80px" class="input" type="text" name="s_card" value="{$Think.get.s_card}" />
+
+                        <b>学生姓名&nbsp;</b>
+                        <input style="width: 80px" class="input" type="text" name="s_name" value="{$Think.get.s_name}" />
+
+                        <b>导师名字&nbsp;</b>
+                        <input style="width: 80px" class="input" type="text" name="s_teacher" value="{$Think.get.s_teacher}" />
+
+
+
+                        <b>导入时间&nbsp;</b>
+                        <input placeholder="开始" id="start_time" class="input" type="text" name="start_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.start_time}">
+
+                        <b>导入时间&nbsp;</b>
+                        <input placeholder="结束" id="end_time" class="input" type="text" name="end_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.end_time}">
+
+                        <input type="submit" id="check_btn" value="搜索" class="btn quickSubmit">
+                    </div>
+                </form>
+    <form action="" method="get" id="search">
+                    <div>
+                        <a class="btn quickSubmit" href="__URL__/raised_add">添加会议室</a>
+                    </div>
+                </form>
+                -->
+
+                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                    class="tab">
+                    <thead>
+                        <tr>
+
+                            <td>编号</td>
+                            <td>会议室编号</td>
+                            <td>会议室名称</td>
+                            <td>会议室区域</td>
+                            <td>会议室地点</td>
+                            <td>会议室设施</td>
+                            <td>会议室人数</td>
+                            <td>会议室形状</td>
+                            <td>会议室服务</td>
+                            <td>操作</td>
+                        </tr>
+
+                    </thead>
+                    <volist name="list" id="vo">
+                    <tr align="center" id="">
+                        <td>{$key+1}</td>
+                        <td>{$vo.room_no}</td>
+                        <td>{$vo.room_name}</td>
+                        <td>{$vo.room_quyu}</td>
+                        <td>{$vo.room_address}</td>
+                        <td>{$vo.room_facilities}</td>
+                        <td>{$vo.room_number}</td>
+                        <td>{$vo.room_shape}</td>
+                        <td>
+                            <switch name="vo.room_service">
+                                <case value="1">不提供服务</case>
+                                <case value="2">提供服务</case>
+                                <default />default
+                            </switch>
+                        </td>
+                        <td>
+                            <a href="{:U('Admin/Room/raised_edit',array('id'=>$vo['room_id']))}"
+                               class="xq-edit">编辑</a>
+                        </td>
+                        <!--
+                        <td>{$vo.s_time|date='Y-m-d H:i:s',###}</td>  -->
+                    </tr>
+                    </volist>
+
+                    <tr>
+                        <td class="fy" colspan="10">
+                            <ul>{$page}</ul>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+
+</body>
+</html>

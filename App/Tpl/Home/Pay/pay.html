@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<title>支付-{$result['business_name']}{$WebTitle}</title>
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=1080,user-scalable=no,target-densityDpi=device-dpi"/>
+	<link href="http://min.static.jiaju.com/static/site/asset/style/qgztouch/reset-min.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="http://static.jiaju.com/jiaju/com/m7gz/assets/css/sg-pay.css">
+	<script src="http://min.static.jiaju.com/static/js/mobile/hotcss/hotcss.js"></script>
+	<script src="http://static.jiaju.com/jiaju/com/m7gz/assets/js/jquery-2.2.3.min.js"></script>	
+	<script type="text/javascript" src="http://static.jiaju.com/jiaju/com/m7gz/assets/js/shg/shg-common.min.js"></script>
+	<script type="text/javascript" src="http://static.jiaju.com/jiaju/com/m7gz/assets/js/shg/shg-pay.min.js"></script>
+</head>
+<body>
+	<div class="pay-wrap">
+		<form action="/Pay/paypal?entId={$result['id']}" method="post">
+		    <foreach name="postData" key="keyname" item="keyval">
+		     <input type="hidden" name="{$keyname}" value="{$keyval}" />   
+		    </foreach>
+		    <input type="hidden" name="sign" value="{$sign}" />
+		    <input type="hidden" name="id" value="{$result.id}" />
+			<div class="pay-top">
+				<div class="pay-tit">
+					<a href="javascript:history.go(-1);"></a>
+					支付订单
+				</div>
+				<div class="pay-money">&yen;{$postData['t_amount']}</div>
+				<p>{$result.business_name}-{$postData['flashsale_sn']}</p>
+				<empty name="result.advertising_map">
+				 	<img src="http://bjcache.leju.com/gongzhang/upload_pic/20151119/f4/48/79ace3abe7cf052361a02058d9f1_b.jpg" alt="">   
+				<else /> 
+				    	<img src="{$result.advertising_map}" alt="">   
+				</empty>
+			</div>
+			<div class="pay-way-box">
+				<ul>
+				 <?php 
+				     $actClass='active';
+				     $weChatClass=''; 
+				     $payType=6; 
+				    if(!empty($isWeiXin))
+				    {
+				        $actClass='';
+				        $weChatClass='active'; 
+				        $payType=4;  
+				    } ?>
+					<li>
+						<a href="javascript:;" type="6">支付宝支付<i class="<?php echo $actClass; ?>"></i></a>
+					</li>
+					<li>
+						<a href="javascript:;" type="3">银联手机支付<i></i></a>
+					</li>
+					<?php if(!empty($isWeiXin)): ?>
+					<li>
+						<a href="javascript:;" type="4">微信支付<i class="<?php echo $weChatClass; ?>"></i></a>
+					</li>
+					<?php endif; ?>								
+				</ul>
+			</div>
+			<input type="hidden" readonly="true" name="pay_type" value="<?php echo $payType; ?>" />
+			<input type="submit" value="确认支付" class="pay-btn">
+		</form>
+	</div>
+	<include file="Common:statistics" />
+</body>
+</html>

@@ -1,0 +1,35 @@
+#SetEnv SINASRV_NDATA_DIR D:\www\
+#SetEnv SINASRV_NDATA_CACHE_URL	http://static.com/
+#SetEnv SINASRV_CACHE_DIR D:\www\
+
+SetEnv SINASRV_CACHE_DIR "/data1/www/cumtb_cache"
+#主数据库
+SetEnv SINASRV_DB_HOST "127.0.0.1"
+SetEnv SINASRV_DB_PORT "3306"
+SetEnv SINASRV_DB_USER "root"
+SetEnv SINASRV_DB_PASS "123456"
+SetEnv SINASRV_DB_NAME "cumtb_yjs"
+
+
+#从数据库
+#SetEnv SINASRV_DB_HOST_R "localhost"
+#SetEnv SINASRV_DB_PORT_R "3306"
+#SetEnv SINASRV_DB_USER_R "root"
+#SetEnv SINASRV_DB_PASS_R "123456"
+#SetEnv SINASRV_DB_NAME_R "cumtb_yjs"
+
+#redis配置
+#SetEnv SINASRV_REDIS_HOST "10.207.4.252:6379"
+#SetEnv SINASRV_REDIS_HOST_R "10.207.4.252:6379"
+
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+#RewriteCond %{REQUEST_URI} !^/?Public
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php/$1 [QSA,PT]
+
+
+
+</IfModule>

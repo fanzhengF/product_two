@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>修改学生专业-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='学生专业管理 > 修改学生专业';
+        </php>
+    <include file="Common:intoHead" />
+</head>
+<body>
+    <div class="wrap">
+        <div class="mainBody">
+            <div id="Right" style="width:100%;">
+                <div class="contentArea">
+                    <div class="Item hr" style="margin-bottom: 50px">
+                        <div class="current">修改学生专业</div>
+                        <br />
+                        <a class="btn quickSubmit" href="__URL__/index">返回</a>
+                    </div>
+
+
+
+
+
+
+                    <form action="" method="post" enctype="multipart/form-data" >
+                        <table width="100%"  cellspacing="0" cellpadding="0" class="table1">
+                            <input type="hidden" name="p_id" value="{$data.p_id}">
+
+                            <tr>
+                                <th width="120"><font color="red">* </font>专业名称</th>
+                                <td><input  name="p_name" type="text" class="input" size="40" value="{$data.p_name}" /></td>
+                            </tr>
+
+
+                            <tr>
+                                <th></th>
+                                <td><input type="submit" value="提交" name="submit" class="btn submit" />
+                                    <a class="btn delete" link="{:U('Admin/StudentProfe/delete',array('id'=>$data['p_id']))}" href="javascript:void(0);" name="{$data.p_name}">删除</a>
+
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <script type="text/javascript">
+        $(".delete").click(function(){
+            var link=$(this).attr("link");
+            var name = $(this).attr("name").replace(/<[^>]+>/g,"");
+            popup.confirm('你真的打算删除【<b>'+name+'</b>】专业吗?','温馨提示',function(action){
+                if(action == 'ok'){
+                    location.href=link;
+                }
+            });
+            return false;
+        });
+    </script>
+</body>
+</html>

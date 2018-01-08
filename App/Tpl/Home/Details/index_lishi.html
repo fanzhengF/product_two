@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="中国矿业大学" />
+    <meta name="description" content="中国矿业大学" />
+    <title>中国矿业大学研究院（北京）研究生院</title>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-base.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/eye-all.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/Home/mycommon.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/index.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/datetimepicker.css">
+</head>
+<body>
+<div class="header">
+    <img src="__PUBLIC__/Images/Home/logo.png">
+    <ul class="cf">
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn">首页</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=1">研究生院简介</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=2">招生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=3">学籍管理</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=4">培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=5">专业学位培养工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=6">学位工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=7">国际交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=8">学术交流</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=9">学生工作</a></li>
+        <li class="fl"><a href="http://yjs.cumtb.edu.cn/index.php?m=content&c=index&a=lists&catid=10">办事指南（咨询中心）</a></li>
+    </ul>
+</div><!--header end-->
+<div class="bodys con_box">
+    <div class="body_cons cf">
+        <div class="fl cons_left con_box">
+            <p class="xuefen"><!--当前学分：1.25分-->
+                <if condition="$auth">
+                    <if condition="$u_type_init eq 3">
+                        学分：
+                        <!--
+                         <switch name="xf">
+                             <case value="">0</case>
+                         </switch>
+                         -->
+                        <!--
+                        {$mcAll['c_number']}
+                        -->
+                        {$xf}
+                        分
+                    </if>
+                </if>
+                <input type="hidden" value=""></p>
+            <include file="Common:left" />
+        </div>
+        <div class="cons_right con_box fl" id="cons_right">
+        <form method="get" action="?" name="form">
+            <div class="filters cf">
+                <label class="fl">筛选：</label>
+                <input type="text" name="start_time" value="{$Think.get.start_time}" onClick="eye.datePicker.show(this);" id="chose_time1" readonly placeholder="开始日" class="fl" />
+                <input type="text" name="end_time" value="{$Think.get.end_time}" onClick="eye.datePicker.show(this);" id="chose_time2" readonly placeholder="结束日" class="fl" />
+                <select name="m_type" class="fl">
+                    <volist name="mtAll" id="vo">
+                        <option value="{$vo.mt_id}" <if condition="$Think.get.m_type eq $vo[mt_id]">selected</if> >{$vo.mt_name}</option>
+                    </volist>
+                </select>
+
+                <select name="type" class="fl">
+                    <option value="1" <if condition="$Think.get.type eq 1">selected</if> >会议时间排序</option>
+                    <option value="2" <if condition="$Think.get.type eq 2">selected</if>>会议发布时间排序</option>
+                </select>
+                <input type="submit" style="cursor:pointer;" placeholder="Search" onclick="javascript:$('form[name=form]').submit();" class="fl" id="search" value="搜索">
+            </div>
+        </form>
+            <div class="meetings">
+                <h1 class="cf">
+                    <span class="fl meet1">历史会议</span>
+                    <img src="__PUBLIC__/Images/Home/jinqii.png" class="fl meet2">
+                    <span class="fl meet3"></span>
+                </h1>
+                <ul class="cf fur_meetings">
+
+
+                    <if condition="$Mt__All">
+                        <volist name="Mt__All" id="vo">
+                            <li class="fl">
+                                <a href="javascript:;">
+                                    <a href="javascript:;" onclick="login('{:U("Index/willsign/",array("id"=>$vo["m_id"]))}')"> <img src="__PUBLIC__/Images/Home/{$fshow['f_show1']}"></a>
+                                    <div class="meet_detailes">
+                                        <p class="meet_name">{$vo.m_name}</p>
+                                        <p class="meet_organ">举办者：{$vo.m_user}</p>
+                                        <p class="meet_addr">地点：{$vo.m_address}</p>
+                                        <p class="meet_time">时间：{$vo.m_time} {$vo.m_start}--{$vo.m_end}</p>
+                                        <p class="meet_bao cf">
+                                            <span class="fl">报名中：{$vo.m_baoming}/{$vo.m_number}</span>
+                                            <span class="fr mianfei"><if condition="$vo.m_money eq 0.00 ">
+                                                    免费
+                                                    <else />
+                                                    {$vo.m_money}/元
+                                                </if></span>
+                                        </p>
+                                    </div>
+                                </a>
+                                <div class="posis3 posis"><span>
+                                     <switch name="vo.m_status">
+                                        <case value="0">未开始</case>
+                                        <case value="1">进行中</case>
+                                        <case value="2">已结束</case>
+                                    </switch>
+
+                                </span></div>
+                                <span class="new_posi1">{$vo.m_name}</span>
+                                <span class="new_posi2">{$vo.m_zhujiang}</span>
+                                <div class="cf">
+                                    <!--
+                                    <if condition="$vo.m_flag eq 1">
+                                        <span class="not_ping fl">我要评价</span>
+                                        <elseif condition="$vo.m_flag eq 2" />
+                                        <a href="{:U('Index/willsign/',array('id'=>$vo['m_id']))}#bottom" class="can_ping fl">我要评价</a>
+                                    </if>
+                                    -->
+                                    <a href="javascript:;" onclick="login('{:U("Index/willsign/",array("id"=>$vo["m_id"]))}#bottom')"  class="can_ping fl">我要评价</a>
+
+                                    <if condition="$vo.m_status neq 2">
+                                        <a href="javascript:;" onclick="login('{:U("Index/willsign/",array("id"=>$vo["m_id"]))}#top')" class="can_bao fr">我要报名</a>
+                                        <else />
+                                        <span class="not_bao fr">我要报名</span>
+                                    </if>
+                                </div> 
+                            </li>
+                        </volist>
+                    </if>
+
+
+
+                </ul>
+            </div><!--meetings end-->
+            <div class="pages cf fr">
+                <ul class="new_pages cf">
+                    {$page}
+                </ul>
+            </div>
+        </div><!--cons_right end-->
+    </div><!--body_cons end-->
+</div><!--bodys end-->
+<div class="footers con_box cf">
+    <p class="fl">中国矿业大学研究院（北京）研究生院 版权所有 地址：北京市海淀区学院路丁11号  电话：010-62339826,62339255</p>
+    <p class="fr">网站建设专家<a href="javascript:;" class="taoruan">淘软科技</a>提供技术支持</p>
+</div>
+<div class="masks" style="display: none;"></div>
+<div class="not_login" style="display: none">
+    <p>您还未登录，请立即  <a href="/Index/login" class="login_now">登录</a></p>
+    <img src="__PUBLIC__/Images/Home/plus.png" class="plus">
+</div>
+<script type="text/javascript">
+    function login (url){
+        var url = url;
+        $.ajax({
+            url :url,
+            type: 'post',
+            success : function (status) {
+                if (status == 1) {
+                    $('.not_login,.masks').show();
+                }else {
+                    location.href = url;
+                }
+            }
+        });
+    }
+    $(function(){
+        $('.masks,.plus').click(function(){
+            $('.not_login,.masks').hide();
+        })
+        //$('#cons_right').load('/Index/right');
+        $('.left_lis:last').css({ 'border-bottom':'0px'});
+        //获取左侧导航高度
+        var body_cons=$('.body_cons').height();//alert(cons_right);
+        $('.cons_left').css({ 'height':body_cons});
+    })
+</script>
+</body>
+</html>

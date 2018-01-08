@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>供应商结算明细-{$site.SITE_INFO.name}</title>
+<php> $addCss=""; $addJs=""; $currentNav ='供应商结算 > 供应商结算明细'; </php>
+<include file="Common:intoHead" />
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+        <include file="Common:head" />
+
+        <div class="mainBody" style="overflow:hidden">
+            <include file="Common:left" />
+            <div id="Right" style="float: left; width: 780px;">
+
+                <div class="Item hr">
+                    <div class="current">供应商结算明细</div>
+                </div>
+                <form action="" method="get" id="search">
+                    <div>
+                        <if condition="$is_supplier neq 1">
+                            <b>供应商ID&nbsp;</b>
+                            <input style="width: 80px" class="input" type="text" name="supplier_id" value="{$Think.get.supplier_id}" />
+                            <b>供应商名称&nbsp;</b>
+                            <input style="width: 80px" class="input" type="text" name="supplier_name" value="{$Think.get.supplier_name}" />
+                        </if>
+                        <b>收款流水号&nbsp;</b>
+                        <input style="width: 80px" class="input" type="text" name="serial_number" value="{$Think.get.serial_number}" />
+                        <b>收款时间&nbsp;</b>
+                        <input placeholder="开始" id="start_time" class="input" type="text" name="start_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.start_time}">
+                        <b>收款时间&nbsp;</b>
+                        <input placeholder="结束" id="end_time" class="input" type="text" name="end_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.end_time}">
+                        <input type="submit" id="check_btn" value="搜索" class="btn quickSubmit">
+                    </div>
+                </form>
+
+                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                    class="tab">
+                    <thead>
+                        <tr>
+                            <td>供应商ID</td>
+                            <td>供应商名称</td>
+                            <td>收款流水号</td>
+                            <td>收入金额</td>
+                            <td>收款时间</td>
+                        </tr>
+
+                    </thead>
+                    <volist name="list" id="vo">
+                    <tr align="center" id="">
+                        <td>{$vo.supplier_id}</td>
+                        <td>{$vo.supplier_name}</td>
+                        <td>{$vo.serial_number}</td>
+                        <td>{$vo.collect_money}</td>
+                        <td>{$vo.collect_money_time|date='Y-m-d H:i:s',###}</td>
+                    </tr>
+                    </volist>
+
+                    <tr >
+                        <td class="fy" colspan="15">
+                            <ul>{$page}</ul>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <include file="Common:foot" />
+
+</body>
+</html>

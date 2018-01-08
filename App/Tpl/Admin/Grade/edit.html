@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>修改会议学分-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='会议室管理 > 修改会议学分';
+        </php>
+    <include file="Common:intoHead" />
+</head>
+<body>
+    <div class="wrap">
+        <div class="mainBody">
+            <div id="Right" style="width:100%;">
+                <div class="contentArea">
+                    <div class="Item hr" style="margin-bottom: 50px">
+                        <div class="current">修改会议学分</div>
+                        <br />
+                        <a class="btn quickSubmit" href="__URL__/index">返回</a>
+
+                    </div>
+
+
+
+
+
+
+                    <form action="" method="post" enctype="multipart/form-data" >
+                        <table width="100%"  cellspacing="0" cellpadding="0" class="table1">
+                            <input type="hidden" name="g_id" value="{$data.g_id}">
+
+                            <tr>
+                                <th width="120"><font color="red">* </font>等级名称</th>
+                                <td><input  name="g_name" type="text" class="input" size="40" value="{$data.g_name}" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>类型名称</th>
+                                <td>
+                                    <select name="mt_id" style="width: 280px;">
+                                        <volist name="MtaLL" id="vo">
+                                            <option value="{$vo.mt_id}" <if condition="$data.mt_id eq $vo[mt_id]">selected</if>>{$vo.mt_name}</option>
+                                        </volist>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>学分</th>
+                                <td><input  name="g_xuefen" type="text" class="input" size="40" value="{$data.g_xuefen}" /></td>
+                            </tr>
+
+
+                            <tr>
+                                <th></th>
+                                <td><input type="submit" value="提交" name="submit" class="btn submit" />
+                                    <a class="btn delete" link="{:U('Admin/Grade/delete',array('id'=>$data['g_id']))}" href="javascript:void(0);" name="{$data.g_name}">删除</a>
+
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <script type="text/javascript">
+        $(".delete").click(function(){
+            var link=$(this).attr("link");
+            var name = $(this).attr("name").replace(/<[^>]+>/g,"");
+            popup.confirm('你真的打算删除【<b>'+name+'</b>】等级吗?','温馨提示',function(action){
+                if(action == 'ok'){
+                    //top.window.location.href=link
+                    location.href=link;
+                }
+            });
+            return false;
+        });
+    </script>
+</body>
+</html>

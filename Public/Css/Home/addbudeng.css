@@ -1,0 +1,7 @@
+/*添加补登页面*/
+.come_back{border-bottom: 1px solid #CFCFCF;padding:0 15px 15px;}
+.backs{background: url(../images/fanhui.png) no-repeat;width: 68px;height: 30px;line-height: 30px;text-align: center;color: #fff;font-size: 15px;}
+.budeng_input{width:556px;height: 40px;line-height: 40px;padding:0 10px 0 36px;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;margin-bottom: 24px;border: 1px solid #D3D3D3;border-radius: 3px;font-size: 16px;}
+.lei_meets{width: 200px;height: 40px;line-height: 40px;padding-left: 20px;border: 1px solid #E0E0E0;border-radius: 5px;color: #999;font-size: 16px;}
+.add_label{margin-right: 13px!important;}
+.join_ti{display: block;clear: both;width: 146px;height: 50px;line-height: 50px;text-align: center;color: #fff;background: #28BADF;font-size: 18px;border:0;margin:10px auto 0;}

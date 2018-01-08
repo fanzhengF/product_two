@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>焦点图管理-{$site.SITE_INFO.name}</title>
+<php> $addCss=""; $addJs=""; $currentNav ='焦点图管理 > 焦点图列表'; </php>
+<include file="Common:intoHead" />
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+        <include file="Common:head" />
+
+        <div class="mainBody" style="overflow:hidden">
+            <include file="Common:left" />
+            <div id="Right" style="float: left; width: 780px;">
+
+                <div class="Item hr">
+                    <div class="current">焦点图列表</div>
+                </div>
+                <form action="" method="get" id="search">
+                    <div>
+                        <a class="btn quickSubmit" href="__URL__/add">添加</a>
+                    </div>
+                </form>
+
+                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                    class="tab">
+                    <thead>
+                        <tr>
+                            <td>标题</td>
+                            <td>链接地址</td>
+                            <td>图片</td>
+                            <td>描述</td>
+                            <td>操作</td>
+                        </tr>
+
+                    </thead>
+
+                    <notempty  name="data.title">
+                        <tr align="center" id="">
+                            <td>{$data.title}</td>
+                            <td>{$data.url}</td>
+                            <td class="js_imgShow">
+                                <a href="{$data.src_big}" target="_blank">
+                                    <img src="{$data.src}" alt="暂时没有图片" />
+                                </a>
+                            </td>
+                            <td>{$data.description}</td>
+                            <td><a href="{:U('Admin/Focusmap/edit',array('id'=>$data['id']))}"
+                                    class="xq-edit">编辑</a></td>
+                        </tr>
+                    </notempty >
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <include file="Common:foot" />
+</body>
+</html>

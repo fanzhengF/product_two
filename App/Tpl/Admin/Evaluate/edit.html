@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>修改学生会议室-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='会议室管理 > 修改学生会议室';
+        </php>
+    <include file="Common:intoHead" />
+</head>
+<body>
+    <div class="wrap">
+        <div class="mainBody">
+            <div id="Right" style="width:100%;">
+                <div class="contentArea">
+                    <div class="Item hr">
+                        <div class="current">修改学生会议室</div>
+                    </div>
+
+
+
+
+
+
+                    <form action="" method="post" enctype="multipart/form-data" >
+                        <table width="100%"  cellspacing="0" cellpadding="0" class="table1">
+                            <input type="hidden" name="m_id" value="{$data.m_id}">
+
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议名称</th>
+                                <td><input  name="m_name" type="text" class="input" size="40" value="{$data.m_name}" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议类型</th>
+                                <td>
+                                    <select name="m_type" style="width: 280px;">
+                                        <option value="1" <if condition="$data.m_type eq 1"> selected </if>>第一种</option>
+                                        <option value="2" <if condition="$data.m_type eq 2"> selected </if>>第二种</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议时间</th>
+                                <td><input  name="m_time" type="text" readonly="readonly" onclick="new Calendar().show(this);" class="input" size="40" value="{$data.m_time}" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议地址</th>
+                                <td><input  name="m_address" type="text" class="input" size="40" value="{$data.m_address}" /></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议内容</th>
+                                <td><textarea name="m_content"  cols="37" rows="5" style="resize:none;">{$data.m_content}</textarea></td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>会议状态</th>
+                                <td>
+                                    <select name="m_status" style="width: 280px;">
+                                        <option value="1" <if condition="$data.m_status eq 1"> selected </if>>开启</option>
+                                        <option value="2" <if condition="$data.m_status eq 2"> selected </if>>关闭</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="120"><font color="red">* </font>审核状态</th>
+                                <td>
+                                    <select name="m_a_status" style="width: 280px;">
+                                        <option value="1" <if condition="$data.m_a_status eq 1"> selected </if>>审核成功</option>
+                                        <option value="2" <if condition="$data.m_a_status eq 2"> selected </if>>审核失败</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <th></th>
+                                <td><input type="submit" value="提交" name="submit" class="btn submit" /></td>
+                            </tr>
+
+                        </table>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+</body>
+</html>

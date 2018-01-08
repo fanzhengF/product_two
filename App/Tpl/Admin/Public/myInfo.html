@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>修改密码-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='账号管理 > 修改密码';
+        </php>
+    <include file="Common:intoHead" />
+</head>
+<body>
+    <div class="wrap">
+        <div class="mainBody">
+            <div id="Right" style="width:100%;">
+                <div class="contentArea">
+                    <div class="Item hr">
+                        <div class="current">修改密码</div>
+                    </div>
+                    <form action="" method="post" name="pwd_form" >
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+                            <!--
+                            <tr>
+                                <th width="120">账号手机</th>
+                                <td> {$info.tel}</td>
+                            </tr> -->
+                            <tr>
+                                <th>旧密码：</th>
+                                <td><input class="input" maxlength="18" name="old_pwd" type="password" size="40" value="" /></td>
+                            </tr>
+                            <tr>
+                                <th>新密码：</th>
+                                <td><input class="input" maxlength="18" name="new_pwd" type="password" size="40" value="" /></td>
+                            </tr>
+                            <tr>
+                                <th>再次输入：</th>
+                                <td><input class="input" maxlength="18" name="re_pwd" type="password" size="40" value="" /></td>
+                            </tr>
+                             <tr>
+                               <th></th>
+                                <td><input type="submit" value="提交" name="submit" class="btn" /></td>
+                            </tr>
+                        </table>
+                        <input type="hidden" name="aid" value="{$info.id}"/>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+<script type="text/javascript">
+    $("form[name=pwd_form]").submit(function(){
+        if($.trim($("input[name='old_pwd']").val())==''){
+            popup.alert("旧密码不能为空");
+            return false;
+        }
+        if($.trim($("input[name='old_pwd']").val())=='' || $.trim($("input[name='new_pwd']").val()) != $.trim($("input[name='re_pwd']").val())){
+            popup.alert("新密码俩次输入不一致");
+            return false;
+        }
+        if($.trim($("input[name='re_pwd']").val().length) <6 || $.trim($("input[name='re_pwd']").val().length) >18){
+            popup.alert("密码必须为6-18位英文或数字");
+            return false;
+        }
+        return true;
+        //commonAjaxSubmit();
+    });
+</script>
+</body>
+</html>

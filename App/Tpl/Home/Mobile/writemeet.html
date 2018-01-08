@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="" />
+	<meta name="Description" content="" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/style.css">
+	<link href="__PUBLIC__/Css/Home/mobile/mobiscroll_date.css" rel="stylesheet" />
+	<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+	<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+	<title>{$home_name}</title>
+</head>
+<body class="paddtop">
+	<div class="zxq_one">
+		<a href="javascript:history.back(-1)" class="a"><img src="__PUBLIC__/Images/Home/mobile/backs.png"></a>
+		<div>填写会议资料</div>
+	</div><!--zxq_one end-->
+	<!--nav end-->
+	<form action="" method="post" enctype="multipart/form-data">
+	<div class="lcq_big">
+		<div class="lcq_wrap">
+			<div class="lcq_huiyi">
+				<div class="lcq_huiyi-li cf">
+					<label>会议标题:</label>
+					<div class="lcq_input">
+						<input type="text" value="" name="m_name" class="meets_tits" id="meets_tits">
+					</div>
+				</div>
+				<!--
+				<div class="lcq_huiyi-li cf">
+					<label>会议地点:</label>
+					<div class="lcq_input">
+						<input type="text" value="" name="" class="meets_address">
+					</div>
+				</div> -->
+				<if condition="$type eq 'bz'">
+						<div class="lcq_huiyi-li cf">
+							<label>时间:</label>
+							<div class="lcq_input">
+								<input type="text" value="{$date}" name="m_time" id="USER_AGE" readonly class="input fl lcq_input-riqi"/>
+
+							</div>
+						</div>
+						<div class="lcq_huiyi-li cf">
+							<label>开始时间:</label>
+							<div class="lcq_input">
+								<input type="text" name="m_start" value="{$m_start}" readonly class="input fl lcq_input-riqi datetime1"/>
+							</div>
+						</div>
+						<div class="lcq_huiyi-li cf">
+							<label>结束时间:</label>
+							<div class="lcq_input">
+								<input type="text" name="m_end" value="{$m_end}" readonly class="input fl lcq_input-riqi datetime2"/>
+							</div>
+						</div>
+					<else />
+					<div class="lcq_huiyi-li cf">
+						<label>时间:</label>
+						<div class="lcq_input">
+							<input type="text" name="m_time" id="USER_AGE" readonly class="input fl lcq_input-riqi"/>
+						</div>
+					</div>
+					<div class="lcq_huiyi-li cf">
+						<label>开始时间:</label>
+						<div class="lcq_input">
+							<input type="text" name="m_start" class="form_datetime input fl lcq_input-riqi datetime1"/>
+						</div>
+					</div>
+					<div class="lcq_huiyi-li cf">
+						<label>结束时间:</label>
+						<div class="lcq_input">
+							<input type="text" name="m_end" class="form_datetime input fl lcq_input-riqi datetime2"/>
+						</div>
+					</div>
+
+
+				</if>
+
+
+
+				<div class="lcq_huiyi-li cf">
+					<label>会议简介:</label>
+					<div class="lcq_input lcq_input-none">
+						 <textarea style="resize: none" name="m_content" id="weiboTextArea" class="box2 meets_texts" maxlength="300" placeholder="填写会议简介，建议不超过300字"></textarea>
+						 <p style="text-align:right;margin-right:0.4rem;"><span class="red_star1"  id="sp"></span>/300</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!--content 1 end-->
+	<div class="lcq_big">
+		<div class="lcq_wrap">
+			<div class="lcq_huiyi">
+				<div class="lcq_huiyi-li cf">
+					<label>会议等级:</label>
+					<div class="lcq_input">
+						<select class="lcq_input-right meests_leve" name="m_grade" >
+							<volist name="gradeAll" id="vo">
+								<option value="{$vo.g_id}">{$vo.g_name}</option>
+							</volist>
+						</select>
+					</div>
+				</div>
+				<div class="lcq_huiyi-li cf">
+				<label>会议类型:</label>
+					<div class="lcq_input">
+					<!-- <input type="text" class="lcq_input-right"> -->
+						<select class="lcq_input-right meests_lei" name="m_type" >
+							<volist name="mtAll" id="vo">
+								<option value="{$vo.mt_id}">{$vo.mt_name}</option>
+							</volist>
+						</select>
+					</div>
+				</div>
+				<div class="lcq_huiyi-li cf">
+				<label>人数:</label>
+					<div class="lcq_input">
+						<input type="number" class=" meets_ren" value="" name="m_number" />
+					</div>
+				</div>
+				<div class="lcq_huiyi-li cf">
+					<label>预留座位:</label>
+					<div class="lcq_input">
+						<input type="text" class="meets_yu"  value="" name="m_ylnumber"/>
+					</div>
+				</div>
+				<div class="lcq_huiyi-li cf">
+					<label>占有名额:</label>
+					<div class="lcq_input">
+						<select class="lcq_input-right meests_ming" name="m_occupy" >
+							<option value="1">占有</option>
+							<option value="2">未占有</option>
+						</select>
+					</div>
+				</div>
+				<div class="lcq_huiyi-li cf">
+					<label>报名费用:</label>
+					<div class="lcq_input">
+						<input type="text" name="m_money" class="join_fees" placeholder="不填写即免费"/>
+					</div>
+			  </div>
+		</div>
+	</div>
+	<!--content-2 end-->
+	<div class="lcq_wrap">
+		<div class="lcq_huiyi-3">
+			<div class="lcq_huiyi-li cf">
+				<label>会议资料:</label>
+				<div class="lcq_input">
+					<input  type="text" id="textNames1" readonly>
+					<img src="__PUBLIC__/Images/Home/mobile/delete1.png" alt="" class="lcq_imag">
+					<input type="file" value="选择文件" name="m_ziliao" class="chose_wen">
+				</div>
+			</div>
+			<div class="lcq_huiyi-li cf">
+				<label>教室选择:</label>
+				<div class="lcq_input">
+					<!-- <input type="file" style="opacity:0;" placeholder=""value="xxx会议学习资料.doc"  class="lcq_va">
+					<img src="__PUBLIC__/Images/Home/mobile/delete1.png" alt="" class="lcq_imag"> -->
+					<select class="lcq_input-right meests_ming" name="m_rname" >
+						<option value="{$oneMr.room_name}">{$oneMr.room_name}</option>
+					</select>
+				</div>
+			</div>				
+		</div>
+	</div>
+	<!--content-3 end-->
+	<div class="lcq_wrap laq-app">
+		<div class="lcq_huiyi-3">
+			<div class="lcq_huiyi-li cf">
+				<label>列席专家:</label>
+				<div class="lcq_input">
+					<input type="text" name="m_zhuanjia" placeholder="请填写专家姓名，中间用“，”隔开" id="liexi">
+				</div>
+			</div>
+			<div class="lcq_huiyi-li cf">
+				<label>主讲人:</label>
+				<div class="lcq_input">
+					<input type="text" name="m_zhujiang" placeholder="姓名" id="zhujiang">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--content-4 end-->
+		<!--
+	<div class="lcq_wrap zhu_adds">
+		<div class="lcq_huiyi-3 ">
+			<div class="lcq_jia cf">
+				<img src="__PUBLIC__/Images/Home/mobile/addbig.png" alt="" class="add">
+				<span class="message">添加主讲人及列席专家信息</span>
+			</div>
+		</div>
+	</div>  -->
+	<!--content-5 end-->
+	<div class="lcq_wrap mart">
+		<div class="lcq_huiyi-3">
+<!--
+			<div class="lcq_huiyi-li cf">
+				<label>举办机构:</label>
+				<div class="lcq_input">
+					<input type="text" name="m_xiaowjigou" id="jigou">
+				</div>
+			</div>
+-->
+			<div class="lcq_huiyi-li cf">
+				<label>联系方式:</label>
+				<div class="lcq_input">
+					<input type="text" value="" name="m_phone" placeholder="电话" id="m_phone">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ti_mess" style="margin-bottom: 1rem;display:none;"></div>
+	<!--content-6 end-->
+	<div class="button-1">
+		<input type="reset" name="button" id="button" value="放弃" class="btn_1" />
+		<input type="submit" name="button" id="button-1" value="提交" class="btn_2 fr" />
+	</div>
+	</form>
+</body>
+
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/jquery-ui.css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-ui.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-ui-slide.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript">
+    $(function (){
+
+        $('.form_datetime').timepicker({
+            hourGrid: 4,
+            minuteGrid: 10
+        });
+    })
+</script>
+
+
+<!--时间日期插件-->
+<script src="__PUBLIC__/Js/Home/mobile/mobiscroll_date.js" charset="gb2312"></script> 
+<script src="__PUBLIC__/Js/Home/mobile/mobiscroll.js"></script> 
+<script type="text/javascript">
+	$(function () {
+		var currYear = (new Date()).getFullYear();	
+		var opt={};
+		opt.date = {preset : 'date'};
+		opt.datetime = {preset : 'datetime'};
+		opt.time = {preset : 'time'};
+		opt.default = {
+			theme: 'android-ics light', //皮肤样式
+			display: 'modal', //显示方式 
+			mode: 'scroller', //日期选择模式
+			dateFormat: 'yyyy-mm-dd',
+			lang: 'zh',
+			showNow: true,
+			nowText: "今天",
+			startYear: currYear - 50, //开始年份
+			endYear: currYear + 10 //结束年份
+		};
+
+		$("#USER_AGE").mobiscroll($.extend(opt['date'], opt['default']));
+		$("#USER_AGE1").mobiscroll($.extend(opt['date'], opt['default']));
+
+	});
+</script>
+<script>
+$(document).ready(function(){
+	$('.lcq_imag').click(function(){
+		$(this).siblings().remove();
+		$(this).remove();
+	})
+	$('.zhu_adds').click(function(){
+		$('.laq-app').append("<div class='lcq_huiyi-3'><div class='lcq_huiyi-li cf'><label>列席专家:</label><div class='lcq_input'><input type='text' placeholder=''></div></div><div class='lcq_huiyi-li cf'><label>主讲人:</label><div class='lcq_input'><input type='text' placeholder=''></div></div></div>");
+	})
+	$('.chose_wen').change(function(){
+		document.getElementById('textNames1').value=this.value;
+		$('.chose_wen').hide();
+		$(this).siblings('.lcq_imag').show();
+	})
+	//限制字数
+
+	function show(){
+         var tarea=document.getElementById("weiboTextArea");
+         var maxlength=300;
+         var length=tarea.value.length;
+         var count=maxlength-length;
+
+         var sp=document.getElementById("sp");
+         sp.innerHTML=count;
+         if(count<=25){
+	          sp.style.color="red";
+	      }else{
+	         sp.removeAttribute("style");
+	     }
+ 	}
+	$('#weiboTextArea').keyup(function(){
+		show();
+	})
+})					
+</script>
+<script type="text/javascript">
+	$(function(){
+		//验证
+		$('#meets_tits').blur(function(){
+			if ($('#meets_tits').val()==''||$('#meets_tits').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入会议标题');
+				return false;
+			}else{
+				$('.ti_mess').hide();
+				$('.ti_mess').text('');
+				return false;
+			}
+		}).keyup(function(){
+			$(this).triggerHandler('blur');
+		})
+		$('#USER_AGE').blur(function(){
+			if ($('#USER_AGE').val()==''||$('#USER_AGE').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入会议时间');
+				return false;
+			}else{
+				$('.ti_mess').hide();
+				$('.ti_mess').text('');
+				return false;
+			}
+		}).keyup(function(){
+			$(this).triggerHandler('blur');
+		})
+		$('#weiboTextArea').blur(function(){
+			if ($('#weiboTextArea').val()==''||$('#weiboTextArea').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入会议简介');
+				return false;
+			}else{
+				$('.ti_mess').hide();
+				$('.ti_mess').text('');
+				return false;
+			}
+		}).keyup(function(){
+			$(this).triggerHandler('blur');
+		})
+		$('.meets_ren').blur(function(){
+			if ($('.meets_ren').val()==''||$('.meets_ren').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入会议人数');
+				return false;
+			}else{
+				$('.ti_mess').hide();
+				$('.ti_mess').text('');
+				return false;
+			}
+		}).keyup(function(){
+			$(this).triggerHandler('blur');
+		})
+		$('.meets_yu').blur(function(){
+			if ($('.meets_yu').val()==''||$('.meets_yu').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入预留座位');
+				return false;
+			}else{
+				$('.ti_mess').hide();
+				$('.ti_mess').text('');
+				return false;
+			}
+		}).keyup(function(){
+			$(this).triggerHandler('blur');
+		})
+		$('#liexi').blur(function(){
+			if ($('#liexi').val()==''||$('#liexi').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入列席专家');
+				return false;
+			}else{
+				$('.ti_mess').hide();
+				$('.ti_mess').text('');
+				return false;
+			}
+		}).keyup(function(){
+			$(this).triggerHandler('blur');
+		})
+		$('#zhujiang').blur(function(){
+			if ($('#zhujiang').val()==''||$('#zhujiang').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入主讲专家');
+				return false;
+			}else{
+				$('.ti_mess').hide();
+				$('.ti_mess').text('');
+				return false;
+			}
+		}).keyup(function(){
+			$(this).triggerHandler('blur');
+		})
+		/*
+		$('#jigou').blur(function(){
+			if ($('#jigou').val()==''||$('#jigou').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入举办机构');
+				return false;
+			}else{
+				$('.ti_mess').hide();
+				$('.ti_mess').text('');
+				return false;
+			}
+		}).keyup(function(){
+			$(this).triggerHandler('blur');
+		})
+	*/
+
+		//判断开始结束时间
+		$('.datetime2').click(function(){
+			if ($('.datetime2').val()<$('.datetime1').val()) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('结束时间不能小于开始时间');
+				return false;
+			}else{
+				$('.ti_mess').hide();
+				$('.ti_mess').text('');
+				return true;
+			}
+		})
+		$('#m_phone').blur(function(){m_phone
+			if ($('#m_phone').val()==''||$('#m_phone').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入联系方式');
+				return false;
+			}else if(!$("#m_phone").val().match(/^(((13[0-9]{1})|(15[0-9]{1})|(14[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/)) { 
+				$('.ti_mess').show();
+			    $(".ti_mess").text("手机号码格式不正确!");
+			    return false; 
+	        }else{
+	        	$('.ti_mess').hide();
+				$('.ti_mess').text('');
+				return false;
+			}
+		}).keyup(function(){
+			$(this).triggerHandler('blur');
+		})
+		$('form').submit(function (e) {
+			 //e.preventDefault();
+			 if ($('#meets_tits').val()==''||$('#meets_tits').val()==undefined) {
+			 	$('.ti_mess').show();
+				$('.ti_mess').text('请输入会议标题');
+				return false;
+			}
+			if ($('#USER_AGE').val()==''||$('#USER_AGE').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入会议时间');
+				return false;
+			}
+			if ($('#weiboTextArea').val()==''||$('#weiboTextArea').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入会议简介');
+				return false;
+			}
+			if ($('.meets_ren').val()==''||$('.meets_ren').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入会议人数');
+				return false;
+			}
+			if ($('.meets_yu').val()==''||$('.meets_yu').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入预留座位');
+				return false;
+			}
+			if ($('#liexi').val()==''||$('#liexi').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入列席专家');
+				return false;
+			}
+			if ($('#zhujiang').val()==''||$('#zhujiang').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入主讲专家');
+				return false;
+			}
+
+			/*if ($('#jigou').val()==''||$('#jigou').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('请输入举办机构');
+				return false;
+			} */
+			if ($('#m_phone').val()==''||$('#m_phone').val()==undefined) {
+				$('.ti_mess').show();
+				$('.ti_mess').text('联系方式');
+				return false;
+			}
+			if(!$("#m_phone").val().match(/^(((13[0-9]{1})|(15[0-9]{1})|(14[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/)) {
+				$('.ti_mess').show();
+		        $(".ti_mess").text("手机号码格式不正确!");
+		        return false; 
+	        }
+	        return true;
+		})
+	})
+</script>
+</html>

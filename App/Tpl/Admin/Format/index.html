@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>海报版式列表-{$site.SITE_INFO.name}</title>
+<php> $addCss=""; $addJs=""; $currentNav ='管理 > 海报版式列表'; </php>
+<include file="Common:intoHead" />
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+        <div class="mainBody" style="overflow:hidden">
+            <div id="Right" style="width:100%;">
+                <div class="Item hr">
+                    <div class="current">海报版式列表</div>
+                </div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+                    <tr><td colspan="2" style="text-align: left;">版式图片事例</td></tr>
+                    <tr>
+                        <volist name="list" id="vo">
+                            <td>
+                                <img src="__PUBLIC__/Images/Home/{$vo.f_images}" style="width:40rem;height:70rem;" alt="" />
+                                <br />
+                                <if condition="$vo.f_confirm eq 1">
+                                    选择成功<else />
+                                    <label> <input type="radio" name="f_confirm" onclick="confirm(this);" value="{$vo.f_id}" /> 选择</label>
+                                </if>
+                            </td>
+                        </volist>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <script type="text/javascript">
+        function confirm(that) {
+            var t = $(that).val();
+            $.post('/Admin/Format/edit',{f_id:t}, function (data) {
+                if (data == '-1') {
+                    alert('选择成功！');
+                    location.reload(true);
+                }
+                if (data == '-2') {
+                    alert('选择失败！');
+                    location.reload(true);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会议海报列表-{$site.SITE_INFO.name}</title>
+<php> $addCss=""; $addJs=""; $currentNav ='会议室管理 > 会议海报列表'; </php>
+<include file="Common:intoHead" />
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+
+
+        <div class="mainBody" style="overflow:hidden">
+
+            <div id="Right" style="width:100%;">
+
+                <div class="Item hr">
+                    <div class="current">会议海报列表</div>
+                </div>
+
+                <form action="" method="get" id="search">
+                    <div>
+                        <a class="btn quickSubmit" href="__URL__/add">添加会议海报</a>
+                    </div>
+                </form>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                    class="tab">
+                    <thead>
+                        <tr>
+
+                            <td>编号</td>
+                            <td>会议名称</td>
+                            <td>海报名称</td>
+                            <td>海报图片</td>
+                            <td>提交时间</td>
+                            <!--
+                            <td>审核状态</td>  -->
+                            <td>操作</td>
+                        </tr>
+
+                    </thead>
+                    <volist name="list" id="vo">
+                    <tr align="center" id="">
+                        <td>{$key+1}</td>
+                        <td>{$vo.m_name}</td>
+                        <td>{$vo.p_name}</td>
+                        <td>{$vo.p_images}</td>
+                        <td>{$vo.p_time|date='Y-m-d H:i:s',###}</td>
+                        <td>
+                            <a href="{:U('Admin/Poster/edit',array('id'=>$vo['p_id']))}"
+                               class="xq-edit">编辑</a>
+                            <a class="delete" link="{:U('Admin/Poster/delete',array('id'=>$vo['p_id']))}" href="javascript:void(0);" name="{$vo.p_name}">删除</a>
+
+                        </td>
+
+                    </tr>
+                    </volist>
+
+                    <tr>
+                        <td class="fy" colspan="10">
+                            <ul>{$page}</ul>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <script type="text/javascript">
+        $(".delete").click(function(){
+            var link=$(this).attr("link");
+            var name = $(this).attr("name").replace(/<[^>]+>/g,"");
+            popup.confirm('你真的打算删除用户【<b>'+name+'</b>】心得吗?','温馨提示',function(action){
+                if(action == 'ok'){
+                    location.href=link;
+                }
+            });
+            return false;
+        });
+    </script>
+</body>
+</html>

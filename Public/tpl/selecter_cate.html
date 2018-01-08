@@ -1,0 +1,40 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<select name="cate_1" class="selecter selecter1">
+</select>
+<select name="cate_2" class="selecter selecter2">
+</select>
+<select name="cate_3" class="selecter selecter3">
+</select>
+<input type="hidden" value="" name="Product[cate_id]" id="Product_cate_id">
+<script type="text/javascript" src="/Public/Js/201505/jquery-min.js"></script> 
+<script type="text/javascript" src="/Public/Js/201505/linkSelecter.js"></script>
+<script type="text/javascript" >
+	var config = {
+	    "obj" : $('.selecter'), // 联动共用的
+	    "type" : 0,
+	    "group" :[$('.selecter1'),$('.selecter2'),$('.selecter3')],
+	    "changeFunction":function(index, value){
+	    //     if( index == 2){
+	    //         // 四级联动到品牌分类
+	    //         $("#Product_brand_row").html($("#hidhen_pinpai").html());
+	    //         $.get("/Admin/Product/doCateBrand?cate_id="+value,function(data){
+	    //             if(data.status){
+	    //                 var tem = ['<option value="">请选择</option>'];
+	    //                 for(var i =0; i< data.data.length; i++){
+	    //                     tem.push('<option spell="'+data.data[i].spell+'" status="'+data.data[i].status+'" value="'+data.data[i].id+'">'+data.data[i].name+'</option>');
+	    //                 }
+	    //                 $("#Product_brand_id").html(tem.join(""));
+	    //             }else{
+	    //                 $("#Product_brand_row").html("");
+	    //             }
+	    //         },"json");
+	    //     }else{
+	    //         if($("#Product_brand_row select").length){
+	    //             $("#Product_brand_row select").html('<option value="">请选择</option>').attr('disabled','disabled');
+	    //         }
+	    //     }
+
+	    }
+    };
+    linkAreaOption.init(config);
+</script>

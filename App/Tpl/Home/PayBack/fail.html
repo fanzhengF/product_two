@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>支付失败{$WebTitle}</title>
+<meta content="telephone=no" name="format-detection" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="width=1080,user-scalable=no,target-densityDpi=device-dpi"/>
+<link href="http://min.static.jiaju.com/static/site/asset/style/qgztouch/reset-min.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="http://static.jiaju.com/jiaju/com/m7gz/assets/css/sg-pay-suc-fail.css">
+<script src="http://min.static.jiaju.com/static/js/mobile/hotcss/hotcss.js"></script>
+</head>
+<body>
+	<div class="pay-succ-wrap">
+		<div class="succ-tit">
+			<a href="{$repay}"></a>
+			支付订单
+		</div>
+		<div class="succ-center">
+			<img src="http://static.jiaju.com/jiaju/com/m7gz/assets/images/sg-order/sg_pay_fail.png"/>
+			<p>很遗憾，支付失败！</p>
+		</div>
+		<a href="{$repay}" class="pay-btn">重新支付</a>
+	</div>	
+	<include file="Common:statistics" />
+</body>
+</html>

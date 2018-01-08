@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>补登会议审批-{$site.SITE_INFO.name}</title>
+<php> $addCss=""; $addJs=""; $currentNav ='管理 > 补登会议审批'; </php>
+<include file="Common:intoHead" />
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+
+
+        <div class="mainBody" style="overflow:hidden">
+
+            <div id="Right" style="width:100%;">
+
+                <div class="Item hr">
+                    <div class="current">补登会议未审批</div>
+                </div>
+                <form action="" method="get" id="search">
+                    <div>
+                        &nbsp;<!--
+                        <b>会议编号&nbsp;</b>
+                        <input style="width: 80px" class="input" type="text" name="m_bianma" value="{$Think.get.m_bianma}" /> -->
+                        <b>会议名称&nbsp;</b>
+                        <input style="width: 80px" class="input" type="text" name="m_name" value="{$Think.get.m_name}" />
+                        <b>提交开始时间&nbsp;</b>
+                        <input placeholder="开始" id="start_time" class="input" type="text" name="start_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.start_time}">
+                        <b>提交结束时间&nbsp;</b>
+                        <input placeholder="结束" id="end_time" class="input" type="text" name="end_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.end_time}">
+                        <input type="submit" id="check_btn" value="搜索" class="btn quickSubmit">
+                    </div>
+                </form>
+                <!--
+                    <div>
+                        <a class="btn quickSubmit" href="__URL__/add">添加补登会议</a>
+                    </div> -->
+                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                    class="tab">
+                    <thead>
+                        <tr>
+                            <td>学号</td>
+                            <td>姓名</td>
+                            <td>会议编号</td>
+                            <td>会议名称</td>
+                            <td>会议类型</td>
+                            <td>会议内容</td>
+                            <td>会议时间</td>
+                            <td>会议地址</td>
+                            <td>提交时间</td>
+                            <td>会议学分</td>
+                            <td>审核状态</td>
+                            <td>操作</td>
+                        </tr>
+
+                    </thead>
+                    <volist name="list" id="vo">
+                    <tr align="center" id="">
+                        <td>{$vo['m_no']}</td>
+                        <td>{$vo['m_xingming']}</td>
+                        <td>{$vo['m_bianma']}</td>
+                        <td title="{$vo.m_name}">{$vo.m_name|msubstr=0,10}</td>
+                        <td>{$vo.m_type}</td>
+                        <td title="{$vo.m_content}">{$vo.m_content|msubstr=0,10}</td>
+                        <td>{$vo.m_time}</td>
+                        <td title="{$vo.m_address}">{$vo.m_address|msubstr=0,10}</td>
+                        <td>{$vo.time|date='Y-m-d H:i:s',###}</td>
+                        <td>{$vo.m_hyxf}</td>
+                        <td>
+                            <switch name="vo.m_a_status">
+                                <case value="1">已审批</case>
+                                <default />未审批
+                            </switch>
+                        </td>
+
+                        <td>
+                       <a href="{:U('Admin/Bd/edit',array('id'=>$vo['m_id']))}"
+                          class="xq-edit">审批</a>
+                   </td>
+
+               </tr>
+               </volist>
+
+               <tr>
+                   <td class="fy" colspan="12">
+                       <ul>{$page}</ul>
+                   </td>
+               </tr>
+
+           </table>
+
+       </div>
+   </div>
+</div>
+<div class="clear"></div>
+
+</body>
+</html>

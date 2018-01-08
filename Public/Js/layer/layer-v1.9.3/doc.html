@@ -1,0 +1,351 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>弹窗</title>
+<script src="http://static.jiaju.com/jiaju/com/js/dojquery-z-min.js"></script>
+<script src="layer.js"></script>
+<style type="text/css">
+	*{margin: 0; padding: 0;}
+	.box{width: 800px; overflow: hidden; margin: 100px auto;}
+	.item{float: left; list-style: none;}
+	.item a{float: left; padding: 10px 20px; margin-bottom: 10px; margin-right: 10px; background: #ccc;border: 1px solid #000; color: #000; text-decoration: none;}
+	.item a:hover{color: red;}
+	.item a:active{background-color: #ddd}
+</style>
+</head>
+<body>
+	<ul class="box">
+		<li class="item"><a href="javascript:;">alert</a></li>
+		<li class="item"><a href="javascript:;">msg</a></li>
+		<li class="item"><a href="javascript:;">confirm</a></li>
+		<li class="item"><a href="javascript:;">open</a></li>
+		<li class="item"><a href="javascript:;">tips</a></li>
+		<li class="item"><a href="javascript:;">iframe</a></li>
+		<li class="item"><a href="javascript:;">iframe2</a></li>
+		<li class="item"><a href="javascript:;">load</a></li>
+		<li class="item"><a href="javascript:;">prompt</a></li>
+		<li class="item"><a href="javascript:;">tab</a></li>
+	</ul>
+
+	<pre>
+	//调用如下
+	var $aLi = $('.box .item');
+	
+	//alert
+	$aLi.eq(0).on('click', function (){
+		var now = 0;
+		alertFn();
+
+		function alertFn(){
+			layer.alert('点击确定更换图标，当前图标：'+now,{icon:now},function (index){
+				//layer.close(index); 	关闭弹窗
+				now++;
+				if (now==7) {
+					layer.alert('自定义样式', {
+					    skin: 'layui-layer-molv' //样式类名
+					}, function(){
+					    layer.alert('深蓝style', {
+					        skin: 'layui-layer-lan',
+					        shift: 3 //动画类型 1234
+					    });
+					});
+					return;
+				};
+				alertFn();
+			});
+		}
+	});
+
+	//msg
+	$aLi.eq(1).on('click', function (){
+		layer.msg('玩命学习中');
+	});
+
+	//confirm
+	$aLi.eq(2).on('click', function (){
+		layer.confirm('你觉得FL怎么样？',{
+			btn: 	['萌萌哒','国色天香']
+			//,shade: 	false 	遮罩
+		},function (){
+			layer.msg('很傻很天真',{icon:1});
+		},function (){
+			layer.msg('漂亮么么哒',{icon:2});
+		});
+	});
+
+	//open
+	$aLi.eq(3).on('click', function (){
+		layer.open({
+		    type: 1,
+		    //skin: 'layui-layer-rim', //加上边框
+		    area: ['420px', '240px'], //宽高
+		    content: '我是万恶的弹窗'
+		});
+	});
+
+	//tips
+	$aLi.eq(4).on('click', function (){
+		layer.tips('我是小tips', $aLi.eq(4));
+
+		/*layer.tips('我是小tips', $aLi.eq(4), {
+		    tips: [1, '#3595CC'], 	// 1 2 3 4 代表上右下左
+		    time: 3000 				// 自动关闭时间
+		});*/
+	});
+
+	//iframe
+	$aLi.eq(5).on('click', function (){
+		layer.open({
+		    type: 2,
+		    title: '标题额',
+		    shadeClose: true,
+		    shade: 0.8,
+		    area: ['380px', '90%'],
+		    content: 'http://jiaju.sina.com.cn/' 
+		}); 
+	});
+
+	//iframe2
+	$aLi.eq(6).on('click', function (){
+		layer.open({
+		    type: 2,
+		    title: false,
+		    closeBtn: false,
+		    shade: [0],
+		    area: ['340px', '215px'],
+		    offset: 'rb', //右下角弹出
+		    time: 2000, //2秒后自动关闭
+		    shift: 1, 	//出来的运动方式 1234
+		    content: ['http://jiaju.sina.com.cn/', 'no'], //iframe的url，no代表不显示滚动条
+		    end: function(){ //此处用于演示
+		        layer.open({
+		            type: 2,
+		            title: '很多时候，我们想最大化看，比如像这个页面。',
+		            shadeClose: true,
+		            shade: false,
+		            maxmin: true, //开启最大化最小化按钮
+		            area: ['640px', '450px'],
+		            content: 'http://jiaju.sina.com.cn/'
+		        });
+		    }
+		});
+	});
+
+	//load
+	$aLi.eq(7).on('click', function (){
+		var index = layer.load(1, { 	/// 0 1 2 
+		    shade: [0.4,'#000'] //0.4透明度的白色背景
+		});
+
+		setTimeout(function (){
+			layer.close(index)
+		},5000);
+	});
+
+
+
+
+
+
+
+	//扩展方法
+	//prompt、tab层、相册层
+	layer.config({
+	    extend: 'extend/layer.ext.js'
+	});
+
+
+	layer.ready(function (){
+		//prompt
+		$aLi.eq(8).on('click', function (){
+			layer.prompt({
+				title: '输入任何口令，并确认',
+				formType: 1 //prompt风格，支持0-2
+			}, function(pass){
+				layer.prompt({title: '写爱FL，并确认', formType: 2}, function(text){
+				    layer.msg('记录完成！您的口令：'+ pass +' 您最后写下了：'+ text);
+				});
+			});
+		});
+
+		//tab
+		$aLi.eq(9).on('click', function (){
+			layer.tab({
+			    area: ['600px', '300px'],
+			    tab: [{
+			        title: 'TAB1', 
+			        content: '内容1'
+			    }, {
+			        title: 'TAB2', 
+			        content: '内容2'
+			    }, {
+			        title: 'TAB3', 
+			        content: '内容3'
+			    }]
+			});
+		});
+	})
+	</pre>
+</body>
+<script type="text/javascript">
+	
+	var $aLi = $('.box .item');
+	
+	//alert
+	$aLi.eq(0).on('click', function (){
+		var now = 0;
+		alertFn();
+
+		function alertFn(){
+			layer.alert('点击确定更换图标，当前图标：'+now,{icon:now},function (index){
+				//layer.close(index); 	关闭弹窗
+				now++;
+				if (now==7) {
+					layer.alert('自定义样式', {
+					    skin: 'layui-layer-molv' //样式类名
+					}, function(){
+					    layer.alert('深蓝style', {
+					        skin: 'layui-layer-lan',
+					        shift: 3 //动画类型 1234
+					    });
+					});
+					return;
+				};
+				alertFn();
+			});
+		}
+	});
+
+	//msg
+	$aLi.eq(1).on('click', function (){
+		layer.msg('玩命学习中');
+	});
+
+	//confirm
+	$aLi.eq(2).on('click', function (){
+		layer.confirm('你觉得FL怎么样？',{
+			btn: 	['萌萌哒','国色天香']
+			//,shade: 	false 	遮罩
+		},function (){
+			layer.msg('很傻很天真',{icon:1});
+		},function (){
+			layer.msg('漂亮么么哒',{icon:2});
+		});
+	});
+
+	//open
+	$aLi.eq(3).on('click', function (){
+		layer.open({
+		    type: 1,
+		    //skin: 'layui-layer-rim', //加上边框
+		    area: ['420px', '240px'], //宽高
+		    content: '我是万恶的弹窗'
+		});
+	});
+
+	//tips
+	$aLi.eq(4).on('click', function (){
+		layer.tips('我是小tips', $aLi.eq(4));
+
+		/*layer.tips('我是小tips', $aLi.eq(4), {
+		    tips: [1, '#3595CC'], 	// 1 2 3 4 代表上右下左
+		    time: 3000 				// 自动关闭时间
+		});*/
+	});
+
+	//iframe
+	$aLi.eq(5).on('click', function (){
+		layer.open({
+		    type: 2,
+		    title: '标题额',
+		    shadeClose: true,
+		    shade: 0.8,
+		    area: ['380px', '90%'],
+		    content: 'http://jiaju.sina.com.cn/' 
+		}); 
+	});
+
+	//iframe2
+	$aLi.eq(6).on('click', function (){
+		layer.open({
+		    type: 2,
+		    title: false,
+		    closeBtn: false,
+		    shade: [0],
+		    area: ['340px', '215px'],
+		    offset: 'rb', //右下角弹出
+		    time: 2000, //2秒后自动关闭
+		    shift: 1, 	//出来的运动方式 1234
+		    content: ['http://jiaju.sina.com.cn/', 'no'], //iframe的url，no代表不显示滚动条
+		    end: function(){ //此处用于演示
+		        layer.open({
+		            type: 2,
+		            title: '很多时候，我们想最大化看，比如像这个页面。',
+		            shadeClose: true,
+		            shade: false,
+		            maxmin: true, //开启最大化最小化按钮
+		            area: ['640px', '450px'],
+		            content: 'http://jiaju.sina.com.cn/'
+		        });
+		    }
+		});
+	});
+
+	//load
+	$aLi.eq(7).on('click', function (){
+		var index = layer.load(1, { 	/// 0 1 2 
+		    shade: [0.4,'#000'] //0.4透明度的白色背景
+		});
+
+		setTimeout(function (){
+			layer.close(index)
+		},5000);
+	});
+
+
+
+	//more see http://layer.layui.com/api.html#layer.photos
+
+
+
+	//扩展方法
+	//prompt、tab层、相册层
+	layer.config({
+	    extend: 'extend/layer.ext.js'
+	});
+
+
+	layer.ready(function (){
+		//prompt
+		$aLi.eq(8).on('click', function (){
+			layer.prompt({
+				title: '输入任何口令，并确认',
+				formType: 1 //prompt风格，支持0-2
+			}, function(pass){
+				layer.prompt({title: '写爱FL，并确认', formType: 2}, function(text){
+				    layer.msg('记录完成！您的口令：'+ pass +' 您最后写下了：'+ text);
+				});
+			});
+		});
+
+		//tab
+		$aLi.eq(9).on('click', function (){
+			layer.tab({
+			    area: ['600px', '300px'],
+			    tab: [{
+			        title: 'TAB1', 
+			        content: '内容1'
+			    }, {
+			        title: 'TAB2', 
+			        content: '内容2'
+			    }, {
+			        title: 'TAB3', 
+			        content: '内容3'
+			    }]
+			});
+		});
+	})
+
+</script>
+</html>

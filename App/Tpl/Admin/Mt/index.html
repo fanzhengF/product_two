@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会议类型列表-{$site.SITE_INFO.name}</title>
+<php> $addCss=""; $addJs=""; $currentNav ='会议室管理 > 会议类型列表'; </php>
+<include file="Common:intoHead" />
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+
+
+        <div class="mainBody" style="overflow:hidden">
+
+            <div id="Right" style="width:100%;">
+
+                <div class="Item hr">
+                    <div class="current">会议类型列表</div>
+                </div>
+
+                <form action="" method="get" id="search">
+                    <div>
+                        <a class="btn quickSubmit" href="__URL__/add">添加会议类型</a>
+                    </div>
+                </form>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                    class="tab">
+                    <thead>
+                        <tr>
+
+                            <td>编号</td>
+                            <td>类型名称</td>
+                            <td>提交时间</td>
+                            <td>操作</td>
+                        </tr>
+
+                    </thead>
+                    <volist name="list" id="vo">
+                    <tr align="center" id="">
+                        <td>{$key+1}</td>
+                        <td>{$vo.mt_name}</td>
+                        <td>{$vo.mt_time|date='Y-m-d H:i:s',###}</td>
+                        <td>
+                            <a href="{:U('Admin/Mt/edit',array('id'=>$vo['mt_id']))}"
+                               class="xq-edit">编辑</a>
+
+                        </td>
+
+                    </tr>
+                    </volist>
+
+                    <tr>
+                        <td class="fy" colspan="4">
+                            <ul>{$page}</ul>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+</body>
+</html>

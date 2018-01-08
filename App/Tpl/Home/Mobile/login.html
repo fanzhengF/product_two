@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+<title>{$home_name}</title>
+<style type="text/css">
+	/*会议系统登录页面start*/
+.logins{width: 9rem;height:9.47rem;background: #fff;box-shadow: 0 2px 10px 0 rgba(100,100,100,0.50);margin:0 auto;margin-top: 1rem;margin-bottom:3rem;padding:0.427rem;}
+.login_divs{width: 9rem;margin:0 auto 0.373rem;clear: both;}
+.login_divs label{width:2rem;height:1rem;line-height:1rem;margin-right:0.373rem;text-align: right;}
+.logins h1{font-size:0.427rem;text-align: center;margin: 0 auto 0.373rem;width: 7.5rem;}
+.litt_lines{width:1.9rem;height:0px;border:1px solid  #E3E3E3;margin:12px 15px 0;}
+.zhang_deng{width: 110px;text-align: center;}
+.inputs{width:5.5rem;height:1rem;line-height:1rem;border: 1px solid #D3D3D3;border-radius: 3px;display: block;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;margin-bottom:0.373rem;}       
+.login_name{background: url(/Public/Images/Home/mobile/woca.png) no-repeat 24px center;padding-left:1.5rem;}
+.login_pass{background: url(/Public/Images/Home/mobile/mima.png) no-repeat 24px center;padding-left:0.8rem;}
+.can_login{display: block;border: 0;background: 0;width:5rem;height:1rem;line-height: 1rem;text-align: center;color: #fff;font-size: 0.427rem;background: #28BADF;border-radius: 5px;margin: 0 auto;margin-top: 1rem;}
+.back_index{    display: block;
+    border: 0;
+    background: 0;
+    width: 2rem;
+    height: 0.85rem;
+    line-height:0.85rem;
+    text-align: center;
+    color: #fff;
+    font-size: 0.373rem;
+    background: #28BADF;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin:1rem 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="fanhui">
+    <a href="{:U('/Mobile/index')}" class="back_index">返回首页</a>
+</div>
+<div class="logins con_box cf">
+        <h1 class="cf">
+            <span class="fl litt_lines"></span>
+            <span class="fl">账号登录</span>
+            <span class="fl litt_lines"></span>
+        </h1>
+        <form action="" id="form1" method="post">
+            <div class="login_divs cf">
+                <label class="fl">用户名：</label>
+                <input type="text" value="" name="u_name" id="u_name" class="fl login_name inputs" placeholder="用户名">
+            </div>
+            <div class="login_divs cf">
+                <label class="fl">状  态：</label>
+                <select name="u_type" class="fl login_name inputs">
+                    <option value="3">学生</option>
+                    <option value="2">教师</option>
+                    <option value="1">校外</option>
+                </select>
+            </div>           
+            <div class="login_divs cf">
+                <label class="fl">密  码：</label>
+                <input type="password" value="" name="u_pwd" id="u_pwd" class=" login_pass inputs" placeholder="密码">
+            </div>
+            <input type="hidden" name="op_type" id="op_type" value="1"/>
+
+            <button type="submit" class="can_login">登陆</button>
+
+            <div class="fanhui" style="color:red;text-align: center;margin-top: 0.4rem;">校外人员用户名密码都是手机号</div>
+        </form>
+        
+    </div>
+<script type="text/javascript">
+    $(function(){
+        $('form').submit(function (e) {
+            e.preventDefault();
+            $("#op_type").val ("1");
+            if($("#u_name").val()==''||$("#u_pwd").val()==''){
+                alert("填写完整方可登录！");
+                return false;
+            }
+            var data = {
+                'u_name' : $('#u_name').val(),
+                'u_pwd' : $('#u_pwd').val(),
+                'u_type' : $('select[name=u_type]').val()
+            };
+            var url = "{:U('/Mobile/index')}";
+            $.post('/Mobile/login', data, function (data) {
+                if (data == '-1') {
+                    location.href = url;
+                    return false;
+                }
+                if (data == '-2') {
+                    alert("用户名或密码错误！");
+                    return false;
+                }
+
+
+            });
+
+        });
+
+
+    });
+</script>
+</body>
+</html>

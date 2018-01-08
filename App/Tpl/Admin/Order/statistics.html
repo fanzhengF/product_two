@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>订单统计-{$site.SITE_INFO.name}</title>
+<php> $addCss=""; $addJs=""; $currentNav ='订单 > 订单统计'; </php>
+<include file="Common:intoHead" />
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/Admin/calender.js"></script>
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+        <include file="Common:head" />
+
+        <div class="mainBody" style="overflow:hidden">
+            <include file="Common:left" />
+            <div id="Right" style="float: left; width: 780px;">
+
+                <div class="Item hr">
+                    <div class="current">订单统计</div>
+                </div>
+                <form action="" method="get" id="search">
+                    <div>
+                        <input name="search_type" value="" id="search_type" type="hidden"/>
+                        <if condition="$access.supplier eq 1">
+                            <b>供应商&nbsp;</b>
+                            <select id="supplier_id" name="supplier_id" style="width: 80px;" onchange="javascript:getCompany(this.value)">
+                                <option value="" >请选择</option>
+                                <notempty  name="data.supplier">
+                                    <foreach name="data.supplier" item="vo">
+                                        <option value="{$key}" <if condition="$Think.get.supplier_id eq $key"> selected ="selected" </if>>{$vo}</option>
+                                    </foreach>
+                                </notempty >
+                            </select>
+                        </if>
+
+                        <if condition="$access.company eq 1">
+                            <b>分公司&nbsp;</b>
+                            <select id="company_id" name="company_id" style="width: 80px;" onchange="javascript:getShop(this.value)">
+                                <option value="" >请选择</option>
+                                <notempty  name="data.company">
+                                    <foreach name="data.company" item="vo">
+                                        <option value="{$key}" <if condition="$Think.get.company_id eq $key"> selected ="selected" </if>>{$vo}</option>
+                                    </foreach>
+                                </notempty >
+                            </select>
+                        </if>
+
+                        <if condition="$access.shop eq 1">
+                            <b>实体店&nbsp;</b>
+                            <select id="shop_id" name="shop_id" style="width: 80px;" onchange="javascript:shop()">
+                                <option value="" >请选择</option>
+                                <notempty  name="data.shop">
+                                    <foreach name="data.shop" item="vo">
+                                        <option value="{$key}" <if condition="$Think.get.shop_id eq $key"> selected ="selected" </if>>{$vo}</option>
+                                    </foreach>
+                                </notempty >
+                            </select>
+                        </if>
+
+                        <b>交易时间&nbsp;</b>
+                        <input placeholder="开始" id="start_time" class="input" type="text" name="start_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.start_time}">
+
+                        <b>交易时间&nbsp;</b>
+                        <input placeholder="结束" id="end_time" class="input" type="text" name="end_time" readonly="readonly" onclick="new Calendar().show(this);" value="{$Think.get.end_time}">
+
+                        <input type="submit" id="check_btn" value="查询" class="btn quickSubmit">
+                    </div>
+                </form>
+
+                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                    class="tab">
+                    <thead>
+                        <tr>
+                            <if condition="$tab_view.supplier eq 1">
+                                <td>供应商</td>
+                            </if>
+                            <if condition="$tab_view.company eq 1">
+                                <td>分公司</td>
+                            </if>
+                            <if condition="$tab_view.shop eq 1">
+                                <td>实体店</td>
+                            </if>
+                            <td>订单数量</td>
+                            <td>实收总金额</td>
+                        </tr>
+
+                    </thead>
+
+                    <tr align="center" id="">
+                        <if condition="$tab_view.supplier eq 1">
+                            <td>
+                                {$tab_view.business_name}
+                            </td>
+                        </if>
+
+                        <if condition="$tab_view.company eq 1">
+                            <td>
+                                {$tab_view.business_name}
+                            </td>
+                        </if>
+
+                        <if condition="$tab_view.shop eq 1">
+                            <td>
+                                {$tab_view.business_name}
+                            </td>
+                        </if>
+                        <td>{$statistics.count}</td>
+                        <td>{$statistics.really_price}</td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <include file="Common:foot" />
+    <script type="text/javascript">
+        var supplier_id = <?php echo intval($_GET['supplier_id'])?>;
+        var company_id  = <?php echo intval($_GET['company_id'])?>;
+        var shop_id     = <?php echo intval($_GET['shop_id'])?>;
+        if(supplier_id >0){
+            getCompany(supplier_id);
+        }
+        if(company_id >0){
+            getShop(company_id);
+        }
+        function getCompany(n){
+            $.get("/Admin/Access/getOwnerCompany?role_id=3&supplier_id="+n,function(data){
+                if(data.status){
+                    $("#company_id").empty();
+                    tmpDom = '<option value="">请选择</option>';
+                    if(data.data.list){
+                        $.each(data.data.list,function(n,value){
+                                if(company_id>0 && value.id==company_id){
+                                    tmpDom += '<option value="'+value.id+'" selected >'+value.business_name+'</option>';
+                                }else{
+                                    tmpDom += '<option value="'+value.id+'">'+value.business_name+'</option>';
+                                }
+                            }
+                        );
+                    }
+                    $("#company_id").append(tmpDom);
+                    if($('#supplier_id option:selected').val() !=''){
+                        $("#search_type").val('1');
+                    }
+                }else{
+
+                }
+
+            },"json");
+        }
+        function getShop(n,m){
+            $.get("/Admin/Access/getOwnerShop?role_id=4&company_id="+n,function(data){
+                if(data.status){
+                    $("#shop_id").empty();
+                    tmpDom = '<option value="">请选择</option>';
+                    if(data.data.list){
+                        $.each(data.data.list,function(n,value){
+                                if(shop_id>0 && value.id==shop_id){
+                                    tmpDom += '<option value="'+value.id+'" selected>'+value.business_name+'</option>';
+                                }else{
+                                    tmpDom += '<option value="'+value.id+'">'+value.business_name+'</option>';
+                                }
+                            }
+                        );
+                    }
+                    $("#shop_id").append(tmpDom);
+                    if($('#company_id option:selected').val() !=''){
+                        $("#search_type").val('1');
+                    }
+                }else{
+
+                }
+
+            },"json");
+        }
+        function shop(){
+            $("#search_type").val('shop');
+            $("#business_name").val($('#shop_id option:selected').text());
+        }
+    </script>
+</body>
+</html>

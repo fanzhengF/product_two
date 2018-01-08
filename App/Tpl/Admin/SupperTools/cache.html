@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>超级管理员工具-{$site.SITE_INFO.name}</title>
+<php> $addCss=""; $addJs=""; $currentNav ='超级管理员工具 > 缓存管理'; </php>
+<include file="Common:intoHead" />
+</head>
+<body style="overflow-x:hidden;">
+    <div class="wrap">
+        <include file="Common:head" />
+
+        <div class="mainBody" style="overflow:hidden">
+            <include file="Common:left" />
+            <div id="Right" style="float: left; width: 780px;">
+
+                <div class="Item hr">
+                    <div class="current">缓存列表</div>
+                </div>
+
+                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                    class="tab">
+                    <thead>
+                        <tr>
+                            <td>标志</td>
+                            <td>缓存时间</td>
+                            <td>作用</td>
+                            <td>操作</td>
+                        </tr>
+
+                    </thead>
+                    <volist name="data" id="vo">
+                    <tr align="center" id="">
+                        <td>{$vo.cache_key}</td>
+                        <td>{$vo.cache_time}</td>
+                        <td>{$vo.describe}</td>
+                        <td>
+                            <a href="{:U('Admin/SupperTools/delCache',array('cache'=>$vo['cache_key']))}" class="xq-edit">清除缓存</a>
+                        </td>
+                    </tr>
+                    </volist>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <include file="Common:foot" />
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/Home/mobile/style.css">
+<link href="__PUBLIC__/Css/Home/mobile/mobiscroll_date.css" rel="stylesheet" />
+<script src="__PUBLIC__/Js/Home/mobile/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/flexible.js"></script>
+<script src="__PUBLIC__/Js/Home/mobile/common.js"></script>
+<title>{$home_name}</title>
+</head>
+<body class="paddtop paddbot" style="background:#F7FBFF;">
+  <div class="search_tan" style="display:block">
+      <div class="cf sear_top1 con_box">
+        <a href="javascript:history.back(-1);" class="fl tan_backs"></a>
+        <span class="fl sear_posi1 cf">
+          <form method="get" action="?" name="s_1">
+            <input type="text" value="{$Think.get.room_name}" name="room_name" class="index_search2 fl" id="index_search1" placeholder="输入会议室名称">
+            <input type="submit" value="" onclick="$('form[name=s_1]').submit();" name="" class="top_sear fl" id="top_sear2">
+          </form>
+        </span>
+        <a href="{:U('/Mobile/zichou')}" class="fl zichou">自筹会议室</a>
+      </div>
+  </div>
+  <div class="such_meets" style="margin-top:1.28rem;">
+    <form method="get" action="?" name="s_2">
+    <div class="cf time_lei con_box" style="padding-left:0;">
+      <span class="fl meets_chose1" style="margin-right:0.3rem;">容纳人数</span>
+      <!--
+      <span class="fl meets_chose meets_chose1">空闲会议室</span> -->
+      <input type="text" name="start_date" id="USER_AGE" value="{$Think.get.start_date}" readonly class="input fl" placeholder="开始日期" />
+      <input type="text" name="end_date" id="USER_AGE1" value="{$Think.get.end_date}" readonly class="input fl" placeholder="结束日期" style="margin-left: 0.3rem;" />
+      <input type="submit" name="" onclick="$('form[name=s_2]').submit();" class="fl" value="确定" style="margin-left: 0.3rem;width:1rem;background:#fff;">
+    </div>
+    <div class="can_resets can_resets2">
+
+        <div class="cf resets1 con_box">
+          <label class="fl resets1_cur label_chose" for="peop0">1000人<input type="radio" value="" name="" id="peop0" ></label>
+          <label class="fl label_chose" for="peop1">500人<input type="radio" value="" name="" id="peop1" ></label>
+          <label class="fl label_chose" for="peop2">已结束<input type="radio" value="" name="" id="peop2" ></label>
+        </div>
+        <div class="cf">
+          <input type="reset" value="重置" name="" class="fl chongzhi" id="chongzhi1">
+          <input type="submit" value="确定" name="" onclick="$('form[name=s_2]').submit();" class="fr btn_yes" id="btn_yes1">
+        </div>
+
+
+    </div><!--can_resets end-->
+   <!--can_resets end-->
+    </form>
+  </div><!--such_meets end-->
+  <div class="fa_divs con_box">
+    <ul class="fa_uls" id="fa_uls">
+      <volist name="MrAll" id="voo">
+        <li>
+          <div class="cf">
+            <h1 class="fl no_wrap rong_h1">{$voo['room_name']}</h1>
+            <span class="fr fa_bian">会议室编号：{$voo['room_no']}</span>
+            <div class="time_tan">
+              <p>选择日期</p>
+              <div class="chose_times">
+                <volist name="MrAll" id="voo">
+                  <volist name="voo['meeting_jinxing2']" key="h" id="vo">
+                    <div class="cf chose_dates">
+                      <label class="fl">
+                        <switch name="h">
+                          <case value="1">周一</case>
+                          <case value="2">周二</case>
+                          <case value="3">周三</case>
+                          <case value="4">周四</case>
+                          <case value="5">周五</case>
+                          <case value="6">周六</case>
+                          <case value="7">周日</case>
+                        </switch>
+                      </label>
+                      <span class="fl">
+                        <a href="{:U('Mobile/baosuc/',array('id'=>$voo['room_id'],'date'=>$key))}">{$key}</a>
+                      </span>
+                    </div>
+                  </volist>
+
+                </volist>
+
+
+
+              </div><!--chose_times end-->
+            </div>
+          </div>
+          <div class="cf fa_mart">
+            <span class="fl mech no_wrap">所属机构：{$voo['room_jigou']}</span>
+            <span class="fr rongna">容纳人数：{$voo['room_number']}人</span>
+          </div>
+          <div class="fa_addr fa_mart">位置：{$voo['room_address']}</div>
+          <div class="fa_service fa_mart">提供服务：
+            <switch name="voo.room_service">
+              <case value="1">不提供服务</case>
+              <case value="2">提供服务</case>
+              <default />无
+            </switch>
+
+          </div>
+          <div class="fa_zhuang fa_mart">室内设施：{$voo['room_facilities']}</div>
+        </li>
+      </volist>
+
+
+
+
+    </ul>
+    <!--
+    <div class="load_more"><img src="__PUBLIC__/Images/Home/mobile/xia.png">加载更多</div>  -->
+  </div>
+  <div class="masks2"></div>
+  <include file="Common:footer" />
+  <!--footers end-->
+<!--时间日期插件-->
+<script src="__PUBLIC__/Js/Home/mobile/mobiscroll_date.js" charset="gb2312"></script> 
+<script src="__PUBLIC__/Js/Home/mobile/mobiscroll.js"></script> 
+<script type="text/javascript">
+  $(function () {
+    var currYear = (new Date()).getFullYear();  
+    var opt={};
+    opt.date = {preset : 'date'};
+    opt.datetime = {preset : 'datetime'};
+    opt.time = {preset : 'time'};
+    opt.default = {
+      theme: 'android-ics light', //皮肤样式
+      display: 'modal', //显示方式 
+      mode: 'scroller', //日期选择模式
+      dateFormat: 'yyyy-mm-dd',
+      lang: 'zh',
+      showNow: true,
+      nowText: "今天",
+      startYear: currYear - 50, //开始年份
+      endYear: currYear + 10 //结束年份
+    };
+
+    $("#USER_AGE").mobiscroll($.extend(opt['date'], opt['default']));
+    $("#USER_AGE1").mobiscroll($.extend(opt['date'], opt['default']));
+  })
+  $(function(){
+    $('.rong_h1').click(function(){
+       $(this).siblings('.time_tan').show();
+       $('.masks2').show();
+    })
+    $('.masks2').click(function(){
+      $('.time_tan,.masks2').hide();
+    })
+    $('.meets_chose1').click(function(){
+        $('.can_resets').show();       
+    })
+  })
+</script>
+</body>
+</html>
